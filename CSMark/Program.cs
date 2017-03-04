@@ -11,17 +11,22 @@ namespace CSMark
         public static void Main(string[] args)
         {
             Console.Title = "CSMark v1.0.0.0";
-            
-            Console.WriteLine("Starting CSMark v1.0.0.0 ....");
-
             BenchPythagoras bench = new BenchPythagoras();
 
             Console.WriteLine("Running pythagoras benchmark...");
 
-         bench.doPythagorasBenchmark();
+            bench.singleThreadedBench();
+     //       bench.multiThreadedBench();
+
+            Console.WriteLine("                                                                             ");
 
            Console.WriteLine("Single Core Score: " + bench.returnSingleScore());
-           Console.WriteLine("Multi Core Score: " + bench.returnMultiScore());
+        //   Console.WriteLine("Multi Core Score: " + bench.returnMultiScore());
+
+            Console.WriteLine("                                                                             ");
+
+            Console.WriteLine("Single Core Calculations per second: " + bench.returnSingleScoreCalc());
+   //         Console.WriteLine("Multi Core Calculations per second: " + bench.returnMultiScoreCalc());
 
             Console.ReadLine();
 

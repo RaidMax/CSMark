@@ -9,9 +9,7 @@ namespace CSMarkCalculationTool
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
 
-        string benchRuns;
-
-        int maxIterations = 500000;
+        int maxIterations = 500000000;
         int iteration;
 
         //This what we'll use for H,O and A.
@@ -21,6 +19,12 @@ namespace CSMarkCalculationTool
 
         string singleTime;
         string multiTime;
+
+        string singleCalc;
+        string multiCalc;
+
+      double singleC;
+        double multiC;
 
         double elapsedSingle;
         double elapsedMulti;
@@ -37,13 +41,36 @@ namespace CSMarkCalculationTool
             multiTime = elapsedMulti.ToString() + " Seconds";
             return multiTime;
         }
-        public void doPythagorasBenchmark()
+        public string returnSingleScoreCalc()
         {
-            singleThreadedBench();
-            multiThreadedBench();
+            singleC = maxIterations / elapsedSingle;
+
+            //Convert raw value to thousands
+            singleC = singleC / 1000;
+
+            //Convert thousands to millions
+            singleC = singleC / 1000;
+
+            singleCalc = singleC.ToString() + " Million";
+
+            return singleCalc;
+        }
+        public string returnMultiScoreCalc()
+        {
+            multiC = maxIterations / elapsedMulti;
+
+            //Convert raw value to thousands
+            multiC = multiC / 1000;
+
+            //Convert thousands to millions
+            multiC = multiC / 1000;
+
+            multiCalc = multiC.ToString() + " Million";
+
+            return multiCalc;
         }
 
-        private void singleThreadedBench()
+        public void singleThreadedBench()
         {
             Random random = new Random();
             stopwatch.Start();
@@ -82,7 +109,7 @@ namespace CSMarkCalculationTool
             stopwatch.Reset();
         }
 
-        private void multiThreadedBench()
+        public void multiThreadedBench()
         {
             int threadsCreated = 0;
 
