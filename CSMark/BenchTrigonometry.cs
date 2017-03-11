@@ -20,28 +20,17 @@ Trigonometry tr = new Trigonometry();
         double A = 6;
 
         string singleTime;
-        string multiTime;
 
         string singleCalc;
-        string multiCalc;
 
       double singleC;
-        double multiC;
 
         double elapsedSingle;
-        double elapsedMulti;
-
-        int logicalCores = Environment.ProcessorCount;
 
     public string returnSingleScore()
         {
             singleTime = elapsedSingle.ToString() + " Seconds";
             return singleTime;
-        }
-        public string returnMultiScore()
-        {
-            multiTime = elapsedMulti.ToString() + " Seconds";
-            return multiTime;
         }
         public string returnSingleScoreCalc()
         {
@@ -56,20 +45,6 @@ Trigonometry tr = new Trigonometry();
             singleCalc = singleC.ToString() + " Million";
 
             return singleCalc;
-        }
-        public string returnMultiScoreCalc()
-        {
-            multiC = maxIterations / elapsedMulti;
-
-            //Convert raw value to thousands
-            multiC = multiC / 1000;
-
-            //Convert thousands to millions
-            multiC = multiC / 1000;
-
-            multiCalc = multiC.ToString() + " Million";
-
-            return multiCalc;
         }
 
         public void singleThreadedBench()
