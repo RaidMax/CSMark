@@ -9,8 +9,11 @@ namespace CSMark
 {
     class Benchmark
     {
+        bool pyAlive = false;
+        bool trigAlive = false;
+
         //The workloads we're gonna be putting this through
-        BenchTrigonometry bt = new BenchTrigonometry();
+        BenchTrigonometry trig = new BenchTrigonometry();
         BenchPythagoras py = new BenchPythagoras();
 
         //Stopwatch and Timing variable
@@ -19,13 +22,16 @@ namespace CSMark
 
         public void startBenchmark()
         {
-
+            startBenchmark_SingleProcess();
+            startBenchmark_MultiProcess();
         }
 
         private void startBenchmark_SingleProcess()
         {
-
+            py.singleThreadedBench();
+            trig.singleThreadedBench();
         }
+
         private void startBenchmark_MultiProcess()
         {
             //make sure it is set to 0
@@ -33,7 +39,7 @@ namespace CSMark
 
             //The workloads we will run in different threads
             Thread pyThread = new Thread(new ThreadStart(py.singleThreadedBench));
-            Thread trigThread = new Thread(new ThreadStart(bt.singleThreadedBench));
+            Thread trigThread = new Thread(new ThreadStart(trig.singleThreadedBench));
 
             //Start it once the tests start running.
             multiTimeStopwatch.Start();
@@ -41,8 +47,6 @@ namespace CSMark
             //Start the threads and make the benchmarking happen!
             pyThread.Start();
             trigThread.Start();
-
-
         }
 
     }

@@ -8,15 +8,15 @@ namespace CSMark
         public static void Main(string[] args)
         {
             Console.Title = "CSMark v1.0.0.0";
-            BenchPythagoras bench = new BenchPythagoras();
+            Benchmark bench = new Benchmark();
 
             Console.WriteLine("Running pythagoras benchmark...");
 
-            bench.singleThreadedBench();
+            bench.startBenchmark();
 
            Console.WriteLine("                                                                             ");
 
-           Console.WriteLine("Single Core Score: " + bench.returnSingleScore());
+           Console.WriteLine("Single Core Score: " + bench);
  
 
             Console.WriteLine("                                                                             ");
