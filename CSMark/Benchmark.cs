@@ -12,6 +12,12 @@ namespace CSMark
         bool pyAlive = false;
         bool trigAlive = false;
 
+        double singleTime;
+        double multiTime;
+
+        double singleTimePerSec;
+        double multiTimePerSec;
+
         //The workloads we're gonna be putting this through
         BenchTrigonometry trig = new BenchTrigonometry();
         BenchPythagoras py = new BenchPythagoras();
@@ -28,10 +34,50 @@ namespace CSMark
 
         private void startBenchmark_SingleProcess()
         {
+            singleTimeStopwatch.Reset();
+            singleTimeStopwatch.Start();
+
             py.singleThreadedBench();
             trig.singleThreadedBench();
+
+            singleTimeStopwatch.Stop();
+       singleTime = singleTimeStopwatch.ElapsedMilliseconds / 1000;
         }
 
+        public string singleThreadedScore()
+        {
+            return singleTime.ToString() + " Seconds";     
+        }
+        public string singleThreadedScorePerSecond()
+        {
+            //Convert to calcs per second
+            singleTimePerSec = (750000000 + 750000000) / (singleTimePerSec / 1000);
+
+            //Convert to millions of calcs per second
+            singleTimePerSec = singleTimePerSec / 1000;
+            singleTimePerSec = singleTimePerSec / 1000;
+
+            singleTimePerSec = singleTimePerSec / singleTime;
+
+            return singleTimePerSec.ToString() + " Millions of calculations per second.";
+        }
+        public string multiThreadedScore()
+        {
+            return multiTime.ToString() + " Seconds";
+        }
+        public string multiThreadedScorePerSecond()
+        {
+            //Convert to calcs per second
+            multiTimePerSec = (750000000 + 750000000) / (multiTime / 1000);
+
+            //Convert to millions of calcs per second
+            multiTimePerSec = multiTimePerSec / 1000;
+            multiTimePerSec = multiTimePerSec / 1000;
+
+            multiTimePerSec = multiTimePerSec / multiTime;
+
+            return multiTimePerSec.ToString() + " Millions of calculations per second.";
+        }
         private void startBenchmark_MultiProcess()
         {
             //make sure it is set to 0
@@ -47,6 +93,10 @@ namespace CSMark
             //Start the threads and make the benchmarking happen!
             pyThread.Start();
             trigThread.Start();
+
+            multiTimeStopwatch.Stop();
+
+            multiTime = multiTimeStopwatch.ElapsedMilliseconds / 1000;
         }
 
     }

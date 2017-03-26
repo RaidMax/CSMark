@@ -7,23 +7,23 @@ namespace CSMark
     {
         public static void Main(string[] args)
         {
-            Console.Title = "CSMark v1.0.0.0";
+            Console.Title = "CSMark v1.1.0.0";
             Benchmark bench = new Benchmark();
-
-            Console.WriteLine("Running pythagoras benchmark...");
+            Console.WriteLine("Running benchmarks...");
 
             bench.startBenchmark();
 
            Console.WriteLine("                                                                             ");
-
-           Console.WriteLine("Single Core Score: " + bench);
+           Console.WriteLine("Single Threaded Score: " + bench.singleThreadedScore());
  
+            Console.WriteLine("                                                                             ");
+            Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
 
             Console.WriteLine("                                                                             ");
+            Console.WriteLine("Multi Threaded Score: " + bench.multiThreadedScore());
 
-            Console.WriteLine("Single Core Calculations per second: " + bench.returnSingleScoreCalc());
-
-          
+            Console.WriteLine("                                                                             ");
+            Console.WriteLine("Multi Threaded Calculations per second: " + bench.multiThreadedScorePerSecond());
 
             Console.ReadLine();
 

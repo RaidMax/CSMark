@@ -9,7 +9,7 @@ namespace CSMarkCalculationTool
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
 
-        int maxIterations = 500000000;
+        int maxIterations = 750000000;
         int iteration;
 
         //This what we'll use for H,O and A.
