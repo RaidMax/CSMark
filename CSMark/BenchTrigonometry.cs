@@ -10,7 +10,7 @@ Trigonometry tr = new Trigonometry();
 
  Stopwatch stopwatch = new Stopwatch();
 
- int maxIterations = 750000000;
+ int maxIterations = 500000000;
 
        int iteration;
 

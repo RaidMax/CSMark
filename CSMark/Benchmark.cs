@@ -51,13 +51,18 @@ namespace CSMark
         public string singleThreadedScorePerSecond()
         {
             //Convert to calcs per second
-            singleTimePerSec = (750000000 + 750000000) / (singleTimePerSec / 1000);
+            singleTimePerSec = (500000000 + 500000000) / singleTime;
+
+            Console.WriteLine("500000000 + 500000000 / multiTime == " + singleTimePerSec);
 
             //Convert to millions of calcs per second
             singleTimePerSec = singleTimePerSec / 1000;
-            singleTimePerSec = singleTimePerSec / 1000;
+            Console.WriteLine("multiTimePerSec / 1000 == " + singleTimePerSec);
 
-            singleTimePerSec = singleTimePerSec / singleTime;
+            singleTimePerSec = singleTimePerSec / 1000;
+            Console.WriteLine("multiTimePerSec / 1000 == " + singleTimePerSec);
+
+            //   singleTimePerSec = singleTimePerSec / singleTime;
 
             return singleTimePerSec.ToString() + " Millions of calculations per second.";
         }
@@ -68,13 +73,18 @@ namespace CSMark
         public string multiThreadedScorePerSecond()
         {
             //Convert to calcs per second
-            multiTimePerSec = (750000000 + 750000000) / (multiTime / 1000);
+            multiTimePerSec = (500000000 + 500000000) / multiTime;
+
+            Console.WriteLine("500000000 + 500000000 / multiTime == " + multiTimePerSec);
 
             //Convert to millions of calcs per second
-            multiTimePerSec = multiTimePerSec / 1000;
-            multiTimePerSec = multiTimePerSec / 1000;
+           multiTimePerSec = multiTimePerSec / 1000;
+           Console.WriteLine("multiTimePerSec / 1000 == " + multiTimePerSec);
 
-            multiTimePerSec = multiTimePerSec / multiTime;
+            multiTimePerSec = multiTimePerSec / 1000;
+            Console.WriteLine("multiTimePerSec / 1000 == " + multiTimePerSec);
+
+     //       multiTimePerSec = multiTimePerSec / multiTime;
 
             return multiTimePerSec.ToString() + " Millions of calculations per second.";
         }
