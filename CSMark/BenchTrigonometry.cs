@@ -10,11 +10,11 @@ Trigonometry tr = new Trigonometry();
 
  Stopwatch stopwatch = new Stopwatch();
 
- int maxIterations = 500000000;
+ int maxIterations = 1000000000;
 
        int iteration;
 
-        //This what we'll use for H,O and A.
+        //This what we'll use for H, O and A.
         double H = 10;
         double O = 8;
         double A = 6;

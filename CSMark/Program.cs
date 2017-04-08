@@ -19,12 +19,13 @@ namespace CSMark
             Console.WriteLine("                                                                             ");
             Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
 
+/* 
             Console.WriteLine("                                                                             ");
             Console.WriteLine("Multi Threaded Score: " + bench.multiThreadedScore());
 
             Console.WriteLine("                                                                             ");
             Console.WriteLine("Multi Threaded Calculations per second: " + bench.multiThreadedScorePerSecond());
-
+ */
             Console.ReadLine();
 
         }

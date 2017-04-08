@@ -29,14 +29,14 @@ namespace CSMark
         public void startBenchmark()
         {
             startBenchmark_SingleProcess();
-            startBenchmark_MultiProcess();
+        //    startBenchmark_MultiProcess();
         }
 
         private void startBenchmark_SingleProcess()
         {
             singleTimeStopwatch.Reset();
             singleTimeStopwatch.Start();
-
+            
             py.singleThreadedBench();
             trig.singleThreadedBench();
 
@@ -51,31 +51,25 @@ namespace CSMark
         public string singleThreadedScorePerSecond()
         {
             //Convert to calcs per second
-            singleTimePerSec = (500000000 + 500000000) / singleTime;
-
-            Console.WriteLine("500000000 + 500000000 / multiTime == " + singleTimePerSec);
+            singleTimePerSec = (1000000000 + 1000000000) / singleTime;
 
             //Convert to millions of calcs per second
             singleTimePerSec = singleTimePerSec / 1000;
-            Console.WriteLine("multiTimePerSec / 1000 == " + singleTimePerSec);
 
-            singleTimePerSec = singleTimePerSec / 1000;
-            Console.WriteLine("multiTimePerSec / 1000 == " + singleTimePerSec);
+            singleTimePerSec = singleTimePerSec / 1000;     
 
-            //   singleTimePerSec = singleTimePerSec / singleTime;
-
-            return singleTimePerSec.ToString() + " Millions of calculations per second.";
+            return singleTimePerSec.ToString() + " Million calculations per second.";
         }
+        /*
         public string multiThreadedScore()
         {
             return multiTime.ToString() + " Seconds";
         }
+      
         public string multiThreadedScorePerSecond()
         {
             //Convert to calcs per second
-            multiTimePerSec = (500000000 + 500000000) / multiTime;
-
-            Console.WriteLine("500000000 + 500000000 / multiTime == " + multiTimePerSec);
+            multiTimePerSec = (1000000000 + 1000000000) / multiTime;
 
             //Convert to millions of calcs per second
            multiTimePerSec = multiTimePerSec / 1000;
@@ -108,6 +102,7 @@ namespace CSMark
 
             multiTime = multiTimeStopwatch.ElapsedMilliseconds / 1000;
         }
+        */
 
     }
 }
