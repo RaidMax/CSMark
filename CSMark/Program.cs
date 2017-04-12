@@ -6,7 +6,7 @@ namespace CSMark
     {
         public static void Main(string[] args)
         {
-            Console.Title = "CSMark v0.3.0.0";
+            Console.Title = "CSMark v0.3.0.0 - Insider Release";
             BenchmarkController bench = new BenchmarkController();
             StressTestController stress = new StressTestController();
 
