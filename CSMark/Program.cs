@@ -10,6 +10,9 @@ namespace CSMark
             BenchmarkController bench = new BenchmarkController();
             StressTestController stress = new StressTestController();
 
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.BackgroundColor = ConsoleColor.Black;
+
             Console.WriteLine("Welcome to CSMark...");
             Console.WriteLine("To run the benchmark test utility, please enter BENCH.");
             Console.WriteLine("To run the stress test utility, please enter STRESS.");

@@ -15,9 +15,9 @@ namespace CSMark
         private void stressPythagoras()
         {
             int randomNumber;
-            double H = 10;
-            double O = 8;
-            double A = 6;
+            double H = 1000;
+            double O = 800;
+            double A = 600;
 
             while (termination == false)
             {
@@ -39,19 +39,15 @@ namespace CSMark
                 {
                     break;
                 }
-                //Increment the variables so that it's not the same each time.
-                H = H + 10;
-                O = O + 5;
-                A = A + 2.5;
             }
             
         }
         private void stressTrigonometry()
         {
             int randomNumber;
-            double H = 10;
-            double O = 8;
-            double A = 6;
+            double H = 1000;
+            double O = 800;
+            double A = 600;
 
             while (termination == false)
             {
@@ -69,11 +65,6 @@ namespace CSMark
                 {
                     tr.getTanAngle(O, A);
                 }
-
-                //Increment the variables so that it's not the same each time.
-                H = H + 10;
-                O = O + 5;
-                A = A + 2.5;
             }           
          }
 
