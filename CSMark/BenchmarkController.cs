@@ -14,8 +14,6 @@ namespace CSMark
         double multiTimePerSec;
 
         //The workloads we're gonna be putting this through
-        BenchTrigonometry trig = new BenchTrigonometry();
-        BenchPythagoras py = new BenchPythagoras();
 
         //Stopwatch and Timing variable
         Stopwatch multiTimeStopwatch = new Stopwatch();
@@ -29,6 +27,9 @@ namespace CSMark
 
         private void startBenchmark_SingleProcess()
         {
+            BenchTrigonometry trig = new BenchTrigonometry();
+            BenchPythagoras py = new BenchPythagoras();
+
             singleTimeStopwatch.Reset();
             singleTimeStopwatch.Start();
             

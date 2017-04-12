@@ -13,32 +13,44 @@ namespace CSMark
             Console.WriteLine("Welcome to CSMark...");
             Console.WriteLine("To run the benchmark test utility, please enter BENCH.");
             Console.WriteLine("To run the stress test utility, please enter STRESS.");
-           
-            string command = Console.ReadLine().ToLower();
 
-           if(command == "bench")
+           // string command;
+            string newCommand;
+            while (true)
             {
-                Console.WriteLine("Starting benchmark...");
-                bench.startBenchmark();
-                Console.WriteLine("                                                                             ");
-                Console.WriteLine("Single Threaded Score: " + bench.singleThreadedScore());
-                Console.WriteLine("                                                                             ");
-                Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
-                Console.ReadLine();
-            }
-            else if(command == "stress")
-            {
-                Console.WriteLine("Starting stress test...");
-                Console.WriteLine("To stop the stress test, please exit the program or enter BREAK");
-                stress.startStressTest(true);
+                newCommand = Console.ReadLine().ToLower();
 
-               string stop = Console.ReadLine().ToLower();
-
-                if(stop == "break")
+                if (newCommand == "bench")
                 {
-                    stress.stopStressTest(false);
+                    Console.WriteLine("Starting benchmark...");
+                    bench.startBenchmark();
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("Single Threaded Score: " + bench.singleThreadedScore());
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
+
+                    continue;
+                }
+                else if (newCommand == "stress")
+                {
+                    Console.WriteLine("Starting stress test...");
+                    Console.WriteLine("To stop the stress test, please exit the program or enter BREAK");
+                    stress.startStressTest(true);
+
+                    string stop = Console.ReadLine().ToLower();
+
+                    if (stop == "break")
+                    {
+                        stress.stopStressTest(false);
+                    }
+
+                    continue;
                 }
             }
+
+            
+
+          
         }
     }
 }
