@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Diagnostics;
 
 namespace CSMarkCalculationTool
@@ -7,11 +6,8 @@ namespace CSMarkCalculationTool
     public class BenchTrigonometry
     {
 Trigonometry tr = new Trigonometry();
-
  Stopwatch stopwatch = new Stopwatch();
-
  int maxIterations = 1000000000;
-
        int iteration;
 
         //This what we'll use for H, O and A.
@@ -20,11 +16,8 @@ Trigonometry tr = new Trigonometry();
         double A = 6;
 
         string singleTime;
-
         string singleCalc;
-
       double singleC;
-
         double elapsedSingle;
 
     public string returnSingleScore()
@@ -35,23 +28,17 @@ Trigonometry tr = new Trigonometry();
         public string returnSingleScoreCalc()
         {
             singleC = maxIterations / elapsedSingle;
-
             //Convert raw value to thousands
             singleC = singleC / 1000;
-
             //Convert thousands to millions
             singleC = singleC / 1000;
-
             singleCalc = singleC.ToString() + " Million";
-
             return singleCalc;
         }
-
         public void singleThreadedBench()
         {
             Random random = new Random();
             stopwatch.Start();
-
             while (iteration <= maxIterations)
             {
                 int randomNumber = random.Next(2);
@@ -72,12 +59,10 @@ Trigonometry tr = new Trigonometry();
                 {
                     break;
                 }
-
                 //Increment the variables so that it's not the same each time.
                 H++;
                 O++;
                 A++;
-
                 //Increment our counter
                 iteration++;
             }
@@ -85,9 +70,6 @@ Trigonometry tr = new Trigonometry();
             elapsedSingle = stopwatch.ElapsedMilliseconds / 1000;
             stopwatch.Reset();
         }
-
-
-
     }
 
 }

@@ -2,7 +2,6 @@
 
 ### Benchmarking practices
 
-
 ### Benchmarking Tests available
 * Pythagoras - This calculates uses pythagorian theorem to calculate either the Hypotenuse, Opposite or Adjacent length of a right angled triangle.
 * Trigonometry - This uses lengths of a triangle to calculate an angle.

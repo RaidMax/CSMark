@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Diagnostics;
 
 namespace CSMarkCalculationTool
@@ -8,21 +7,15 @@ namespace CSMarkCalculationTool
     {
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
-
         int maxIterations = 1000000000;
         int iteration;
-
         //This what we'll use for H,O and A.
         double H = 10;
         double O = 8;
         double A = 6;
-
         string singleTime;
-
         string singleCalc;
-
       double singleC;
-
         double elapsedSingle;
 
         public string returnSingleScore()
@@ -36,15 +29,11 @@ namespace CSMarkCalculationTool
 
             //Convert raw value to thousands
             singleC = singleC / 1000;
-
             //Convert thousands to millions
             singleC = singleC / 1000;
-
             singleCalc = singleC.ToString() + " Million";
-
             return singleCalc;
         }
-
         public void singleThreadedBench()
         {
             Random random = new Random();
@@ -53,7 +42,6 @@ namespace CSMarkCalculationTool
             while (iteration <= maxIterations)
             {
                 int randomNumber = random.Next(2);
-
                 if (randomNumber == 0)
                 {
                     py.getHypotenuse(A, O);
@@ -70,12 +58,10 @@ namespace CSMarkCalculationTool
                 {
                     break;
                 }
-
                 //Increment the variables so that it's not the same each time.
                 H++;
                 O++;
                 A++;
-
                 //Increment our counter
                 iteration++;
             }
@@ -83,7 +69,5 @@ namespace CSMarkCalculationTool
             elapsedSingle = stopwatch.ElapsedMilliseconds / 1000;
             stopwatch.Reset();
         }
-
-
     }
 }
