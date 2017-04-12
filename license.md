@@ -1,24 +1,21 @@
-# AluminiumTech License
+MIT License
 
 Copyright (c) 2017 AluminiumTech
 
-Permission is hereby granted, free of charge, to ANY person obtaining a copy
-of this software and associated documentation (the "Software") to deal in the software without ANY restrictions and :
-* the rights to use the source code in ANY project.
-* the rights to copy, merge and/or modify the source code.
-* the rights to publish and/or distribute the original source code AT NO COST WHATSOEVER.
-* the rights to publish and/or distribute ANY MODIFIED source code AT NO COST WHATSOEVER.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-An Individual or Organization which chooses to use, copy, merge, modify, publish or distribute the software is free to do so subject to the above agreement and subject to the conditions stated below.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-The above copyright notice and this permission notice MUST be included in ALL copies of the Software.
-
-The software is provided "AS IS" and is without any kind, express or implied warranty. This includes but is not limited to warranties of merchantability, fitness for a particular purpose and noninfingement. 
-
-In NO EVENT shall the Authors or Copyright holders be liable for ANY claims, damages or other liabilities whether in an action of contract, tort or otherwise. 
-
-The individual or organization MUST provide the URL of the original repository on the website or homepage of the their project.
-IF the individual or organization does not contain a website for their project,they MUST provide the link available in a "ReadMe"
-text file alongside any prebuilt binaries for their application or services.
-
-Products which use this software CAN be distributed and sold as long as they are able to agree to and use this license.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
