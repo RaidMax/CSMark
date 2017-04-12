@@ -1,26 +1,25 @@
-using System;
+﻿using System;
 using System.Diagnostics;
+using CSMark.Calculations;
 
-namespace CSMarkCalculationTool
+namespace CSMark.Benchmarks
 {
-    public class BenchTrigonometry
+    public class BenchPythagoras
     {
-Trigonometry tr = new Trigonometry();
- Stopwatch stopwatch = new Stopwatch();
- int maxIterations = 1000000000;
-       int iteration;
-
-        //This what we'll use for H, O and A.
+        Pythagoras py = new Pythagoras();
+        Stopwatch stopwatch = new Stopwatch();
+        int maxIterations = 500000000;
+        int iteration = 0;
+        //This what we'll use for H,O and A.
         double H = 10;
         double O = 8;
         double A = 6;
-
         string singleTime;
         string singleCalc;
       double singleC;
         double elapsedSingle;
 
-    public string returnSingleScore()
+        public string returnSingleScore()
         {
             singleTime = elapsedSingle.ToString() + " Seconds";
             return singleTime;
@@ -28,6 +27,7 @@ Trigonometry tr = new Trigonometry();
         public string returnSingleScoreCalc()
         {
             singleC = maxIterations / elapsedSingle;
+
             //Convert raw value to thousands
             singleC = singleC / 1000;
             //Convert thousands to millions
@@ -39,30 +39,30 @@ Trigonometry tr = new Trigonometry();
         {
             Random random = new Random();
             stopwatch.Start();
+
             while (iteration <= maxIterations)
             {
                 int randomNumber = random.Next(2);
-
                 if (randomNumber == 0)
                 {
-                    tr.getCosAngle(A,H);
+                    py.getHypotenuse(A, O);
                 }
                 else if (randomNumber == 1)
                 {
-                    tr.getSinAngle(O,H);
+                    py.getOpposite(H, A);
                 }
                 else if (randomNumber == 2)
                 {
-                   tr.getTanAngle(O,A);
+                    py.getAdjacent(H, O);
                 }
                 else
                 {
                     break;
                 }
                 //Increment the variables so that it's not the same each time.
-                H++;
-                O++;
-                A++;
+                H = H + 3;
+                O = O + 2;
+                A = A + 1;
                 //Increment our counter
                 iteration++;
             }
@@ -71,5 +71,4 @@ Trigonometry tr = new Trigonometry();
             stopwatch.Reset();
         }
     }
-
 }

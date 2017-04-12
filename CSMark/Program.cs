@@ -1,5 +1,4 @@
-﻿using CSMarkCalculationTool;
-using System;
+﻿using System;
 
 namespace CSMark
 {
@@ -7,19 +6,39 @@ namespace CSMark
     {
         public static void Main(string[] args)
         {
-            Console.Title = "CSMark v0.2.0.0";
-            Benchmark bench = new Benchmark();
-            Console.WriteLine("Running benchmarks...");
+            Console.Title = "CSMark v0.3.0.0";
+            BenchmarkController bench = new BenchmarkController();
+            StressTestController stress = new StressTestController();
 
-            bench.startBenchmark();
+            Console.WriteLine("Welcome to CSMark...");
+            Console.WriteLine("To run the benchmark test utility, please enter BENCH.");
+            Console.WriteLine("To run the stress test utility, please enter STRESS.");
+           
+            string command = Console.ReadLine().ToLower();
 
-           Console.WriteLine("                                                                             ");
-           Console.WriteLine("Single Threaded Score: " + bench.singleThreadedScore());
- 
-            Console.WriteLine("                                                                             ");
-            Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
-            Console.ReadLine();
+           if(command == "bench")
+            {
+                Console.WriteLine("Starting benchmark...");
+                bench.startBenchmark();
+                Console.WriteLine("                                                                             ");
+                Console.WriteLine("Single Threaded Score: " + bench.singleThreadedScore());
+                Console.WriteLine("                                                                             ");
+                Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
+                Console.ReadLine();
+            }
+            else if(command == "stress")
+            {
+                Console.WriteLine("Starting stress test...");
+                Console.WriteLine("To stop the stress test, please exit the program or enter BREAK");
+                stress.startStressTest(true);
 
+               string stop = Console.ReadLine().ToLower();
+
+                if(stop == "break")
+                {
+                    stress.stopStressTest(false);
+                }
+            }
         }
     }
 }

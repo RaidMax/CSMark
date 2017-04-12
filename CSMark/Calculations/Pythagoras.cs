@@ -1,13 +1,12 @@
 ﻿using System;
 
-namespace CSMarkCalculationTool
+namespace CSMark.Calculations
 {
     class Pythagoras
     {
         private double opposite;
         private double adjacent;
         private double hypotenuse;
-
         private double hypotenuse_squared;
         private double adjacent_squared;
         private double opposite_squared;
@@ -16,7 +15,7 @@ namespace CSMarkCalculationTool
         {
             hypotenuse = _Hypotenuse;
             adjacent = _Adjacent;
-            opposite_squared = (hypotenuse * hypotenuse) - (opposite * opposite);
+            opposite_squared = (hypotenuse * hypotenuse) - (adjacent * adjacent);
             opposite = Math.Sqrt(opposite_squared);
         }
         public void getAdjacent(double _Hypotenuse, double _Opposite)

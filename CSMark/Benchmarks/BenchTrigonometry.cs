@@ -1,24 +1,24 @@
-﻿using System;
+using CSMark.Calculations;
+using System;
 using System.Diagnostics;
 
-namespace CSMarkCalculationTool
+namespace CSMark.Benchmarks
 {
-    public class BenchPythagoras
+    public class BenchTrigonometry
     {
-        Pythagoras py = new Pythagoras();
-        Stopwatch stopwatch = new Stopwatch();
-        int maxIterations = 1000000000;
-        int iteration;
-        //This what we'll use for H,O and A.
-        double H = 10;
-        double O = 8;
-        double A = 6;
-        string singleTime;
-        string singleCalc;
-      double singleC;
-        double elapsedSingle;
+       Trigonometry tr = new Trigonometry();
+       Stopwatch stopwatch = new Stopwatch();
+       int maxIterations = 500000000;
+       int iteration = 0;
+       double H = 10;
+       double O = 8;
+       double A = 6;
+       string singleTime;
+       string singleCalc;
+       double singleC;
+       double elapsedSingle;
 
-        public string returnSingleScore()
+    public string returnSingleScore()
         {
             singleTime = elapsedSingle.ToString() + " Seconds";
             return singleTime;
@@ -26,7 +26,6 @@ namespace CSMarkCalculationTool
         public string returnSingleScoreCalc()
         {
             singleC = maxIterations / elapsedSingle;
-
             //Convert raw value to thousands
             singleC = singleC / 1000;
             //Convert thousands to millions
@@ -38,21 +37,21 @@ namespace CSMarkCalculationTool
         {
             Random random = new Random();
             stopwatch.Start();
-
             while (iteration <= maxIterations)
             {
                 int randomNumber = random.Next(2);
+
                 if (randomNumber == 0)
                 {
-                    py.getHypotenuse(A, O);
+                    tr.getCosAngle(A,H);
                 }
                 else if (randomNumber == 1)
                 {
-                    py.getOpposite(H, A);
+                    tr.getSinAngle(O,H);
                 }
                 else if (randomNumber == 2)
                 {
-                    py.getAdjacent(H, O);
+                   tr.getTanAngle(O,A);
                 }
                 else
                 {
@@ -70,4 +69,5 @@ namespace CSMarkCalculationTool
             stopwatch.Reset();
         }
     }
+
 }

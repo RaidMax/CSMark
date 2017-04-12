@@ -1,13 +1,11 @@
-﻿using CSMarkCalculationTool;
+﻿using CSMark.Benchmarks;
 using System;
 using System.Diagnostics;
 
 namespace CSMark
 {
-    class Benchmark
+    class BenchmarkController
     {
-        bool pyAlive = false;
-        bool trigAlive = false;
 
         double singleTime;
         double multiTime;
@@ -48,7 +46,7 @@ namespace CSMark
         public string singleThreadedScorePerSecond()
         {
             //Convert to calcs per second
-            singleTimePerSec = (1000000000 + 1000000000) / singleTime;
+            singleTimePerSec = (500000000 + 500000000) / singleTime;
 
             //Convert to millions of calcs per second
             singleTimePerSec = singleTimePerSec / 1000;

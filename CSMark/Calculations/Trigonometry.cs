@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSMarkCalculationTool
+namespace CSMark.Calculations
 {
     class Trigonometry
     {
