@@ -1,22 +1,27 @@
-﻿using System;
+﻿using CSMark.Calculations;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using CSMark.Calculations;
+using System.Text;
 using System.Threading;
 
 namespace CSMark.Benchmarks
 {
-    public class BenchPythagoras
+    class BenchGradient
     {
-        Pythagoras py = new Pythagoras();
+        Gradient gr = new Gradient();
         Stopwatch stopwatch = new Stopwatch();
         int maxIterations = 1000000000;
         int iteration = 0;
-        //This what we'll use for H,O and A.
-        double H = 10;
-        double O = 8;
-        double A = 6;
+
+        double X2;
+        double X1;
+        double Y2;
+        double Y1;
+
         string singleCalc;
         double singleC;
+
         string singleTimeString;
         string multiTimeString;
         double singleTime;
@@ -56,30 +61,16 @@ namespace CSMark.Benchmarks
         }
         public void singleThreadedBench()
         {
-            Random random = new Random();
             stopwatch.Start();
 
             while (iteration <= maxIterations)
             {
-                int randomNumber = random.Next(2);
-                switch (randomNumber)
-                {
-                    case 0:
-                        py.getHypotenuse(A, O);
-                        break;
-                    case 1:
-                        py.getOpposite(H, A);
-                        break;
-                    case 2:
-                        py.getAdjacent(H, O);
-                        break;
-                    default:
-                        break;
-                }
+              gr.getGradient(Y2,Y1,X2,X1);
                 //Increment the variables so that it's not the same each time.
-                H = H + 3;
-                O = O + 2;
-                A = A + 1;
+                X2 = X2 + 3;
+                Y2 = Y2 + 2;
+                X1 = X1 + 1;
+                Y1 = Y1 + 1;
                 //Increment our counter
                 iteration++;
             }
@@ -88,36 +79,28 @@ namespace CSMark.Benchmarks
             stopwatch.Reset();
         }
 
-        private static int threadCalc(double H, double O, double A, int maxThreadIterations)
+        private static int threadCalc(double X2, double X1, double Y2, double Y1, int maxThreadIterations)
         {
-            Pythagoras py = new Pythagoras();
+            Gradient gd = new Gradient();
             Random random = new Random();
             int iteration = 0;
 
-            while (iteration <= maxThreadIterations){
-                int randomNumber = random.Next(2);
-                switch (randomNumber)
-                {
-                    case 0:
-                        py.getHypotenuse(A, O);
-                        break;
-                    case 1:
-                        py.getOpposite(H, A);
-                        break;
-                    case 2:
-                        py.getAdjacent(H, O);
-                        break;
-                    default:
-                        break;
-                }
+            while (iteration <= maxThreadIterations)
+            {
+            gd.getGradient(Y2, Y1, X2, X1);
+                gd.getGradient(Y2, Y1, X2, X1);
+                gd.getGradient(Y2, Y1, X2, X1);
+                gd.getGradient(Y2, Y1, X2, X1);
+                gd.getGradient(Y2, Y1, X2, X1);
+                X2++;
+                X1++;
+                Y2++;
+                Y1++;
 
-                //Increment the variables so that it's not the same each time.
-                H = H + 3;
-                O = O + 2;
-                A = A + 1;
-                //Increment our counter
                 iteration++;
             }
+                
+            
             return 0;
         }
 
@@ -129,10 +112,11 @@ namespace CSMark.Benchmarks
 
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations));
-                H += 3 * maxThreadIterations;
-                O += 2 * maxThreadIterations;
-                A += 1 * maxThreadIterations;
+                workerThreads[i] = new Thread(() => threadCalc(X2, X1, Y2, Y1, maxThreadIterations));
+                X2 += 3 * maxThreadIterations;
+                X1 += 2 * maxThreadIterations;
+                Y2 += 1 * maxThreadIterations;
+                Y1 += 1 * maxThreadIterations;
                 workerThreads[i].Start();
             }
 
@@ -144,6 +128,5 @@ namespace CSMark.Benchmarks
             multiTime = stopwatch.ElapsedMilliseconds / 1000;
             stopwatch.Reset();
         }
-
     }
 }

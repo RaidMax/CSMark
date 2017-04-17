@@ -1,104 +1,81 @@
 ﻿using CSMark.Benchmarks;
 using System;
-using System.Diagnostics;
 
 namespace CSMark
 {
     class BenchmarkController
     {
+        BenchTrigonometry trigB = new BenchTrigonometry();
+        BenchPythagoras pyB = new BenchPythagoras();
+        BenchGradient gridB = new BenchGradient();
 
-        double singleTime;
-        double multiTime;
+        string singleTimePythagoras;
+        string singleTimeGradient;
+        string singleTimeTrigonometry;
 
-        double singleTimePerSec;
-        double multiTimePerSec;
+        string multiTimePythagoras;
+        string multiTimeGradient;
+        string multiTimeTrigonometry;
 
-        //The workloads we're gonna be putting this through
-
-        //Stopwatch and Timing variable
-        Stopwatch multiTimeStopwatch = new Stopwatch();
-        Stopwatch singleTimeStopwatch = new Stopwatch();
-
+#region Benchmarks stuff
         public void startBenchmark()
         {
-            startBenchmark_SingleProcess();
-        //    startBenchmark_MultiProcess();
+            startBenchmark_Single();
+            startBenchmark_Multi();
         }
-
-        private void startBenchmark_SingleProcess()
+        private void startBenchmark_Single()
         {
-            BenchTrigonometry trig = new BenchTrigonometry();
-            BenchPythagoras py = new BenchPythagoras();
-
-            singleTimeStopwatch.Reset();
-            singleTimeStopwatch.Start();
-            
-            py.singleThreadedBench();
-            trig.singleThreadedBench();
-
-            singleTimeStopwatch.Stop();
-       singleTime = singleTimeStopwatch.ElapsedMilliseconds / 1000;
+            Console.WriteLine("Starting Trigonometry based single threaded benchmark");
+            trigB.singleThreadedBench();
+            Console.WriteLine("Starting Pythagoras based single threaded benchmark");
+            pyB.singleThreadedBench();
+            Console.WriteLine("Starting Gradient based single threaded benchmark");
+            gridB.singleThreadedBench();
         }
-
-        public string singleThreadedScore()
+        private void startBenchmark_Multi()
         {
-            return singleTime.ToString() + " Seconds";     
+            Console.WriteLine("Starting Pythagoras based multi threaded benchmark");
+            pyB.multiThreadedBench();
+            Console.WriteLine("Starting Trigonometry based multi threaded benchmark");
+            trigB.multiThreadedBench();
+            Console.WriteLine("Starting Gradient based multi threaded benchmark");
+            gridB.multiThreadedBench();
         }
-        public string singleThreadedScorePerSecond()
+        #endregion
+
+        #region Returning scores
+        public string returnSingleThreadedPythagoras()
         {
-            //Convert to calcs per second
-            singleTimePerSec = (500000000 + 500000000) / singleTime;
-
-            //Convert to millions of calcs per second
-            singleTimePerSec = singleTimePerSec / 1000;
-
-            singleTimePerSec = singleTimePerSec / 1000;     
-
-            return singleTimePerSec.ToString() + " Million calculations per second.";
+            singleTimePythagoras = pyB.returnSingleScore();
+            return singleTimePythagoras; 
         }
-        /*
-        public string multiThreadedScore()
+        public string returnSingleThreadedTrigonometry()
         {
-            return multiTime.ToString() + " Seconds";
+            singleTimeTrigonometry = trigB.returnSingleScore();
+            return singleTimeTrigonometry;
         }
-      
-        public string multiThreadedScorePerSecond()
+        public string returnSingleThreadedGradient()
         {
-            //Convert to calcs per second
-            multiTimePerSec = (1000000000 + 1000000000) / multiTime;
 
-            //Convert to millions of calcs per second
-           multiTimePerSec = multiTimePerSec / 1000;
-           Console.WriteLine("multiTimePerSec / 1000 == " + multiTimePerSec);
-
-            multiTimePerSec = multiTimePerSec / 1000;
-            Console.WriteLine("multiTimePerSec / 1000 == " + multiTimePerSec);
-
-     //       multiTimePerSec = multiTimePerSec / multiTime;
-
-            return multiTimePerSec.ToString() + " Millions of calculations per second.";
+            singleTimeGradient = gridB.returnSingleScore();
+            return singleTimeGradient;
         }
-        private void startBenchmark_MultiProcess()
+        public string returnMultiThreadedPythagoras()
         {
-            //make sure it is set to 0
-            multiTimeStopwatch.Reset();
-
-            //The workloads we will run in different threads
-            Thread pyThread = new Thread(new ThreadStart(py.singleThreadedBench));
-            Thread trigThread = new Thread(new ThreadStart(trig.singleThreadedBench));
-
-            //Start it once the tests start running.
-            multiTimeStopwatch.Start();
-
-            //Start the threads and make the benchmarking happen!
-            pyThread.Start();
-            trigThread.Start();
-
-            multiTimeStopwatch.Stop();
-
-            multiTime = multiTimeStopwatch.ElapsedMilliseconds / 1000;
+            multiTimePythagoras = pyB.returnMultiScore();
+            return multiTimePythagoras;
         }
-        */
+        public string returnMultiThreadedTrigonometry()
+        {
+            multiTimeTrigonometry = trigB.returnMultiScore();
+            return multiTimeTrigonometry;
+        }
+        public string returnMultiThreadedGradient()
+        {
+            multiTimeTrigonometry = gridB.returnMultiScore();
+            return multiTimeTrigonometry;
+        }
+        #endregion
 
     }
 }

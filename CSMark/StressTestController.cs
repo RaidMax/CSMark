@@ -10,14 +10,15 @@ namespace CSMark
         Pythagoras py = new Pythagoras();
         Trigonometry tr = new Trigonometry();        
         Random random = new Random();
+        double H = 1000;
+        double O = 800;
+        double A = 600;
+
         bool termination;
 
         private void stressPythagoras()
         {
             int randomNumber;
-            double H = 1000;
-            double O = 800;
-            double A = 600;
 
             while (termination == false)
             {
@@ -44,10 +45,7 @@ namespace CSMark
         }
         private void stressTrigonometry()
         {
-            int randomNumber;
-            double H = 1000;
-            double O = 800;
-            double A = 600;
+            int randomNumber;       
 
             while (termination == false)
             {
@@ -68,34 +66,32 @@ namespace CSMark
             }           
          }
 
-        Thread pythagoras1;
-        Thread trigonometry1;
-        Thread pythagoras2;
-        Thread trigonometry2;
-        Thread pythagoras3;
-        Thread trigonometry3;
-
         public void startStressTest(bool run)
         {
             termination = false;
 
-           pythagoras1 = new Thread(new ThreadStart(stressPythagoras));
-            trigonometry1 = new Thread(new ThreadStart(stressTrigonometry));
-            pythagoras2 = new Thread(new ThreadStart(stressPythagoras));
-            trigonometry2 = new Thread(new ThreadStart(stressTrigonometry));
-            pythagoras3 = new Thread(new ThreadStart(stressPythagoras));
-            trigonometry3 = new Thread(new ThreadStart(stressTrigonometry));
-
-            pythagoras1.Start();
-            trigonometry1.Start();
-            pythagoras2.Start();
-            trigonometry2.Start();
-            pythagoras3.Start();
-           trigonometry3.Start();
+            multiThreadedBench();
         }
         public void stopStressTest(bool run)
         {
             termination = true;
+        }
+
+        public void multiThreadedBench()
+        {
+            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i] = new Thread(() => stressPythagoras());
+                workerThreads[i].Start();
+            }
+            /*
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i].Join();
+            }
+            */
         }
     }
 }

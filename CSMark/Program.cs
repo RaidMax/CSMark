@@ -6,7 +6,7 @@ namespace CSMark
     {
         public static void Main(string[] args)
         {
-            Console.Title = "CSMark v0.3.0.0 - Insider Release";
+            Console.Title = "CSMark v0.4.0.0 - Insider Release";
             BenchmarkController bench = new BenchmarkController();
             StressTestController stress = new StressTestController();
 
@@ -25,13 +25,24 @@ namespace CSMark
 
                 if (newCommand == "bench")
                 {
+                    //Single threaded CPU benchmarks
                     Console.WriteLine("Starting benchmark...");
                     bench.startBenchmark();
                     Console.WriteLine("                                                                             ");
-                    Console.WriteLine("Single Threaded Score: " + bench.singleThreadedScore());
+                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras());
                     Console.WriteLine("                                                                             ");
-                    Console.WriteLine("Single Threaded Calculations per second: " + bench.singleThreadedScorePerSecond());
+                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry());
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("Gradient Test Single Threaded Score: " + bench.returnSingleThreadedGradient());
 
+                    //Multi threaded CPU benchmarks
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras());
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry());
+                    Console.WriteLine("                                                                             ");
+                    Console.WriteLine("Gradient Test Multi Threaded Score: " + bench.returnMultiThreadedGradient());
                     continue;
                 }
                 else if (newCommand == "stress")

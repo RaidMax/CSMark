@@ -8,12 +8,7 @@ namespace CSMark.Calculations
     {
         private double gradient;
 
-        private double y1;
-        private double x1;
-        private double y2;
-        private double x2;
-
-        public void getGradient()
+        public void getGradient(double y2, double y1, double x2, double x1)
         {
             gradient = (y2 - y1) / (x2 - x1);
         }
