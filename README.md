@@ -31,12 +31,12 @@ Linux Distributions based on redhat linux may be supported in the future.
 ### Benchmarks included so far:
 * Pythagoras based benchmark which involves calculating either the length of the hypotenuse, adjacent length or opposite length.
 * Trigonometry based benchmark which involves calculating the size of an angle based on any 2 of: hypotenuse, adjacent or opposite sides.
+* A nice Multi Threaded version of all the existing benchmarks.
 
 ### Benchmarks that I'm interested in adding
 * Some kind of Logarithm based calculation
 * Simulatenous Equation solving
 * Differentiating with respect to X (dy/dx)
-* A nice Multi Threaded version of all the existing benchmarks.
 * And more stuff :)
 
 ## Notes
