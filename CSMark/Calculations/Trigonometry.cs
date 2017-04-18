@@ -1,24 +1,18 @@
 ﻿using System;
-
-namespace CSMark.Calculations
-{
-    class Trigonometry
-    {
-         private double angle;
-        public void getCosAngle(double adjacent, double hypotenuse)
-        {
+namespace CSMark.Calculations{
+    class Trigonometry{
+        private int angle;
+        public void getCosAngle(int adjacent, int hypotenuse){
            angle = adjacent / hypotenuse;
-            Math.Cos(angle);
+           angle = Convert.ToInt32(Math.Cos(angle));
         }
-        public void getSinAngle(double opposite, double hypotenuse)
-        {
+        public void getSinAngle(int opposite, int hypotenuse){
             angle = opposite / hypotenuse;
-            Math.Sin(angle);
+            angle = Convert.ToInt32(Math.Sin(angle));
         }
-        public void getTanAngle(double opposite,double adjacent)
-        {
+        public void getTanAngle(int opposite,int adjacent){
             angle = opposite / adjacent;
-            Math.Tan(angle);
+            angle = Convert.ToInt32(Math.Tan(angle));
         }
     }
 }

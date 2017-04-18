@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CSMark.Calculations
-{
-    class Gradient
-    {
-        private double gradient;
-
-        public void getGradient(double y2, double y1, double x2, double x1)
-        {
+﻿namespace CSMark.Calculations{
+    class Gradient{
+        private int gradient;
+        public void getGradient(int y2, int y1, int x2, int x1){
             gradient = (y2 - y1) / (x2 - x1);
         }
     }
