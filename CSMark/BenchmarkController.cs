@@ -7,12 +7,9 @@ namespace CSMark
     {
         BenchTrigonometry trigB = new BenchTrigonometry();
         BenchPythagoras pyB = new BenchPythagoras();
-        BenchGradient gridB = new BenchGradient();
         string singleTimePythagoras;
-        string singleTimeGradient;
         string singleTimeTrigonometry;
         string multiTimePythagoras;
-        string multiTimeGradient;
         string multiTimeTrigonometry;
 
         public void startBenchmark(){
@@ -24,16 +21,12 @@ namespace CSMark
             trigB.singleThreadedBench();
             Console.WriteLine("Starting Pythagoras based single threaded benchmark");
             pyB.singleThreadedBench();
-            Console.WriteLine("Starting Gradient based single threaded benchmark");
-            gridB.singleThreadedBench();
         }
         private void startBenchmark_Multi(){
             Console.WriteLine("Starting Pythagoras based multi threaded benchmark");
             pyB.multiThreadedBench();
             Console.WriteLine("Starting Trigonometry based multi threaded benchmark");
             trigB.multiThreadedBench();
-            Console.WriteLine("Starting Gradient based multi threaded benchmark");
-            gridB.multiThreadedBench();
         }
         public string returnSingleThreadedPythagoras(){
             singleTimePythagoras = pyB.returnSingleScore().ToString() + " Seconds";
@@ -43,21 +36,12 @@ namespace CSMark
             singleTimeTrigonometry = trigB.returnSingleScore().ToString() + " Seconds";
             return singleTimeTrigonometry;
         }
-        public string returnSingleThreadedGradient(){
-
-            singleTimeGradient = gridB.returnSingleScore().ToString() + " Seconds";
-            return singleTimeGradient;
-        }
         public string returnMultiThreadedPythagoras(){
             multiTimePythagoras = pyB.returnMultiScore().ToString() + " Seconds";
             return multiTimePythagoras;
         }
         public string returnMultiThreadedTrigonometry(){
             multiTimeTrigonometry = trigB.returnMultiScore().ToString() + " Seconds";
-            return multiTimeTrigonometry;
-        }
-        public string returnMultiThreadedGradient(){
-            multiTimeTrigonometry = gridB.returnMultiScore().ToString() + " Seconds";
             return multiTimeTrigonometry;
         }
    }

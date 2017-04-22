@@ -1,39 +1,38 @@
 ﻿using System;
 
-namespace CSMark.Calculations
-{
+namespace CSMark.Calculations{
     class Pythagoras{
-        private int opposite;
-        private int adjacent;
-        private int hypotenuse;
-        private int hypotenuse_squared;
-        private int adjacent_squared;
-        private int opposite_squared;
-        public void getOpposite(int _Hypotenuse, int _Adjacent){
+        private double opposite;
+        private double adjacent;
+        private double hypotenuse;
+        private double hypotenuse_squared;
+        private double adjacent_squared;
+        private double opposite_squared;
+        public void getOpposite(double _Hypotenuse, double _Adjacent){
             hypotenuse = _Hypotenuse;
             adjacent = _Adjacent;
             opposite_squared = (hypotenuse * hypotenuse) - (adjacent * adjacent);
-            opposite = Convert.ToInt16(Math.Sqrt(opposite_squared));
+            opposite = Math.Sqrt(opposite_squared);
         }
-        public void getAdjacent(int _Hypotenuse, int _Opposite){
+        public void getAdjacent(double _Hypotenuse, double _Opposite){
             hypotenuse = _Hypotenuse;
             opposite = _Opposite;
             adjacent_squared = (hypotenuse * hypotenuse) - (opposite * opposite);
-            adjacent = Convert.ToInt16(Math.Sqrt(opposite_squared));
+            adjacent = Math.Sqrt(opposite_squared);
         }
-        public void getHypotenuse(int _Adjacent, int _Opposite){
+        public void getHypotenuse(double _Adjacent, double _Opposite){
             adjacent = _Adjacent;
             opposite = _Opposite;
             hypotenuse_squared = (opposite * opposite) + (adjacent * adjacent);
-            hypotenuse = Convert.ToInt16(Math.Sqrt(opposite_squared));
+            hypotenuse = Math.Sqrt(opposite_squared);
         }
-        public int returnAdjacent(){
+        public double returnAdjacent(){
             return adjacent;
         }
-        public int returnOpposite(){
+        public double returnOpposite(){
             return opposite;
         }
-        public int returnHypotenuse(){
+        public double returnHypotenuse(){
             return hypotenuse;
         }
     }

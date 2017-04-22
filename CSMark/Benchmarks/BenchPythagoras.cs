@@ -6,22 +6,22 @@ namespace CSMark.Benchmarks{
     public class BenchPythagoras{
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
-        int maxIterations = 1000000000;
-        int iteration = 0;
+        double maxIterations = 3.0 * 1000.0 * 1000.0 * 1000.0;
+        double iteration = 0;
         //This what we'll use for H,O and A.
-        int H = 10;
-        int O = 8;
-        int A = 6;
-        int singleTime;
-        int multiTime;
-        public int returnSingleScore(){
+        double H = 10;
+        double O = 8;
+        double A = 6;
+        double singleTime;
+        double multiTime;
+        public double returnSingleScore(){
             return singleTime;
         }
-        public int returnMultiScore(){
+        public double returnMultiScore(){
             return multiTime;
         }
         public void singleThreadedBench(){
-            int randomNumber;
+            double randomNumber;
             Random random = new Random();
             stopwatch.Start();
             while (iteration <= maxIterations){
@@ -47,14 +47,14 @@ namespace CSMark.Benchmarks{
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = Convert.ToInt32(stopwatch.ElapsedMilliseconds / 1000);
+            singleTime = stopwatch.ElapsedMilliseconds / 1000;
             stopwatch.Reset();
         }
-        private static int threadCalc(int H, int O, int A, int maxThreadIterations){
-            int randomNumber;
+        private static double threadCalc(double H, double O, double A, double maxThreadIterations){
+            double randomNumber;
             Pythagoras py = new Pythagoras();
             Random random = new Random();
-            int iteration = 0;
+            double iteration = 0;
             while (iteration <= maxThreadIterations){
                 randomNumber = random.Next(2);
                 switch (randomNumber){
@@ -81,7 +81,7 @@ namespace CSMark.Benchmarks{
         }
         public void multiThreadedBench(){
             stopwatch.Start();
-            int maxThreadIterations = maxIterations / Environment.ProcessorCount;
+            double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
                 for (int i = 0; i < Environment.ProcessorCount; i++){
                 workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations));
@@ -94,7 +94,7 @@ namespace CSMark.Benchmarks{
                 workerThreads[i].Join();
             }
             stopwatch.Stop();
-            multiTime = Convert.ToInt32(stopwatch.ElapsedMilliseconds / 1000);
+            multiTime = stopwatch.ElapsedMilliseconds / 1000;
             stopwatch.Reset();
         }
     }
