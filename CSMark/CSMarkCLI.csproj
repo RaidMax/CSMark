@@ -20,4 +20,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CSMarkLib\CSMarkLib.csproj" />
+  </ItemGroup>
+
 </Project>
