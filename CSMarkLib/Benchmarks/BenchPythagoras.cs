@@ -3,7 +3,7 @@ using System.Diagnostics;
 using CSMark.Calculations;
 using System.Threading;
 namespace CSMark.Benchmarks{
-    public class BenchPythagoras{
+     class BenchPythagoras{
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
         double maxIterations = 3.0 * 1000.0 * 1000.0 * 1000.0;

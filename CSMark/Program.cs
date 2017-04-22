@@ -2,9 +2,10 @@
 namespace CSMark{
     public class Program{
         public static void Main(string[] args){
-            Console.Title = "CSMark v0.5.0.0 - Insider Release";
+            Console.Title = "CSMark v0.5.0.0";
             BenchmarkController bench = new BenchmarkController();
             StressTestController stress = new StressTestController();
+
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine("Welcome to CSMark...");
@@ -50,6 +51,11 @@ namespace CSMark{
                     {
                         stress.stopStressTest(false);
                     }
+                    continue;
+                }
+                else if(newCommand == "clear")
+                {
+                    Console.Clear();
                     continue;
                 }
             }          

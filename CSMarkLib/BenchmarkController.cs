@@ -1,10 +1,8 @@
 ﻿using CSMark.Benchmarks;
 using System;
 
-namespace CSMark
-{
-    class BenchmarkController
-    {
+namespace CSMark{
+    public class BenchmarkController{
         BenchTrigonometry trigB = new BenchTrigonometry();
         BenchPythagoras pyB = new BenchPythagoras();
         string singleTimePythagoras;
@@ -16,13 +14,13 @@ namespace CSMark
             startBenchmark_Single();
             startBenchmark_Multi();
         }
-        private void startBenchmark_Single(){
+        public void startBenchmark_Single(){
             Console.WriteLine("Starting Trigonometry based single threaded benchmark");
             trigB.singleThreadedBench();
             Console.WriteLine("Starting Pythagoras based single threaded benchmark");
             pyB.singleThreadedBench();
         }
-        private void startBenchmark_Multi(){
+        public void startBenchmark_Multi(){
             Console.WriteLine("Starting Pythagoras based multi threaded benchmark");
             pyB.multiThreadedBench();
             Console.WriteLine("Starting Trigonometry based multi threaded benchmark");

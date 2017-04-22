@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 
 namespace CSMark{
-    class StressTestController{
+  public class StressTestController{
         Pythagoras py = new Pythagoras();
         Trigonometry tr = new Trigonometry();        
         Random random = new Random();
