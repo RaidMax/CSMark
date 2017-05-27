@@ -17,11 +17,7 @@
     <RepositoryUrl>https://github.com/AluminiumTech/CSMark/</RepositoryUrl>
     <Copyright>2017 AluminiumTech</Copyright>
     <Authors>AluminiumTech</Authors>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CSMarkLib\CSMarkLib.csproj" />
-  </ItemGroup>
 
 </Project>

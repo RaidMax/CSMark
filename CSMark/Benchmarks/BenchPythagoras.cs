@@ -6,7 +6,7 @@ namespace CSMark.Benchmarks{
      class BenchPythagoras{
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations = 3.0 * 1000.0 * 1000.0 * 1000.0;
+        double maxIterations = 1.95 * 1000.0 * 1000.0 * 1000.0;
         double iteration = 0;
         //This what we'll use for H,O and A.
         double H = 10;

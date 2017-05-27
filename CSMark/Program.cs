@@ -2,7 +2,7 @@
 namespace CSMark{
     public class Program{
         public static void Main(string[] args){
-            Console.Title = "CSMark v0.5.0.0";
+            Console.Title = "CSMark v0.6.0.0";
             BenchmarkController bench = new BenchmarkController();
             StressTestController stress = new StressTestController();
 
@@ -21,12 +21,17 @@ namespace CSMark{
                     //Single threaded CPU benchmarks
                     Console.WriteLine("Starting benchmark...");
                     bench.startBenchmark();
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("                                                                             ");
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras());
                     Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry());
+                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     //Multi threaded CPU benchmarks
                     Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras());
                     Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry());
+                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError());
+                    Console.ForegroundColor = ConsoleColor.Gray;
                     continue;
                 }
                 else if (newCommand == "stress-counter")
