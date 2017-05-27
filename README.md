@@ -51,7 +51,7 @@ If you'd like to see an OS supported then please [suggest an improvement](https:
 
 There are no plans to support Windows Vista or earlier versions of Windows.
 
-## Benchmark Results
+## Some Benchmark Results
 This shows off a list of CPUs, OS used and benchmark scores.
 
 Results use CSMark 0.6.0.0 but will be updated in the future.
