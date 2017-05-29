@@ -60,7 +60,8 @@ Results use CSMark 0.6.0.0 but will be updated in the future.
 Testing conducted using Official Releases of OS and minimal background applications open.
 If you'd like to submit your own results, ensure you're only running a supported OS and the CSMark version specified. Laptops & Tablets should be plugged in to run the tests. To submit results, please open a github issue along with a screenshot of the whole desktop with CSMark running.
 
-| CPU Used            | C/T   | Base Clockspeed /Boost Clockspeed | TDP   |  OS Used                | Pythagoras Single/Multi | Trigonometry Single/Multi | Percentage Error Single/Multi |
+| CPU Used            | C/T   | Base Clockspeed/Boost Clockspeed | TDP   |  OS Used                | Pythagoras Single/Multi | Trigonometry Single/Multi | Percentage Error Single/Multi |
 |---------------------|-------|-----------------------------------|-------|-------------------------|-------------------------|-------------------|-----------|
 | Intel Core i7-6650U | 2C/4T |  2.2GHz/3.2GHz |   15w |  Windows 10 Build 15063 | 41/14 | 61/18 | 27/9 |
-| Intel Core i5-4570 | 4C/4T | 3.2GHz/3.6GHz  | 84w   |  Windows 10 Build 15063 | 35/8  | 54/10 | 24/5 |
+| Intel Core i5-4570 | 4C/4T | 3.2GHz/3.6GHz  | 84w |  Windows 10 Build 15063 | 35/8  | 54/10 | 24/5 |
+| Intel Core 2 Duo Penryn T9500 (Late 2008 17" MBP) | 2C/2T | 2.6GHz  | 35w | macOS 10.11.6 | 69/33 | 146/56 | 63/21 |
