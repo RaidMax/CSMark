@@ -6,7 +6,7 @@ namespace CSMark.Benchmarks{
     public class BenchTrigonometry{
         Trigonometry tr = new Trigonometry();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations = 1.95 * 1000.0 * 1000.0 * 1000.0;
+        double maxIterations = 1000.0 * 1000 * 1000;
         double iteration = 0;
         double H = 10;
         double O = 8;
@@ -44,7 +44,7 @@ namespace CSMark.Benchmarks{
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds / 1000;
+            singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
         private static double threadCalc(double H, double O, double A, double maxThreadIterations){
@@ -89,7 +89,7 @@ namespace CSMark.Benchmarks{
                 workerThreads[i].Join();
             }
             stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds / 1000;
+            multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
     }

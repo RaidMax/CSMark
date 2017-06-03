@@ -1,15 +1,13 @@
 ﻿using CSMarkCLI.Calculations;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 
 namespace CSMarkCLI.Benchmarks{
     public class BenchPercentageError{
         PercentageError pe = new PercentageError();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations = 1.95 * 1000.0 * 1000.0 * 1000.0;
+        double maxIterations = 1000.0 * 1000.0 * 1000.0;
         double iteration = 0;
         //This what we'll use for H,O and A.
         double exp = 10;
@@ -33,7 +31,7 @@ namespace CSMarkCLI.Benchmarks{
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds / 1000;
+            singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
         private static double threadCalc(double exp1, double act1, double maxThreadIterations) {
@@ -63,7 +61,7 @@ namespace CSMarkCLI.Benchmarks{
                 workerThreads[i].Join();
             }
             stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds / 1000;
+            multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
     }

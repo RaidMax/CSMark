@@ -35,27 +35,27 @@ namespace CSMark{
             bpe.multiThreadedBench();
         }
         public string returnSingleThreadedPythagoras(){
-            singleTimePythagoras = pyB.returnSingleScore().ToString() + " Seconds";
+            singleTimePythagoras = pyB.returnSingleScore().ToString() + " Milliseconds";
             return singleTimePythagoras; 
         }
         public string returnSingleThreadedTrigonometry(){
-            singleTimeTrigonometry = trigB.returnSingleScore().ToString() + " Seconds";
+            singleTimeTrigonometry = trigB.returnSingleScore().ToString() + " Milliseconds";
             return singleTimeTrigonometry;
         }
         public string returnSingleThreadedPercentageError(){
-            singleTimePercentageError = bpe.returnSingleScore().ToString() + " Seconds";
+            singleTimePercentageError = bpe.returnSingleScore().ToString() + " Milliseconds";
             return singleTimePercentageError;
         }
         public string returnMultiThreadedPythagoras(){
-            multiTimePythagoras = pyB.returnMultiScore().ToString() + " Seconds";
+            multiTimePythagoras = pyB.returnMultiScore().ToString() + " Milliseconds";
             return multiTimePythagoras;
         }
         public string returnMultiThreadedTrigonometry(){
-            multiTimeTrigonometry = trigB.returnMultiScore().ToString() + " Seconds";
+            multiTimeTrigonometry = trigB.returnMultiScore().ToString() + " Milliseconds";
             return multiTimeTrigonometry;
         }
         public string returnMultiThreadedPercentageError(){
-            multiTimePercentageError = bpe.returnMultiScore().ToString() + " Seconds";
+            multiTimePercentageError = bpe.returnMultiScore().ToString() + " Milliseconds";
             return multiTimePercentageError;
         }
     }
