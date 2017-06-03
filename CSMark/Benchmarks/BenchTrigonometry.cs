@@ -6,7 +6,7 @@ namespace CSMark.Benchmarks{
     public class BenchTrigonometry{
         Trigonometry tr = new Trigonometry();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations = 1000.0 * 1000 * 1000;
+        double maxIterations;
         double iteration = 0;
         double H = 10;
         double O = 8;
@@ -19,12 +19,23 @@ namespace CSMark.Benchmarks{
         public double returnMultiScore(){
             return multiTime;
         }
-        public void singleThreadedBench(){
+        public void singleThreadedBench(bool extended){
+
+            if(extended == false){
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
+            else if(extended == true){
+                maxIterations = 1.95 * 1000.0 * 1000 * 1000;
+            }
+            else{
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
+
             double randomNumber;
             Random random = new Random();
             stopwatch.Start();
             while (iteration <= maxIterations){
-                randomNumber = random.Next(2);
+                randomNumber = random.Next(3);
                 switch (randomNumber){
                     case 0:
                         tr.getCosAngle(A, H);
@@ -48,6 +59,7 @@ namespace CSMark.Benchmarks{
             stopwatch.Reset();
         }
         private static double threadCalc(double H, double O, double A, double maxThreadIterations){
+
             Trigonometry tr2 = new Trigonometry();
             Random random = new Random();
             double iteration = 0;
@@ -73,7 +85,16 @@ namespace CSMark.Benchmarks{
             }
             return 0;
         }
-        public void multiThreadedBench(){
+        public void multiThreadedBench(bool extended){
+            if (extended == false){
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
+            else if (extended == true){
+                maxIterations = 1.95 * 1000.0 * 1000 * 1000;
+            }
+            else{
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];

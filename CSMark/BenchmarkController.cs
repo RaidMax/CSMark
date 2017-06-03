@@ -14,25 +14,45 @@ namespace CSMark{
         string singleTimePercentageError;
         string multiTimePercentageError;
 
-        public void startBenchmark(){
-            startBenchmark_Single();
-            startBenchmark_Multi();
+        public void startBenchmark(bool extended){
+            startBenchmark_Single(extended);
+            startBenchmark_Multi(extended);
         }
-        public void startBenchmark_Single(){
-            Console.WriteLine("Starting Trigonometry single threaded benchmark");
-            trigB.singleThreadedBench();
-            Console.WriteLine("Starting Pythagoras single threaded benchmark");
-            pyB.singleThreadedBench();
-            Console.WriteLine("Starting Percentage Error single threaded benchmark");
-            bpe.singleThreadedBench();
+        public void startBenchmark_Single(bool extended){
+            if (extended == true){
+                Console.WriteLine("Starting Extended Trigonometry single threaded benchmark");
+                trigB.singleThreadedBench(true);
+                Console.WriteLine("Starting Extended Pythagoras single threaded benchmark");
+                pyB.singleThreadedBench(true);
+                Console.WriteLine("Starting Extended Percentage Error single threaded benchmark");
+                bpe.singleThreadedBench(true);
+            }
+            else if (extended == false){
+                Console.WriteLine("Starting Trigonometry single threaded benchmark");
+                trigB.singleThreadedBench(false);
+                Console.WriteLine("Starting Pythagoras single threaded benchmark");
+                pyB.singleThreadedBench(false);
+                Console.WriteLine("Starting Percentage Error single threaded benchmark");
+                bpe.singleThreadedBench(false);
+            }
         }
-        public void startBenchmark_Multi(){
-            Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-            pyB.multiThreadedBench();
-            Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-            trigB.multiThreadedBench();
-            Console.WriteLine("Starting Percentage Error multi threaded benchmark");
-            bpe.multiThreadedBench();
+        public void startBenchmark_Multi(bool extended){
+            if(extended == true){
+                Console.WriteLine("Starting Pythagoras multi threaded benchmark");
+                pyB.multiThreadedBench(true);
+                Console.WriteLine("Starting Trigonometry multi threaded benchmark");
+                trigB.multiThreadedBench(true);
+                Console.WriteLine("Starting Percentage Error multi threaded benchmark");
+                bpe.multiThreadedBench(true);
+            }
+            else if(extended == false){
+                Console.WriteLine("Starting Pythagoras multi threaded benchmark");
+                pyB.multiThreadedBench(false);
+                Console.WriteLine("Starting Trigonometry multi threaded benchmark");
+                trigB.multiThreadedBench(false);
+                Console.WriteLine("Starting Percentage Error multi threaded benchmark");
+                bpe.multiThreadedBench(false);
+            }
         }
         public string returnSingleThreadedPythagoras(){
             singleTimePythagoras = pyB.returnSingleScore().ToString() + " Milliseconds";

@@ -6,7 +6,7 @@ namespace CSMark.Benchmarks{
      class BenchPythagoras{
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations = 1000.0 * 1000.0 * 1000.0;
+        double maxIterations;
         double iteration = 0;
         //This what we'll use for H,O and A.
         double H = 10;
@@ -20,12 +20,21 @@ namespace CSMark.Benchmarks{
         public double returnMultiScore(){
             return multiTime;
         }
-        public void singleThreadedBench(){
+        public void singleThreadedBench(bool extended){
+            if (extended == false){
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
+            else if (extended == true){
+                maxIterations = 1.95 * 1000.0 * 1000 * 1000;
+            }
+            else{
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
             double randomNumber;
             Random random = new Random();
             stopwatch.Start();
             while (iteration <= maxIterations){
-                randomNumber = random.Next(2);
+                randomNumber = random.Next(3);
                 switch (randomNumber){
                     case 0:
                         py.getHypotenuse(A, O);
@@ -79,7 +88,17 @@ namespace CSMark.Benchmarks{
             }
             return 0;
         }
-        public void multiThreadedBench(){
+        public void multiThreadedBench(bool extended){
+            if (extended == false){
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
+            else if (extended == true){
+                maxIterations = 1.95 * 1000.0 * 1000 * 1000;
+            }
+            else{
+                maxIterations = 1000.0 * 1000 * 1000;
+            }
+
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];

@@ -16,10 +16,8 @@ namespace CSMark{
         private void stressPythagoras()
         {
             int randomNumber;
-            while (termination == false && showConsole == false)
-            {
-                randomNumber = random.Next(2);
-
+            while (termination == false && showConsole == false){
+                randomNumber = random.Next(3);
                 if (randomNumber == 0)
                 {
                     py.getHypotenuse(A, O);
@@ -32,14 +30,13 @@ namespace CSMark{
                 {
                     py.getAdjacent(H, O);
                 }
-
                 iterator++;
             }
         }
         private void stressPythagorasConsoleOutput(){
             int randomNumber;
             while (termination == false && showConsole == true){
-                randomNumber = random.Next(2);
+                randomNumber = random.Next(3);
 
                 if (randomNumber == 0){
                     py.getHypotenuse(A, O);
@@ -52,16 +49,13 @@ namespace CSMark{
                 }
 
                 iterator++;
-                if(iterator >= 0 && iterator < 1000000)
-                {
+                if(iterator >= 0 && iterator < 1000000){
                     Console.WriteLine(iterator.ToString());
                 }
-                else if(iterator >= 1000000 && iterator < 10000000000)
-                {
+                else if(iterator >= 1000000 && iterator < 10000000000){
                     Console.WriteLine((iterator / 1000000).ToString() + " Million");
                 }
-                else
-                {
+                else{
                     Console.WriteLine((iterator / 1000000000).ToString() + " Billion");
                 }
             }
