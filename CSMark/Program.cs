@@ -28,29 +28,27 @@ namespace CSMark{
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark...");
                     bench.startBenchmark(false);
-                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("                                                                             ");
                     if (extended == false){
-                        Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras());
-                        Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry());
-                        Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError());
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        //Multi threaded CPU benchmarks
-                        Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras());
-                        Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry());
-                        Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError());
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("Benchmark Type: Standard Test.");
                     }
                     else if(extended == true){
-                        Console.WriteLine("Pythagoras Extended Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras());
-                        Console.WriteLine("Trigonometry Extended Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry());
-                        Console.WriteLine("PercentageError Extended Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError());
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        //Multi threaded CPU benchmarks
-                        Console.WriteLine("Pythagoras ExtendedTest Multi Threaded Score: " + bench.returnMultiThreadedPythagoras());
-                        Console.WriteLine("Trigonometry Extended Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry());
-                        Console.WriteLine("PercentageError Extended Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError());
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Benchmark Type: Extended Test.");
+                       
                     }
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras());
+                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry());
+                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    //Multi threaded CPU benchmarks
+                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras());
+                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry());
+                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError());
                     Console.ForegroundColor = ConsoleColor.Gray;
+                    continue;
                 }
                 else if (newCommand == "stress"){
                     Console.ForegroundColor = ConsoleColor.Red;
