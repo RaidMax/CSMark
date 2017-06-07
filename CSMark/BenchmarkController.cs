@@ -68,19 +68,22 @@ namespace CSMark{
         double proc = Environment.ProcessorCount;
         public double returnScalingPythagoras(){
             pythagorasScaling = returnSingleThreadedPythagoras() / returnMultiThreadedPythagoras();
-         pythagorasScaling = Math.Round(pythagorasScaling, 2, MidpointRounding.AwayFromZero);
+            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
+            pythagorasScaling = Math.Round(pythagorasScaling, 2, MidpointRounding.AwayFromZero);
             pythagorasScaling = pythagorasScaling * 100;
             return pythagorasScaling;
         }
         public double returnScalingTrigonometry(){
             trigonometryScaling = returnSingleThreadedTrigonometry() / returnMultiThreadedTrigonometry();
-           trigonometryScaling = Math.Round(trigonometryScaling, 2, MidpointRounding.AwayFromZero);
+            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
+            trigonometryScaling = Math.Round(trigonometryScaling, 2, MidpointRounding.AwayFromZero);
             trigonometryScaling = trigonometryScaling * 100;
             return trigonometryScaling;
         }
         public double returnScalingPercentageError(){
             percentageErrorScaling = returnSingleThreadedPercentageError() / returnMultiThreadedPercentageError();
-         percentageErrorScaling = Math.Round(percentageErrorScaling, 2, MidpointRounding.AwayFromZero);
+            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
+            percentageErrorScaling = Math.Round(percentageErrorScaling, 2, MidpointRounding.AwayFromZero);
             percentageErrorScaling = percentageErrorScaling * 100;
             return percentageErrorScaling;
         }
