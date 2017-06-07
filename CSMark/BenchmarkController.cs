@@ -7,76 +7,87 @@ namespace CSMark{
         BenchTrigonometry trigB = new BenchTrigonometry();
         BenchPythagoras pyB = new BenchPythagoras();
         BenchPercentageError bpe = new BenchPercentageError();
-        string singleTimePythagoras;
-        string singleTimeTrigonometry;
-        string multiTimePythagoras;
-        string multiTimeTrigonometry;
-        string singleTimePercentageError;
-        string multiTimePercentageError;
+        double singleTimePythagoras;
+        double singleTimeTrigonometry;
+        double multiTimePythagoras;
+        double multiTimeTrigonometry;
+        double singleTimePercentageError;
+        double multiTimePercentageError;
+        double pythagorasScaling;
+        double trigonometryScaling;
+        double percentageErrorScaling;
+        double theoryPerf;
 
-        public void startBenchmark(bool extended){
+      public void startBenchmark(bool extended){
             startBenchmark_Single(extended);
             startBenchmark_Multi(extended);
         }
         public void startBenchmark_Single(bool extended){
-            if (extended == true){
-                Console.WriteLine("Starting Extended Trigonometry single threaded benchmark");
-                trigB.singleThreadedBench(true);
-                Console.WriteLine("Starting Extended Pythagoras single threaded benchmark");
-                pyB.singleThreadedBench(true);
-                Console.WriteLine("Starting Extended Percentage Error single threaded benchmark");
-                bpe.singleThreadedBench(true);
-            }
-            else if (extended == false){
                 Console.WriteLine("Starting Trigonometry single threaded benchmark");
-                trigB.singleThreadedBench(false);
+                trigB.singleThreadedBench(extended);
                 Console.WriteLine("Starting Pythagoras single threaded benchmark");
-                pyB.singleThreadedBench(false);
+                pyB.singleThreadedBench(extended);
                 Console.WriteLine("Starting Percentage Error single threaded benchmark");
-                bpe.singleThreadedBench(false);
-            }
+                bpe.singleThreadedBench(extended);
         }
         public void startBenchmark_Multi(bool extended){
-            if(extended == true){
                 Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-                pyB.multiThreadedBench(true);
+                pyB.multiThreadedBench(extended);
                 Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-                trigB.multiThreadedBench(true);
+                trigB.multiThreadedBench(extended);
                 Console.WriteLine("Starting Percentage Error multi threaded benchmark");
-                bpe.multiThreadedBench(true);
-            }
-            else if(extended == false){
-                Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-                pyB.multiThreadedBench(false);
-                Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-                trigB.multiThreadedBench(false);
-                Console.WriteLine("Starting Percentage Error multi threaded benchmark");
-                bpe.multiThreadedBench(false);
-            }
+                bpe.multiThreadedBench(extended);
         }
-        public string returnSingleThreadedPythagoras(){
-            singleTimePythagoras = pyB.returnSingleScore().ToString() + " Milliseconds";
+        #region Return Results
+        public double returnSingleThreadedPythagoras(){
+            singleTimePythagoras = pyB.returnSingleScore();
             return singleTimePythagoras; 
         }
-        public string returnSingleThreadedTrigonometry(){
-            singleTimeTrigonometry = trigB.returnSingleScore().ToString() + " Milliseconds";
+        public double returnSingleThreadedTrigonometry(){
+            singleTimeTrigonometry = trigB.returnSingleScore();
             return singleTimeTrigonometry;
         }
-        public string returnSingleThreadedPercentageError(){
-            singleTimePercentageError = bpe.returnSingleScore().ToString() + " Milliseconds";
+        public double returnSingleThreadedPercentageError(){
+            singleTimePercentageError = bpe.returnSingleScore();
             return singleTimePercentageError;
         }
-        public string returnMultiThreadedPythagoras(){
-            multiTimePythagoras = pyB.returnMultiScore().ToString() + " Milliseconds";
+        public double returnMultiThreadedPythagoras(){
+            multiTimePythagoras = pyB.returnMultiScore();
             return multiTimePythagoras;
         }
-        public string returnMultiThreadedTrigonometry(){
-            multiTimeTrigonometry = trigB.returnMultiScore().ToString() + " Milliseconds";
+        public double returnMultiThreadedTrigonometry(){
+            multiTimeTrigonometry = trigB.returnMultiScore();
             return multiTimeTrigonometry;
         }
-        public string returnMultiThreadedPercentageError(){
-            multiTimePercentageError = bpe.returnMultiScore().ToString() + " Milliseconds";
+        public double returnMultiThreadedPercentageError(){
+            multiTimePercentageError = bpe.returnMultiScore();
             return multiTimePercentageError;
         }
+        #endregion
+        #region Scaling Stuff
+        double proc = Environment.ProcessorCount;
+        public double returnScalingPythagoras(){
+            pythagorasScaling = returnSingleThreadedPythagoras() / returnMultiThreadedPythagoras();
+         pythagorasScaling = Math.Round(pythagorasScaling, 2, MidpointRounding.AwayFromZero);
+            pythagorasScaling = pythagorasScaling * 100;
+            return pythagorasScaling;
+        }
+        public double returnScalingTrigonometry(){
+            trigonometryScaling = returnSingleThreadedTrigonometry() / returnMultiThreadedTrigonometry();
+           trigonometryScaling = Math.Round(trigonometryScaling, 2, MidpointRounding.AwayFromZero);
+            trigonometryScaling = trigonometryScaling * 100;
+            return trigonometryScaling;
+        }
+        public double returnScalingPercentageError(){
+            percentageErrorScaling = returnSingleThreadedPercentageError() / returnMultiThreadedPercentageError();
+         percentageErrorScaling = Math.Round(percentageErrorScaling, 2, MidpointRounding.AwayFromZero);
+            percentageErrorScaling = percentageErrorScaling * 100;
+            return percentageErrorScaling;
+        }
+        public double returnTheoreticalImprovement(){
+            theoryPerf = ((1 / proc) * 100);
+                return theoryPerf;
+        }
+        #endregion
     }
 }

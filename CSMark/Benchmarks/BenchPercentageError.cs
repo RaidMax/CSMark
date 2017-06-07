@@ -27,10 +27,6 @@ namespace CSMarkCLI.Benchmarks{
             else if (extended == true){
                 maxIterations = 1.95 * 1000.0 * 1000 * 1000;
             }
-            else{
-                maxIterations = 1000.0 * 1000 * 1000;
-            }
-
             stopwatch.Start();
             while (iteration <= maxIterations){
                 pe.calcPercentageError(exp, act);
@@ -64,10 +60,6 @@ namespace CSMarkCLI.Benchmarks{
             else if (extended == true){
                 maxIterations = 1.95 * 1000.0 * 1000 * 1000;
             }
-            else{
-                maxIterations = 1000.0 * 1000 * 1000;
-            }
-
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
