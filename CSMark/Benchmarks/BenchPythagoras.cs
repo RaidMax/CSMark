@@ -25,7 +25,7 @@ namespace CSMark.Benchmarks{
                 maxIterations = 1000.0 * 1000 * 1000;
             }
             else if (extended == true){
-                maxIterations = 1.95 * 1000.0 * 1000 * 1000;
+                maxIterations = 6.0 * 1000.0 * 1000 * 1000;
             }
             double randomNumber;
             Random random = new Random();

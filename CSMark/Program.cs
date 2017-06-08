@@ -27,15 +27,17 @@ namespace CSMark{
                     Console.ForegroundColor = ConsoleColor.Green;
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-                    bench.startBenchmark(false);
+                   
                     Console.WriteLine("                                                                             ");
                     if (extended == false){
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("Benchmark Type: Standard Test.");
+                        bench.startBenchmark(false);
                     }
                     else if(extended == true){
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Benchmark Type: Extended Test.");      
+                        Console.WriteLine("Benchmark Type: Extended Test.");
+                        bench.startBenchmark(true);
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Milliseconds");
