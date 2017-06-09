@@ -16,6 +16,7 @@ namespace CSMark{
                 Console.WriteLine("To run the benchmark test utility, please enter BENCH.");
                 Console.WriteLine("To run the extended benchmark test utility, please enter BENCH-EXTENDED.");
                 Console.WriteLine("To run the stress test utility, please enter STRESS.");
+                Console.WriteLine("To give feedback on CSMark, open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new .");
                 newCommand = Console.ReadLine().ToLower();
 
                 if (newCommand == "bench" || newCommand == "bench-extended"){
@@ -27,17 +28,15 @@ namespace CSMark{
                     Console.ForegroundColor = ConsoleColor.Green;
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-                   
+                    bench.startBenchmark(extended);
                     Console.WriteLine("                                                                             ");
                     if (extended == false){
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("Benchmark Type: Standard Test.");
-                        bench.startBenchmark(false);
                     }
                     else if(extended == true){
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Benchmark Type: Extended Test.");
-                        bench.startBenchmark(true);
                     }
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Milliseconds");
