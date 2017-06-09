@@ -12,6 +12,7 @@ namespace CSMark{
             string newCommand;
           
             while (true){
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                             ");
                 Console.WriteLine("To run the benchmark test utility, please enter BENCH.");
                 Console.WriteLine("To run the extended benchmark test utility, please enter BENCH-EXTENDED.");
@@ -55,11 +56,10 @@ namespace CSMark{
                     Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "%");
                     Console.WriteLine("Percentage Error Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
                     Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
-                    Console.ForegroundColor = ConsoleColor.Gray;
                     continue;
                 }
                 else if (newCommand == "stress"){
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting stress test.");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("To stop the stress test, please exit the program or enter BREAK");
@@ -72,6 +72,11 @@ namespace CSMark{
                 }
                 else if (newCommand == "clear"){
                     Console.Clear();
+                    continue;
+                }
+                else{
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("That's not a command supported by CSMark! Please try to enter a supported command correctly.");
                     continue;
                 }
             }          
