@@ -11,7 +11,7 @@ This application works on Windows 7 SP1 +, macOS 10.11 + and Linux Distributions
 * Some sort of IDE (such as Visual Studio 2017) or Code Editor (such as Atom or VS Code)
 
 ### Contributions
-Have a feature you'd like to add? Want to fix some issues you've experienced?
+Want to contribute to CSMark?
 * 1. Download the SDK and development tools needed for your environment.
 * 2. Fork the repository
 * 3. Make any changes you'd like to make.
@@ -23,8 +23,8 @@ Have a feature you'd like to add? Want to fix some issues you've experienced?
 ### Requirements for running the Benchmark
 * All Platforms: [Download the current DotNetCore runtime](https://www.microsoft.com/net/download/core#/runtime)
 * For Windows based OS: Windows 7 SP1, Windows 8.1 or Windows 10.
-* For Linux based OS: See releases page.
-* For Mac: OS X 10.11 or macOS 10.12 is required.
+* For Linux based OS: [See releases page](https://github.com/AluminimTech/CSMark/releases).
+* For Mac: OS X 10.11 is required.
 
 ### Benchmarks included so far:
 * Pythagoras based benchmark which involves calculating either the length of the hypotenuse, adjacent length or opposite length.
@@ -45,6 +45,8 @@ Have a feature you'd like to add? Want to fix some issues you've experienced?
 ## Support  
 If your OS isn't stated above then it's quite likely that it's not supported.
 If you'd like to see an OS supported then please [suggest an improvement](https://github.com/AluminiumTech/CSMark/issues/).
+
+Want to make CSMark great? [Fill out this survey](https://docs.google.com/forms/d/e/1FAIpQLScUhdHnnrEVPFNgq_xG4gvVsNty7h7StNu80VaQhCByvUFeRQ/viewform?usp=sf_link)
 
 There are no plans to support Windows Vista or earlier versions of Windows.
 
