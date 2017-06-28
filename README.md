@@ -34,8 +34,9 @@ Want to contribute to CSMark?
 
 ### Benchmarks that I'm interested in adding
 * Some kind of Logarithm based calculation
-* Simulatenous Equation solving
+* Simultaneous Equation solving
 * Differentiating with respect to X (dy/dx)
+* Calculating Pi
 * And more stuff :)
 
 ## Notes
