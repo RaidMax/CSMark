@@ -18,25 +18,25 @@ namespace CSMark{
         double percentageErrorScaling;
         double theoryPerf;
 
-      public void startBenchmark(bool extended){
-            startBenchmark_Single(extended);
-            startBenchmark_Multi(extended);
+      public void startBenchmark(){
+            startBenchmark_Single();
+            startBenchmark_Multi();
         }
-        public void startBenchmark_Single(bool extended){
+        public void startBenchmark_Single(){
                 Console.WriteLine("Starting Trigonometry single threaded benchmark");
-                trigB.singleThreadedBench(extended);
+                trigB.singleThreadedBench();
                 Console.WriteLine("Starting Pythagoras single threaded benchmark");
-                pyB.singleThreadedBench(extended);
-                Console.WriteLine("Starting Percentage Error single threaded benchmark");
-                bpe.singleThreadedBench(extended);
+                pyB.singleThreadedBench();
+                Console.WriteLine("Starting PercentageError single threaded benchmark");
+                bpe.singleThreadedBench();
         }
-        public void startBenchmark_Multi(bool extended){
+        public void startBenchmark_Multi(){
                 Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-                pyB.multiThreadedBench(extended);
+                pyB.multiThreadedBench();
                 Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-                trigB.multiThreadedBench(extended);
-                Console.WriteLine("Starting Percentage Error multi threaded benchmark");
-                bpe.multiThreadedBench(extended);
+                trigB.multiThreadedBench();
+                Console.WriteLine("Starting PercentageError multi threaded benchmark");
+                bpe.multiThreadedBench();
         }
         #region Return Results
         public double returnSingleThreadedPythagoras(){
@@ -86,10 +86,6 @@ namespace CSMark{
             percentageErrorScaling = Math.Round(percentageErrorScaling, 2, MidpointRounding.AwayFromZero);
             percentageErrorScaling = percentageErrorScaling * 100;
             return percentageErrorScaling;
-        }
-        public double returnTheoreticalImprovement(){
-            theoryPerf = ((1 / proc) * 100);
-                return theoryPerf;
         }
         #endregion
     }

@@ -20,14 +20,7 @@ namespace CSMark.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(bool extended){
-
-            if(extended == false){
                 maxIterations = 1000.0 * 1000 * 1000;
-            }
-            else if(extended == true){
-                maxIterations = 6.0 * 1000.0 * 1000 * 1000;
-            }
-
             double randomNumber;
             Random random = new Random();
             stopwatch.Start();
@@ -56,7 +49,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Reset();
         }
         private static double threadCalc(double H, double O, double A, double maxThreadIterations){
-
             Trigonometry tr2 = new Trigonometry();
             Random random = new Random();
             double iteration = 0;
@@ -83,12 +75,7 @@ namespace CSMark.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(bool extended){
-            if (extended == false){
                 maxIterations = 1000.0 * 1000 * 1000;
-            }
-            else if (extended == true){
-                maxIterations = 1.95 * 1000.0 * 1000 * 1000;
-            }
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
