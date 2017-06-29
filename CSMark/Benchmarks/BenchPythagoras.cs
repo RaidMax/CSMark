@@ -20,7 +20,7 @@ namespace CSMark.Benchmarks{
         public double returnMultiScore(){
             return multiTime;
         }
-        public void singleThreadedBench(bool extended){
+        public void singleThreadedBench(){
                 maxIterations = 1000.0 * 1000 * 1000;
             double randomNumber;
             Random random = new Random();
@@ -80,7 +80,7 @@ namespace CSMark.Benchmarks{
             }
             return 0;
         }
-        public void multiThreadedBench(bool extended){
+        public void multiThreadedBench(){
                 maxIterations = 1000.0 * 1000 * 1000;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
