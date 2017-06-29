@@ -6,93 +6,70 @@ namespace CSMark.Benchmarks{
     public class BenchTrigonometry{
         Trigonometry tr = new Trigonometry();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations;
-        double iteration = 0;
+        double maxTimeSeconds = 30;
+        double singleScore;
+        double multiScore;
+
         double H = 10;
         double O = 8;
         double A = 6;
-        double singleTime;
-        double multiTime;
+
         public double returnSingleScore(){
-            return singleTime;
+            return singleScore;
         }
         public double returnMultiScore(){
-            return multiTime;
+            return multiScore;
         }
         public void singleThreadedBench(){
-                maxIterations = 1000.0 * 1000 * 1000;
-            double randomNumber;
-            Random random = new Random();
             stopwatch.Start();
-            while (iteration <= maxIterations){
-                randomNumber = random.Next(3);
-                switch (randomNumber){
-                    case 0:
+
+            while (stopwatch.ElapsedMilliseconds <= maxTimeSeconds * 1000){
                         tr.getCosAngle(A, H);
-                        break;
-                    case 1:
                         tr.getSinAngle(O, H);
-                        break;
-                    case 2:
                         tr.getTanAngle(O, A);
-                        break;
-                }
                 //Increment the variables so that it's not the same each time.
                 H++;
                 O++;
                 A++;
                 //Increment our counter
-                iteration++;
+                singleScore++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
-        private static double threadCalc(double H, double O, double A, double maxThreadIterations){
+        private double threadCalc(double H, double O, double A, double maxTimeSeconds){
             Trigonometry tr2 = new Trigonometry();
-            Random random = new Random();
-            double iteration = 0;
-            while (iteration <= maxThreadIterations){
-                double randomNumber = random.Next(2);
-                switch (randomNumber){
-                    case 0:
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
+            while (stopwatch1.ElapsedMilliseconds <= maxTimeSeconds * 1000){
                         tr2.getCosAngle(A, H);
-                        break;
-                    case 1:
                         tr2.getSinAngle(O, H);
-                        break;
-                    case 2:
                         tr2.getTanAngle(O, A);
-                        break;
-                }
                 //Increment the variables so that it's not the same each time.
                 H = H + 3;
                 O = O + 2;
                 A = A + 1;
                 //Increment our counter
-                iteration++;
-            }
+                multiScore++;
+            }          
+            stopwatch1.Stop();
+            stopwatch1.Reset();
             return 0;
         }
         public void multiThreadedBench(){
-                maxIterations = 1000.0 * 1000 * 1000;
-            stopwatch.Start();
-            double maxThreadIterations = maxIterations / Environment.ProcessorCount;
+        //    double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
 
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations));
-                H += 3 * maxThreadIterations;
-                O += 2 * maxThreadIterations;
-                A += 1 * maxThreadIterations;
-                workerThreads[i].Start();
-            }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i].Join();
-            }
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+                for (int i = 0; i < Environment.ProcessorCount; i++){
+                    workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxTimeSeconds));
+                    H += 3 * maxTimeSeconds;
+                    O += 2 * maxTimeSeconds;
+                    A += 1 * maxTimeSeconds;
+                    workerThreads[i].Start();
+                }
+                for (int i = 0; i < Environment.ProcessorCount; i++){
+                    workerThreads[i].Join();
+                }
         }
     }
 }

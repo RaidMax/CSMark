@@ -6,8 +6,8 @@ namespace CSMark{
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray; 
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Title = "CSMark 0.8.0.0";
-            Console.WriteLine("Welcome to CSMark 0.8.0.0");
+            Console.Title = "CSMark 0.9.0.0";
+            Console.WriteLine("Welcome to CSMark 0.9.0.0");
             string newCommand;
           
             while (true){
@@ -25,14 +25,14 @@ namespace CSMark{
                     bench.startBenchmark();
                     Console.WriteLine("                                                                             ");
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Milliseconds");
-                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Milliseconds");
-                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Milliseconds");
+                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras());
+                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry());
+                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError());
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     //Multi threaded CPU benchmarks
-                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Milliseconds");
-                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Milliseconds");
-                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Milliseconds");
+                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras());
+                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry());
+                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError());
                     ///Scaling stuff
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     //Multi threaded CPU benchmarks
