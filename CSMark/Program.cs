@@ -48,7 +48,7 @@ namespace CSMark{
                     Console.ForegroundColor = ConsoleColor.Green;
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-                    bench.startBenchmark();
+                    bench.startBenchmark_Single();
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Milliseconds");
@@ -62,7 +62,7 @@ namespace CSMark{
                     Console.ForegroundColor = ConsoleColor.Green;
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-                    bench.startBenchmark();
+                    bench.startBenchmark_Multi();
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     //Multi threaded CPU benchmarks
