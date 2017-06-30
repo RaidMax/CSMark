@@ -21,7 +21,7 @@ namespace CSMarkCLI.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(){
-                maxIterations = 8000.0 * 1000 * 1000;
+                maxIterations = 4000.0 * 1000 * 1000;
             stopwatch.Start();
             while (iteration <= maxIterations){
                 pe.calcPercentageError(exp, act);
@@ -49,7 +49,7 @@ namespace CSMarkCLI.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(){
-                maxIterations = 8000.0 * 1000 * 1000;
+                maxIterations = 4000.0 * 1000 * 1000;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
