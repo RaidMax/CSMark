@@ -47,9 +47,10 @@ Want to contribute to CSMark?
 If your OS isn't stated above then it's quite likely that it's not supported.
 If you'd like to see an OS supported then please [suggest an improvement](https://github.com/AluminiumTech/CSMark/issues/).
 
-Want to make CSMark great? [Fill out this survey](https://docs.google.com/forms/d/e/1FAIpQLScUhdHnnrEVPFNgq_xG4gvVsNty7h7StNu80VaQhCByvUFeRQ/viewform?usp=sf_link)
-
 There are no plans to support Windows Vista or earlier versions of Windows.
+
+### Known Issues
+Dotnetcore runtime for dotnetcore 1.1 does not currently support Ubuntu 17.04 . Users of Ubuntu 17.04 distributions will need to wait until the upgrade to dotnetcore 2.0 .
 
 ## Some Benchmark Results
 This shows off a list of CPUs, OS used and benchmark scores.
@@ -64,5 +65,5 @@ The results below have been updated for CSMark 0.7.0.0
 | CPU | Cores/Threads | Base/Boost Clockspeed | TDP | OS | Pythagoras Single/Multi | Trigonometry Single/Multi | Percentage Error Single/Multi |
 |---------------------|-------|-----------------------------------|-------|-------------------------|-------------------------|-------------------|-----------|
 | Intel Core i5-4570 | 4C/4T | 3.2GHz/ 3.6GHz  | 84w |  Windows 10 Build 15063 | 21794ms/ 4522ms | 34809ms/ 5324ms | 12858ms/ 3019ms |
-| Intel Core i7-6650U | 2C/4T | 2.2GHz/ 3.2GHz  | 15w |  Windows 10 Build 15063 | 241014ms/ 4522ms | 34506ms/ 8098ms | 12618ms/ 4372ms |
+| Intel Core i7-6650U | 2C/4T | 2.2GHz/ 3.2GHz  | 15w |  Windows 10 Build 15063 | 24104ms/ 4522ms | 34506ms/ 8098ms | 12618ms/ 4372ms |
 | Intel Core 2 Duo Penryn T9500 (Late 2008 17" MBP) | 2C/2T | 2.6GHz | 35w |  macOS 10.11.6| 38477ms/ 17008ms | 89275ms/ 27713ms | 22736ms/ 10853ms |
