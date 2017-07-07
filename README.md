@@ -47,22 +47,23 @@ Want to contribute to CSMark?
 If your OS isn't stated above then it's quite likely that it's not supported.
 If you'd like to see an OS supported then please [suggest an improvement](https://github.com/AluminiumTech/CSMark/issues/).
 
-Want to make CSMark great? [Fill out this survey](https://docs.google.com/forms/d/e/1FAIpQLScUhdHnnrEVPFNgq_xG4gvVsNty7h7StNu80VaQhCByvUFeRQ/viewform?usp=sf_link)
-
 There are no plans to support Windows Vista or earlier versions of Windows.
 
+### Known Issues
+Dotnetcore runtime for dotnetcore 1.1 does not currently support Ubuntu 17.04 . Users of Ubuntu 17.04 distributions will need to wait until the upgrade to dotnetcore 2.0 .
+
 ## Some Benchmark Results
-This shows off a list of CPUs, OS used and benchmark scores.
+Below are examples of how a system may perform in a benchmark.
 
 **All results are in milliseconds. Lower numbers are better.**
 
 Testing conducted using Official Releases of OS and minimal background applications open.
 If you'd like to submit your own results, ensure you're only running a supported OS and the CSMark version specified. Laptops & Tablets should be plugged in to their respective charger and charging to run the tests. To submit results, please open a github issue along with a screenshot of CSMark running with task manager (windows) or activity monitor (mac & linux) open.
 
-The results below have been updated for CSMark 0.7.0.0
+The results below have been updated for CSMark 0.9.0.0
 
 | CPU | Cores/Threads | Base/Boost Clockspeed | TDP | OS | Pythagoras Single/Multi | Trigonometry Single/Multi | Percentage Error Single/Multi |
 |---------------------|-------|-----------------------------------|-------|-------------------------|-------------------------|-------------------|-----------|
-| Intel Core i5-4570 | 4C/4T | 3.2GHz/ 3.6GHz  | 84w |  Windows 10 Build 15063 | 21794ms/ 4522ms | 34809ms/ 5324ms | 12858ms/ 3019ms |
-| Intel Core i7-6650U | 2C/4T | 2.2GHz/ 3.2GHz  | 15w |  Windows 10 Build 15063 | 241014ms/ 4522ms | 34506ms/ 8098ms | 12618ms/ 4372ms |
-| Intel Core 2 Duo Penryn T9500 (Late 2008 17" MBP) | 2C/2T | 2.6GHz | 35w |  macOS 10.11.6| 38477ms/ 17008ms | 89275ms/ 27713ms | 22736ms/ 10853ms |
+| Intel Core i5-4570 | 4C/4T | 3.2GHz/ 3.6GHz  | 84w |  Windows 10 Build 15063 | 86952ms/ 18170ms | 135287ms/ 20975ms | 51097ms/ 11598ms |
+| Intel Core i7-6650U | 2C/4T | 2.2GHz/ 3.2GHz  | 15w |  Windows 10 Build 15063 | 96602ms/ 32439ms | 136596ms/ 38348ms | 62298ms/ 22017ms |
+| Intel Core 2 Duo Penryn T9500 (Late 2008 17" MBP) | 2C/2T | 2.6GHz | 35w |  macOS 10.11.6| 163857ms/ 68031ms | 326302ms/ 115075ms | 90433ms/ 43307ms |
