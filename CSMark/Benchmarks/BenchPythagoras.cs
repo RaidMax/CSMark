@@ -21,7 +21,7 @@ namespace CSMark.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(){
-                maxIterations = 4000.0 * 1000 * 1000;
+                maxIterations = 5000.0 * 1000 * 1000;
             double randomNumber;
             Random random = new Random();
             stopwatch.Start();
@@ -81,7 +81,7 @@ namespace CSMark.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(){
-                maxIterations = 4000.0 * 1000 * 1000;
+                maxIterations = 5000.0 * 1000 * 1000;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];

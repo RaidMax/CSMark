@@ -6,8 +6,8 @@ namespace CSMark{
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray; 
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Title = "CSMark";
-            Console.WriteLine("Welcome to CSMark 0.9.0.0");
+            Console.Title = "CSMark 0.10.0.0";
+            Console.WriteLine("Welcome to CSMark 0.10.0.0");
             string newCommand;
           
             while (true){
