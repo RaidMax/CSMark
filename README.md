@@ -66,4 +66,4 @@ The results below have been updated for CSMark 0.9.0.0
 |---------------------|-------|-----------------------------------|-------|-------------------------|-------------------------|-------------------|-----------|
 | Intel Core i5-4570 | 4C/4T | 3.2GHz/ 3.6GHz  | 84w |  Windows 10 Build 15063 | 86952ms/ 18170ms | 135287ms/ 20975ms | 51097ms/ 11598ms |
 | Intel Core i7-6650U | 2C/4T | 2.2GHz/ 3.2GHz  | 15w |  Windows 10 Build 15063 | 96602ms/ 32439ms | 136596ms/ 38348ms | 62298ms/ 22017ms |
-| Intel Core 2 Duo Penryn T9500 (Late 2008 17" MBP) | 2C/2T | 2.6GHz | 35w |  macOS 10.11.6| ms/ ms | ms/ ms | ms/ ms |
+| Intel Core 2 Duo Penryn T9500 (Late 2008 17" MBP) | 2C/2T | 2.6GHz | 35w |  macOS 10.11.6| 163857ms/ 68031ms | 326302ms/ 115075ms | 90433ms/ 43307ms |
