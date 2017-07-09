@@ -8,7 +8,6 @@ namespace CSMark.Benchmarks{
         Stopwatch stopwatch = new Stopwatch();
         double maxIterations;
         double iteration = 0;
-        //This what we'll use for H,O and A.
         double H = 10;
         double O = 8;
         double A = 6;
@@ -21,7 +20,7 @@ namespace CSMark.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(){
-                maxIterations = 5000.0 * 1000 * 1000;
+                maxIterations = 2000.0 * 1000 * 1000;
             double randomNumber;
             Random random = new Random();
             stopwatch.Start();
@@ -36,8 +35,6 @@ namespace CSMark.Benchmarks{
                         break;
                     case 2:
                         py.getAdjacent(H, O);
-                        break;
-                    default:
                         break;
                 }
                 //Increment the variables so that it's not the same each time.
@@ -68,8 +65,6 @@ namespace CSMark.Benchmarks{
                     case 2:
                         py.getAdjacent(H, O);
                         break;
-                    default:
-                        break;
                 }
                 //Increment the variables so that it's not the same each time.
                 H = H + 3;
@@ -81,7 +76,7 @@ namespace CSMark.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(){
-                maxIterations = 5000.0 * 1000 * 1000;
+                maxIterations = 2000.0 * 1000 * 1000;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];

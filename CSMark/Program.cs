@@ -17,7 +17,7 @@ namespace CSMark{
                 Console.WriteLine("To run only the multi threaded tests, please enter BENCH-MULTI.");
                 Console.WriteLine("To run the single threaded and multi threaded tests, please enter BENCH.");
                 Console.WriteLine("To run the stress test utility, please enter STRESS.");
-                Console.WriteLine("To give feedback on CSMark, please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new .");
+                Console.WriteLine("To give feedback on CSMark, please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
                 newCommand = Console.ReadLine().ToLower();
 
                 if (newCommand == "bench"){
