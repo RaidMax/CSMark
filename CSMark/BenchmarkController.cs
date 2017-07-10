@@ -7,20 +7,52 @@ namespace CSMark{
         BenchTrigonometry trigB = new BenchTrigonometry();
         BenchPythagoras pyB = new BenchPythagoras();
         BenchPercentageError bpe = new BenchPercentageError();
-        double singleTimePythagoras;
-        double singleTimeTrigonometry;
-        double multiTimePythagoras;
-        double multiTimeTrigonometry;
-        double singleTimePercentageError;
-        double multiTimePercentageError;
-        double pythagorasScaling;
-        double trigonometryScaling;
-        double percentageErrorScaling;
-        double theoryPerf;
+        double singleTimePythagoras = 0;
+        double singleTimeTrigonometry = 0;
+        double multiTimePythagoras = 0;
+        double multiTimeTrigonometry = 0;
+        double singleTimePercentageError = 0;
+        double multiTimePercentageError = 0;
+        double pythagorasScaling = 0;
+        double trigonometryScaling = 0;
+        double percentageErrorScaling = 0;
 
-      public void startBenchmark(){
+        bool failed = true;
+
+        public bool returnCheckZeroResult(){
+            return failed;
+        }
+
+        public void startBenchmark(){
             startBenchmark_Single();
             startBenchmark_Multi();
+            //Make sure we don't let a benchmark run incorrectly. If we have incorrect scores then do something about it!
+            benchmarkCheckForZero();  
+        }
+
+        private void benchmarkCheckForZero()
+        {
+           if(singleTimePercentageError == 0){
+                failed = true;
+            }
+           else if(singleTimePythagoras == 0){
+                failed = true;
+            }
+            else if (singleTimeTrigonometry == 0){
+                failed = true;
+            }
+            else if (multiTimePercentageError == 0){
+                failed = true;
+            }
+            else if (multiTimePythagoras == 0){
+                failed = true;
+            }
+            else if (multiTimeTrigonometry == 0){
+                failed = true;
+            }
+            else{
+                failed = false;
+            }
         }
         public void startBenchmark_Single(){
                 Console.WriteLine("Starting Trigonometry single threaded benchmark");

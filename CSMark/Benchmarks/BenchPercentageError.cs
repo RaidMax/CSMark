@@ -12,8 +12,8 @@ namespace CSMarkCLI.Benchmarks{
         //This what we'll use for H,O and A.
         double exp = 10;
         double act = 8;
-        double singleTime;
-        double multiTime;
+        double singleTime = 0;
+        double multiTime = 0;
         public double returnSingleScore(){
             return singleTime;
         }
@@ -21,7 +21,9 @@ namespace CSMarkCLI.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(){
-                maxIterations = 2000.0 * 1000 * 1000;
+            //     maxIterations = 2000.0 * 1000 * 1000;
+            maxIterations = 500.0 * 1000 * 1000;
+
             stopwatch.Start();
             while (iteration <= maxIterations){
                 pe.calcPercentageError(exp, act);
@@ -49,7 +51,8 @@ namespace CSMarkCLI.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(){
-                maxIterations = 2000.0 * 1000 * 1000;
+            //     maxIterations = 2000.0 * 1000 * 1000;
+            maxIterations = 500.0 * 1000 * 1000;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];

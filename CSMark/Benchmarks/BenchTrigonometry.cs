@@ -11,8 +11,8 @@ namespace CSMark.Benchmarks{
         double H = 10;
         double O = 8;
         double A = 6;
-        double singleTime;
-        double multiTime;
+        double singleTime = 0;
+        double multiTime = 0;
         public double returnSingleScore(){
             return singleTime;
         }
@@ -20,8 +20,9 @@ namespace CSMark.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(){
-                maxIterations = 2000.0 * 1000 * 1000;
-            double randomNumber;
+            //     maxIterations = 2000.0 * 1000 * 1000;
+            maxIterations = 500.0 * 1000 * 1000;
+            double randomNumber = 0;
             Random random = new Random();
             stopwatch.Start();
             while (iteration <= maxIterations){
@@ -75,7 +76,9 @@ namespace CSMark.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(){
-                maxIterations = 2000.0 * 1000 * 1000;
+            //     maxIterations = 2000.0 * 1000 * 1000;
+            maxIterations = 500.0 * 1000 * 1000;
+
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
