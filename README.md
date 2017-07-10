@@ -36,7 +36,6 @@ Want to contribute to CSMark?
 * Some kind of Logarithm based calculation
 * Simultaneous Equation solving
 * Differentiating with respect to X (dy/dx)
-* Calculating Pi
 * And more stuff :)
 
 ## Notes
