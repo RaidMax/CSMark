@@ -8,6 +8,7 @@ namespace CSMark{
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Title = "CSMark 0.10.0.0";
             Console.WriteLine("Welcome to CSMark 0.10.0.0");
+            double maxIterations = 10.0 * 1000 * 1000;
             string newCommand = "";
           
             while (true){
@@ -24,16 +25,18 @@ namespace CSMark{
                     Console.ForegroundColor = ConsoleColor.Green;
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-                    bench.startBenchmark();
+                    bench.startBenchmark_Single(maxIterations);
+                    bench.startBenchmark_Multi(maxIterations);
+                    /*   if(bench.returnCheckZeroResult() == true){
+                           Console.ForegroundColor = ConsoleColor.Red;
+                           Console.WriteLine("BENCHMARKING ERROR: The benchmark tests you have attempted to run have failed to complete successfully.");
+                           Console.WriteLine("Please try again after a system reboot. If the problem persists then please open a github issue in addition to uninstalling and re-installing the program.");
+                           continue;
+                       }
+                       */
+                    //   else if(bench.returnCheckZeroResult() == false){
 
-                    if(bench.returnCheckZeroResult() == true){
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("BENCHMARKING ERROR: The benchmark tests you have attempted to run have failed to complete successfully.");
-                        Console.WriteLine("Please try again after a system reboot. If the problem persists then please open a github issue in addition to uninstalling and re-installing the program.");
-                        continue;
-                    }
-                    else if(bench.returnCheckZeroResult() == false){
-                        Console.WriteLine("                                                                             ");
+                    Console.WriteLine("                                                                             ");
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Milliseconds");
                         Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Milliseconds");
@@ -52,7 +55,7 @@ namespace CSMark{
                         Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
                         Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
                         continue;
-                    }
+                   // }
 
                    
                 }

@@ -6,22 +6,20 @@ namespace CSMark.Benchmarks{
     public class BenchTrigonometry{
         Trigonometry tr = new Trigonometry();
         Stopwatch stopwatch = new Stopwatch();
-        double maxIterations;
         double iteration = 0;
         double H = 10;
         double O = 8;
         double A = 6;
-        double singleTime = 0;
-        double multiTime = 0;
+        double singleTime;
+        double multiTime;
         public double returnSingleScore(){
             return singleTime;
         }
         public double returnMultiScore(){
             return multiTime;
         }
-        public void singleThreadedBench(){
-            //     maxIterations = 2000.0 * 1000 * 1000;
-            maxIterations = 500.0 * 1000 * 1000;
+        public void singleThreadedBench(double maxIterations){
+            iteration = 0;
             double randomNumber = 0;
             Random random = new Random();
             stopwatch.Start();
@@ -48,6 +46,7 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
+            iteration = 0;
         }
         private static double threadCalc(double H, double O, double A, double maxThreadIterations){
             Trigonometry tr2 = new Trigonometry();
@@ -75,10 +74,8 @@ namespace CSMark.Benchmarks{
             }
             return 0;
         }
-        public void multiThreadedBench(){
-            //     maxIterations = 2000.0 * 1000 * 1000;
-            maxIterations = 500.0 * 1000 * 1000;
-
+        public void multiThreadedBench(double maxIterations){
+            iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
@@ -96,6 +93,7 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
+            iteration = 0;
         }
     }
 }

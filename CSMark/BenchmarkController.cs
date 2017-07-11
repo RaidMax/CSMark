@@ -7,93 +7,48 @@ namespace CSMark{
         BenchTrigonometry trigB = new BenchTrigonometry();
         BenchPythagoras pyB = new BenchPythagoras();
         BenchPercentageError bpe = new BenchPercentageError();
-        double singleTimePythagoras = 0;
-        double singleTimeTrigonometry = 0;
-        double multiTimePythagoras = 0;
-        double multiTimeTrigonometry = 0;
-        double singleTimePercentageError = 0;
-        double multiTimePercentageError = 0;
+
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
-
-        bool failed = true;
-
-        public bool returnCheckZeroResult(){
-            return failed;
+        public void startBenchmark(double maxIterations){
+            startBenchmark_Single(maxIterations);
+            startBenchmark_Multi(maxIterations);
         }
-
-        public void startBenchmark(){
-            startBenchmark_Single();
-            startBenchmark_Multi();
-            //Make sure we don't let a benchmark run incorrectly. If we have incorrect scores then do something about it!
-            benchmarkCheckForZero();  
-        }
-
-        private void benchmarkCheckForZero()
-        {
-           if(singleTimePercentageError == 0){
-                failed = true;
-            }
-           else if(singleTimePythagoras == 0){
-                failed = true;
-            }
-            else if (singleTimeTrigonometry == 0){
-                failed = true;
-            }
-            else if (multiTimePercentageError == 0){
-                failed = true;
-            }
-            else if (multiTimePythagoras == 0){
-                failed = true;
-            }
-            else if (multiTimeTrigonometry == 0){
-                failed = true;
-            }
-            else{
-                failed = false;
-            }
-        }
-        public void startBenchmark_Single(){
+        public void startBenchmark_Single(double _maxIterations){
                 Console.WriteLine("Starting Trigonometry single threaded benchmark");
-                trigB.singleThreadedBench();
+                trigB.singleThreadedBench(_maxIterations);
                 Console.WriteLine("Starting Pythagoras single threaded benchmark");
-                pyB.singleThreadedBench();
+                pyB.singleThreadedBench(_maxIterations);
                 Console.WriteLine("Starting PercentageError single threaded benchmark");
-                bpe.singleThreadedBench();
+                bpe.singleThreadedBench(_maxIterations);
         }
-        public void startBenchmark_Multi(){
+        public void startBenchmark_Multi(double _maxIterations){
                 Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-                pyB.multiThreadedBench();
+                pyB.multiThreadedBench(_maxIterations);
                 Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-                trigB.multiThreadedBench();
+                trigB.multiThreadedBench(_maxIterations);
                 Console.WriteLine("Starting PercentageError multi threaded benchmark");
-                bpe.multiThreadedBench();
+                bpe.multiThreadedBench(_maxIterations);
         }
         #region Return Results
         public double returnSingleThreadedPythagoras(){
-            singleTimePythagoras = pyB.returnSingleScore();
-            return singleTimePythagoras; 
+            return pyB.returnSingleScore();
         }
         public double returnSingleThreadedTrigonometry(){
-            singleTimeTrigonometry = trigB.returnSingleScore();
-            return singleTimeTrigonometry;
+            return trigB.returnSingleScore();
         }
         public double returnSingleThreadedPercentageError(){
-            singleTimePercentageError = bpe.returnSingleScore();
-            return singleTimePercentageError;
+            return bpe.returnSingleScore();
         }
         public double returnMultiThreadedPythagoras(){
-            multiTimePythagoras = pyB.returnMultiScore();
-            return multiTimePythagoras;
+            return pyB.returnMultiScore();
         }
         public double returnMultiThreadedTrigonometry(){
-            multiTimeTrigonometry = trigB.returnMultiScore();
-            return multiTimeTrigonometry;
+            return trigB.returnMultiScore();
         }
         public double returnMultiThreadedPercentageError(){
-            multiTimePercentageError = bpe.returnMultiScore();
-            return multiTimePercentageError;
+            return bpe.returnMultiScore();
         }
         #endregion
         #region Scaling Stuff
