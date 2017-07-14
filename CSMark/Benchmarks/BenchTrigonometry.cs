@@ -12,13 +12,21 @@ namespace CSMark.Benchmarks{
         double A = 6;
         double singleTime;
         double multiTime;
-        public double returnSingleScore(){
+        double _maxIteration;
+        public double returnSingleScore()
+        {
+            singleTime = _maxIteration / singleTime;
+            singleTime = Math.Round(singleTime, 0, MidpointRounding.AwayFromZero);
             return singleTime;
         }
-        public double returnMultiScore(){
+        public double returnMultiScore()
+        {
+            multiTime = _maxIteration / multiTime;
+            multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
+            _maxIteration = maxIterations;
             iteration = 0;
             double randomNumber = 0;
             Random random = new Random();

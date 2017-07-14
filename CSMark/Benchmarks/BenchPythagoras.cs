@@ -10,15 +10,23 @@ namespace CSMark.Benchmarks{
         double H = 10;
         double O = 8;
         double A = 6;
-        double singleTime = 0;
-        double multiTime = 0;
-        public double returnSingleScore(){
+        double singleTime;
+        double multiTime;
+        double _maxIteration;
+        public double returnSingleScore()
+        {
+            singleTime = _maxIteration / singleTime;
+            singleTime = Math.Round(singleTime, 0, MidpointRounding.AwayFromZero);
             return singleTime;
         }
-        public double returnMultiScore(){
+        public double returnMultiScore()
+        {
+            multiTime = _maxIteration / multiTime;
+            multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
+            _maxIteration = maxIterations;
             iteration = 0;
             double randomNumber;
             Random random = new Random();

@@ -64,7 +64,7 @@ namespace CSMark{
             trigonometryScaling = returnSingleThreadedTrigonometry() / returnMultiThreadedTrigonometry();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             trigonometryScaling = Math.Round(trigonometryScaling, 2, MidpointRounding.AwayFromZero);
-            trigonometryScaling = trigonometryScaling * 100;
+           trigonometryScaling = trigonometryScaling * 100;
             return trigonometryScaling;
         }
         public double returnScalingPercentageError(){
