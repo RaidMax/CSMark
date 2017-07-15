@@ -3,34 +3,41 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace CSMarkCLI.Benchmarks{
-    public class BenchPercentageError{
-        PercentageError pe = new PercentageError();
+namespace CSMarkCLI.Benchmarks
+{
+    class BenchArithmeticSumN{
+        ArithmeticSumN arithmeticN = new ArithmeticSumN();
         Stopwatch stopwatch = new Stopwatch();
         double iteration = 0;
-        //This what we'll use for H,O and A.
-        double exp = 4800;
-        double act = 6300;
+
+        static double N = 59000;
+        static double D = 30000;
+        static double U1 = 85000;
 
         double singleTime;
         double multiTime;
         double _maxIteration;
-        public double returnSingleScore(){
+        public double returnSingleScore()
+        {
             singleTime = _maxIteration / singleTime;
             singleTime = Math.Round(singleTime, 0, MidpointRounding.AwayFromZero);
             return singleTime;
         }
-        public double returnMultiScore(){
+        public double returnMultiScore()
+        {
             multiTime = _maxIteration / multiTime;
             multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
-        public void singleThreadedBench(double maxIterations){
+
+        public void singleThreadedBench(double maxIterations)
+        {
             _maxIteration = maxIterations;
             iteration = 0;
             stopwatch.Start();
-            while (iteration <= maxIterations){
-                pe.calcPercentageError(exp, act);
+            while (iteration <= maxIterations)
+            {
+                arithmeticN.calculateArithmeticSumN(N, D, U1);
                 //Increment our counter
                 iteration++;
             }
@@ -39,25 +46,30 @@ namespace CSMarkCLI.Benchmarks{
             stopwatch.Reset();
             iteration = 0;
         }
-        private static double threadCalc(double exp1, double act1, double maxThreadIterations) {
-            PercentageError peX = new PercentageError();
+        private static double threadCalc(double maxThreadIterations)
+        {
+            ArithmeticSumN arithmeticN1 = new ArithmeticSumN();
             double iteration = 0;
-            while (iteration <= maxThreadIterations){
-                peX.calcPercentageError(exp1, act1);
+            while (iteration <= maxThreadIterations)
+            {
+                arithmeticN1.calculateArithmeticSumN(N, D, U1);
                 //Increment our counter
                 iteration++;
             }
             return 0;
         }
-        public void multiThreadedBench(double maxIterations){
+        public void multiThreadedBench(double maxIterations)
+        {
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(exp,act, maxThreadIterations));
-                exp += 2 * maxThreadIterations;
-                act += 1 * maxThreadIterations;
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
+                N = 0.4 * maxThreadIterations;
+                D = 0.5 * maxThreadIterations;
+                U1 = 0.8 * maxThreadIterations;
                 workerThreads[i].Start();
             }
             for (int i = 0; i < Environment.ProcessorCount; i++){
