@@ -9,8 +9,8 @@ namespace CSMarkCLI.Benchmarks{
         Stopwatch stopwatch = new Stopwatch();
         double iteration = 0;
         //This what we'll use for H,O and A.
-        double exp = 10;
-        double act = 8;
+        double exp = 4800;
+        double act = 6300;
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -30,9 +30,6 @@ namespace CSMarkCLI.Benchmarks{
             stopwatch.Start();
             while (iteration <= maxIterations){
                 pe.calcPercentageError(exp, act);
-                //Increment the variables so that it's not the same each time.
-                exp = exp + 3;
-                act = act + 5;
                 //Increment our counter
                 iteration++;
             }
@@ -46,9 +43,6 @@ namespace CSMarkCLI.Benchmarks{
             double iteration = 0;
             while (iteration <= maxThreadIterations){
                 peX.calcPercentageError(exp1, act1);
-                //Increment the variables so that it's not the same each time.
-                exp1 = exp1 + 3;
-                act1 = act1 + 2;
                 //Increment our counter
                 iteration++;
             }

@@ -7,9 +7,9 @@ namespace CSMark.Benchmarks{
         Pythagoras py = new Pythagoras();
         Stopwatch stopwatch = new Stopwatch();
         double iteration = 0;
-        double H = 10;
-        double O = 8;
-        double A = 6;
+        double H = 7900;
+        double O = 6800;
+        double A = 4900;
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -44,10 +44,6 @@ namespace CSMark.Benchmarks{
                         py.getAdjacent(H, O);
                         break;
                 }
-                //Increment the variables so that it's not the same each time.
-                H = H + 3;
-                O = O + 2;
-                A = A + 1;
                 //Increment our counter
                 iteration++;
             }
@@ -74,10 +70,6 @@ namespace CSMark.Benchmarks{
                         py.getAdjacent(H, O);
                         break;
                 }
-                //Increment the variables so that it's not the same each time.
-                H = H + 3;
-                O = O + 2;
-                A = A + 1;
                 //Increment our counter
                 iteration++;
             }

@@ -7,9 +7,9 @@ namespace CSMark.Benchmarks{
         Trigonometry tr = new Trigonometry();
         Stopwatch stopwatch = new Stopwatch();
         double iteration = 0;
-        double H = 10;
-        double O = 8;
-        double A = 6;
+        double H = 5000;
+        double O = 3800;
+        double A = 4900;
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -33,7 +33,8 @@ namespace CSMark.Benchmarks{
             stopwatch.Start();
             while (iteration <= maxIterations){
                 randomNumber = random.Next(3);
-                switch (randomNumber){
+                switch (randomNumber)
+                {
                     case 0:
                         tr.getCosAngle(A, H);
                         break;
@@ -44,10 +45,6 @@ namespace CSMark.Benchmarks{
                         tr.getTanAngle(O, A);
                         break;
                 }
-                //Increment the variables so that it's not the same each time.
-                H++;
-                O++;
-                A++;
                 //Increment our counter
                 iteration++;
             }
@@ -73,10 +70,6 @@ namespace CSMark.Benchmarks{
                         tr2.getTanAngle(O, A);
                         break;
                 }
-                //Increment the variables so that it's not the same each time.
-                H = H + 3;
-                O = O + 2;
-                A = A + 1;
                 //Increment our counter
                 iteration++;
             }
