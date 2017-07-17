@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMarkCLI", "CSMark\CSMarkCLI.csproj", "{128277F0-9658-4744-BA6E-92C2F017530C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMark", "CSMark\CSMark.csproj", "{128277F0-9658-4744-BA6E-92C2F017530C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -18,6 +18,12 @@
     <Copyright>2017 AluminiumTech</Copyright>
     <Authors>AluminiumTech</Authors>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Version>0.10.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
 </Project>

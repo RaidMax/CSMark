@@ -1,9 +1,9 @@
-﻿using CSMarkCLI.Calculations;
+﻿using CSMark.Calculations;
 using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace CSMarkCLI.Benchmarks
+namespace CSMark.Benchmarks
 {
     class BenchArithmeticSumN{
         ArithmeticSumN arithmeticN = new ArithmeticSumN();

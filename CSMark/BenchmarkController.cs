@@ -1,5 +1,4 @@
 ﻿using CSMark.Benchmarks;
-using CSMarkCLI.Benchmarks;
 using System;
 
 namespace CSMark{

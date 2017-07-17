@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSMarkCLI.Calculations{
+namespace CSMark.Calculations{
     class PercentageError{
         double result;
         double expectedValue;

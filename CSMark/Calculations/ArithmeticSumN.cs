@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace CSMarkCLI.Calculations
+namespace CSMark.Calculations
 {
     class ArithmeticSumN{
         double SumN;
