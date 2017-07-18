@@ -6,10 +6,10 @@ namespace CSMark {
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Title = "CSMark 0.10.0.0";
-            Console.WriteLine("Welcome to CSMark 0.10.0.0");
+            Console.Title = "CSMark 0.11.0.0";
+            Console.WriteLine("Welcome to CSMark 0.11.0.0");
             double maxIterations = 100.0 * 1000 * 1000;
-            string benchAccuracy = "1";  // 0 = 50 Million Calcs, 1 = 100 Million Calcs, 2 = 500 Million Calcs, 3 = 1 Billion Calcs, 4 = 2 Billion Calcs, 5 = 4 Billion Calcs, 6 = 6 Billion Calcs, 7 = 9 Billion Calcs.
+            string benchAccuracy = "1"; //1 = 100 Million Calcs, 2 = 500 Million Calcs, 3 = 1 Billion Calcs, 4 = 2 Billion Calcs, 5 = 4 Billion Calcs, 6 = 8 Billion Calcs
             string newCommand;
 
             while (true) {
@@ -59,22 +59,18 @@ namespace CSMark {
                 else if (newCommand == "bench-accuracy") {
                     Console.WriteLine("Welcome to the accuracy configurator.");
                     Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                    Console.WriteLine("Accuracy Level 0 may take less than 10 seconds depending on hardware.");
-                    Console.WriteLine("Accuracy Level 1 may take 2-4x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 2 may take 5-10x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 3 may take 15-20x longer than Accuracy Level 0");
-                    Console.WriteLine("Accuracy Level 4 may take 25-40x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 5 may take 50-90x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 6 may take 100-150x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 7 may take 170-250x longer than Accuracy Level 0.");
+                    Console.WriteLine("Accuracy Level 1 may take 20-40 seconds ldepending on hardware.");
+                    Console.WriteLine("Accuracy Level 2 may take 5-10x longer than Accuracy Level 1.");
+                    Console.WriteLine("Accuracy Level 3 may take 15-20x longer than Accuracy Level 1");
+                    Console.WriteLine("Accuracy Level 4 may take 25-40x longer than Accuracy Level 1.");
+                    Console.WriteLine("Accuracy Level 5 may take 50-90x longer than Accuracy Level 1.");
+                    Console.WriteLine("Accuracy Level 6 may take 100-150x longer than Accuracy Level 1.");
+                    Console.WriteLine("Accuracy Level 7 may take 170-250x longer than Accuracy Level 1.");
                     Console.WriteLine("Accuracy Levels 2-4 should be used if accuracy is of great concern. Accuracy Levels 5-7 should be used if accuracy is of the utmost importance.");
                     Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                     benchAccuracy = Console.ReadLine();
                     Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
 
-                    if (benchAccuracy == "0") {
-                        maxIterations = 50.0 * 1000 * 1000;
-                    }
                     else if (benchAccuracy == "1") {
                         maxIterations = 100.0 * 1000 * 1000;
                     }
@@ -177,9 +173,6 @@ namespace CSMark {
                     benchAccuracy = Console.ReadLine();
                     Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
 
-                    if (benchAccuracy == "0"){
-                        maxIterations = 50.0 * 1000 * 1000;
-                    }
                     else if (benchAccuracy == "1"){
                         maxIterations = 100.0 * 1000 * 1000;
                     }
