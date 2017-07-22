@@ -16,17 +16,15 @@ namespace CSMark {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
                 Console.WriteLine("To run the single threaded and multi threaded tests, please enter BENCH.");
-                Console.WriteLine("To run the single threaded and multi threaded tests with a specified level of accuracy, please enter BENCH-ACCURACY.");
                 Console.WriteLine("To run the single threaded and multi threaded tests multiple times to get an average, please enter BENCH-AVERAGE.");
                 Console.WriteLine("To run the stress test utility, please enter STRESS.");
-                Console.WriteLine("To give feedback on CSMark, please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
+                Console.WriteLine("To give feedback on CSMark or report any bugs/problems, please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
                 newCommand = Console.ReadLine().ToLower();
 
                 if (newCommand == "bench"){
                     Console.WriteLine("Would you like to configure the accuracy level of this benchmark?");
                     Console.WriteLine("ENTER Y or N");
                     string configure = Console.ReadLine();
-                    Console.ForegroundColor = ConsoleColor.Green;
                     if (configure.ToLower() == "y")
                     {
                         Console.WriteLine("Welcome to the accuracy configurator.");
@@ -52,6 +50,7 @@ namespace CSMark {
                     }
                     Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
 
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
                         bench.startBenchmark_Single(maxIterations);
                         bench.startBenchmark_Multi(maxIterations);
