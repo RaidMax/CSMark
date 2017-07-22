@@ -14,23 +14,20 @@ namespace CSMark {
 
             while (true) {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("                                                                             ");
+                Console.WriteLine("                                                                        ");
                 Console.WriteLine("To run the single threaded and multi threaded tests, please enter BENCH.");
                 Console.WriteLine("To run the single threaded and multi threaded tests with a specified level of accuracy, please enter BENCH-ACCURACY.");
                 Console.WriteLine("To run the single threaded and multi threaded tests multiple times to get an average, please enter BENCH-AVERAGE.");
-                Console.WriteLine("To run the single threaded and multi threaded tests, with a specified level of accuracy, multiple times to get an average, please enter BENCH-ACCURACY-AVERAGE.");
                 Console.WriteLine("To run the stress test utility, please enter STRESS.");
                 Console.WriteLine("To give feedback on CSMark, please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
                 newCommand = Console.ReadLine().ToLower();
 
-                if (newCommand == "bench")
-                {
+                if (newCommand == "bench"){
                     Console.ForegroundColor = ConsoleColor.Green;
                     //Single threaded CPU benchmarks         
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
                     bench.startBenchmark_Single(maxIterations);
                     bench.startBenchmark_Multi(maxIterations);
-
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
@@ -43,7 +40,6 @@ namespace CSMark {
                     Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
                     Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
                     Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    ///Scaling stuff
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     //Benchmark scaling
                     Console.WriteLine("Improvements compared to Single Threaded Performance: ");
@@ -64,19 +60,19 @@ namespace CSMark {
                     benchAccuracy = Console.ReadLine();
                     Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
 
-                    else if (benchAccuracy == "1") {
+                    else if (benchAccuracy == "1"){
                         maxIterations = 1000.0 * 1000 * 1000;
                     }
-                    else if (benchAccuracy == "2") {
+                    else if (benchAccuracy == "2"){
                         maxIterations = 2000.0 * 1000 * 1000;
                     }
-                    else if (benchAccuracy == "3") {
+                    else if (benchAccuracy == "3"){
                         maxIterations = 4000.0 * 1000 * 1000;
                     }
-                    else if (benchAccuracy == "4") {
+                    else if (benchAccuracy == "4"){
                         maxIterations = 9000.0 * 1000 * 1000;
                     }
-                    else {
+                    else{
                         maxIterations = 1000.0 * 1000 * 1000;
                     }
 
@@ -85,7 +81,6 @@ namespace CSMark {
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
                     bench.startBenchmark_Single(maxIterations);
                     bench.startBenchmark_Multi(maxIterations);
-
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
@@ -98,7 +93,6 @@ namespace CSMark {
                     Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
                     Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
                     Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    ///Scaling stuff
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     //Benchmark scaling
                     Console.WriteLine("Improvements compared to Single Threaded Performance: ");
@@ -115,7 +109,6 @@ namespace CSMark {
                     Console.ForegroundColor = ConsoleColor.Green;      
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
                     bench.startBenchmark_Average(maxIterations);
-
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
@@ -128,7 +121,6 @@ namespace CSMark {
                     Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
                     Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
                     Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    ///Scaling stuff
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     //Benchmark scaling
                     Console.WriteLine("Improvements compared to Single Threaded Performance: ");
@@ -157,7 +149,7 @@ namespace CSMark {
                     Console.Clear();
                     continue;
                 }
-                else {
+                else{
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("That's not a command supported by CSMark! Please try to enter a supported command correctly.");
                     continue;
