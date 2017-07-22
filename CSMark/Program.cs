@@ -8,7 +8,7 @@ namespace CSMark {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Title = "CSMark 0.11.0.0";
             Console.WriteLine("Welcome to CSMark 0.11.0.0");
-            double maxIterations = 500.0 * 1000 * 1000;
+            double maxIterations = 1000.0 * 1000 * 1000;
             string benchAccuracy = "1"; //1 = 1 Billion Calcs, 2 = 2 Billion Calcs, 3 = 4 Billion Calcs, 4 = 9 Billion Calcs
             string newCommand;
 
@@ -77,7 +77,7 @@ namespace CSMark {
                         maxIterations = 9000.0 * 1000 * 1000;
                     }
                     else {
-                        maxIterations = 500.0 * 1000 * 1000;
+                        maxIterations = 1000.0 * 1000 * 1000;
                     }
 
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -113,76 +113,6 @@ namespace CSMark {
                 }
                 else if (newCommand == "bench-average"){
                     Console.ForegroundColor = ConsoleColor.Green;      
-                    Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-                    bench.startBenchmark_Average(maxIterations);
-
-                    Console.WriteLine("                                                                             ");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
-                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
-                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
-                    Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    //Multi threaded CPU benchmark averages;
-                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
-                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
-                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
-                    Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    ///Scaling stuff
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    //Benchmark scaling
-                    Console.WriteLine("Improvements compared to Single Threaded Performance: ");
-                    Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "%");
-                    Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "%");
-                    Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
-                    Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
-                    Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    Console.WriteLine("Benchmark Accuracy: " + benchAccuracy);
-                    continue;
-                }
-                else if (newCommand == "bench-accuracy-average"){
-                    Console.WriteLine("Welcome to the accuracy configurator.");
-                    Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                    Console.WriteLine("Accuracy Level 0 may take less than 10 seconds depending on hardware.");
-                    Console.WriteLine("Accuracy Level 1 may take 2-4x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 2 may take 5-10x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 3 may take 15-20x longer than Accuracy Level 0");
-                    Console.WriteLine("Accuracy Level 4 may take 25-40x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 5 may take 50-90x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 6 may take 100-150x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Level 7 may take 170-250x longer than Accuracy Level 0.");
-                    Console.WriteLine("Accuracy Levels 2-4 should be used if accuracy is of great concern. Accuracy Levels 5-7 should be used if accuracy is of the utmost importance.");
-                    Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
-                    benchAccuracy = Console.ReadLine();
-                    Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
-
-                    else if (benchAccuracy == "1"){
-                        maxIterations = 100.0 * 1000 * 1000;
-                    }
-                    else if (benchAccuracy == "2"){
-                        maxIterations = 500.0 * 1000 * 1000;
-                    }
-                    else if (benchAccuracy == "3"){
-                        maxIterations = 1000.0 * 1000 * 1000;
-                    }
-                    else if (benchAccuracy == "4"){
-                        maxIterations = 2000.0 * 1000 * 1000;
-                    }
-                    else if (benchAccuracy == "5"){
-                        maxIterations = 4000.0 * 1000 * 1000;
-                    }
-                    else if (benchAccuracy == "6"){
-                        maxIterations = 6000.0 * 1000 * 1000;
-                    }
-                    else if (benchAccuracy == "7"){
-                        maxIterations = 9000.0 * 1000 * 1000;
-                    }
-                    else{
-                        maxIterations = 100.0 * 1000 * 1000;
-                    }
-
-                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
                     bench.startBenchmark_Average(maxIterations);
 
