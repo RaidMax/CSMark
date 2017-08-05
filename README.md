@@ -30,6 +30,7 @@ Want to contribute to CSMark?
 * Pythagoras based benchmark which involves calculating either the length of the hypotenuse, adjacent length or opposite length.
 * Trigonometry based benchmark which involves calculating the size of an angle based on any 2 of: hypotenuse, adjacent or opposite sides.
 * Percentage Error based benchmark which involves calculating the percentage difference between 2 given numbers.
+* Arithmetic Sum N based benchmark which involves calculating the sum of N number of objects in an arithmetic sequence.
 * A Multi Threaded version of all the above benchmarks.
 
 ### Benchmarks that I'm interested in adding
@@ -37,6 +38,18 @@ Want to contribute to CSMark?
 * Simultaneous Equation solving
 * Differentiating with respect to X (dy/dx)
 * And more stuff :)
+
+### How do I know what accuracy level to choose?
+If you're concerned about accuracy level then it's likely that you want as high of an accuracy level as you can get.
+
+CSMark comes included with a number of accuracy levels. Listed below are all the accuracy levels as of 0.12.0 and who should use them:
+* 1 Billion - For most users who simply want to check the performance of their CPU and aren't too concerned about accuracy.
+* 2 Billion
+* 4 Billion - Minimum accuracy level recommended if the user wants to publish these numbers.
+* 8 Billion
+* 16 Billion - For those wanting to publish results as a journalist to a large audience.
+* 32 Billion
+* 64 Billion - If accuracy is of the utmost importance & your job requires the best possible accuracy. If you manufacture CPUs or are looking to do so, this is the only option we recommend for you.
 
 ## Notes
 * Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Patch], than another version should not be compared unless explicitly stated otherwise.
