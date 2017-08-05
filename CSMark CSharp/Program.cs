@@ -123,7 +123,19 @@ namespace CSMark {
                     Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     Console.WriteLine("Benchmark Accuracy: " + benchAccuracy); ;
                     Console.WriteLine("Configured Accuracy: " + accuracyConfigured);
-                    Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
+
+                    if(accuracyConfigured == true){
+                        Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
+                    }
+                    else if (accuracyConfigured == false)
+                        {
+                            Console.WriteLine("Time taken to run benchmark: " + ((time.ElapsedMilliseconds / 1000) / 5) + " Seconds");
+                        }
+                    else
+                    {
+                        Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
+                    }
+                    
                     continue;
                 }
                 else if (newCommand == "stress" || newCommand == "stress test" || newCommand == "stress-test") {
