@@ -24,7 +24,8 @@ namespace CSMark {
                 Console.WriteLine("To run the single threaded and multi threaded tests, please enter BENCH.");
                 Console.WriteLine("To run the single threaded and multi threaded tests multiple times to get an average, please enter BENCH-AVERAGE.");
                 Console.WriteLine("To run the stress test utility, please enter STRESS.");
-                Console.WriteLine("To give feedback on CSMark or report any bugs/problems, please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
+                Console.WriteLine("To give feedback on CSMark or report any bugs/problems,");
+                Console.WriteLine("please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
                 newCommand = Console.ReadLine().ToLower();
 
                 if (newCommand == "bench"){
@@ -78,14 +79,28 @@ namespace CSMark {
                         accuracyConfigured = true;
                     }
 
+                    Console.WriteLine("Would you like the benchmark to run several times and give averaged results?");
+                    Console.WriteLine("Please ENTER Y or N.");
+
+                    string averages = Console.ReadLine();
+
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
 
-                    time.Start();
-                    bench.startBenchmark_Single(maxIterations);
-                    bench.startBenchmark_Multi(maxIterations);
-                    time.Stop();
-
+                    if (averages == "y"){
+                        time.Start();
+                        bench.startBenchmark_Average(maxIterations);
+                        time.Stop();
+                    }
+                    //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
+                    else if(averages == "n" || averages != "y" && averages != "n")
+                    {
+                        time.Start();
+                        bench.startBenchmark_Single(maxIterations);
+                        bench.startBenchmark_Multi(maxIterations);
+                        time.Stop();
+                    }
+       
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
@@ -112,47 +127,14 @@ namespace CSMark {
                     Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
                     continue;
                 }
-                else if (newCommand == "bench-average"){
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
-
-                    time.Start();
-                    bench.startBenchmark_Average(maxIterations);
-                    time.Stop();
-
-                    Console.WriteLine("                                                                             ");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
-                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
-                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
-                    Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    //Multi threaded CPU benchmark averages;
-                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
-                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
-                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
-                    Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    //Benchmark scaling
-                    Console.WriteLine("Improvements compared to Single Threaded Performance: ");
-                    Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "%");
-                    Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "%");
-                    Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
-                    Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
-                    Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    Console.WriteLine("Benchmark Accuracy: " + benchAccuracy);
-                    Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
-                    continue;
-                }
                 else if (newCommand == "stress") {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting stress test.");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine("To stop the stress test, please exit the program or enter BREAK");
+                    Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
                     stress.startStressTest(false);
                     newCommand = Console.ReadLine();
-                    if (newCommand == "break") {
+                    if (newCommand == "break" || newCommand == "stop") {
                         stress.stopStressTest(false);
                     }
                     continue;
@@ -163,7 +145,7 @@ namespace CSMark {
                 }
                 else{
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("That's not a command supported by CSMark! Please try to enter a supported command correctly.");
+                    Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command correctly.");
                     continue;
                 }
             }
