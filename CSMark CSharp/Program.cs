@@ -6,10 +6,10 @@ namespace CSMark {
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Title = "CSMark 0.11.0.0";
-            Console.WriteLine("Welcome to CSMark 0.11.0.0");
-            double maxIterations = 1000.0 * 1000 * 1000;
-            string benchAccuracy = "1"; //Benchmark Accuracy 1 = 1 Billion Calcs, 2 = 2 Billion Calcs, 3 = 4 Billion Calcs, 4 = 9 Billion Calcs
+            Console.Title = "CSMark 0.12.0";
+            Console.WriteLine("Welcome to CSMark.");
+            double maxIterations = 1.0 * 1000.0 * 1000 * 1000;
+            string benchAccuracy = "1"; //Benchmark Accuracy 1 = 1 Billion Calcs, 2 = 2 Billion Calcs, 3 = 4 Billion Calcs, 4 = 10 Billion Calcs
             string newCommand;
 
             while (true) {
@@ -29,24 +29,39 @@ namespace CSMark {
                     {
                         Console.WriteLine("Welcome to the accuracy configurator.");
                         Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                        Console.WriteLine("Accuracy level options: 1-4");
+                        Console.WriteLine("Accuracy level options: 1-7");
                         Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                     benchAccuracy = Console.ReadLine();
                     
                     if (benchAccuracy == "1"){
-                        maxIterations = 1000.0 * 1000 * 1000;
+                        maxIterations = 1.0 * 1000.0 * 1000 * 1000;
                     }
                     else if (benchAccuracy == "2"){
-                        maxIterations = 2000.0 * 1000 * 1000;
+                        maxIterations = 2.0 * 1000.0 * 1000 * 1000;
                     }
                     else if (benchAccuracy == "3"){
-                        maxIterations = 4000.0 * 1000 * 1000;
+                        maxIterations = 4.0 * 1000.0 * 1000 * 1000;
                     }
                     else if (benchAccuracy == "4"){
-                        maxIterations = 9000.0 * 1000 * 1000;
+                        maxIterations = 8.0 * 1000.0 * 1000 * 1000;
                     }
-                    else{
-                        maxIterations = 1000.0 * 1000 * 1000;
+                    else if (benchAccuracy == "5")
+                     {
+                            maxIterations = 16.0 * 1000.0 * 1000 * 1000;
+                    }
+                    else if (benchAccuracy == "6")
+                    {
+                            maxIterations = 32.0 * 1000.0 * 1000 * 1000;
+                    }
+                    else if (benchAccuracy == "7")
+                    {
+                            maxIterations = 64.0 * 1000.0 * 1000 * 1000;
+                    }
+                        else
+                   {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("That's an invalid accuracy level. Please try again later.");
+                            continue;
                     }
                     Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
 
