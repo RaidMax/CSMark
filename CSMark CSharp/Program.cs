@@ -21,8 +21,7 @@ namespace CSMark {
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
-                Console.WriteLine("To run the single threaded and multi threaded tests, please enter BENCH.");
-                Console.WriteLine("To run the single threaded and multi threaded tests multiple times to get an average, please enter BENCH-AVERAGE.");
+                Console.WriteLine("To run the single threaded and multi threaded tests, please ENTER BENCH.");
                 Console.WriteLine("To run the stress test utility, please enter STRESS.");
                 Console.WriteLine("To give feedback on CSMark or report any bugs/problems,");
                 Console.WriteLine("please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
@@ -127,19 +126,19 @@ namespace CSMark {
                     Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
                     continue;
                 }
-                else if (newCommand == "stress") {
+                else if (newCommand == "stress" || newCommand == "stress test" || newCommand == "stress-test") {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting stress test.");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
-                    stress.startStressTest(false);
+                    stress.startStressTest();
                     newCommand = Console.ReadLine();
                     if (newCommand == "break" || newCommand == "stop") {
                         stress.stopStressTest(false);
                     }
                     continue;
                 }          
-                else if (newCommand == "clear") {
+                else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean") {
                     Console.Clear();
                     continue;
                 }
