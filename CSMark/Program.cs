@@ -40,32 +40,59 @@ namespace CSMark {
                             Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                             benchAccuracy = Console.ReadLine();
 
-                            if (benchAccuracy == "1"){
-                                maxIterations = 1.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else if (benchAccuracy == "2"){
-                                maxIterations = 2.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else if (benchAccuracy == "3"){
-                                maxIterations = 4.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else if (benchAccuracy == "4"){
-                                maxIterations = 8.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else if (benchAccuracy == "5"){
-                                maxIterations = 16.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else if (benchAccuracy == "6"){
-                                maxIterations = 32.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else if (benchAccuracy == "7"){
-                                maxIterations = 64.0 * 1000.0 * 1000 * 1000;
-                            }
-                            else{
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("That's an invalid accuracy level. Please try again later.");
-                                continue;
-                            }
+                        if (benchAccuracy == "M1"){
+                            maxIterations = 0.01 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "M2"){
+                            maxIterations = 0.05 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "M3"){
+                            maxIterations = 0.1 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "M4"){
+                            maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "M5"){
+                            maxIterations = 0.5 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "P1"){
+                            maxIterations = 1.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "P2"){
+                            maxIterations = 2.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "P3"){
+                            maxIterations = 4.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "P4"){
+                            maxIterations = 8.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "P5"){
+                            maxIterations = 16.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W1"){
+                            maxIterations = 32.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W2"){
+                            maxIterations = 64.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W3"){
+                            maxIterations = 128.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W4"){
+                            maxIterations = 256.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W5"){
+                            maxIterations = 384.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W6"){
+                            maxIterations = 512.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else{
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("That's an invalid accuracy level. Please try again later.");
+                            continue;
+                        }
 
                             Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
                             accuracyConfigured = true;
