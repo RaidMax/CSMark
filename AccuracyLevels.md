@@ -4,7 +4,7 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 
 * "M" Accuracy levels denote accuracy levels designated for Mobile Devices
 * "P" Accuracy levels denote accuracy levels designated for PCs
-* "X" Accuracy levels denote Accuracy levels designated for Servers, Workstations and Super Computers)
+* "W" Accuracy levels denote Accuracy levels designated for Servers, Workstations and Super Computers)
 
 | Calculations | Mobile Accuracy Level | PC Accuracy Level | Servers, Workstations and Super Computers  |
 |--------------|-----------------------|-------------------|---|
