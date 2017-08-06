@@ -18,7 +18,7 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 | 4 Billion    |                         | P3                |   |   
 | 8 Billion    |                       | P4                |   |   
 | 16 Billion   |                       | P5                |   |   
-| 32 Billion   |                       | P6                    | X1  |   
+| 32 Billion   |                       |                     | X1  |   
 | 64 Billion   |                       |                   |  X2 |   
 | 128 Billion   |                       |                   |  X3 |   
 | 256 Billion   |                       |                   | X4  |   
