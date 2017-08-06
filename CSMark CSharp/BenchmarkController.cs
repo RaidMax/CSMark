@@ -239,30 +239,6 @@ namespace CSMark{
             pythagorasAverageScaling = pythagorasAverageScaling * 100;
             return pythagorasAverageScaling;
         }
-        public double returnAverageScalingTrigonometry()
-        {
-            trigonometryAverageScaling = trigonometryAverage_single / trigonometryAverage_multi;
-            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
-            trigonometryAverageScaling = Math.Round(trigonometryAverageScaling, 2, MidpointRounding.AwayFromZero);
-            trigonometryAverageScaling = trigonometryAverageScaling * 100;
-            return trigonometryAverageScaling;
-        }
-        public double returnAverageScalingPercentageError()
-        {
-            percentageErrorAverageScaling = pythagorasAverage_single / pythagorasAverage_multi;
-            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
-            percentageErrorAverageScaling = Math.Round(percentageErrorAverageScaling, 2, MidpointRounding.AwayFromZero);
-            percentageErrorAverageScaling = percentageErrorAverageScaling * 100;
-            return percentageErrorAverageScaling;
-        }
-        public double returnAverageScalingArithmeticSumN()
-        {
-            arithmeticSumNAverageScaling = arithmeticSumNAverage_single / arithmeticSumNAverage_multi;
-            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
-            arithmeticSumNAverageScaling = Math.Round(arithmeticSumNAverageScaling, 2, MidpointRounding.AwayFromZero);
-            arithmeticSumNAverageScaling = arithmeticSumNAverageScaling * 100;
-            return arithmeticSumNAverageScaling;
-        }
 #endregion
     }
 }
