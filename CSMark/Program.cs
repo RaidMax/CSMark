@@ -9,8 +9,9 @@ namespace CSMark {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Title = "CSMark 0.13.0";
-            Console.WriteLine("Welcome to CSMark.");
-            double maxIterations = 1.0 * 1000.0 * 1000 * 1000;
+            Console.Write("Welcome to");
+           Console.WriteLine(" CSMark.");
+            double maxIterations = 0.1 * 1000.0 * 1000 * 1000;
             string benchAccuracy = "1";
             string newCommand;
             bool accuracyConfigured = false;
@@ -21,19 +22,36 @@ namespace CSMark {
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
-                Console.WriteLine("To run the single threaded and multi threaded tests, please ENTER BENCH.");
-                Console.WriteLine("To run the stress test utility, please enter STRESS.");
-                Console.WriteLine("To give feedback on CSMark or report any bugs/problems,");
-                Console.WriteLine("please open a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
+                Console.Write("To run the single threaded and multi threaded tests, please enter ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("BENCH.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                Console.Write("To run the single threaded tests only, please enter ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("BENCH-SINGLE.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                Console.Write("To run the multi threaded tests only, please enter ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("BENCH-MULTI.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                Console.Write("To run the stress test utility, please enter ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("STRESS.");
+
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Please give feedback or report any bugs by opening a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 newCommand = Console.ReadLine().ToLower();
 
-                if (newCommand == "bench"){
+                if (newCommand == "bench" || newCommand == "bench-single" || newCommand == "bench-multi"){
                         Console.WriteLine("Would you like to configure the accuracy level of this benchmark?");
                         Console.WriteLine("ENTER Y or N");
                         string configure = Console.ReadLine();
 
-                        if (configure.ToLower() == "y")
-                        {
+                        if (configure.ToLower() == "y"){
                             Console.WriteLine("Welcome to the accuracy configurator.");
                             Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
                             Console.WriteLine("Accuracy level options: 1-7");
@@ -44,45 +62,48 @@ namespace CSMark {
                             maxIterations = 0.01 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "M2"){
-                            maxIterations = 0.05 * 1000.0 * 1000 * 1000;
+                            maxIterations = 0.02 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "M3"){
-                            maxIterations = 0.1 * 1000.0 * 1000 * 1000;
+                            maxIterations = 0.05 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "M4"){
-                            maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+                            maxIterations = 0.1 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "M5"){
-                            maxIterations = 0.5 * 1000.0 * 1000 * 1000;
+                            maxIterations = 0.2 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P1"){
-                            maxIterations = 1.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 0.5 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P2"){
-                            maxIterations = 2.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 1.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P3"){
-                            maxIterations = 4.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 2.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P4"){
-                            maxIterations = 8.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 4.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P5"){
-                            maxIterations = 16.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 8.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W1"){
-                            maxIterations = 32.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 16.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W2"){
-                            maxIterations = 64.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 32.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W3"){
-                            maxIterations = 128.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 64.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W4"){
-                            maxIterations = 256.0 * 1000.0 * 1000 * 1000;
+                            maxIterations = 128.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W5"){
+                            maxIterations = 256.0 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (benchAccuracy == "W6"){
                             maxIterations = 384.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W6"){
@@ -93,14 +114,12 @@ namespace CSMark {
                             Console.WriteLine("That's an invalid accuracy level. Please try again later.");
                             continue;
                         }
-
                             Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
                             accuracyConfigured = true;
                         }
      
                     Console.WriteLine("Would you like the benchmark to run several times and give averaged results?");
                     Console.WriteLine("Please ENTER Y or N.");
-
                     string averages = Console.ReadLine();
 
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -108,54 +127,93 @@ namespace CSMark {
 
                     if (averages == "y"){
                         time.Start();
-                        bench.startBenchmark_Average(maxIterations);
+
+                        if(newCommand == "bench"){
+                            bench.startBenchmark_Average(maxIterations);
+                        }
+                        else if(newCommand == "bench-single"){
+
+                        }
+                        else if(newCommand == "bench-multi"){
+                            
+                        }
+                        
                         time.Stop();
                     }
                     //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
-                    else if(averages == "n" || averages != "y" && averages != "n")
-                    {
+                    else if(averages == "n" || averages != "y" && averages != "n"){
                         time.Start();
-                        bench.startBenchmark_Single(maxIterations);
-                        bench.startBenchmark_Multi(maxIterations);
+
+                        if (newCommand == "bench"){
+                            bench.startBenchmark_Single(maxIterations);
+                            bench.startBenchmark_Multi(maxIterations);
+                        }
+                        else if (newCommand == "bench-single"){
+                            bench.startBenchmark_Single(maxIterations);
+                        }
+                        else if (newCommand == "bench-multi"){
+                            bench.startBenchmark_Multi(maxIterations);
+                        }
+         
                         time.Stop();
                     }
        
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
-                    Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
-                    Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
-                    Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    //Multi threaded CPU benchmarks
-                    Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
-                    Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
-                    Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
-                    Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    //Benchmark scaling
-                    Console.WriteLine("Improvements compared to Single Threaded Performance: ");
-                    Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "%");
-                    Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "%");
-                    Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
-                    Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
-                    Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
-                    Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                    if (newCommand == "bench-mutli"){
+                        //Multi threaded CPU benchmarks
+                        Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
+                        Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
+                        Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
+                        Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                    }
+                    else if(newCommand == "bench-single"){
+                        Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
+                        Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
+                        Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
+                        Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                    }
+                    else{
+                        Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
+                        Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
+                        Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
+                        Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                        //Multi threaded CPU benchmarks
+                        Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
+                        Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
+                        Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
+                        Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                        //Benchmark scaling
+                        Console.WriteLine("Improvements compared to Single Threaded Performance: ");
+                        Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "%");
+                        Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "%");
+                        Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
+                        Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
+                        Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "%");
+                        Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                    }
+                    
                     Console.WriteLine("Benchmark Accuracy: " + benchAccuracy); ;
                     Console.WriteLine("Configured Accuracy: " + accuracyConfigured);
 
                     if(accuracyConfigured == true){
                         Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
                     }
-                    else if (accuracyConfigured == false)
-                        {
+                    else if (accuracyConfigured == false){
                             Console.WriteLine("Time taken to run benchmark: " + ((time.ElapsedMilliseconds / 1000) / 5) + " Seconds");
                         }
-                    else
-                    {
+                    else{
                         Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
-                    }
-                    
+                    }                    
                     continue;
                 }
                 else if (newCommand == "stress" || newCommand == "stress test" || newCommand == "stress-test") {

@@ -7,16 +7,19 @@ namespace CSMark{
         BenchPythagoras pyB = new BenchPythagoras();
         BenchPercentageError bpe = new BenchPercentageError();
         BenchArithmeticSumN bas = new BenchArithmeticSumN();
+        BenchFizzBuzz bfz = new BenchFizzBuzz();
 
         double pythagorasAverage_single;
         double trigonometryAverage_single;
         double percentageErrorAverage_single;
         double arithmeticSumNAverage_single;
+        double fizzBuzzAverage_single;
 
         double pythagorasAverage_multi;
         double trigonometryAverage_multi;
         double percentageErrorAverage_multi;
         double arithmeticSumNAverage_multi;
+        double fizzBuzzAverage_multi;
 
         double pythagoras1_single;
         double pythagoras2_single;
@@ -38,6 +41,11 @@ namespace CSMark{
         double arithmeticSumN3_single;
         double arithmeticSumN4_single;
         double arithmeticSumN5_single;
+        double fizzBuzz1_single;
+        double fizzBuzz2_single;
+        double fizzBuzz3_single;
+        double fizzBuzz4_single;
+        double fizzBuzz5_single;
 
         double pythagoras1_multi;
         double pythagoras2_multi;
@@ -59,16 +67,17 @@ namespace CSMark{
         double arithmeticSumN3_multi;
         double arithmeticSumN4_multi;
         double arithmeticSumN5_multi;
+        double fizzBuzz1_multi;
+        double fizzBuzz2_multi;
+        double fizzBuzz3_multi;
+        double fizzBuzz4_multi;
+        double fizzBuzz5_multi;
 
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
         double arithmeticSumNScaling = 0;
-
-        double pythagorasAverageScaling = 0;
-        double trigonometryAverageScaling = 0;
-        double percentageErrorAverageScaling = 0;
-        double arithmeticSumNAverageScaling = 0;
+        double fizzBuzzScaling = 0;
 
         public void startBenchmark(double maxIterations){
             startBenchmark_Single(maxIterations);
@@ -85,10 +94,10 @@ namespace CSMark{
             bas.singleThreadedBench(_maxIterations);
         }
         public void startBenchmark_Multi(double _maxIterations){
-                Console.WriteLine("Starting Pythagoras multi threaded benchmark");
+            Console.WriteLine("Starting Trigonometry multi threaded benchmark");
+            trigB.multiThreadedBench(_maxIterations);
+            Console.WriteLine("Starting Pythagoras multi threaded benchmark");
                 pyB.multiThreadedBench(_maxIterations);
-                Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-                trigB.multiThreadedBench(_maxIterations);
                 Console.WriteLine("Starting PercentageError multi threaded benchmark");
                 bpe.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting ArithmeticSumN multi threaded benchmark");
@@ -107,6 +116,8 @@ namespace CSMark{
             percentageError1_multi = returnMultiThreadedPercentageError();
             arithmeticSumN1_single = returnSingleThreadedArithmeticSumN();
             arithmeticSumN1_multi = returnMultiThreadedArithmeticSumN();
+            fizzBuzz1_single = returnSingleThreadedArithmeticSumN();
+            fizzBuzz1_multi = returnMultiThreadedArithmeticSumN();
 
             startBenchmark_Single(_maxIterations);
             startBenchmark_Multi(_maxIterations);
@@ -119,6 +130,8 @@ namespace CSMark{
             percentageError2_multi = returnMultiThreadedPercentageError();
             arithmeticSumN2_single = returnSingleThreadedArithmeticSumN();
             arithmeticSumN2_multi = returnMultiThreadedArithmeticSumN();
+            fizzBuzz2_single = returnSingleThreadedArithmeticSumN();
+            fizzBuzz2_multi = returnMultiThreadedArithmeticSumN();
 
             startBenchmark_Single(_maxIterations);
             startBenchmark_Multi(_maxIterations);
@@ -131,6 +144,8 @@ namespace CSMark{
             percentageError3_multi = returnMultiThreadedPercentageError();
             arithmeticSumN3_single = returnSingleThreadedArithmeticSumN();
             arithmeticSumN3_multi = returnMultiThreadedArithmeticSumN();
+            fizzBuzz3_single = returnSingleThreadedArithmeticSumN();
+            fizzBuzz3_multi = returnMultiThreadedArithmeticSumN();
 
             startBenchmark_Single(_maxIterations);
             startBenchmark_Multi(_maxIterations);
@@ -143,6 +158,8 @@ namespace CSMark{
             percentageError4_multi = returnMultiThreadedPercentageError();
             arithmeticSumN4_single = returnSingleThreadedArithmeticSumN();
             arithmeticSumN4_multi = returnMultiThreadedArithmeticSumN();
+            fizzBuzz4_single = returnSingleThreadedArithmeticSumN();
+            fizzBuzz4_multi = returnMultiThreadedArithmeticSumN();
 
             startBenchmark_Single(_maxIterations);
             startBenchmark_Multi(_maxIterations);
@@ -155,6 +172,8 @@ namespace CSMark{
             percentageError5_multi = returnMultiThreadedPercentageError();
             arithmeticSumN5_single = returnSingleThreadedArithmeticSumN();
             arithmeticSumN5_multi = returnMultiThreadedArithmeticSumN();
+            fizzBuzz5_single = returnSingleThreadedArithmeticSumN();
+            fizzBuzz5_multi = returnMultiThreadedArithmeticSumN();
 
             pythagorasAverage_single = (pythagoras1_single + pythagoras2_single + pythagoras3_single + pythagoras4_single + pythagoras5_single) / 5;
             pythagorasAverage_multi = (pythagoras1_multi + pythagoras2_multi + pythagoras3_multi + pythagoras4_multi + pythagoras5_multi) / 5;
@@ -167,6 +186,9 @@ namespace CSMark{
 
             arithmeticSumNAverage_single = (arithmeticSumN1_single + arithmeticSumN2_single + arithmeticSumN3_single + arithmeticSumN4_single + arithmeticSumN5_single) / 5;
             arithmeticSumNAverage_multi = (arithmeticSumN1_multi + arithmeticSumN2_multi + arithmeticSumN3_multi + arithmeticSumN4_multi + arithmeticSumN5_multi) / 5;
+
+           fizzBuzzAverage_single = (fizzBuzz1_single + fizzBuzz2_single + fizzBuzz3_single + fizzBuzz4_single + fizzBuzz5_single) / 5;
+            fizzBuzzAverage_multi = (fizzBuzz1_multi + fizzBuzz2_multi + fizzBuzz3_multi + fizzBuzz4_multi + fizzBuzz5_multi) / 5;
         }
 
         #region Return Results
@@ -188,13 +210,19 @@ namespace CSMark{
         public double returnMultiThreadedPercentageError(){
             return bpe.returnMultiScore();
         }
-        public double returnSingleThreadedArithmeticSumN()
-        {
+        public double returnSingleThreadedArithmeticSumN(){
             return bas.returnSingleScore();
         }
-        public double returnMultiThreadedArithmeticSumN()
-        {
+        public double returnMultiThreadedArithmeticSumN(){
             return bas.returnMultiScore();
+        }
+        public double returnSingleThreadedFizzBuzz()
+        {
+            return bfz.returnSingleScore();
+        }
+        public double returnMultiThreadedFizzBuzz()
+        {
+            return bfz.returnMultiScore();
         }
 
         #endregion
@@ -221,24 +249,20 @@ namespace CSMark{
             percentageErrorScaling = percentageErrorScaling * 100;
             return percentageErrorScaling;
         }
-        public double returnScalingArithmeticSumN()
-        {
+        public double returnScalingArithmeticSumN(){
             arithmeticSumNScaling = returnSingleThreadedArithmeticSumN() / returnMultiThreadedArithmeticSumN();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             arithmeticSumNScaling = Math.Round(arithmeticSumNScaling, 2, MidpointRounding.AwayFromZero);
             arithmeticSumNScaling = arithmeticSumNScaling * 100;
             return arithmeticSumNScaling;
         }
-        #endregion
-        #region AverageScaling
-        public double returmAverageScalingPythagoras()
-        {
-            pythagorasAverageScaling = pythagorasAverage_single / pythagorasAverage_multi;
+        public double returnScalingFizzBuzz(){
+            arithmeticSumNScaling = returnSingleThreadedArithmeticSumN() / returnMultiThreadedArithmeticSumN();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
-            pythagorasAverageScaling = Math.Round(pythagorasAverageScaling, 2, MidpointRounding.AwayFromZero);
-            pythagorasAverageScaling = pythagorasAverageScaling * 100;
-            return pythagorasAverageScaling;
+            fizzBuzzScaling = Math.Round(fizzBuzzScaling, 2, MidpointRounding.AwayFromZero);
+            fizzBuzzScaling = fizzBuzzScaling * 100;
+            return fizzBuzzScaling;
         }
-#endregion
+        #endregion
     }
 }
