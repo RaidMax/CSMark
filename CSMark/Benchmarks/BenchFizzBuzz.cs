@@ -25,11 +25,12 @@ namespace CSMark.Benchmarks
             multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
-        public void singleThreadedBench(double maxIterations){
+        public void singleThreadedBench(double maxIterations, bool termination)
+        {
             _maxIteration = maxIterations;
             iteration = 0;
             stopwatch.Start();
-            while (iteration <= maxIterations){
+            while (iteration <= maxIterations & termination == false){
                 fizz.calculateFizzBuzz(iteration);
                 //Increment our counter
                 iteration++;
@@ -39,17 +40,18 @@ namespace CSMark.Benchmarks
             stopwatch.Reset();
             iteration = 0;
         }
-        private static double threadCalc(double maxThreadIterations){
+        private static double threadCalc(double maxThreadIterations, bool termination)
+        {
             FizzBuzz fizz2 = new FizzBuzz();
             double iteration = 0;
-            while (iteration <= maxThreadIterations){
+            while (iteration <= maxThreadIterations & termination == false){
                 fizz2.calculateFizzBuzz(iteration);
                 //Increment our counter
                 iteration++;
             }
             return 0;
         }
-        public void multiThreadedBench(double maxIterations)
+        public void multiThreadedBench(double maxIterations, bool termination)
         {
             iteration = 0;
             stopwatch.Start();
@@ -57,7 +59,7 @@ namespace CSMark.Benchmarks
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
+                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations, termination));
                 workerThreads[i].Start();
             }
             for (int i = 0; i < Environment.ProcessorCount; i++)

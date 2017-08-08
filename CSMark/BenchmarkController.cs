@@ -73,6 +73,8 @@ namespace CSMark{
         double fizzBuzz4_multi;
         double fizzBuzz5_multi;
 
+        bool terminated_Successful = false;
+
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
@@ -80,37 +82,54 @@ namespace CSMark{
         double fizzBuzzScaling = 0;
 
         public void startBenchmark(double maxIterations){
-            startBenchmark_Single(maxIterations);
-            startBenchmark_Multi(maxIterations);
+            startBenchmark_Single(maxIterations, false);
+            startBenchmark_Multi(maxIterations, false);
         }
-        public void startBenchmark_Single(double _maxIterations){
+        public bool cancelled(){
+            return terminated_Successful;
+        }
+
+        public void cancelBenchmark(double _maxIterations, bool termination){
+            trigB.singleThreadedBench(_maxIterations, true);
+            pyB.singleThreadedBench(_maxIterations, true);
+            bas.singleThreadedBench(_maxIterations, true);
+            bpe.singleThreadedBench(_maxIterations, true);
+            bfz.singleThreadedBench(_maxIterations, true);
+            trigB.multiThreadedBench(_maxIterations, true);
+            bas.multiThreadedBench(_maxIterations, true);
+            pyB.multiThreadedBench(_maxIterations, true);
+            bpe.multiThreadedBench(_maxIterations, true);
+            bfz.multiThreadedBench(_maxIterations, true);
+            terminated_Successful = true;
+        }
+        public void startBenchmark_Single(double _maxIterations, bool termination){
                 Console.WriteLine("Starting Trigonometry single threaded benchmark");
-                trigB.singleThreadedBench(_maxIterations);
+                trigB.singleThreadedBench(_maxIterations, false);
                 Console.WriteLine("Starting Pythagoras single threaded benchmark");
-                pyB.singleThreadedBench(_maxIterations);
+                pyB.singleThreadedBench(_maxIterations, false);
                 Console.WriteLine("Starting PercentageError single threaded benchmark");
-                bpe.singleThreadedBench(_maxIterations);
+                bpe.singleThreadedBench(_maxIterations, false);
             Console.WriteLine("Starting ArithmeticSumN single threaded benchmark");
-            bas.singleThreadedBench(_maxIterations);
+            bas.singleThreadedBench(_maxIterations, false);
             Console.WriteLine("Starting FizzBuzz single threaded benchmark");
-            bfz.singleThreadedBench(_maxIterations);
+            bfz.singleThreadedBench(_maxIterations, false);
         }
-        public void startBenchmark_Multi(double _maxIterations){
+        public void startBenchmark_Multi(double _maxIterations, bool termination){
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-            trigB.multiThreadedBench(_maxIterations);
+            trigB.multiThreadedBench(_maxIterations,false);
             Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-                pyB.multiThreadedBench(_maxIterations);
+                pyB.multiThreadedBench(_maxIterations, false);
                 Console.WriteLine("Starting PercentageError multi threaded benchmark");
-                bpe.multiThreadedBench(_maxIterations);
+                bpe.multiThreadedBench(_maxIterations, false);
             Console.WriteLine("Starting ArithmeticSumN multi threaded benchmark");
-            bas.multiThreadedBench(_maxIterations);
+            bas.multiThreadedBench(_maxIterations, false);
             Console.WriteLine("Starting FizzBuzz multi threaded benchmark");
-            bfz.multiThreadedBench(_maxIterations);
+            bfz.multiThreadedBench(_maxIterations, false);
         }
 
         public void startBenchmark_Average(double _maxIterations){
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
+            startBenchmark_Single(_maxIterations, false);
+            startBenchmark_Multi(_maxIterations, false);
 
             pythagoras1_single = returnSingleThreadedPythagoras();
             pythagoras1_multi = returnMultiThreadedPythagoras();
@@ -123,8 +142,8 @@ namespace CSMark{
             fizzBuzz1_single = returnSingleThreadedArithmeticSumN();
             fizzBuzz1_multi = returnMultiThreadedArithmeticSumN();
 
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
+            startBenchmark_Single(_maxIterations, false);
+            startBenchmark_Multi(_maxIterations, false);
 
             pythagoras2_single = returnSingleThreadedPythagoras();
             pythagoras2_multi = returnMultiThreadedPythagoras();
@@ -137,8 +156,8 @@ namespace CSMark{
             fizzBuzz2_single = returnSingleThreadedArithmeticSumN();
             fizzBuzz2_multi = returnMultiThreadedArithmeticSumN();
 
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
+            startBenchmark_Single(_maxIterations, false);
+            startBenchmark_Multi(_maxIterations, false);
 
             pythagoras3_single = returnSingleThreadedPythagoras();
             pythagoras3_multi = returnMultiThreadedPythagoras();
@@ -151,8 +170,8 @@ namespace CSMark{
             fizzBuzz3_single = returnSingleThreadedArithmeticSumN();
             fizzBuzz3_multi = returnMultiThreadedArithmeticSumN();
 
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
+            startBenchmark_Single(_maxIterations, false);
+            startBenchmark_Multi(_maxIterations, false);
 
             pythagoras4_single = returnSingleThreadedPythagoras();
             pythagoras4_multi = returnMultiThreadedPythagoras();
@@ -165,8 +184,8 @@ namespace CSMark{
             fizzBuzz4_single = returnSingleThreadedArithmeticSumN();
             fizzBuzz4_multi = returnMultiThreadedArithmeticSumN();
 
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
+            startBenchmark_Single(_maxIterations, false);
+            startBenchmark_Multi(_maxIterations, false);
 
             pythagoras5_single = returnSingleThreadedPythagoras();
             pythagoras5_multi = returnMultiThreadedPythagoras();

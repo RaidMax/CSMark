@@ -11,12 +11,11 @@ namespace CSMark{
         double O = 800;
         double A = 600;
         bool termination;
-        bool showConsole;
         double iterator;
         private void stressPythagoras()
         {
             int randomNumber;
-            while (termination == false && showConsole == false){
+            while (termination == false){
                 randomNumber = random.Next(3);
                 if (randomNumber == 0)
                 {

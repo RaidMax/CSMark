@@ -46,109 +46,116 @@ namespace CSMark {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 newCommand = Console.ReadLine().ToLower();
 
-                if (newCommand == "bench" || newCommand == "bench-single" || newCommand == "bench-multi"){
-                        Console.WriteLine("Would you like to configure the accuracy level of this benchmark?");
-                        Console.WriteLine("ENTER Y or N");
-                        string configure = Console.ReadLine();
+                if (newCommand == "bench" || newCommand == "bench-single" || newCommand == "bench-multi") {
+                    Console.WriteLine("Would you like to configure the accuracy level of this benchmark?");
+                    Console.WriteLine("ENTER Y or N");
+                    string configure = Console.ReadLine();
 
-                        if (configure.ToLower() == "y"){
-                            Console.WriteLine("Welcome to the accuracy configurator.");
-                            Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                            Console.WriteLine("Accuracy level options: M1-M4, P1-P4, & W1-W7");
-                            Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
-                            benchAccuracy = Console.ReadLine().ToUpper();
+                    if (configure.ToLower() == "y") {
+                        Console.WriteLine("Welcome to the accuracy configurator.");
+                        Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
+                        Console.WriteLine("Accuracy level options: M1-M4, P1-P4, & W1-W7");
+                        Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
+                        benchAccuracy = Console.ReadLine().ToUpper();
 
-                        if (benchAccuracy == "M1"){
+                        if (benchAccuracy == "M1") {
                             maxIterations = 0.05 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "M2"){
+                        else if (benchAccuracy == "M2") {
                             maxIterations = 0.1 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "M3"){
+                        else if (benchAccuracy == "M3") {
                             maxIterations = 0.2 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "M4"){
+                        else if (benchAccuracy == "M4") {
                             maxIterations = 0.5 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P1"){
+                        else if (benchAccuracy == "P1") {
                             maxIterations = 1.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P2"){
+                        else if (benchAccuracy == "P2") {
                             maxIterations = 2.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P3"){
+                        else if (benchAccuracy == "P3") {
                             maxIterations = 4.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P4"){
+                        else if (benchAccuracy == "P4") {
                             maxIterations = 8.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W1"){
+                        else if (benchAccuracy == "W1") {
                             maxIterations = 16.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W2"){
+                        else if (benchAccuracy == "W2") {
                             maxIterations = 32.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W3"){
+                        else if (benchAccuracy == "W3") {
                             maxIterations = 64.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W4"){
+                        else if (benchAccuracy == "W4") {
                             maxIterations = 128.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W5"){
+                        else if (benchAccuracy == "W5") {
                             maxIterations = 256.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W6"){
+                        else if (benchAccuracy == "W6") {
                             maxIterations = 384.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W7"){
+                        else if (benchAccuracy == "W7") {
                             maxIterations = 512.0 * 1000.0 * 1000 * 1000;
                         }
-                        else{
+                        else {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("That's an invalid accuracy level. Please try again later.");
                             continue;
                         }
-                            Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
-                            accuracyConfigured = true;
-                        }
-     
-                    Console.WriteLine("Would you like the benchmark to run several times and give averaged results?");
-                    Console.WriteLine("Please ENTER Y or N.");
-                    string averages = Console.ReadLine();
+                        Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
+                        accuracyConfigured = true;
+                    }
+                    string averages = "";
+                    if (newCommand == "bench-single" || newCommand == "bench-multi")
+                    {
+                        //Do nothing for now as we don't support this.
+                    }
+                    else {
+                        Console.WriteLine("Would you like the benchmark to run several times and give averaged results?");
+                        Console.WriteLine("Please ENTER Y or N.");
+                        averages = Console.ReadLine();
+                    }
+
 
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
 
-                    if (averages == "y"){
+                    if (averages == "y") {
                         time.Start();
 
-                        if(newCommand == "bench"){
+                        if (newCommand == "bench") {
                             bench.startBenchmark_Average(maxIterations);
                         }
-                        else if(newCommand == "bench-single"){
-
-                        }
-                        else if(newCommand == "bench-multi"){
-                            
-                        }
-                        
                         time.Stop();
                     }
                     //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
-                    else if(averages == "n" || averages != "y" && averages != "n"){
+                    else if (averages == "n" || averages != "y" && averages != "n") {
                         time.Start();
 
-                        if (newCommand == "bench"){
-                            bench.startBenchmark_Single(maxIterations);
-                            bench.startBenchmark_Multi(maxIterations);
+                        /*                           string cancelString = Console.ReadLine();
+
+                        if (cancelString == "cancel" || cancelString == "break")
+                        {
+                            bench.cancelBenchmark(maxIterations, true);
                         }
-                        else if (newCommand == "bench-single"){
-                            bench.startBenchmark_Single(maxIterations);
+*/
+                        if (newCommand == "bench") {
+                            bench.startBenchmark_Single(maxIterations, false);
+                            bench.startBenchmark_Multi(maxIterations, false);
                         }
-                        else if (newCommand == "bench-multi"){
-                            bench.startBenchmark_Multi(maxIterations);
+                        else if (newCommand == "bench-single") {
+                            bench.startBenchmark_Single(maxIterations, false);
                         }
-         
+                        else if (newCommand == "bench-multi") {
+                            bench.startBenchmark_Multi(maxIterations, false);
+                        }
+
                         time.Stop();
                     }
        
