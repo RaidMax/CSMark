@@ -8,19 +8,18 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 
 | Calculations | Mobile Accuracy Level | PC Accuracy Level | Servers, Workstations and Super Computers  |
 |--------------|-----------------------|-------------------|---|
-| 10 Million   |M1                      |                |     |
-| 50 Million | M2                      |                   |   |   
-| 100 Million  | M3                    |                   |   |   
-| 200 Million  | M4                    |                   |   |   
-| 500 Million  | M5                    |                   |   |   
+| 50 Million | M1                      |                   |   |   
+| 100 Million  | M2                    |                   |   |   
+| 200 Million  | M3                    |                   |   |   
+| 500 Million  | M4                    |                   |   |   
 | 1 Billion    |                        | P1                |   |   
 | 2 Billion    |                        | P2                |   |   
 | 4 Billion    |                         | P3                |   |   
 | 8 Billion    |                       | P4                |   |   
-| 16 Billion   |                       | P5                |   |   
-| 32 Billion   |                       |                     | W1  |   
-| 64 Billion   |                       |                   |  W2 |   
-| 128 Billion   |                       |                   |  W3 |   
-| 256 Billion   |                       |                   | W4  |   
-| 384 Billion   |                       |                   | W5  |   
-| 512 Billion   |                       |                   | W6  |   
+| 16 Billion   |                       |               | W1  |   
+| 32 Billion   |                       |                     | W2  |   
+| 64 Billion   |                       |                   |  W3 |   
+| 128 Billion   |                       |                   |  W4 |   
+| 256 Billion   |                       |                   | W5  |   
+| 384 Billion   |                       |                   | W6  |   
+| 512 Billion   |                       |                   | W7  |   
