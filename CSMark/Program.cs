@@ -11,7 +11,7 @@ namespace CSMark {
             Console.Title = "CSMark 0.13.0";
             Console.Write("Welcome to");
            Console.WriteLine(" CSMark.");
-            double maxIterations = 0.1 * 1000.0 * 1000 * 1000;
+            double maxIterations = 0.05 * 1000.0 * 1000 * 1000;
             string benchAccuracy = "1";
             string newCommand;
             bool accuracyConfigured = false;
@@ -54,38 +54,32 @@ namespace CSMark {
                         if (configure.ToLower() == "y"){
                             Console.WriteLine("Welcome to the accuracy configurator.");
                             Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                            Console.WriteLine("Accuracy level options: 1-7");
+                            Console.WriteLine("Accuracy level options: M1-M4, P1-P4, & W1-W7");
                             Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
-                            benchAccuracy = Console.ReadLine();
+                            benchAccuracy = Console.ReadLine().ToUpper();
 
                         if (benchAccuracy == "M1"){
-                            maxIterations = 0.01 * 1000.0 * 1000 * 1000;
-                        }
-                        else if (benchAccuracy == "M2"){
-                            maxIterations = 0.02 * 1000.0 * 1000 * 1000;
-                        }
-                        else if (benchAccuracy == "M3"){
                             maxIterations = 0.05 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "M4"){
+                        else if (benchAccuracy == "M2"){
                             maxIterations = 0.1 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "M5"){
+                        else if (benchAccuracy == "M3"){
                             maxIterations = 0.2 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P1"){
+                        else if (benchAccuracy == "M4"){
                             maxIterations = 0.5 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P2"){
+                        else if (benchAccuracy == "P1"){
                             maxIterations = 1.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P3"){
+                        else if (benchAccuracy == "P2"){
                             maxIterations = 2.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P4"){
+                        else if (benchAccuracy == "P3"){
                             maxIterations = 4.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "P5"){
+                        else if (benchAccuracy == "P4"){
                             maxIterations = 8.0 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "W1"){
@@ -106,7 +100,7 @@ namespace CSMark {
                         else if (benchAccuracy == "W6"){
                             maxIterations = 384.0 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "W6"){
+                        else if (benchAccuracy == "W7"){
                             maxIterations = 512.0 * 1000.0 * 1000 * 1000;
                         }
                         else{
@@ -178,6 +172,9 @@ namespace CSMark {
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
                     else{
+                        Console.WriteLine("                                                            ");
+                        Console.WriteLine("Results:");
+
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
                         Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");

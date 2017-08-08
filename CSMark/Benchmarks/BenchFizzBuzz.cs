@@ -49,5 +49,25 @@ namespace CSMark.Benchmarks
             }
             return 0;
         }
+        public void multiThreadedBench(double maxIterations)
+        {
+            iteration = 0;
+            stopwatch.Start();
+            double maxThreadIterations = maxIterations / Environment.ProcessorCount;
+            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
+                workerThreads[i].Start();
+            }
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i].Join();
+            }
+            stopwatch.Stop();
+            multiTime = stopwatch.ElapsedMilliseconds;
+            stopwatch.Reset();
+            iteration = 0;
+        }
     }
 }

@@ -92,6 +92,8 @@ namespace CSMark{
                 bpe.singleThreadedBench(_maxIterations);
             Console.WriteLine("Starting ArithmeticSumN single threaded benchmark");
             bas.singleThreadedBench(_maxIterations);
+            Console.WriteLine("Starting FizzBuzz single threaded benchmark");
+            bfz.singleThreadedBench(_maxIterations);
         }
         public void startBenchmark_Multi(double _maxIterations){
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
@@ -102,6 +104,8 @@ namespace CSMark{
                 bpe.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting ArithmeticSumN multi threaded benchmark");
             bas.multiThreadedBench(_maxIterations);
+            Console.WriteLine("Starting FizzBuzz multi threaded benchmark");
+            bfz.multiThreadedBench(_maxIterations);
         }
 
         public void startBenchmark_Average(double _maxIterations){
@@ -257,7 +261,7 @@ namespace CSMark{
             return arithmeticSumNScaling;
         }
         public double returnScalingFizzBuzz(){
-            arithmeticSumNScaling = returnSingleThreadedArithmeticSumN() / returnMultiThreadedArithmeticSumN();
+            fizzBuzzScaling = returnSingleThreadedFizzBuzz() / returnMultiThreadedFizzBuzz();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             fizzBuzzScaling = Math.Round(fizzBuzzScaling, 2, MidpointRounding.AwayFromZero);
             fizzBuzzScaling = fizzBuzzScaling * 100;
