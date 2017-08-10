@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace CSMark {
     public class Program {
@@ -9,38 +10,34 @@ namespace CSMark {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Title = "CSMark 0.13.0";
-            Console.Write("Welcome to");
-           Console.WriteLine(" CSMark.");
+            string CSMarkVersion = "0.13.0_PreRelease";
+            Console.WriteLine("Welcome to CSMark.");
+            Console.WriteLine("The current time is " + DateTime.Now.ToString());
             double maxIterations = 0.05 * 1000.0 * 1000 * 1000;
-            string benchAccuracy = "1";
+            string benchAccuracy = "M1";
             string newCommand;
             bool accuracyConfigured = false;
             Stopwatch time = new Stopwatch();
 
             while (true) {
                 time.Reset();
-
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
                 Console.Write("To run the single threaded and multi threaded tests, please enter ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("BENCH.");
                 Console.ForegroundColor = ConsoleColor.Gray;
-
                 Console.Write("To run the single threaded tests only, please enter ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("BENCH-SINGLE.");
                 Console.ForegroundColor = ConsoleColor.Gray;
-
                 Console.Write("To run the multi threaded tests only, please enter ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("BENCH-MULTI.");
                 Console.ForegroundColor = ConsoleColor.Gray;
-
                 Console.Write("To run the stress test utility, please enter ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("STRESS.");
-
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Please give feedback or report any bugs by opening a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -112,8 +109,7 @@ namespace CSMark {
                         accuracyConfigured = true;
                     }
                     string averages = "";
-                    if (newCommand == "bench-single" || newCommand == "bench-multi")
-                    {
+                    if (newCommand == "bench-single" || newCommand == "bench-multi"){
                         //Do nothing for now as we don't support this.
                     }
                     else {
@@ -121,8 +117,6 @@ namespace CSMark {
                         Console.WriteLine("Please ENTER Y or N.");
                         averages = Console.ReadLine();
                     }
-
-
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
 
@@ -137,14 +131,7 @@ namespace CSMark {
                     //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
                     else if (averages == "n" || averages != "y" && averages != "n") {
                         time.Start();
-
-                        /*                           string cancelString = Console.ReadLine();
-
-                        if (cancelString == "cancel" || cancelString == "break")
-                        {
-                            bench.cancelBenchmark(maxIterations, true);
-                        }
-*/
+                        
                         if (newCommand == "bench") {
                             bench.startBenchmark_Single(maxIterations, false);
                             bench.startBenchmark_Multi(maxIterations, false);
@@ -217,7 +204,34 @@ namespace CSMark {
                         }
                     else{
                         Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
-                    }                    
+                    }
+
+                    Console.ForegroundColor = ConsoleColor.Gray;
+
+                    Console.WriteLine("                                                ");
+                    Console.WriteLine("Would you like to save the results to a File?");
+                    Console.WriteLine("Please enter Y or N.");
+                    string saveConfirm = Console.ReadLine().ToLower();
+
+                    if (saveConfirm == "y" || saveConfirm != "n"){
+                        var score = new ScoreSaver();
+
+                        Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
+
+                        score.setArithmeticSumN(bench.returnSingleThreadedArithmeticSumN().ToString(), bench.returnMultiThreadedArithmeticSumN().ToString());
+                        score.setFizzBuzz(bench.returnSingleThreadedFizzBuzz().ToString(), bench.returnMultiThreadedFizzBuzz().ToString());
+                        score.setPythagoras(bench.returnSingleThreadedPythagoras().ToString(), bench.returnMultiThreadedPythagoras().ToString());
+                        score.setTrigonometry(bench.returnSingleThreadedTrigonometry().ToString(), bench.returnMultiThreadedTrigonometry().ToString());
+                        score.setPercentageError(bench.returnSingleThreadedPercentageError().ToString(), bench.returnMultiThreadedPercentageError().ToString());
+                        score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString());
+                        score.saveToTextFile(Directory.GetCurrentDirectory() + "\\results", CSMarkVersion, benchAccuracy, accuracyConfigured);                 
+                    }
+                    else if (saveConfirm == "n") {
+                        //Do nothing, the app will automatically continue and will restart the While Loop.
+                    }
+                    else{
+                        //Do nothing, the app will automatically continue and will restart the While Loop.
+                    }
                     continue;
                 }
                 else if (newCommand == "stress" || newCommand == "stress test" || newCommand == "stress-test") {
