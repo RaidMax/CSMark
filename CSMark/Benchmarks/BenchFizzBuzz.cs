@@ -10,7 +10,6 @@ namespace CSMark.Benchmarks
         FizzBuzz fizz = new FizzBuzz();
         Stopwatch stopwatch = new Stopwatch();
         double iteration = 0;
-
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -25,12 +24,11 @@ namespace CSMark.Benchmarks
             multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
-        public void singleThreadedBench(double maxIterations, bool termination)
-        {
+        public void singleThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
             iteration = 0;
             stopwatch.Start();
-            while (iteration <= maxIterations & termination == false){
+            while (iteration <= maxIterations){
                 fizz.calculateFizzBuzz(iteration);
                 //Increment our counter
                 iteration++;
@@ -40,26 +38,24 @@ namespace CSMark.Benchmarks
             stopwatch.Reset();
             iteration = 0;
         }
-        private static double threadCalc(double maxThreadIterations, bool termination)
-        {
+        private static double threadCalc(double maxThreadIterations){
             FizzBuzz fizz2 = new FizzBuzz();
             double iteration = 0;
-            while (iteration <= maxThreadIterations & termination == false){
+            while (iteration <= maxThreadIterations){
                 fizz2.calculateFizzBuzz(iteration);
                 //Increment our counter
                 iteration++;
             }
             return 0;
         }
-        public void multiThreadedBench(double maxIterations, bool termination)
-        {
+        public void multiThreadedBench(double maxIterations){
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations, termination));
+                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
             for (int i = 0; i < Environment.ProcessorCount; i++)

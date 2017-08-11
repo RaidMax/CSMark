@@ -21,197 +21,94 @@ namespace CSMark{
         double arithmeticSumNAverage_multi;
         double fizzBuzzAverage_multi;
 
-        double pythagoras1_single;
-        double pythagoras2_single;
-        double pythagoras3_single;
-        double pythagoras4_single;
-        double pythagoras5_single;
-        double trigonometry1_single;
-        double trigonometry2_single;
-        double trigonometry3_single;
-        double trigonometry4_single;
-        double trigonometry5_single;
-        double percentageError1_single;
-        double percentageError2_single;
-        double percentageError3_single;
-        double percentageError4_single;
-        double percentageError5_single;
-        double arithmeticSumN1_single;
-        double arithmeticSumN2_single;
-        double arithmeticSumN3_single;
-        double arithmeticSumN4_single;
-        double arithmeticSumN5_single;
-        double fizzBuzz1_single;
-        double fizzBuzz2_single;
-        double fizzBuzz3_single;
-        double fizzBuzz4_single;
-        double fizzBuzz5_single;
-
-        double pythagoras1_multi;
-        double pythagoras2_multi;
-        double pythagoras3_multi;
-        double pythagoras4_multi;
-        double pythagoras5_multi;
-        double trigonometry1_multi;
-        double trigonometry2_multi;
-        double trigonometry3_multi;
-        double trigonometry4_multi;
-        double trigonometry5_multi;
-        double percentageError1_multi;
-        double percentageError2_multi;
-        double percentageError3_multi;
-        double percentageError4_multi;
-        double percentageError5_multi;
-        double arithmeticSumN1_multi;
-        double arithmeticSumN2_multi;
-        double arithmeticSumN3_multi;
-        double arithmeticSumN4_multi;
-        double arithmeticSumN5_multi;
-        double fizzBuzz1_multi;
-        double fizzBuzz2_multi;
-        double fizzBuzz3_multi;
-        double fizzBuzz4_multi;
-        double fizzBuzz5_multi;
-
-        bool terminated_Successful = false;
-
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
         double arithmeticSumNScaling = 0;
         double fizzBuzzScaling = 0;
 
-        public void startBenchmark(double maxIterations){
-            startBenchmark_Single(maxIterations, false);
-            startBenchmark_Multi(maxIterations, false);
-        }
-        public bool cancelled(){
-            return terminated_Successful;
-        }
+        double[] pythagoras_single = new double[5];
+        double[] trigonometry_single = new double[5];
+        double[] fizzBuzz_single = new double[5];
+        double[] percentageError_single = new double[5];
+        double[] arithmeticSumN_single = new double[5];
 
-        public void cancelBenchmark(double _maxIterations, bool termination){
-            trigB.singleThreadedBench(_maxIterations, true);
-            pyB.singleThreadedBench(_maxIterations, true);
-            bas.singleThreadedBench(_maxIterations, true);
-            bpe.singleThreadedBench(_maxIterations, true);
-            bfz.singleThreadedBench(_maxIterations, true);
-            trigB.multiThreadedBench(_maxIterations, true);
-            bas.multiThreadedBench(_maxIterations, true);
-            pyB.multiThreadedBench(_maxIterations, true);
-            bpe.multiThreadedBench(_maxIterations, true);
-            bfz.multiThreadedBench(_maxIterations, true);
-            terminated_Successful = true;
+        double[] pythagoras_multi = new double[5];
+        double[] trigonometry_multi = new double[5];
+        double[] fizzBuzz_multi = new double[5];
+        double[] percentageError_multi = new double[5];
+        double[] arithmeticSumN_multi = new double[5];
+
+        public void startBenchmark(double maxIterations){
+            startBenchmark_Single(maxIterations);
+            startBenchmark_Multi(maxIterations);
         }
-        public void startBenchmark_Single(double _maxIterations, bool termination){
+        public void startBenchmark_Single(double _maxIterations){
                 Console.WriteLine("Starting Trigonometry single threaded benchmark");
-                trigB.singleThreadedBench(_maxIterations, false);
+                trigB.singleThreadedBench(_maxIterations);
                 Console.WriteLine("Starting Pythagoras single threaded benchmark");
-                pyB.singleThreadedBench(_maxIterations, false);
+                pyB.singleThreadedBench(_maxIterations);
                 Console.WriteLine("Starting PercentageError single threaded benchmark");
-                bpe.singleThreadedBench(_maxIterations, false);
+                bpe.singleThreadedBench(_maxIterations);
             Console.WriteLine("Starting ArithmeticSumN single threaded benchmark");
-            bas.singleThreadedBench(_maxIterations, false);
+            bas.singleThreadedBench(_maxIterations);
             Console.WriteLine("Starting FizzBuzz single threaded benchmark");
-            bfz.singleThreadedBench(_maxIterations, false);
+            bfz.singleThreadedBench(_maxIterations);
         }
-        public void startBenchmark_Multi(double _maxIterations, bool termination){
+        public void startBenchmark_Multi(double _maxIterations){
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
-            trigB.multiThreadedBench(_maxIterations,false);
+            trigB.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting Pythagoras multi threaded benchmark");
-                pyB.multiThreadedBench(_maxIterations, false);
+                pyB.multiThreadedBench(_maxIterations);
                 Console.WriteLine("Starting PercentageError multi threaded benchmark");
-                bpe.multiThreadedBench(_maxIterations, false);
+                bpe.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting ArithmeticSumN multi threaded benchmark");
-            bas.multiThreadedBench(_maxIterations, false);
+            bas.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting FizzBuzz multi threaded benchmark");
-            bfz.multiThreadedBench(_maxIterations, false);
+            bfz.multiThreadedBench(_maxIterations);
         }
 
         public void startBenchmark_Average(double _maxIterations){
-            startBenchmark_Single(_maxIterations, false);
-            startBenchmark_Multi(_maxIterations, false);
+            int i = 0;
+            while (i <= 4){
+                startBenchmark_Single(_maxIterations);
+                startBenchmark_Multi(_maxIterations);
 
-            pythagoras1_single = returnSingleThreadedPythagoras();
-            pythagoras1_multi = returnMultiThreadedPythagoras();
-            trigonometry1_single = returnSingleThreadedTrigonometry();
-            trigonometry1_multi = returnMultiThreadedTrigonometry();
-            percentageError1_single = returnSingleThreadedPercentageError();
-            percentageError1_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN1_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN1_multi = returnMultiThreadedArithmeticSumN();
-            fizzBuzz1_single = returnSingleThreadedArithmeticSumN();
-            fizzBuzz1_multi = returnMultiThreadedArithmeticSumN();
+                pythagoras_single[i] = returnSingleThreadedPythagoras();
+                trigonometry_single[i] = returnSingleThreadedTrigonometry();
+                percentageError_single[i] = returnSingleThreadedPercentageError();
+                fizzBuzz_single[i] = returnSingleThreadedFizzBuzz();
+                arithmeticSumN_single[i] = returnSingleThreadedArithmeticSumN();
 
-            startBenchmark_Single(_maxIterations, false);
-            startBenchmark_Multi(_maxIterations, false);
+                pythagoras_multi[i] = returnMultiThreadedPythagoras();
+                trigonometry_multi[i] = returnMultiThreadedTrigonometry();
+                percentageError_multi[i] = returnMultiThreadedPercentageError();
+                fizzBuzz_multi[i] = returnMultiThreadedFizzBuzz();
+                arithmeticSumN_multi[i] = returnMultiThreadedArithmeticSumN();
 
-            pythagoras2_single = returnSingleThreadedPythagoras();
-            pythagoras2_multi = returnMultiThreadedPythagoras();
-            trigonometry2_single = returnSingleThreadedTrigonometry();
-            trigonometry2_multi = returnMultiThreadedTrigonometry();
-            percentageError2_single = returnSingleThreadedPercentageError();
-            percentageError2_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN2_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN2_multi = returnMultiThreadedArithmeticSumN();
-            fizzBuzz2_single = returnSingleThreadedArithmeticSumN();
-            fizzBuzz2_multi = returnMultiThreadedArithmeticSumN();
+                Console.WriteLine(returnSingleThreadedPythagoras());
+                Console.WriteLine(returnSingleThreadedTrigonometry());
+                Console.WriteLine(returnSingleThreadedPercentageError());
+                Console.WriteLine(returnSingleThreadedFizzBuzz());
+                Console.WriteLine(returnSingleThreadedArithmeticSumN());
+                Console.WriteLine(returnMultiThreadedPythagoras());
+                Console.WriteLine(returnMultiThreadedTrigonometry());
+                Console.WriteLine(returnMultiThreadedPercentageError());
+                Console.WriteLine(returnMultiThreadedFizzBuzz());
+                Console.WriteLine(returnMultiThreadedArithmeticSumN());
 
-            startBenchmark_Single(_maxIterations, false);
-            startBenchmark_Multi(_maxIterations, false);
-
-            pythagoras3_single = returnSingleThreadedPythagoras();
-            pythagoras3_multi = returnMultiThreadedPythagoras();
-            trigonometry3_single = returnSingleThreadedTrigonometry();
-            trigonometry3_multi = returnMultiThreadedTrigonometry();
-            percentageError3_single = returnSingleThreadedPercentageError();
-            percentageError3_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN3_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN3_multi = returnMultiThreadedArithmeticSumN();
-            fizzBuzz3_single = returnSingleThreadedArithmeticSumN();
-            fizzBuzz3_multi = returnMultiThreadedArithmeticSumN();
-
-            startBenchmark_Single(_maxIterations, false);
-            startBenchmark_Multi(_maxIterations, false);
-
-            pythagoras4_single = returnSingleThreadedPythagoras();
-            pythagoras4_multi = returnMultiThreadedPythagoras();
-            trigonometry4_single = returnSingleThreadedTrigonometry();
-            trigonometry4_multi = returnMultiThreadedTrigonometry();
-            percentageError4_single = returnSingleThreadedPercentageError();
-            percentageError4_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN4_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN4_multi = returnMultiThreadedArithmeticSumN();
-            fizzBuzz4_single = returnSingleThreadedArithmeticSumN();
-            fizzBuzz4_multi = returnMultiThreadedArithmeticSumN();
-
-            startBenchmark_Single(_maxIterations, false);
-            startBenchmark_Multi(_maxIterations, false);
-
-            pythagoras5_single = returnSingleThreadedPythagoras();
-            pythagoras5_multi = returnMultiThreadedPythagoras();
-            trigonometry5_single = returnSingleThreadedTrigonometry();
-            trigonometry5_multi = returnMultiThreadedTrigonometry();
-            percentageError5_single = returnSingleThreadedPercentageError();
-            percentageError5_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN5_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN5_multi = returnMultiThreadedArithmeticSumN();
-            fizzBuzz5_single = returnSingleThreadedArithmeticSumN();
-            fizzBuzz5_multi = returnMultiThreadedArithmeticSumN();
-
-            pythagorasAverage_single = (pythagoras1_single + pythagoras2_single + pythagoras3_single + pythagoras4_single + pythagoras5_single) / 5;
-            pythagorasAverage_multi = (pythagoras1_multi + pythagoras2_multi + pythagoras3_multi + pythagoras4_multi + pythagoras5_multi) / 5;
-
-            trigonometryAverage_single = (trigonometry1_single + trigonometry2_single + trigonometry3_single + trigonometry4_single + trigonometry5_single) / 5;
-            trigonometryAverage_multi = (trigonometry1_multi + trigonometry2_multi + trigonometry3_multi + trigonometry4_multi + trigonometry5_multi) / 5;
-
-            percentageErrorAverage_single = (percentageError1_single + percentageError2_single + percentageError3_single + percentageError4_single + percentageError5_single) / 5;
-            percentageErrorAverage_multi = (percentageError1_multi + percentageError2_multi + percentageError3_multi + percentageError4_multi + percentageError5_multi) / 5;
-
-            arithmeticSumNAverage_single = (arithmeticSumN1_single + arithmeticSumN2_single + arithmeticSumN3_single + arithmeticSumN4_single + arithmeticSumN5_single) / 5;
-            arithmeticSumNAverage_multi = (arithmeticSumN1_multi + arithmeticSumN2_multi + arithmeticSumN3_multi + arithmeticSumN4_multi + arithmeticSumN5_multi) / 5;
-
-           fizzBuzzAverage_single = (fizzBuzz1_single + fizzBuzz2_single + fizzBuzz3_single + fizzBuzz4_single + fizzBuzz5_single) / 5;
-            fizzBuzzAverage_multi = (fizzBuzz1_multi + fizzBuzz2_multi + fizzBuzz3_multi + fizzBuzz4_multi + fizzBuzz5_multi) / 5;
+                i++;
+            }
+            pythagorasAverage_single = (pythagoras_single[0] + pythagoras_single[1] + pythagoras_single[2] + pythagoras_single[3] + pythagoras_single[4]) / 5;
+            pythagorasAverage_multi = (pythagoras_multi[0] + pythagoras_multi[1] + pythagoras_multi[2] + pythagoras_multi[3] + pythagoras_multi[4]) / 5;
+            trigonometryAverage_single = (trigonometry_single[0] + trigonometry_single[1] + trigonometry_single[2] + trigonometry_single[3] + trigonometry_single[4]) / 5;
+            trigonometryAverage_multi = (trigonometry_multi[0] + trigonometry_multi[1] + trigonometry_multi[2] + trigonometry_multi[3] + trigonometry_multi[4]) / 5;
+            percentageErrorAverage_single = (percentageError_single[0] + percentageError_single[1] + percentageError_single[2] + percentageError_single[3] + percentageError_single[4]) / 5;
+            percentageErrorAverage_multi = (percentageError_multi[0] + percentageError_multi[1] + percentageError_multi[2] + percentageError_multi[3] + percentageError_multi[4]) / 5;
+            arithmeticSumNAverage_single = (arithmeticSumN_single[0] + arithmeticSumN_single[1] + arithmeticSumN_single[2] + arithmeticSumN_single[3] + arithmeticSumN_single[4]) / 5;
+            arithmeticSumNAverage_multi = (arithmeticSumN_multi[0] + arithmeticSumN_multi[1] + arithmeticSumN_multi[2] + arithmeticSumN_multi[3] + arithmeticSumN_multi[4]) / 5;
+            fizzBuzzAverage_single = (fizzBuzz_single[0] + fizzBuzz_single[1] + fizzBuzz_single[2] + fizzBuzz_single[3] + fizzBuzz_single[4]) / 5;
+            fizzBuzzAverage_multi = (fizzBuzz_multi[0] + fizzBuzz_multi[1] + fizzBuzz_multi[2] + fizzBuzz_multi[3] + fizzBuzz_multi[4]) / 5;
         }
 
         #region Return Results

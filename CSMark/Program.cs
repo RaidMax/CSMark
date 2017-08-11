@@ -9,8 +9,8 @@ namespace CSMark {
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Title = "CSMark 0.13.1";
-            string CSMarkVersion = "0.13.1_PreRelease";
+            Console.Title = "CSMark 0.13.2";
+            string CSMarkVersion = "0.13.2_PreRelease";
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
             string newCommand;
@@ -20,8 +20,8 @@ namespace CSMark {
             string benchAccuracy;
 
             while (true) {
-              maxIterations = 0.05 * 1000.0 * 1000 * 1000;
-                benchAccuracy = "M1";
+              maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+                benchAccuracy = "MX1";
                 time.Reset();
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
@@ -53,21 +53,15 @@ namespace CSMark {
                     if (configure.ToLower() == "y") {
                         Console.WriteLine("Welcome to the accuracy configurator.");
                         Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                        Console.WriteLine("Accuracy level options: M1-M4, P1-P4, & W1-W7");
+                        Console.WriteLine("Accuracy level options: MX1-MX2, P1-P4, & W1-W7");
                         Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                         benchAccuracy = Console.ReadLine().ToUpper();
 
-                        if (benchAccuracy == "M1") {
-                            maxIterations = 0.05 * 1000.0 * 1000 * 1000;
+                        if (benchAccuracy == "MX1") {
+                            maxIterations = 200.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "M2") {
-                            maxIterations = 0.1 * 1000.0 * 1000 * 1000;
-                        }
-                        else if (benchAccuracy == "M3") {
-                            maxIterations = 0.2 * 1000.0 * 1000 * 1000;
-                        }
-                        else if (benchAccuracy == "M4") {
-                            maxIterations = 0.5 * 1000.0 * 1000 * 1000;
+                        else if (benchAccuracy == "MX2") {
+                            maxIterations = 500.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P1") {
                             maxIterations = 1.0 * 1000.0 * 1000 * 1000;
@@ -114,15 +108,16 @@ namespace CSMark {
                     if (newCommand == "bench-single" || newCommand == "bench-multi"){
                         //Do nothing for now as we don't support this.
                     }
-                    else {
+            /*        else {
                         Console.WriteLine("Would you like the benchmark to run several times and give averaged results?");
                         Console.WriteLine("Please ENTER Y or N.");
                         averages = Console.ReadLine();
                     }
+                    */
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
 
-                    if (averages == "y") {
+                 /*   if (averages == "y") {
                         time.Start();
 
                         if (newCommand == "bench") {
@@ -130,24 +125,23 @@ namespace CSMark {
                         }
                         time.Stop();
                     }
+                    */
                     //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
-                    else if (averages == "n" || averages != "y" && averages != "n") {
+                     if (averages == "n" || averages != "y" && averages != "n") {
                         time.Start();
                         
                         if (newCommand == "bench") {
-                            bench.startBenchmark_Single(maxIterations, false);
-                            bench.startBenchmark_Multi(maxIterations, false);
+                            bench.startBenchmark_Single(maxIterations);
+                            bench.startBenchmark_Multi(maxIterations);
                         }
                         else if (newCommand == "bench-single") {
-                            bench.startBenchmark_Single(maxIterations, false);
+                            bench.startBenchmark_Single(maxIterations);
                         }
                         else if (newCommand == "bench-multi") {
-                            bench.startBenchmark_Multi(maxIterations, false);
+                            bench.startBenchmark_Multi(maxIterations);
                         }
-
                         time.Stop();
-                    }
-       
+                    }     
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     if (newCommand == "bench-multi"){
@@ -170,7 +164,7 @@ namespace CSMark {
                     else{
                         Console.WriteLine("                                                            ");
                         Console.WriteLine("Results:");
-
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
                         Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");

@@ -11,7 +11,6 @@ namespace CSMark.Benchmarks{
         //This what we'll use for H,O and A.
         double exp = 4800;
         double act = 6300;
-
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -25,11 +24,11 @@ namespace CSMark.Benchmarks{
             multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
-        public void singleThreadedBench(double maxIterations, bool termination){
+        public void singleThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
             iteration = 0;
             stopwatch.Start();
-            while (iteration <= maxIterations & termination == false){
+            while (iteration <= maxIterations){
                 pe.calcPercentageError(exp, act);
                 //Increment our counter
                 iteration++;
@@ -39,10 +38,10 @@ namespace CSMark.Benchmarks{
             stopwatch.Reset();
             iteration = 0;
         }
-        private static double threadCalc(double exp1, double act1, double maxThreadIterations, bool termination) {
+        private static double threadCalc(double exp1, double act1, double maxThreadIterations) {
             PercentageError peX = new PercentageError();
             double iteration = 0;
-            while (iteration <= maxThreadIterations & termination == false)
+            while (iteration <= maxThreadIterations)
             {
                 peX.calcPercentageError(exp1, act1);
                 //Increment our counter
@@ -50,13 +49,13 @@ namespace CSMark.Benchmarks{
             }
             return 0;
         }
-        public void multiThreadedBench(double maxIterations, bool termination){
+        public void multiThreadedBench(double maxIterations){
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(exp,act, maxThreadIterations, termination));
+                workerThreads[i] = new Thread(() => threadCalc(exp,act, maxThreadIterations));
                 exp += 2 * maxThreadIterations;
                 act += 1 * maxThreadIterations;
                 workerThreads[i].Start();

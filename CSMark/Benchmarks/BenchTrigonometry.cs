@@ -25,16 +25,15 @@ namespace CSMark.Benchmarks{
             multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
         }
-        public void singleThreadedBench(double maxIterations, bool termination){
+        public void singleThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
             iteration = 0;
             double randomNumber = 0;
             Random random = new Random();
             stopwatch.Start();
-            while (iteration <= maxIterations & termination == false){
+            while (iteration <= maxIterations){
                 randomNumber = random.Next(3);
-                switch (randomNumber)
-                {
+                switch (randomNumber){
                     case 0:
                         tr.getCosAngle(A, H);
                         break;
@@ -53,11 +52,11 @@ namespace CSMark.Benchmarks{
             stopwatch.Reset();
             iteration = 0;
         }
-        private static double threadCalc(double H, double O, double A, double maxThreadIterations, bool termination){
+        private static double threadCalc(double H, double O, double A, double maxThreadIterations){
             Trigonometry tr2 = new Trigonometry();
             Random random = new Random();
             double iteration = 0;
-            while (iteration <= maxThreadIterations & termination == false){
+            while (iteration <= maxThreadIterations){
                 double randomNumber = random.Next(2);
                 switch (randomNumber){
                     case 0:
@@ -75,14 +74,14 @@ namespace CSMark.Benchmarks{
             }
             return 0;
         }
-        public void multiThreadedBench(double maxIterations, bool termination){
+        public void multiThreadedBench(double maxIterations){
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
 
             for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations, termination));
+                workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations));
                 H += 3 * maxThreadIterations;
                 O += 2 * maxThreadIterations;
                 A += 1 * maxThreadIterations;
