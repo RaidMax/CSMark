@@ -9,19 +9,29 @@ namespace CSMark {
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
+
             Console.Title = "CSMark 0.13.2";
             string CSMarkVersion = "0.13.2_PreRelease";
+            bool previewBranch = false;
+
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
             string newCommand;
             bool accuracyConfigured = false;
             Stopwatch time = new Stopwatch();
-            double maxIterations;
-            string benchAccuracy;
+            double maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+            string benchAccuracy = "MX1";
 
             while (true) {
-              maxIterations = 0.2 * 1000.0 * 1000 * 1000;
-                benchAccuracy = "MX1";
+                if (previewBranch == true) {
+                    benchAccuracy = "MX1";
+                    maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+                }
+                else if (previewBranch == false){
+                    benchAccuracy = "M1";
+                    maxIterations = 0.05 * 1000.0 * 1000 * 1000;
+                }
+                
                 time.Reset();
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
@@ -46,6 +56,21 @@ namespace CSMark {
                 newCommand = Console.ReadLine().ToLower();
 
                 if (newCommand == "bench" || newCommand == "bench-single" || newCommand == "bench-multi") {
+
+                    if (previewBranch == true & newCommand == "bench-single" & Environment.ProcessorCount >= 8){
+                        Console.WriteLine("Are you sure you want to test a highly multi-threaded CPU in the single threaded tests?");
+                        Console.WriteLine("Enter Y or N.");
+                        string decideSingle = Console.ReadLine();
+
+                        if (decideSingle == "y"){
+                            //Do nothing.
+                        }
+                        else{
+                            Console.WriteLine("Quitting the single threaded benchmark.");
+                            continue;
+                        }
+                    }
+
                     Console.WriteLine("Would you like to configure the accuracy level of this benchmark?");
                     Console.WriteLine("ENTER Y or N");
                     string configure = Console.ReadLine();
@@ -53,15 +78,29 @@ namespace CSMark {
                     if (configure.ToLower() == "y") {
                         Console.WriteLine("Welcome to the accuracy configurator.");
                         Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
-                        Console.WriteLine("Accuracy level options: MX1-MX2, P1-P4, & W1-W7");
+
+                        if (previewBranch == true) {
+                            Console.WriteLine("Accuracy level options: MX1-MX2, P1-P4, & W1-W7");
+                        }
+                        else if (previewBranch == false) {
+                            Console.WriteLine("Accuracy level options: M1-M4, P1-P4, & W1-W7");
+                        }
+
                         Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                         benchAccuracy = Console.ReadLine().ToUpper();
 
-                        if (benchAccuracy == "MX1") {
-                            maxIterations = 200.0 * 1000 * 1000;
+                        //Maintain some backwards compatible benchmark options for "Official Release" users. Insider Previews will use the newer accuracy levels
+                        if (previewBranch == false & benchAccuracy == "M1") {
+                            maxIterations = 0.05 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "MX2") {
-                            maxIterations = 500.0 * 1000 * 1000;
+                        else if (previewBranch == false & benchAccuracy == "M2") {
+                            maxIterations = 0.1 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (previewBranch == true & benchAccuracy == "MX1" || benchAccuracy == "M3") {
+                            maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+                        }
+                        else if (previewBranch == true & benchAccuracy == "MX2" || benchAccuracy == "M4") {
+                            maxIterations = 0.5 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P1") {
                             maxIterations = 1.0 * 1000.0 * 1000 * 1000;
@@ -104,47 +143,26 @@ namespace CSMark {
                         Console.WriteLine("You have selected Accuracy Level " + benchAccuracy);
                         accuracyConfigured = true;
                     }
-                    string averages = "";
-                    if (newCommand == "bench-single" || newCommand == "bench-multi"){
-                        //Do nothing for now as we don't support this.
-                    }
-            /*        else {
-                        Console.WriteLine("Would you like the benchmark to run several times and give averaged results?");
-                        Console.WriteLine("Please ENTER Y or N.");
-                        averages = Console.ReadLine();
-                    }
-                    */
+
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
+                    Console.WriteLine("Starting benchmark test. The benchmark tests may take a while.");
 
-                 /*   if (averages == "y") {
-                        time.Start();
-
-                        if (newCommand == "bench") {
-                            bench.startBenchmark_Average(maxIterations);
-                        }
-                        time.Stop();
+                    time.Start();
+                    if (newCommand == "bench") {
+                        bench.startBenchmark_Single(maxIterations);
+                        bench.startBenchmark_Multi(maxIterations);
                     }
-                    */
-                    //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
-                     if (averages == "n" || averages != "y" && averages != "n") {
-                        time.Start();
-                        
-                        if (newCommand == "bench") {
-                            bench.startBenchmark_Single(maxIterations);
-                            bench.startBenchmark_Multi(maxIterations);
-                        }
-                        else if (newCommand == "bench-single") {
-                            bench.startBenchmark_Single(maxIterations);
-                        }
-                        else if (newCommand == "bench-multi") {
-                            bench.startBenchmark_Multi(maxIterations);
-                        }
-                        time.Stop();
-                    }     
+                    else if (newCommand == "bench-single") {
+                        bench.startBenchmark_Single(maxIterations);
+                    }
+                    else if (newCommand == "bench-multi") {
+                        bench.startBenchmark_Multi(maxIterations);
+                    }
+                    time.Stop();
+
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    if (newCommand == "bench-multi"){
+                    if (newCommand == "bench-multi") {
                         //Multi threaded CPU benchmarks
                         Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
@@ -153,7 +171,7 @@ namespace CSMark {
                         Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
-                    else if(newCommand == "bench-single"){
+                    else if (newCommand == "bench-single") {
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
                         Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
@@ -161,7 +179,7 @@ namespace CSMark {
                         Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
-                    else{
+                    else {
                         Console.WriteLine("                                                            ");
                         Console.WriteLine("Results:");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
@@ -188,17 +206,17 @@ namespace CSMark {
                         Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
-                    
+
                     Console.WriteLine("Benchmark Accuracy: " + benchAccuracy); ;
                     Console.WriteLine("Configured Accuracy: " + accuracyConfigured);
 
-                    if(accuracyConfigured == true){
+                    if (accuracyConfigured == true) {
                         Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
                     }
-                    else if (accuracyConfigured == false){
-                            Console.WriteLine("Time taken to run benchmark: " + ((time.ElapsedMilliseconds / 1000) / 5) + " Seconds");
-                        }
-                    else{
+                    else if (accuracyConfigured == false) {
+                        Console.WriteLine("Time taken to run benchmark: " + ((time.ElapsedMilliseconds / 1000)) + " Seconds");
+                    }
+                    else {
                         Console.WriteLine("Time taken to run benchmark: " + (time.ElapsedMilliseconds / 1000) + " Seconds");
                     }
 
@@ -209,7 +227,7 @@ namespace CSMark {
                     Console.WriteLine("Please enter Y or N.");
                     string saveConfirm = Console.ReadLine().ToLower();
 
-                    if (saveConfirm == "y" || saveConfirm != "n"){
+                    if (saveConfirm == "y" || saveConfirm != "n") {
                         var score = new ScoreSaver();
 
                         Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
@@ -220,12 +238,9 @@ namespace CSMark {
                         score.setTrigonometry(bench.returnSingleThreadedTrigonometry().ToString(), bench.returnMultiThreadedTrigonometry().ToString());
                         score.setPercentageError(bench.returnSingleThreadedPercentageError().ToString(), bench.returnMultiThreadedPercentageError().ToString());
                         score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString());
-                        score.saveToTextFile(Directory.GetCurrentDirectory() + "\\results", CSMarkVersion, benchAccuracy, accuracyConfigured);                 
+                        score.saveToTextFile(Directory.GetCurrentDirectory() + "\\results", CSMarkVersion, benchAccuracy, accuracyConfigured);
                     }
-                    else if (saveConfirm == "n") {
-                        //Do nothing, the app will automatically continue and will restart the While Loop.
-                    }
-                    else{
+                    else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n") {
                         //Do nothing, the app will automatically continue and will restart the While Loop.
                     }
                     continue;
@@ -244,6 +259,11 @@ namespace CSMark {
                 }          
                 else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean") {
                     Console.Clear();
+                    continue;
+                }
+                else if(newCommand == "preview"){
+                    Console.WriteLine("Preview = " + previewBranch.ToString());
+                    Console.WriteLine("Version = " + CSMarkVersion);
                     continue;
                 }
                 else{
