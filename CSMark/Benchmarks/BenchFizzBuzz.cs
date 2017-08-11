@@ -36,7 +36,6 @@ namespace CSMark.Benchmarks
             stopwatch.Stop();
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
         private static double threadCalc(double maxThreadIterations){
             FizzBuzz fizz2 = new FizzBuzz();
@@ -65,7 +64,6 @@ namespace CSMark.Benchmarks
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
     }
 }

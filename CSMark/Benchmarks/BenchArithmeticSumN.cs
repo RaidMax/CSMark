@@ -38,7 +38,6 @@ namespace CSMark.Benchmarks
             stopwatch.Stop();
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
         private static double threadCalc(double maxThreadIterations){
             ArithmeticSumN arithmeticN1 = new ArithmeticSumN();
@@ -65,7 +64,6 @@ namespace CSMark.Benchmarks
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
     }
 }

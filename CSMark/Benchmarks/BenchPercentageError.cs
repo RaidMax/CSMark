@@ -36,7 +36,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
         private static double threadCalc(double exp1, double act1, double maxThreadIterations) {
             PercentageError peX = new PercentageError();
@@ -66,7 +65,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
     }
 }

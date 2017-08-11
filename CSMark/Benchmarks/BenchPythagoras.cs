@@ -50,7 +50,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
         private static double threadCalc(double H, double O, double A, double maxThreadIterations){
             double randomNumber;
@@ -93,7 +92,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
     }
 }

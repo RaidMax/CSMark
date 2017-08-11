@@ -9,10 +9,9 @@ namespace CSMark {
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
-
-            Console.Title = "CSMark 0.13.2";
-            string CSMarkVersion = "0.13.2_PreRelease";
-            bool previewBranch = false;
+       
+            Console.Title = "CSMark 0.14.0";
+            string CSMarkVersion = "0.14.0_PreRelease";
 
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
@@ -23,14 +22,8 @@ namespace CSMark {
             string benchAccuracy = "MX1";
 
             while (true) {
-                if (previewBranch == true) {
                     benchAccuracy = "MX1";
                     maxIterations = 0.2 * 1000.0 * 1000 * 1000;
-                }
-                else if (previewBranch == false){
-                    benchAccuracy = "M1";
-                    maxIterations = 0.05 * 1000.0 * 1000 * 1000;
-                }
                 
                 time.Reset();
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -57,7 +50,7 @@ namespace CSMark {
 
                 if (newCommand == "bench" || newCommand == "bench-single" || newCommand == "bench-multi") {
 
-                    if (previewBranch == true & newCommand == "bench-single" & Environment.ProcessorCount >= 8){
+                    if (newCommand == "bench-single" & Environment.ProcessorCount >= 8){
                         Console.WriteLine("Are you sure you want to test a highly multi-threaded CPU in the single threaded tests?");
                         Console.WriteLine("Enter Y or N.");
                         string decideSingle = Console.ReadLine();
@@ -79,27 +72,25 @@ namespace CSMark {
                         Console.WriteLine("Welcome to the accuracy configurator.");
                         Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
 
-                        if (previewBranch == true) {
+                        if(newCommand != "bench"){
                             Console.WriteLine("Accuracy level options: MX1-MX2, P1-P4, & W1-W7");
                         }
-                        else if (previewBranch == false) {
-                            Console.WriteLine("Accuracy level options: M1-M4, P1-P4, & W1-W7");
+                        else if (newCommand == "bench"){
+                            Console.WriteLine("Accuracy level options: P1-P4, & W1-W7");
                         }
-
-                        Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
+                       Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                         benchAccuracy = Console.ReadLine().ToUpper();
 
                         //Maintain some backwards compatible benchmark options for "Official Release" users. Insider Previews will use the newer accuracy levels
-                        if (previewBranch == false & benchAccuracy == "M1") {
-                            maxIterations = 0.05 * 1000 * 1000;
+                        
+                        if (benchAccuracy == "MX1" & Environment.ProcessorCount >= 4 & newCommand == "bench-multi" || benchAccuracy == "MX2" & Environment.ProcessorCount >= 4 & newCommand == "bench-multi"){
+                            Console.WriteLine("Your CPU is probably too powerful for this accuracy level. Please try a different accuracy level.");
+                            continue;
                         }
-                        else if (previewBranch == false & benchAccuracy == "M2") {
-                            maxIterations = 0.1 * 1000.0 * 1000 * 1000;
-                        }
-                        else if (previewBranch == true & benchAccuracy == "MX1" || benchAccuracy == "M3") {
+                        else if (benchAccuracy == "MX1" & newCommand != "bench-multi") {
                             maxIterations = 0.2 * 1000.0 * 1000 * 1000;
                         }
-                        else if (previewBranch == true & benchAccuracy == "MX2" || benchAccuracy == "M4") {
+                        else if (benchAccuracy == "MX2" & newCommand != "bench-multi") {
                             maxIterations = 0.5 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P1") {
@@ -259,11 +250,6 @@ namespace CSMark {
                 }          
                 else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean") {
                     Console.Clear();
-                    continue;
-                }
-                else if(newCommand == "preview"){
-                    Console.WriteLine("Preview = " + previewBranch.ToString());
-                    Console.WriteLine("Version = " + CSMarkVersion);
                     continue;
                 }
                 else{
