@@ -10,28 +10,27 @@ All benchmarks included in CSMark are written in C# and are designed to be scala
 
 ### Benchmarks which have been introduced:
 
-| Benchmark Name | Added in | Removed in | Status |
-|----------------|-------------------------|-------------------|-------------------|
-| Pythagoras | 0.1.0.0 | - |  Maintained |
-| Trigonometry | 0.2.0.0 | - | Maintained |
-| Gradient | 0.4.0.0 | 0.5.0.0 | Discontinued |
-| PercentageError | 0.6.0.0 | -| Maintained |
-| ArithmeticSumN | 0.10.0.0 | - | Maintained |
-| FizzBuzz | 0.13.0.0 | - |  Maintained|
+* Difficulty Level refers to how demanding the benchmark is relatively speaking
 
-### Benchmarks that I'm interested in adding
-* Fibonnaci Sequences
+| Benchmark Name | Added in | Removed in | Status | Difficulty Level|
+|----------------|-------------------------|-------------------|-------------------|-------------------|
+| Pythagoras | 0.1.0.0 | - |  Maintained | DL 1 |
+| Trigonometry | 0.2.0.0 | - | Maintained | DL 1|
+| Gradient | 0.4.0.0 | 0.5.0.0 | Discontinued |DL 0 |
+| PercentageError | 0.6.0.0 | -| Maintained |DL 1 |
+| ArithmeticSumN | 0.10.0.0 | - | Maintained | DL 1 |
+| FizzBuzz | 0.13.0.0 | - |  Maintained| DL 2 |
 
 ### Benchmarks which could be introduced:
 
-| Benchmark Name | Added in | Removed in | Status |
-|----------------|-------------------------|-------------------|-------------------|
-| Fibonacci | 0.14.0.0 | - |  Will be added |
-| GeometricSumN | 0.14.0.0 | - |  Will be added |
-| TileCostFinder | 0.14.0.0 or 0.15.0.0 | - |  Could be added |
-| ChangeReturnUS | 0.15.0.0 | - |  Could be added |
-| MortgageMaster | 0.15.0.0 | - |  Could be added |
-| SortAlg | 0.15.0.0 or 0.16.0.0 | - |  Could be added |
-| PalindromeCheck | 0.16.0.0 | - |  Could be added |
-| VowelCount | 0.16.0.0 | - |  Could be added |
-| CaesarShift | 0.16.0.0 | - |  Could be added |
+| Benchmark Name | Added in | Removed in | Status | Difficulty Level|
+|----------------|-------------------------|-------------------|-------------------|-------------------|
+| Fibonacci | 0.14.0.0 | - |  Will be added | |
+| GeometricSumN | 0.14.0.0 | - |  Will be added | DL 2 |
+| TileCostFinder | 0.14.0.0 or 0.15.0.0 | - |  Could be added | |
+| ChangeReturnUS | 0.15.0.0 | - |  Could be added | |
+| MortgageMaster | 0.15.0.0 | - |  Could be added | |
+| SortAlg | 0.15.0.0 or 0.16.0.0 | - |  Could be added | |
+| PalindromeCheck | 0.16.0.0 | - |  Could be added | |
+| VowelCount | 0.16.0.0 | - |  Could be added | |
+| CaesarShift | 0.16.0.0 | - |  Could be added | |
