@@ -72,10 +72,10 @@ namespace CSMark {
                         Console.WriteLine("Welcome to the accuracy configurator.");
                         Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
 
-                        if(newCommand != "bench"){
+                        if(newCommand != "bench-multi"){
                             Console.WriteLine("Accuracy level options: MX1-MX2, P1-P4, & W1-W7");
                         }
-                        else if (newCommand == "bench"){
+                        else if (newCommand == "bench-multi"){
                             Console.WriteLine("Accuracy level options: P1-P4, & W1-W7");
                         }
                        Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
@@ -160,6 +160,7 @@ namespace CSMark {
                         Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
                         Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("GeometricSumN Test Multi Threaded Score: " + bench.returnMultiThreadedGeometricSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
                     else if (newCommand == "bench-single") {
@@ -168,17 +169,19 @@ namespace CSMark {
                         Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
                         Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("GeometricSumN Test Single Threaded Score: " + bench.returnSingleThreadedGeometricSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
                     else {
                         Console.WriteLine("                                                            ");
-                        Console.WriteLine("Results:");
+                        Console.WriteLine("Score Breakdown:");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
                         Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
                         Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("GeometricSumN Test Single Threaded Score: " + bench.returnSingleThreadedGeometricSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         //Multi threaded CPU benchmarks
                         Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
@@ -186,6 +189,7 @@ namespace CSMark {
                         Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
                         Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
+                        Console.WriteLine("GeometricSumN Test Multi Threaded Score: " + bench.returnMultiThreadedGeometricSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         //Benchmark scaling
                         Console.WriteLine("Improvements compared to Single Threaded Performance: ");
@@ -194,6 +198,7 @@ namespace CSMark {
                         Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
                         Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
                         Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "%");
+                        Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingGeometricSumN().ToString() + "%");
                         Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
