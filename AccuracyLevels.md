@@ -8,10 +8,8 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 
 | Calculations | Mobile Accuracy Level | PC Accuracy Level | Servers, Workstations and Super Computers  |
 |--------------|-----------------------|-------------------|---|
-| 50 Million | M1                      |                   |   |   
-| 100 Million  | M2                    |                   |   |   
-| 200 Million  | M3                    |                   |   |   
-| 500 Million  | M4                    |                   |   |   
+| 200 Million  | MX1                    |                   |   |   
+| 500 Million  | MX2                    |                   |   |   
 | 1 Billion    |                        | P1                |   |   
 | 2 Billion    |                        | P2                |   |   
 | 4 Billion    |                         | P3                |   |   
