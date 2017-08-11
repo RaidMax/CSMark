@@ -9,17 +9,19 @@ namespace CSMark {
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Title = "CSMark 0.13.0";
-            string CSMarkVersion = "0.13.0_PreRelease";
+            Console.Title = "CSMark 0.13.1";
+            string CSMarkVersion = "0.13.1_PreRelease";
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
-            double maxIterations = 0.05 * 1000.0 * 1000 * 1000;
-            string benchAccuracy = "M1";
             string newCommand;
             bool accuracyConfigured = false;
             Stopwatch time = new Stopwatch();
+            double maxIterations;
+            string benchAccuracy;
 
             while (true) {
+              maxIterations = 0.05 * 1000.0 * 1000 * 1000;
+                benchAccuracy = "M1";
                 time.Reset();
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
@@ -148,7 +150,7 @@ namespace CSMark {
        
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    if (newCommand == "bench-mutli"){
+                    if (newCommand == "bench-multi"){
                         //Multi threaded CPU benchmarks
                         Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
