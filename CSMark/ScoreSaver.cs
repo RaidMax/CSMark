@@ -15,6 +15,10 @@ namespace CSMark
         string trigonometry_Multi;
         string fizzBuzz_Single;
         string fizzBuzz_Multi;
+        string compoundInterest_Single;
+        string compoundInterest_Multi;
+        string geometricSumN_Single;
+        string geometricSumN_Multi;
         //  string overall_Single;
         //    string overall_Multi;
         string arithmeticSumN_Scaling;
@@ -22,6 +26,8 @@ namespace CSMark
         string percentageError_Scaling;
         string trigonometry_Scaling;
         string fizzBuzz_Scaling;
+        string geometricSumN_Scaling;
+        string compoundInterest_Scaling;
 
         public void saveToTextFile(string directory, string AppVersion, string AccuracyLevel, bool AccuracyConfigured){
             Directory.CreateDirectory(directory);
@@ -57,6 +63,14 @@ namespace CSMark
                     sw.WriteLine("SingleThreaded_FizzBuzz__" + fizzBuzz_Single);
                     sw.WriteLine("MultiThreaded_FizzBuzz__" + fizzBuzz_Multi);
                     sw.WriteLine("Scaling_FizzBuzz__" + fizzBuzz_Scaling + "%");
+                    sw.WriteLine("                                                   ");
+                    sw.WriteLine("SingleThreaded_GeometricSumN__" + geometricSumN_Single);
+                    sw.WriteLine("MultiThreaded_GeometricSumN__" + geometricSumN_Multi);
+                    sw.WriteLine("Scaling_GeometricSumN__" + geometricSumN_Scaling + "%");
+                    sw.WriteLine("                                                   ");
+                    sw.WriteLine("SingleThreaded_CompoundInterest__" + compoundInterest_Single);
+                    sw.WriteLine("MultiThreaded_CompoundInterest__" + compoundInterest_Multi);
+                    sw.WriteLine("Scaling_CompoundInterest__" + compoundInterest_Scaling + "%");
                 }
                 Console.WriteLine("The file was saved at ... " + directory);
             }
@@ -68,6 +82,14 @@ namespace CSMark
         public void setArithmeticSumN(string single, string multi){
             arithmeticSumN_Single = single;
             arithmeticSumN_Multi = multi;
+        }
+        public void setGeomtricSumN(string single, string multi){
+            geometricSumN_Single = single;
+            geometricSumN_Multi = multi;
+        }
+        public void setCompoundInterest(string single, string multi){
+            compoundInterest_Single = single;
+            compoundInterest_Multi = multi;
         }
         public void setPythagoras(string single, string multi){
             pythagoras_Single = single;
@@ -85,12 +107,14 @@ namespace CSMark
             fizzBuzz_Single = single;
             fizzBuzz_Multi = multi;
         }
-        public void setScaling(string fizzBuzz, string pythagoras, string trigonometry, string arithmeticSumN, string percentageError){
+        public void setScaling(string fizzBuzz, string pythagoras, string trigonometry, string arithmeticSumN, string percentageError, string geometricSumN, string compoundInterest){
             fizzBuzz_Scaling = fizzBuzz;
             pythagoras_Scaling = pythagoras;
             trigonometry_Scaling = trigonometry;
             arithmeticSumN_Scaling = arithmeticSumN;
             percentageError_Scaling = percentageError;
+            compoundInterest_Scaling = compoundInterest;
+            geometricSumN_Scaling = geometricSumN;
         }
     }
 }

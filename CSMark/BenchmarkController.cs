@@ -9,6 +9,7 @@ namespace CSMark{
         BenchArithmeticSumN bas = new BenchArithmeticSumN();
         BenchFizzBuzz bfz = new BenchFizzBuzz();
         BenchGeometricSumN bgs = new BenchGeometricSumN();
+        BenchCompoundInterest bci = new BenchCompoundInterest();
 
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
@@ -16,6 +17,7 @@ namespace CSMark{
         double arithmeticSumNScaling = 0;
         double fizzBuzzScaling = 0;
         double geometricSumNScaling = 0;
+        double compoundInterestScaling = 0;
 
         public void startBenchmark(double maxIterations){
             startBenchmark_Single(maxIterations);
@@ -34,6 +36,8 @@ namespace CSMark{
             bfz.singleThreadedBench(_maxIterations);
             Console.WriteLine("Starting GeomtricSumN single threaded benchmark");
             bgs.singleThreadedBench(_maxIterations);
+            Console.WriteLine("Starting Compound Interest single threaded benchmark");
+            bci.singleThreadedBench(_maxIterations);
         }
         public void startBenchmark_Multi(double _maxIterations){
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
@@ -48,6 +52,8 @@ namespace CSMark{
             bfz.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting GeomtricSumN multi threaded benchmark");
             bgs.multiThreadedBench(_maxIterations);
+            Console.WriteLine("Starting Compound Interest multi threaded benchmark");
+            bci.multiThreadedBench(_maxIterations);
         }
 
         #region Return Results
@@ -87,6 +93,12 @@ namespace CSMark{
         }
         public double returnMultiThreadedGeometricSumN(){
             return bgs.returnMultiScore();
+        }
+        public double returnSingleThreadedCompoundInterest(){
+            return bci.returnSingleScore();
+        }
+        public double returnMultiThreadedCompoundInterest(){
+            return bci.returnMultiScore();
         }
 
         #endregion
@@ -133,6 +145,13 @@ namespace CSMark{
             geometricSumNScaling = Math.Round(geometricSumNScaling, 2, MidpointRounding.AwayFromZero);
             geometricSumNScaling = geometricSumNScaling * 100;
             return geometricSumNScaling;
+        }
+        public double returnScalingCompoundInterest(){
+            compoundInterestScaling = returnSingleThreadedCompoundInterest() / returnMultiThreadedCompoundInterest();
+            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
+            compoundInterestScaling = Math.Round(compoundInterestScaling, 2, MidpointRounding.AwayFromZero);
+            compoundInterestScaling = compoundInterestScaling * 100;
+            return compoundInterestScaling;
         }
         #endregion
     }

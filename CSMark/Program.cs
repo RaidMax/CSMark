@@ -12,7 +12,6 @@ namespace CSMark {
        
             Console.Title = "CSMark 0.14.0";
             string CSMarkVersion = "0.14.0_PreRelease";
-
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
             string newCommand;
@@ -161,6 +160,7 @@ namespace CSMark {
                         Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
                         Console.WriteLine("GeometricSumN Test Multi Threaded Score: " + bench.returnMultiThreadedGeometricSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("Compound Interest Test Multi Threaded Score: " + bench.returnMultiThreadedCompoundInterest() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
                     else if (newCommand == "bench-single") {
@@ -170,6 +170,7 @@ namespace CSMark {
                         Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
                         Console.WriteLine("GeometricSumN Test Single Threaded Score: " + bench.returnSingleThreadedGeometricSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("Compound Interest Test Single Threaded Score: " + bench.returnSingleThreadedCompoundInterest() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
                     else {
@@ -182,6 +183,7 @@ namespace CSMark {
                         Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
                         Console.WriteLine("GeometricSumN Test Single Threaded Score: " + bench.returnSingleThreadedGeometricSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("Compound Interest Test Single Threaded Score: " + bench.returnSingleThreadedCompoundInterest() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         //Multi threaded CPU benchmarks
                         Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
@@ -190,6 +192,7 @@ namespace CSMark {
                         Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
                         Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
                         Console.WriteLine("GeometricSumN Test Multi Threaded Score: " + bench.returnMultiThreadedGeometricSumN() + " Calculations Per Millisecond");
+                        Console.WriteLine("Compound Interest Test Multi Threaded Score: " + bench.returnMultiThreadedCompoundInterest() + " Calculations Per Millisecond");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         //Benchmark scaling
                         Console.WriteLine("Improvements compared to Single Threaded Performance: ");
@@ -199,6 +202,7 @@ namespace CSMark {
                         Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
                         Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "%");
                         Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingGeometricSumN().ToString() + "%");
+                        Console.WriteLine("Compound Interest Test Improvement: " + bench.returnScalingCompoundInterest().ToString() + "%");
                         Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                     }
@@ -223,17 +227,15 @@ namespace CSMark {
                     Console.WriteLine("Please enter Y or N.");
                     string saveConfirm = Console.ReadLine().ToLower();
 
-                    if (saveConfirm == "y" || saveConfirm != "n") {
+                    if (saveConfirm == "y") {
                         var score = new ScoreSaver();
-
                         Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
-
                         score.setArithmeticSumN(bench.returnSingleThreadedArithmeticSumN().ToString(), bench.returnMultiThreadedArithmeticSumN().ToString());
                         score.setFizzBuzz(bench.returnSingleThreadedFizzBuzz().ToString(), bench.returnMultiThreadedFizzBuzz().ToString());
                         score.setPythagoras(bench.returnSingleThreadedPythagoras().ToString(), bench.returnMultiThreadedPythagoras().ToString());
                         score.setTrigonometry(bench.returnSingleThreadedTrigonometry().ToString(), bench.returnMultiThreadedTrigonometry().ToString());
                         score.setPercentageError(bench.returnSingleThreadedPercentageError().ToString(), bench.returnMultiThreadedPercentageError().ToString());
-                        score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString());
+                        score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString(),bench.returnScalingGeometricSumN().ToString(),bench.returnScalingCompoundInterest().ToString());
                         score.saveToTextFile(Directory.GetCurrentDirectory() + "\\results", CSMarkVersion, benchAccuracy, accuracyConfigured);
                     }
                     else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n") {
