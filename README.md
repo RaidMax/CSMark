@@ -26,18 +26,8 @@ Want to contribute to CSMark?
 * For Linux based OS: [See releases page](https://github.com/AluminimTech/CSMark/releases).
 * For Mac: OS X 10.11 is required.
 
-### Benchmarks included so far:
-* Pythagoras based benchmark which involves calculating either the length of the hypotenuse, adjacent length or opposite length.
-* Trigonometry based benchmark which involves calculating the size of an angle based on any 2 of: hypotenuse, adjacent or opposite sides.
-* Percentage Error based benchmark which involves calculating the percentage difference between 2 given numbers.
-* Arithmetic Sum N based benchmark which involves calculating the sum of N number of objects in an arithmetic sequence.
-* A Multi Threaded version of all the above benchmarks.
-
-### Benchmarks that I'm interested in adding
-* Some kind of Logarithm based calculation
-* Simultaneous Equation solving
-* Differentiating with respect to X (dy/dx)
-* And more stuff :)
+### Benchmarks included and upcoming
+Check out the [Benchmarks ReadMe](https://github.com/AluminiumTech/CSMark/blob/master/Benchmark_ReadMe.md)
 
 ### How do I know what accuracy level to choose?
 If you're concerned about accuracy level then it's likely that you want as high of an accuracy level as you can get.
@@ -49,7 +39,7 @@ CSMark comes included with a number of accuracy levels. Listed below are all the
 * 8 Billion
 * 16 Billion - For those wanting to publish results as a journalist to a large audience.
 * 32 Billion
-* 64 Billion - If accuracy is of the utmost importance & your job requires the best possible accuracy. If you manufacture CPUs or are looking to do so, this is the only option we recommend for you.
+* 64 Billion or above - If accuracy is of the utmost importance & your job requires the best possible accuracy. If you manufacture CPUs or are looking to do so, this is the only option we recommend for you.
 
 ## Notes
 * Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Patch], than another version should not be compared unless explicitly stated otherwise.
