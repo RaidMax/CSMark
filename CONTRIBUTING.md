@@ -119,7 +119,7 @@ You can submit changes by:
 9. Wait for a Maintainer to check your Pull Request. If it's up to standard and provides meaningful improvements such as new features or bug fixes, then Maintainers can accept the Pull Request and Merge it into the main branch.
 
 ## Code Of Conduct
-Everybody participating in the CSMark project must abide by the [CSMark Code of Conduct](https://github.com/AluminiumTech/CSMark/blob/master/CODE_OF_CONDUCT.md) By participating, you are expected to uphold this code.
+Everybody participating in the CSMark project must abide by the [CSMark Code of Conduct](https://github.com/AluminiumTech/CSMark/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 Please report unacceptable behavior to aluminiumdev@gmail.com.
 
 ## How to report a bug
@@ -131,7 +131,7 @@ This section guides you through submitting a bug report for CSMark.
 
 ### How do I submit a good bug report?
 Bugs in CSMark are tracked as [GitHub issues](https://guides.github.com/features/issues/). 
-Create an issue following [the template](https://github.com/AluminiumTech/CSMark/blob/master/ISSUE_TEMPLATE.md)
+Create an issue following [the template](https://github.com/AluminiumTech/CSMark/blob/master/ISSUE_TEMPLATE.md).
 
 Explain the problem & include various information to help maintainers reproduce the problem:
 * Use a clear and descriptive title - Maintainers should be able to have a good idea about what issue you're experiencing before they click on your issue.
