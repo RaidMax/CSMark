@@ -1,7 +1,7 @@
 ﻿using CSMark.Calculations;
 using System;
 using System.Diagnostics;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace CSMark.Benchmarks
 {
@@ -56,15 +56,16 @@ namespace CSMark.Benchmarks
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
-            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            Task[] workerThreads = new Task[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
+                workerThreads[i] = new Task(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
+       /*     for (int i = 0; i < Environment.ProcessorCount; i++){
                 workerThreads[i].Join();
             }
-            stopwatch.Stop();
+    */     
+    stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }

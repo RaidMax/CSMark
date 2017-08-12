@@ -81,8 +81,7 @@ namespace CSMark{
         public double returnMultiThreadedArithmeticSumN(){
             return bas.returnMultiScore();
         }
-        public double returnSingleThreadedFizzBuzz()
-        {
+        public double returnSingleThreadedFizzBuzz(){
             return bfz.returnSingleScore();
         }
         public double returnMultiThreadedFizzBuzz(){

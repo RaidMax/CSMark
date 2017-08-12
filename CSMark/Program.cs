@@ -8,7 +8,6 @@ namespace CSMark {
             BenchmarkController bench = new BenchmarkController();
             StressTestController stress = new StressTestController();
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.BackgroundColor = ConsoleColor.Black;
        
             Console.Title = "CSMark 0.14.0";
             string CSMarkVersion = "0.14.0_PreRelease";
@@ -35,10 +34,6 @@ namespace CSMark {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("BENCH-SINGLE.");
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("To run the multi threaded tests only, please enter ");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("BENCH-MULTI.");
-                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To run the stress test utility, please enter ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("STRESS.");
@@ -47,7 +42,7 @@ namespace CSMark {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 newCommand = Console.ReadLine().ToLower();
 
-                if (newCommand == "bench" || newCommand == "bench-single" || newCommand == "bench-multi") {
+                if (newCommand == "bench" || newCommand == "bench-single") {
 
                     if (newCommand == "bench-single" & Environment.ProcessorCount >= 8){
                         Console.WriteLine("Are you sure you want to test a highly multi-threaded CPU in the single threaded tests?");
@@ -71,25 +66,21 @@ namespace CSMark {
                         Console.WriteLine("Welcome to the accuracy configurator.");
                         Console.WriteLine("Choosing a higher accuracy will result in substantially longer benchmarking times.");
 
-                        if(newCommand != "bench-multi"){
                             Console.WriteLine("Accuracy level options: MX1-MX2, P1-P4, & W1-W7");
-                        }
-                        else if (newCommand == "bench-multi"){
-                            Console.WriteLine("Accuracy level options: P1-P4, & W1-W7");
-                        }
+                       
                        Console.WriteLine("Please ENTER the accuracy level you would like to use for the benchmark test.");
                         benchAccuracy = Console.ReadLine().ToUpper();
 
                         //Maintain some backwards compatible benchmark options for "Official Release" users. Insider Previews will use the newer accuracy levels
                         
-                        if (benchAccuracy == "MX1" & Environment.ProcessorCount >= 4 & newCommand == "bench-multi" || benchAccuracy == "MX2" & Environment.ProcessorCount >= 4 & newCommand == "bench-multi"){
+                        if (benchAccuracy == "MX1" & Environment.ProcessorCount >= 4 || benchAccuracy == "MX2" & Environment.ProcessorCount >= 4){
                             Console.WriteLine("Your CPU is probably too powerful for this accuracy level. Please try a different accuracy level.");
                             continue;
                         }
-                        else if (benchAccuracy == "MX1" & newCommand != "bench-multi") {
+                        else if (benchAccuracy == "MX1") {
                             maxIterations = 0.2 * 1000.0 * 1000 * 1000;
                         }
-                        else if (benchAccuracy == "MX2" & newCommand != "bench-multi") {
+                        else if (benchAccuracy == "MX2") {
                             maxIterations = 0.5 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "P1") {
@@ -145,25 +136,11 @@ namespace CSMark {
                     else if (newCommand == "bench-single") {
                         bench.startBenchmark_Single(maxIterations);
                     }
-                    else if (newCommand == "bench-multi") {
-                        bench.startBenchmark_Multi(maxIterations);
-                    }
                     time.Stop();
 
                     Console.WriteLine("                                                                             ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    if (newCommand == "bench-multi") {
-                        //Multi threaded CPU benchmarks
-                        Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
-                        Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
-                        Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
-                        Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                        Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
-                        Console.WriteLine("GeometricSumN Test Multi Threaded Score: " + bench.returnMultiThreadedGeometricSumN() + " Calculations Per Millisecond");
-                        Console.WriteLine("Compound Interest Test Multi Threaded Score: " + bench.returnMultiThreadedCompoundInterest() + " Calculations Per Millisecond");
-                        Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                    }
-                    else if (newCommand == "bench-single") {
+                    if (newCommand == "bench-single") {
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
                         Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
                         Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
