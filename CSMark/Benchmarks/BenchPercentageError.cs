@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace CSMark.Benchmarks{
     public class BenchPercentageError{
@@ -52,16 +53,19 @@ namespace CSMark.Benchmarks{
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
-            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            Task[] workerThreads = new Task[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(exp,act, maxThreadIterations));
+                workerThreads[i] = new Task(() => threadCalc(exp,act, maxThreadIterations));
                 exp += 2 * maxThreadIterations;
                 act += 1 * maxThreadIterations;
                 workerThreads[i].Start();
             }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i].Join();
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i].Wait();
             }
+
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();

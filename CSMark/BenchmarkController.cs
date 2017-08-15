@@ -11,6 +11,12 @@ namespace CSMark{
         BenchGeometricSumN bgs = new BenchGeometricSumN();
         BenchCompoundInterest bci = new BenchCompoundInterest();
 
+        double singleScore;
+        double multiScore;
+
+        string singleOverall;
+        string multiOverall;
+
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
@@ -57,6 +63,76 @@ namespace CSMark{
         }
 
         #region Return Results
+        public string singleOverallScore(){
+            singleScore = pyB.returnSingleScore() + trigB.returnSingleScore() + bas.returnSingleScore() + bci.returnSingleScore() + bgs.returnSingleScore() + bfz.returnSingleScore() + bpe.returnSingleScore();
+            singleScore = singleScore / 7;
+
+            singleScore = Math.Round(singleScore, 2, MidpointRounding.AwayFromZero);
+
+            if (singleScore.ToString().Length >= 7 & singleScore.ToString().Length < 10){
+                singleScore = singleScore / (1000.0 * 1000);
+                singleOverall = singleScore.ToString() + " Million";
+            }
+            else if (singleScore.ToString().Length >= 4 & singleScore.ToString().Length < 7){
+                singleScore = singleScore / 1000.0;
+                singleOverall = singleScore.ToString() + " Thousand";
+            }
+            else if (singleScore.ToString().Length >= 10 & singleScore.ToString().Length < 13){
+                singleScore = singleScore / (1000.0 * 1000 * 1000);
+                singleOverall = singleScore.ToString() + " Billion";
+            }
+            else if (singleScore.ToString().Length >= 13 & singleScore.ToString().Length < 16){
+                singleScore = singleScore / (1000.0 * 1000 * 1000 * 1000);
+                singleOverall = singleScore.ToString() + " Trillion";
+            }
+            else if (singleScore.ToString().Length >= 16 & singleScore.ToString().Length < 19){
+                singleScore = singleScore / (1000.0 * 1000 * 1000 * 1000 * 1000);
+                singleOverall = singleScore.ToString() + " Quadrillion";
+            }
+            else if (singleScore.ToString().Length >= 19 & singleScore.ToString().Length < 22){
+                singleScore = singleScore / (1000.0 * 1000 * 1000 * 1000 * 1000 * 1000);
+                singleOverall = multiScore.ToString() + " Quintillion";
+            }
+
+            singleOverall += " CSMark SPX";
+
+            return singleOverall;
+        }
+        public string multiOverallScore(){ 
+            multiScore = pyB.returnMultiScore() + trigB.returnMultiScore() + bas.returnMultiScore() + bci.returnMultiScore() + bgs.returnMultiScore() + bfz.returnMultiScore() + bpe.returnMultiScore();
+            multiScore = multiScore / 7;
+
+            multiScore = Math.Round(multiScore, 2, MidpointRounding.AwayFromZero);
+
+            if (multiScore.ToString().Length >= 7 & multiScore.ToString().Length < 10){
+                multiScore  = multiScore / (1000.0 * 1000);
+                multiOverall = multiScore.ToString() + " Million";
+            }
+            else if(multiScore.ToString().Length >= 4 & multiScore.ToString().Length < 7){
+                multiScore = multiScore / 1000.0;
+                multiOverall = multiScore.ToString() + " Thousand";
+            }
+            else if (multiScore.ToString().Length >= 10 & multiScore.ToString().Length < 13){
+                multiScore = multiScore / (1000.0 * 1000 * 1000);
+                multiOverall = multiScore.ToString() + " Billion";
+            }
+            else if (multiScore.ToString().Length >= 13 & multiScore.ToString().Length < 16){
+                multiScore = multiScore / (1000.0 * 1000 * 1000 * 1000);
+                multiOverall = multiScore.ToString() + " Trillion";
+            }
+            else if (multiScore.ToString().Length >= 16 & multiScore.ToString().Length < 19){
+                multiScore = multiScore / (1000.0 * 1000 * 1000 * 1000 * 1000);
+                multiOverall = multiScore.ToString() + " Quadrillion";
+            }
+            else if (multiScore.ToString().Length >= 19 & multiScore.ToString().Length < 22){
+                multiScore = multiScore / (1000.0 * 1000 * 1000 * 1000 * 1000 * 1000);
+                multiOverall = multiScore.ToString() + " Quintillion";
+            }
+
+            multiOverall += " CSMark MPX";
+            return multiOverall;
+        }
+
         public double returnSingleThreadedPythagoras(){
             return pyB.returnSingleScore();
         }

@@ -61,11 +61,17 @@ namespace CSMark.Benchmarks
                 workerThreads[i] = new Task(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
-       /*     for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i].Join();
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i].Wait();
             }
-    */     
-    stopwatch.Stop();
+
+            /*     for (int i = 0; i < Environment.ProcessorCount; i++){
+                     workerThreads[i].Join();
+                 }
+         */
+            stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }

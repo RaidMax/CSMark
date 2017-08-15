@@ -53,15 +53,12 @@ namespace CSMark.Benchmarks{
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
-        private static double threadCalc(double H, double O, double A, double maxThreadIterations, int iThread){
+        private static double threadCalc(double H, double O, double A, double maxThreadIterations){
             double randomNumber;
             Pythagoras py = new Pythagoras();
             Random random = new Random();
-            double[] iteration = new double[5];
-
-            iteration[iThread] = 0.0;
-            //= 0;
-            while (iteration[iThread] <= maxThreadIterations){
+            double iteration = 0;
+            while (iteration <= maxThreadIterations){
                 randomNumber = random.Next(2);
                 switch (randomNumber){
                     case 0:
@@ -75,7 +72,7 @@ namespace CSMark.Benchmarks{
                         break;
                 }
                 //Increment our counter
-                iteration[iThread]++;
+                iteration++;
             }
             return 0;
         }
@@ -85,12 +82,18 @@ namespace CSMark.Benchmarks{
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Task[] workerThreads = new Task[Environment.ProcessorCount];
                 for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Task(() => threadCalc(H, O, A, maxThreadIterations, i));
+                workerThreads[i] = new Task(() => threadCalc(H, O, A, maxThreadIterations));
                 H += 3 * maxThreadIterations;
                 O += 2 * maxThreadIterations;
                 A += 1 * maxThreadIterations;
                 workerThreads[i].Start();
             }
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i].Wait();
+            }
+
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();

@@ -72,12 +72,13 @@ namespace CSMark {
                         benchAccuracy = Console.ReadLine().ToUpper();
 
                         //Maintain some backwards compatible benchmark options for "Official Release" users. Insider Previews will use the newer accuracy levels
-                        
-                        if (benchAccuracy == "MX1" & Environment.ProcessorCount >= 4 || benchAccuracy == "MX2" & Environment.ProcessorCount >= 4){
-                            Console.WriteLine("Your CPU is probably too powerful for this accuracy level. Please try a different accuracy level.");
-                            continue;
-                        }
-                        else if (benchAccuracy == "MX1") {
+
+                        /*      if (benchAccuracy == "MX1" & Environment.ProcessorCount >= 4 || benchAccuracy == "MX2" & Environment.ProcessorCount >= 4){
+                                  Console.WriteLine("Your CPU is probably too powerful for this accuracy level. Please try a different accuracy level.");
+                                  continue;
+                              } */
+                        //  else
+                        if (benchAccuracy == "MX1") {
                             maxIterations = 0.2 * 1000.0 * 1000 * 1000;
                         }
                         else if (benchAccuracy == "MX2") {
@@ -152,6 +153,10 @@ namespace CSMark {
                     }
                     else {
                         Console.WriteLine("                                                            ");
+                        Console.WriteLine("Overall Score: ");
+                        Console.WriteLine("Single Threaded Score :" + bench.singleOverallScore());
+                        Console.WriteLine("Multi Threaded Score :" + bench.multiOverallScore());
+                        Console.WriteLine("----------------------------------------------------------------------");
                         Console.WriteLine("Score Breakdown:");
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");

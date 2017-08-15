@@ -14,6 +14,7 @@ namespace CSMark.Benchmarks{
         double singleTime;
         double multiTime;
         double _maxIteration;
+        double[] thread_iteration = new double[Environment.ProcessorCount];
         public double returnSingleScore()
         {
             singleTime = _maxIteration / singleTime;
@@ -87,6 +88,12 @@ namespace CSMark.Benchmarks{
                 A += 1 * maxThreadIterations;
                 workerThreads[i].Start();
             }
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i].Wait();
+            }
+
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
