@@ -220,7 +220,7 @@ namespace CSMark {
                     }
                     continue;
                 }
-                else if (newCommand == "stress" || newCommand == "stress test" || newCommand == "stress-test") {
+                else if (newCommand == "stress" || newCommand == "stress test" || newCommand == "stress-test" || newCommand == "burn") {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Starting stress test.");
                     Console.ForegroundColor = ConsoleColor.Gray;
@@ -228,6 +228,9 @@ namespace CSMark {
                     stress.startStressTest();
                     newCommand = Console.ReadLine();
                     if (newCommand == "break" || newCommand == "stop") {
+                        stress.stopStressTest(false);
+                    }
+                    else{
                         stress.stopStressTest(false);
                     }
                     continue;

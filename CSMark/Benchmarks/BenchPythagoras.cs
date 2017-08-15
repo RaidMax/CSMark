@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using CSMark.Calculations;
 using System.Threading;
+using System.Threading.Tasks;
+
 namespace CSMark.Benchmarks{
      class BenchPythagoras{
         Pythagoras py = new Pythagoras();
@@ -51,12 +53,15 @@ namespace CSMark.Benchmarks{
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
-        private static double threadCalc(double H, double O, double A, double maxThreadIterations){
+        private static double threadCalc(double H, double O, double A, double maxThreadIterations, int iThread){
             double randomNumber;
             Pythagoras py = new Pythagoras();
             Random random = new Random();
-            double iteration = 0;
-            while (iteration <= maxThreadIterations){
+            double[] iteration = new double[5];
+
+            iteration[iThread] = 0.0;
+            //= 0;
+            while (iteration[iThread] <= maxThreadIterations){
                 randomNumber = random.Next(2);
                 switch (randomNumber){
                     case 0:
@@ -70,7 +75,7 @@ namespace CSMark.Benchmarks{
                         break;
                 }
                 //Increment our counter
-                iteration++;
+                iteration[iThread]++;
             }
             return 0;
         }
@@ -78,16 +83,13 @@ namespace CSMark.Benchmarks{
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
-            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            Task[] workerThreads = new Task[Environment.ProcessorCount];
                 for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations));
+                workerThreads[i] = new Task(() => threadCalc(H, O, A, maxThreadIterations, i));
                 H += 3 * maxThreadIterations;
                 O += 2 * maxThreadIterations;
                 A += 1 * maxThreadIterations;
                 workerThreads[i].Start();
-            }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i].Join();
             }
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;

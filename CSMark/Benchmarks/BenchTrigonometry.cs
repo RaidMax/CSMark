@@ -1,7 +1,8 @@
 using CSMark.Calculations;
 using System;
 using System.Diagnostics;
-using System.Threading;
+using System.Threading.Tasks;
+
 namespace CSMark.Benchmarks{
     public class BenchTrigonometry{
         Trigonometry tr = new Trigonometry();
@@ -77,17 +78,14 @@ namespace CSMark.Benchmarks{
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
-            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            Task[] workerThreads = new Task[Environment.ProcessorCount];
 
             for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(H, O, A, maxThreadIterations));
+                workerThreads[i] = new Task(() => threadCalc(H, O, A, maxThreadIterations));
                 H += 3 * maxThreadIterations;
                 O += 2 * maxThreadIterations;
                 A += 1 * maxThreadIterations;
                 workerThreads[i].Start();
-            }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i].Join();
             }
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
