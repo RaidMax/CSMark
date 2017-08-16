@@ -13,6 +13,7 @@ namespace CSMark.Benchmarks
         static double D = 30000;
         static double U1 = 85000;
 
+       static double iTime = 0;
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -36,24 +37,29 @@ namespace CSMark.Benchmarks
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
+            singleTime = stopwatch.ElapsedMilliseconds * 1000;
             stopwatch.Reset();
         }
         private static double threadCalc(double maxThreadIterations){
+            Stopwatch stopwatch = new Stopwatch();
             ArithmeticSumN arithmeticN1 = new ArithmeticSumN();
             double iteration = 0;
+            stopwatch.Start();
             while (iteration <= maxThreadIterations){
                 arithmeticN1.calculateArithmeticSumN(N, D, U1);
                 //Increment our counter
                 iteration++;
             }
+            stopwatch.Stop();
+            iTime += stopwatch.ElapsedMilliseconds * 1000;
+            stopwatch.Reset();
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
             iteration = 0;
-            stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Task[] workerThreads = new Task[Environment.ProcessorCount];
+
             for (int i = 0; i < Environment.ProcessorCount; i++){
                 workerThreads[i] = new Task(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
@@ -62,15 +68,7 @@ namespace CSMark.Benchmarks
             for (int i = 0; i < Environment.ProcessorCount; i++){
                 workerThreads[i].Wait();
             }
-              
-
-            /*   for (int i = 0; i < Environment.ProcessorCount; i++){
-                //   workerThreads[i].Join();
-               }
-               */
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+            multiTime = iTime;
         }
     }
 }

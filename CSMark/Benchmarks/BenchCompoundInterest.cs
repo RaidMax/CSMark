@@ -13,6 +13,7 @@ namespace CSMark.Benchmarks
         static double K = 12; // Compounded monthly
         static double R = 18; // This 18% interest rate is an absolute steal!
         static double N = 7; // 7 years in a vault? That's real commitment!
+        static double iTime = 0;
 
         double singleTime;
         double multiTime;
@@ -38,26 +39,32 @@ namespace CSMark.Benchmarks
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
+            singleTime = stopwatch.ElapsedMilliseconds * 1000;
             stopwatch.Reset();
         }
         private static double threadCalc(double maxThreadIterations)
         {
+            Stopwatch stopwatch = new Stopwatch();
             CompoundInterest comp1 = new CompoundInterest();
             double iteration = 0;
+            stopwatch.Start();
             while (iteration <= maxThreadIterations){
                 comp1.calculateFutureValue(PV, R, K, N);
                 //Increment our counter
                 iteration++;
             }
+            stopwatch.Stop();
+            iTime += stopwatch.ElapsedMilliseconds * 1000;
+            stopwatch.Reset();
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
             iteration = 0;
-            stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Task[] workerThreads = new Task[Environment.ProcessorCount];
-            for (int i = 0; i < Environment.ProcessorCount; i++){
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
                 workerThreads[i] = new Task(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
@@ -66,14 +73,7 @@ namespace CSMark.Benchmarks
             {
                 workerThreads[i].Wait();
             }
-
-            /*     for (int i = 0; i < Environment.ProcessorCount; i++){
-                     workerThreads[i].Join();
-                 }
-         */
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+            multiTime = iTime;
         }
     }
 }

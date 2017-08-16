@@ -12,6 +12,7 @@ namespace CSMark.Benchmarks{
         //This what we'll use for H,O and A.
         double exp = 4800;
         double act = 6300;
+        static double iTime = 0;
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -35,23 +36,26 @@ namespace CSMark.Benchmarks{
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
+            singleTime = stopwatch.ElapsedMilliseconds * 1000;
             stopwatch.Reset();
         }
         private static double threadCalc(double exp1, double act1, double maxThreadIterations) {
             PercentageError peX = new PercentageError();
             double iteration = 0;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             while (iteration <= maxThreadIterations)
             {
                 peX.calcPercentageError(exp1, act1);
                 //Increment our counter
                 iteration++;
             }
+            stopwatch.Stop();
+            iTime += stopwatch.ElapsedMilliseconds * 1000;
+            stopwatch.Reset();
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
-            iteration = 0;
-            stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Task[] workerThreads = new Task[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++){
@@ -65,10 +69,7 @@ namespace CSMark.Benchmarks{
             {
                 workerThreads[i].Wait();
             }
-
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+            multiTime = iTime;
         }
     }
 }
