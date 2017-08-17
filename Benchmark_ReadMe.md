@@ -25,7 +25,7 @@ All benchmarks included in CSMark are written in C# and are designed to be scala
 
 | Benchmark Name | Added in | Removed in | Status | Difficulty Level|
 |----------------|-------------------------|-------------------|-------------------|-------------------|
-| Fibonacci | 0.14.0.0 | - |  Will be added | |
+| Fibonacci | 0.15.0.0 | - |  Will be added | |
 | GeometricSumN | 0.14.0.0 | - |  Will be added | DL 2 |
 | TileCostFinder | 0.14.0.0 or 0.15.0.0 | - |  Could be added | |
 | ChangeReturnUS | 0.15.0.0 | - |  Could be added | |
