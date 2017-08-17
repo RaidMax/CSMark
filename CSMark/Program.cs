@@ -222,13 +222,13 @@ namespace CSMark
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         //Benchmark scaling
                         Console.WriteLine("Improvements compared to Single Threaded Performance: ");
-                        Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "%");
-                        Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "%");
-                        Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "%");
-                        Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "%");
-                        Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "%");
-                        Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingGeometricSumN().ToString() + "%");
-                        Console.WriteLine("Compound Interest Test Improvement: " + bench.returnScalingCompoundInterest().ToString() + "%");
+                        Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "x");
+                        Console.WriteLine("Trigonometry Test Improvement: " + bench.returnScalingTrigonometry().ToString() + "x");
+                        Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "x");
+                        Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "x");
+                        Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "x");
+                        Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingGeometricSumN().ToString() + "x");
+                        Console.WriteLine("Compound Interest Test Improvement: " + bench.returnScalingCompoundInterest().ToString() + "x");
                         Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
                         Console.WriteLine("-----------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Benchmark Accuracy: " + benchAccuracy); ;

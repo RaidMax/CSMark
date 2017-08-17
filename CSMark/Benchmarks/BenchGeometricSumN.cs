@@ -1,6 +1,7 @@
 ﻿using CSMark.Calculations;
 using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSMark.Benchmarks
@@ -38,39 +39,38 @@ namespace CSMark.Benchmarks
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds * 1000;
+            singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
         }
         private static double threadCalc(double maxThreadIterations){
             GeometricSumN geomtricN1 = new GeometricSumN();
             double iteration = 0;
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
             while (iteration <= maxThreadIterations){
                 geomtricN1.calculateGeometricSumN(N,R, U1);
                 //Increment our counter
                 iteration++;
             }
-            stopwatch.Stop();
-            iTime += stopwatch.ElapsedMilliseconds * 1000;
-            stopwatch.Reset();
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
-            Task[] workerThreads = new Task[Environment.ProcessorCount];
-
+            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i] = new Task(() => threadCalc(maxThreadIterations));
+                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
 
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i].Wait();
+                //workerThreads[i].Wait();
+                workerThreads[i].Join();
             }
-            multiTime = iTime;
+            stopwatch1.Stop();
+            multiTime = stopwatch1.ElapsedMilliseconds;
+            stopwatch1.Reset();
         }
     }
 }

@@ -11,12 +11,6 @@ namespace CSMark{
         BenchGeometricSumN bgs = new BenchGeometricSumN();
         BenchCompoundInterest bci = new BenchCompoundInterest();
 
-        double singleScore;
-        double multiScore;
-
-        string singleOverall;
-        string multiOverall;
-
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
@@ -114,49 +108,42 @@ namespace CSMark{
             pythagorasScaling = returnSingleThreadedPythagoras() / returnMultiThreadedPythagoras();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             pythagorasScaling = Math.Round(pythagorasScaling, 2, MidpointRounding.AwayFromZero);
-            pythagorasScaling = pythagorasScaling * 100;
             return pythagorasScaling;
         }
         public double returnScalingTrigonometry(){
             trigonometryScaling = returnSingleThreadedTrigonometry() / returnMultiThreadedTrigonometry();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             trigonometryScaling = Math.Round(trigonometryScaling, 2, MidpointRounding.AwayFromZero);
-           trigonometryScaling = trigonometryScaling * 100;
             return trigonometryScaling;
         }
         public double returnScalingPercentageError(){
             percentageErrorScaling = returnSingleThreadedPercentageError() / returnMultiThreadedPercentageError();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             percentageErrorScaling = Math.Round(percentageErrorScaling, 2, MidpointRounding.AwayFromZero);
-            percentageErrorScaling = percentageErrorScaling * 100;
             return percentageErrorScaling;
         }
         public double returnScalingArithmeticSumN(){
             arithmeticSumNScaling = returnSingleThreadedArithmeticSumN() / returnMultiThreadedArithmeticSumN();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             arithmeticSumNScaling = Math.Round(arithmeticSumNScaling, 2, MidpointRounding.AwayFromZero);
-            arithmeticSumNScaling = arithmeticSumNScaling * 100;
             return arithmeticSumNScaling;
         }
         public double returnScalingFizzBuzz(){
             fizzBuzzScaling = returnSingleThreadedFizzBuzz() / returnMultiThreadedFizzBuzz();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             fizzBuzzScaling = Math.Round(fizzBuzzScaling, 2, MidpointRounding.AwayFromZero);
-            fizzBuzzScaling = fizzBuzzScaling * 100;
             return fizzBuzzScaling;
         }
         public double returnScalingGeometricSumN(){
             geometricSumNScaling = returnSingleThreadedGeometricSumN() / returnMultiThreadedGeometricSumN();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             geometricSumNScaling = Math.Round(geometricSumNScaling, 2, MidpointRounding.AwayFromZero);
-            geometricSumNScaling = geometricSumNScaling * 100;
             return geometricSumNScaling;
         }
         public double returnScalingCompoundInterest(){
             compoundInterestScaling = returnSingleThreadedCompoundInterest() / returnMultiThreadedCompoundInterest();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             compoundInterestScaling = Math.Round(compoundInterestScaling, 2, MidpointRounding.AwayFromZero);
-            compoundInterestScaling = compoundInterestScaling * 100;
             return compoundInterestScaling;
         }
         #endregion

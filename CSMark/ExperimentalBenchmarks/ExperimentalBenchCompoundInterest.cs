@@ -1,27 +1,29 @@
 ﻿using CSMark.Calculations;
 using System;
 using System.Diagnostics;
-using System.Threading;
+using System.Threading.Tasks;
 
-namespace CSMark.Benchmarks
+namespace CSMark.ExperimentalBenchmarks
 {
-    class BenchFizzBuzz
-    {
-        FizzBuzz fizz = new FizzBuzz();
+    class ExperimentalBenchCompoundInterest{
+        CompoundInterest comp = new CompoundInterest();
         Stopwatch stopwatch = new Stopwatch();
         double iteration = 0;
+        static double PV = 10.0 * 1000 * 1000;
+        static double K = 12; // Compounded monthly
+        static double R = 18; // This 18% interest rate is an absolute steal!
+        static double N = 7; // 7 years in a vault? That's real commitment!
+        static double iTime = 0;
+
         double singleTime;
         double multiTime;
         double _maxIteration;
-
-        public double returnSingleScore()
-        {
+        public double returnSingleScore(){
             singleTime = _maxIteration / singleTime;
             singleTime = Math.Round(singleTime, 0, MidpointRounding.AwayFromZero);
             return singleTime;
         }
-        public double returnMultiScore()
-        {
+        public double returnMultiScore(){
             multiTime = _maxIteration / multiTime;
             multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
             return multiTime;
@@ -31,48 +33,47 @@ namespace CSMark.Benchmarks
             _maxIteration = maxIterations;
             iteration = 0;
             stopwatch.Start();
-            while (iteration <= maxIterations)
-            {
-                fizz.calculateFizzBuzz(iteration);
+            while (iteration <= maxIterations){
+                comp.calculateFutureValue(PV, R, K, N);
                 //Increment our counter
                 iteration++;
             }
             stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
+            singleTime = stopwatch.ElapsedMilliseconds / 1000;
             stopwatch.Reset();
-            iteration = 0;
         }
         private static double threadCalc(double maxThreadIterations)
         {
-            FizzBuzz fizz2 = new FizzBuzz();
+            Stopwatch stopwatch = new Stopwatch();
+            CompoundInterest comp1 = new CompoundInterest();
             double iteration = 0;
-            while (iteration <= maxThreadIterations)
-            {
-                fizz2.calculateFizzBuzz(iteration);
+            stopwatch.Start();
+            while (iteration <= maxThreadIterations){
+                comp1.calculateFutureValue(PV, R, K, N);
                 //Increment our counter
                 iteration++;
             }
+            stopwatch.Stop();
+            iTime += stopwatch.ElapsedMilliseconds / 1000;
+            stopwatch.Reset();
             return 0;
         }
-        public void multiThreadedBench(double maxIterations)
-        {
+        public void multiThreadedBench(double maxIterations){
             iteration = 0;
-            stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
-            Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            Task[] workerThreads = new Task[Environment.ProcessorCount];
+
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
+                workerThreads[i] = new Task(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
+
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
-                workerThreads[i].Join();
+                workerThreads[i].Wait();
             }
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
-            iteration = 0;
+            multiTime = iTime;
         }
     }
 }
