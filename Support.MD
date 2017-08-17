@@ -1,6 +1,8 @@
 ## CSMark Support
 This document outlines CSMark Support policies as well as supported versions and release branches.
 
+This may not be 100% representative or accurate of support policies followed and is intended for reference purposes only.
+
 ### Support Categorization
 There are 2 Categories of Support.
 
@@ -14,10 +16,10 @@ These are:
 
 ## CSMark Support by Release Category
 
-| Release Category  | Release Category Description | Mainstream Support Period      | Extended Support Period      | End of Support |
+| Release Category  | Release Category Description | Mainstream Support Period      | Extended Support Period      | End of Support Extension|
 |-------------------|------------------------------|--------------------------------|------------------------------|----------------|
-| Pre-Release       | A pre-release version of CSMark | 30 Days after release | Optional 30 Days after MainStream Support End |                |
-| Current           | An official stable release of CSMark| 30-90 days after Release | 1 Year of Support |                |
+| Pre-Release       | A pre-release version of CSMark | 30 Days after release | Optional 30 Days after MainStream Support End | Possible if critical |
+| Current           | An official stable release of CSMark| 30-90 days after Release | 1 Year of Support | Likely if critical|
 
 ## CSMark Support By Release
 
