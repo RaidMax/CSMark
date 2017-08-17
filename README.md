@@ -4,42 +4,38 @@ A simple CPU benchmark using the cross-platform C# .NET Core .
 This application works on Windows 7 SP1 +, macOS 10.11 + and Linux Distributions.
 
 ## Contributing
-
-### Requirements for building the source code
-* [DotNetCore 1.1 SDK](https://www.microsoft.com/net/download/core#/sdk)
-* An IDE (such as Visual Studio 2017) or a Code Editor (such as Atom or VS Code)
-
-### Contributions
-Want to contribute to CSMark?
-* 1. Download the SDK and development tools needed for your environment.
-* 2. Fork the repository
-* 3. Make changes
-* 4. Debug the program
-* 5. Ensure the changes you made does not cause the program to crash
-* 6. Submit a pull request and state what changes have been made along with what platform it was tested on.
+For details on Contributing check out the [Contribution Guide](https://github.com/AluminiumTech/CSMark/blob/master/CONTRIBUTING.md)
 
 ## Benchmarks
 
-### Requirements for running the Benchmark
-* All Platforms: [Download the current DotNetCore runtime](https://www.microsoft.com/net/download/core#/runtime)
-* For Windows based OS: Windows 7 SP1, Windows 8.1 or Windows 10.
-* For Linux based OS: [See releases page](https://github.com/AluminimTech/CSMark/releases).
-* For Mac: OS X 10.11 is required.
+### Requirements for running the Benchmarks
+* CSMark 0.13.0 or Prior: DotNetCore runtime 1.1 is required
+* CSMark 0.14.0 or newer: DotNetCore runtime 2.0 is required
+
+[Download the DotNetCore runtime here](https://www.microsoft.com/net/download/core#/runtime)
+
+The table below should give you a rough idea of CSMark OS Support.
+
+|                       | Supported in CSMark 0.13.0 and Prior                                                                                | Supported in CSMark 0.14.0 and onward                                                 |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| Windows               | Windows 7 SP1+,  Windows 8, Windows 8.1                                                                                | Windows 7 SP1+, Windows 8.1                                                             |
+| Windows As a Service  | Windows 10 Build 10240 (x64), Windows 10 Build 10586 (x64), Windows 10 Build 14393 (x64), Windows 10 Build 15063 (x64) | Windows 10 Build 14393 (x64, ARM32, ARM64), Windows 10 Build 15063 (x64, ARM32, ARM64) |
+| Windows Server        | Windows Server 2008 R2 SP1, Windows Server 2012 R2, Windows Server 2016                                               | Windows Server 2008 R2 SP1, Windows Server 2012 R2, Windows Server 2016                 |
+| macOS                 | 10.11 "El Capitan", 10.12 "Sierra"                                                                                   | 10.12 "Sierra", 10.13 "High Sierra"                                                    |
+| Ubuntu                | 16.04 LTS, 16.10                                                                                                     | 16.04 LTS 17.04                                                                       |
+| Debian                | 8                                                                                                                   | 8 (8.7 +), 9                                                                           |
+| Fedora                | 24                                                                                                                  | 26                                                                                    |
+| openSUSE              | 42.1                                                                                                                | 42.2                                                                                  |
+| SUSE Linux Enterprise | -                                                                                                                   | 12 SP2+                                                                               |
+| CentOS and RHEL       | 7                                                                                                                   | 7                                                                                     |
+
+Notes: ARM64 and ARM32 are supported by CSMark as of CSMark 0.14.0
 
 ### Benchmarks included and upcoming
 Check out the [Benchmarks ReadMe](https://github.com/AluminiumTech/CSMark/blob/master/Benchmark_ReadMe.md)
 
 ### How do I know what accuracy level to choose?
-If you're concerned about accuracy level then it's likely that you want as high of an accuracy level as you can get.
-
-CSMark comes included with a number of accuracy levels. Listed below are all the accuracy levels as of 0.12.0 and who should use them:
-* 1 Billion - For most users who simply want to check the performance of their CPU and aren't too concerned about accuracy.
-* 2 Billion
-* 4 Billion - Minimum accuracy level recommended if the user wants to publish these numbers.
-* 8 Billion
-* 16 Billion - For those wanting to publish results as a journalist to a large audience.
-* 32 Billion
-* 64 Billion or above - If accuracy is of the utmost importance & your job requires the best possible accuracy. If you manufacture CPUs or are looking to do so, this is the only option we recommend for you.
+Check out the [Accuracy Levels Guide](https://github.com/AluminiumTech/CSMark/blob/master/AccuracyLevels.md).
 
 ## Notes
 * Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Patch], than another version should not be compared unless explicitly stated otherwise.
