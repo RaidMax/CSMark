@@ -76,7 +76,6 @@ namespace CSMarkRedux.BenchmarkManagement
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
             bty2.multiThreadedBench(maxIteration);
         }
-
         public double returnSingleThreadedPythagoras(){
             return bps1.returnSingleScore();
         }
@@ -90,7 +89,7 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         public double returnMultiThreadedTrigonometry()
         {
-            return bty2.returnSingleScore();
+            return bty2.returnMultiScore();
         }
         public double returnSingleThreadedFizzBuzz()
         {
@@ -98,7 +97,7 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         public double returnMultiThreadedFizzBuzz()
         {
-            return bfz2.returnSingleScore();
+            return bfz2.returnMultiScore();
         }
         public double returnSingleThreadedArithmeticSumN()
         {
@@ -106,7 +105,7 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         public double returnMultiThreadedArithmeticSumN()
         {
-            return bas2.returnSingleScore();
+            return bas2.returnMultiScore();
         }
         public double returnSingleThreadedPercentageError()
         {
@@ -114,7 +113,7 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         public double returnMultiThreadedPercentageError()
         {
-            return bpe2.returnSingleScore();
+            return bpe2.returnMultiScore();
         }
 
         public double returnScalingPythagoras()
@@ -122,15 +121,13 @@ namespace CSMarkRedux.BenchmarkManagement
             pythagorasScaling = returnSingleThreadedPythagoras() / returnMultiThreadedPythagoras();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             pythagorasScaling = Math.Round(pythagorasScaling, 2, MidpointRounding.AwayFromZero);
-            pythagorasScaling = pythagorasScaling * 100;
-            return pythagorasScaling;
+                  return pythagorasScaling;
         }
         public double returnScalingTrigonometry()
         {
             trigonometryScaling = returnSingleThreadedTrigonometry() / returnMultiThreadedTrigonometry();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             trigonometryScaling = Math.Round(trigonometryScaling, 2, MidpointRounding.AwayFromZero);
-            trigonometryScaling = trigonometryScaling * 100;
             return trigonometryScaling;
         }
         public double returnScalingPercentageError()
@@ -138,7 +135,6 @@ namespace CSMarkRedux.BenchmarkManagement
             percentageErrorScaling = returnSingleThreadedPercentageError() / returnMultiThreadedPercentageError();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             percentageErrorScaling = Math.Round(percentageErrorScaling, 2, MidpointRounding.AwayFromZero);
-            percentageErrorScaling = percentageErrorScaling * 100;
             return percentageErrorScaling;
         }
         public double returnScalingArithmeticSumN()
@@ -146,7 +142,6 @@ namespace CSMarkRedux.BenchmarkManagement
             arithmeticSumNScaling = returnSingleThreadedArithmeticSumN() / returnMultiThreadedArithmeticSumN();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             arithmeticSumNScaling = Math.Round(arithmeticSumNScaling, 2, MidpointRounding.AwayFromZero);
-            arithmeticSumNScaling = arithmeticSumNScaling * 100;
             return arithmeticSumNScaling;
         }
         public double returnScalingFizzBuzz()
@@ -154,7 +149,6 @@ namespace CSMarkRedux.BenchmarkManagement
             fizzBuzzScaling = returnSingleThreadedFizzBuzz() / returnMultiThreadedFizzBuzz();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             fizzBuzzScaling = Math.Round(fizzBuzzScaling, 2, MidpointRounding.AwayFromZero);
-            fizzBuzzScaling = fizzBuzzScaling * 100;
             return fizzBuzzScaling;
         }
     }

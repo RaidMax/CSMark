@@ -84,22 +84,26 @@ namespace CSMarkRedux
 
                     if (newCommand == "bench_single"){
                         commandProcessor.startBenchmark_Single();
+                        commandProcessor.showResults(true, false);
                     }
-                    else if (newCommand == "bench_multi"){
+                    else if (newCommand == "bench_multi" || newCommand == "bench-multi"){
                         commandProcessor.startBenchmark_Multi();
-                    }
-                    else if (newCommand == "bench_multi & tasks=true"){
-                        commandProcessor.startBenchmark_Multi_Tasks();
+                        commandProcessor.showResults(false, true);
                     }
                     else if(newCommand == "bench"){
                         commandProcessor.startBenchmark();
+                        commandProcessor.showResults(true, true);
                     }
                     else{
-                        commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
-                        commandProcessor.startBenchmark();
+                        //  commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
+                        //  commandProcessor.startBenchmark();
+                        //  commandProcessor.showResults(true, true);
+                        Console.WriteLine("Hello Troll");
+
                     }
 
-                    commandProcessor.showResults();
+
+                    continue;
                 }
                 else if(newCommand == "exit"){
                     break;

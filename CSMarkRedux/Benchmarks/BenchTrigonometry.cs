@@ -93,7 +93,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
     }
 }
