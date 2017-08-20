@@ -8,15 +8,13 @@ namespace CSMark.Benchmarks
     public class BenchPercentageError
     {
         PercentageError pe = new PercentageError();
-        Stopwatch stopwatch = new Stopwatch();
-        double iteration = 0;
         //This what we'll use for H,O and A.
         double exp = 4800;
         double act = 6300;
 
-        double singleTime;
-        double multiTime;
-        double _maxIteration;
+        double singleTime = 0;
+        double multiTime = 0;
+        double _maxIteration = 1.0 * 1000 * 1000 * 1000;
         public double returnSingleScore()
         {
             singleTime = _maxIteration / singleTime;
@@ -31,8 +29,9 @@ namespace CSMark.Benchmarks
         }
         public void singleThreadedBench(double maxIterations)
         {
+            Stopwatch stopwatch = new Stopwatch();
             _maxIteration = maxIterations;
-            iteration = 0;
+            double iteration = 0;
             stopwatch.Start();
             while (iteration <= maxIterations)
             {
@@ -59,25 +58,22 @@ namespace CSMark.Benchmarks
         }
         public void multiThreadedBench(double maxIterations)
         {
-            iteration = 0;
-            stopwatch.Start();
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
                 workerThreads[i] = new Thread(() => threadCalc(exp, act, maxThreadIterations));
-                exp += 2 * maxThreadIterations;
-                act += 1 * maxThreadIterations;
                 workerThreads[i].Start();
             }
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
                 workerThreads[i].Join();
             }
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
-            iteration = 0;
+            stopwatch1.Stop();
+            multiTime = stopwatch1.ElapsedMilliseconds;
+            stopwatch1.Reset();
         }
     }
 }

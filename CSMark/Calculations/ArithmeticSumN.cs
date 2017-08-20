@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace CSMark.Calculations
 {
     class ArithmeticSumN{

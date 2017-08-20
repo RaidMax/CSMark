@@ -8,11 +8,9 @@ namespace CSMark.Benchmarks
     class BenchFizzBuzz
     {
         FizzBuzz fizz = new FizzBuzz();
-        Stopwatch stopwatch = new Stopwatch();
-        double iteration = 0;
-        double singleTime;
-        double multiTime;
-        double _maxIteration;
+        double singleTime = 0;
+        double multiTime = 0;
+        double _maxIteration = 1.0 * 1000 * 1000 * 1000;
 
         public double returnSingleScore()
         {
@@ -28,8 +26,9 @@ namespace CSMark.Benchmarks
         }
         public void singleThreadedBench(double maxIterations)
         {
+            Stopwatch stopwatch = new Stopwatch();
             _maxIteration = maxIterations;
-            iteration = 0;
+            double iteration = 0;
             stopwatch.Start();
             while (iteration <= maxIterations)
             {
@@ -40,7 +39,6 @@ namespace CSMark.Benchmarks
             stopwatch.Stop();
             singleTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
         private static double threadCalc(double maxThreadIterations)
         {
@@ -56,8 +54,8 @@ namespace CSMark.Benchmarks
         }
         public void multiThreadedBench(double maxIterations)
         {
-            iteration = 0;
-            stopwatch.Start();
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++)
@@ -69,10 +67,9 @@ namespace CSMark.Benchmarks
             {
                 workerThreads[i].Join();
             }
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
-            iteration = 0;
+            stopwatch1.Stop();
+            multiTime = stopwatch1.ElapsedMilliseconds;
+            stopwatch1.Reset();
         }
     }
 }

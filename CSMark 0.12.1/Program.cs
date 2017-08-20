@@ -87,10 +87,12 @@ namespace CSMark {
                     Console.WriteLine("Starting benchmark. The benchmark tests may take a while.");
 
                     if (averages == "y"){
-                        time.Start();
+                   /*     time.Start();
                         bench.startBenchmark_Average(maxIterations);
                         time.Stop();
-                    }
+    
+    */
+    }
                     //If the user doesn't want averaged results or pressed the wrong key by accident, just run the normal benchmark.
                     else if(averages == "n" || averages != "y" && averages != "n")
                     {

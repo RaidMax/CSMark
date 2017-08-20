@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-
+﻿
 namespace CSMark.Calculations
 {
     class ArithmeticSumN{

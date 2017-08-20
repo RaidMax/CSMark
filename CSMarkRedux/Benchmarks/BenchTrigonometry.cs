@@ -33,8 +33,7 @@ namespace CSMark.Benchmarks{
             stopwatch.Start();
             while (iteration <= maxIterations){
                 randomNumber = random.Next(3);
-                switch (randomNumber)
-                {
+                switch (randomNumber){
                     case 0:
                         tr.getCosAngle(A, H);
                         break;

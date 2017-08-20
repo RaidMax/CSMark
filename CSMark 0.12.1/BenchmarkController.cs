@@ -7,7 +7,7 @@ namespace CSMark{
         BenchPythagoras pyB = new BenchPythagoras();
         BenchPercentageError bpe = new BenchPercentageError();
         BenchArithmeticSumN bas = new BenchArithmeticSumN();
-
+        /*
         double pythagorasAverage_single;
         double trigonometryAverage_single;
         double percentageErrorAverage_single;
@@ -59,16 +59,12 @@ namespace CSMark{
         double arithmeticSumN3_multi;
         double arithmeticSumN4_multi;
         double arithmeticSumN5_multi;
+        */
 
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
         double arithmeticSumNScaling = 0;
-
-        double pythagorasAverageScaling = 0;
-        double trigonometryAverageScaling = 0;
-        double percentageErrorAverageScaling = 0;
-        double arithmeticSumNAverageScaling = 0;
 
         public void startBenchmark(double maxIterations){
             startBenchmark_Single(maxIterations);
@@ -93,80 +89,6 @@ namespace CSMark{
                 bpe.multiThreadedBench(_maxIterations);
             Console.WriteLine("Starting ArithmeticSumN multi threaded benchmark");
             bas.multiThreadedBench(_maxIterations);
-        }
-
-        public void startBenchmark_Average(double _maxIterations){
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
-
-            pythagoras1_single = returnSingleThreadedPythagoras();
-            pythagoras1_multi = returnMultiThreadedPythagoras();
-            trigonometry1_single = returnSingleThreadedTrigonometry();
-            trigonometry1_multi = returnMultiThreadedTrigonometry();
-            percentageError1_single = returnSingleThreadedPercentageError();
-            percentageError1_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN1_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN1_multi = returnMultiThreadedArithmeticSumN();
-
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
-
-            pythagoras2_single = returnSingleThreadedPythagoras();
-            pythagoras2_multi = returnMultiThreadedPythagoras();
-            trigonometry2_single = returnSingleThreadedTrigonometry();
-            trigonometry2_multi = returnMultiThreadedTrigonometry();
-            percentageError2_single = returnSingleThreadedPercentageError();
-            percentageError2_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN2_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN2_multi = returnMultiThreadedArithmeticSumN();
-
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
-
-            pythagoras3_single = returnSingleThreadedPythagoras();
-            pythagoras3_multi = returnMultiThreadedPythagoras();
-            trigonometry3_single = returnSingleThreadedTrigonometry();
-            trigonometry3_multi = returnMultiThreadedTrigonometry();
-            percentageError3_single = returnSingleThreadedPercentageError();
-            percentageError3_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN3_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN3_multi = returnMultiThreadedArithmeticSumN();
-
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
-
-            pythagoras4_single = returnSingleThreadedPythagoras();
-            pythagoras4_multi = returnMultiThreadedPythagoras();
-            trigonometry4_single = returnSingleThreadedTrigonometry();
-            trigonometry4_multi = returnMultiThreadedTrigonometry();
-            percentageError4_single = returnSingleThreadedPercentageError();
-            percentageError4_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN4_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN4_multi = returnMultiThreadedArithmeticSumN();
-
-            startBenchmark_Single(_maxIterations);
-            startBenchmark_Multi(_maxIterations);
-
-            pythagoras5_single = returnSingleThreadedPythagoras();
-            pythagoras5_multi = returnMultiThreadedPythagoras();
-            trigonometry5_single = returnSingleThreadedTrigonometry();
-            trigonometry5_multi = returnMultiThreadedTrigonometry();
-            percentageError5_single = returnSingleThreadedPercentageError();
-            percentageError5_multi = returnMultiThreadedPercentageError();
-            arithmeticSumN5_single = returnSingleThreadedArithmeticSumN();
-            arithmeticSumN5_multi = returnMultiThreadedArithmeticSumN();
-
-            pythagorasAverage_single = (pythagoras1_single + pythagoras2_single + pythagoras3_single + pythagoras4_single + pythagoras5_single) / 5;
-            pythagorasAverage_multi = (pythagoras1_multi + pythagoras2_multi + pythagoras3_multi + pythagoras4_multi + pythagoras5_multi) / 5;
-
-            trigonometryAverage_single = (trigonometry1_single + trigonometry2_single + trigonometry3_single + trigonometry4_single + trigonometry5_single) / 5;
-            trigonometryAverage_multi = (trigonometry1_multi + trigonometry2_multi + trigonometry3_multi + trigonometry4_multi + trigonometry5_multi) / 5;
-
-            percentageErrorAverage_single = (percentageError1_single + percentageError2_single + percentageError3_single + percentageError4_single + percentageError5_single) / 5;
-            percentageErrorAverage_multi = (percentageError1_multi + percentageError2_multi + percentageError3_multi + percentageError4_multi + percentageError5_multi) / 5;
-
-            arithmeticSumNAverage_single = (arithmeticSumN1_single + arithmeticSumN2_single + arithmeticSumN3_single + arithmeticSumN4_single + arithmeticSumN5_single) / 5;
-            arithmeticSumNAverage_multi = (arithmeticSumN1_multi + arithmeticSumN2_multi + arithmeticSumN3_multi + arithmeticSumN4_multi + arithmeticSumN5_multi) / 5;
         }
 
         #region Return Results
@@ -230,6 +152,7 @@ namespace CSMark{
             return arithmeticSumNScaling;
         }
         #endregion
+      /*
         #region AverageScaling
         public double returmAverageScalingPythagoras()
         {
@@ -263,6 +186,7 @@ namespace CSMark{
             arithmeticSumNAverageScaling = arithmeticSumNAverageScaling * 100;
             return arithmeticSumNAverageScaling;
         }
-#endregion
+        */
+//#endregion
     }
 }

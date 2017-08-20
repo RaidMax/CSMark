@@ -8,16 +8,13 @@ namespace CSMark.Benchmarks
 {
     class BenchGeometricSumN{
         GeometricSumN geometricN = new GeometricSumN();
-        Stopwatch stopwatch = new Stopwatch();
-        double iteration = 0;
         static double R = 4000;
         static double N = 30000;
         static double U1 = 47000;
 
-        static double iTime = 0;
-        double singleTime;
-        double multiTime;
-        double _maxIteration;
+        double singleTime = 0;
+        double multiTime = 0;
+        double _maxIteration = 1.0 * 1000 * 1000 * 1000;
 
         public double returnSingleScore(){
             singleTime = _maxIteration / singleTime;
@@ -30,8 +27,9 @@ namespace CSMark.Benchmarks
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
+            Stopwatch stopwatch = new Stopwatch();
             _maxIteration = maxIterations;
-            iteration = 0;
+            double iteration = 0;
             stopwatch.Start();
             while (iteration <= maxIterations){
                 geometricN.calculateGeometricSumN(N,R,U1);
