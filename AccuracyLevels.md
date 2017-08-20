@@ -15,7 +15,7 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 | 4 Billion    |                         | P3                |   | Professional Reviews |   
 | 8 Billion    |                       | P4                |   | Incredibly Accurate Professional Reviews |   
 | 16 Billion   |                       |               | W1  | Server Grade Hardware Reviews |   
-| 32 Billion   |                       |                     | W2  | Incredibly Server Grade Hardware Reviews |     
+| 32 Billion   |                       |                     | W2  | Incredibly Accurate Server Grade Hardware Reviews |     
 | 64 Billion   |                       |                   |  W3 | OEM product testing |   
 | 128 Billion   |                       |                   |  W4 | |   
 | 256 Billion   |                       |                   | W5  |   |   
