@@ -8,11 +8,12 @@ namespace CSMarkRedux
         static void Main(string[] args)
         {
             CommandProcessor commandProcessor = new CommandProcessor();
+            Management mgnt = new Management();
             Console.Title = "CSMark 0.14.0";
-            string CSMarkVersion = "0.14.0_PreRelease";
-
+            string CSMarkVersion = "0.14.0_PreRelease";          
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
+            mgnt.startManagement(CSMarkVersion);
             Console.WriteLine("To check for updates, go to https://www.github.com/AluminiumTech/CSMark/releases/");
             Console.WriteLine("For Support Status, go to https://github.com/AluminiumTech/CSMark/blob/master/Support.MD");
             string benchAccuracy = "MX2";
@@ -22,6 +23,8 @@ namespace CSMarkRedux
             string stressConfirm;
             while (true)
             {
+                mgnt.managementChecks();
+
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
                 Console.Write("To run the single threaded and multi threaded tests, please enter ");
@@ -62,7 +65,7 @@ namespace CSMarkRedux
                     }
                     continue;
                 }
-                else if(newCommand == "stress_timed" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test"){
+                else if(newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test"){
                     Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
                     timedStress = Console.ReadLine().ToLower();
 
