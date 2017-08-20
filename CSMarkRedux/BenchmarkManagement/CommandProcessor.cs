@@ -15,6 +15,7 @@ namespace CSMarkRedux.BenchmarkManagement
             _maxIterations = maxIterations;
         }
         public void setMaxIterations(string accuracyLevel){
+            accuracyLevel = accuracyLevel.ToUpper();
 
             if (accuracyLevel == "MX1"){
                 _maxIterations = 0.2 * 1000.0 * 1000 * 1000;

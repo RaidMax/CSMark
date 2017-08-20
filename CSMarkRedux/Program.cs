@@ -76,7 +76,11 @@ namespace CSMarkRedux
                 }
                 else if (newCommand.Contains("bench"))
                 {
+                    Console.WriteLine("Please enter an accuracy level.");
+                    Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
                     benchAccuracy = Console.ReadLine().ToUpper();
+
+                    commandProcessor.setMaxIterations(benchAccuracy);
 
                     if (newCommand == "bench_single"){
                         commandProcessor.startBenchmark_Single();
@@ -88,6 +92,10 @@ namespace CSMarkRedux
                         commandProcessor.startBenchmark_Multi_Tasks();
                     }
                     else if(newCommand == "bench"){
+                        commandProcessor.startBenchmark();
+                    }
+                    else{
+                        commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
                         commandProcessor.startBenchmark();
                     }
 
