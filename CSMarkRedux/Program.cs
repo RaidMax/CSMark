@@ -8,8 +8,7 @@ namespace CSMarkRedux
         static void Main(string[] args)
         {
             CommandProcessor commandProcessor = new CommandProcessor();
-
-            Console.Title = "CSMark Redux 0.14.0";
+            Console.Title = "CSMark 0.14.0";
             string CSMarkVersion = "0.14.0_PreRelease";
 
             Console.WriteLine("Welcome to CSMark.");
@@ -41,13 +40,27 @@ namespace CSMarkRedux
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("STRESS_TEST.");
                 Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("To run the stress test utility for a set amount of time, please enter ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("STRESS_TIMED.");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Please give feedback, or report bugs by opening a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 newCommand = Console.ReadLine().ToLower();
 
                 if(newCommand == "stress" || newCommand == "stress_test"){
                     Console.WriteLine("To terminate the stress test enter BREAK or STOP.");
-                    
+                    commandProcessor.startStressTest();
+                    Console.WriteLine("Starting stress test.");
+                    Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
+                    newCommand = Console.ReadLine();
+                    if (newCommand == "break" || newCommand == "stop"){
+                      commandProcessor.stopStressTest();
+                    }
+                    else{
+                        commandProcessor.stopStressTest();
+                    }
+                    continue;
                 }
                 else if(newCommand == "stress_timed" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test"){
                     Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
@@ -71,35 +84,9 @@ namespace CSMarkRedux
                             commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
                         }
                     }
-
-                    Console.WriteLine("                                                ");
-                    Console.WriteLine("Would you like to save the results to a File?");
-                    Console.WriteLine("Please enter Y or N.");
-                    string saveConfirm = Console.ReadLine().ToLower();
-
-                    if (saveConfirm == "y" || saveConfirm != "n")
-                    {
-                        var score = new ScoreSaver();
-
-                        Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
-
-                        score.setArithmeticSumN(bench.returnSingleThreadedArithmeticSumN().ToString(), bench.returnMultiThreadedArithmeticSumN().ToString());
-                        score.setFizzBuzz(bench.returnSingleThreadedFizzBuzz().ToString(), bench.returnMultiThreadedFizzBuzz().ToString());
-                        score.setPythagoras(bench.returnSingleThreadedPythagoras().ToString(), bench.returnMultiThreadedPythagoras().ToString());
-                        score.setTrigonometry(bench.returnSingleThreadedTrigonometry().ToString(), bench.returnMultiThreadedTrigonometry().ToString());
-                        score.setPercentageError(bench.returnSingleThreadedPercentageError().ToString(), bench.returnMultiThreadedPercentageError().ToString());
-                        score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString());
-                        score.saveToTextFile(Directory.GetCurrentDirectory() + "\\results", CSMarkVersion, benchAccuracy, accuracyConfigured);
-                    }
-                    else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n")
-                    {
-                        //Do nothing, the app will automatically continue and will restart the While Loop.
-                    }
-
                     continue;
                 }
-                else if (newCommand.Contains("bench"))
-                {
+                else if (newCommand.Contains("bench")){
                     Console.WriteLine("Please enter an accuracy level.");
                     Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
                     benchAccuracy = Console.ReadLine().ToUpper();
@@ -119,18 +106,25 @@ namespace CSMarkRedux
                         commandProcessor.showResults(true, true);
                     }
                     else{
-                        //  commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
-                        //  commandProcessor.startBenchmark();
-                        //  commandProcessor.showResults(true, true);
-                        Console.WriteLine("Hello Troll");
-
+                         commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
+                         commandProcessor.startBenchmark();
+                        commandProcessor.showResults(true, true);                      
                     }
 
+                    Console.WriteLine("                                                ");
+                    Console.WriteLine("Would you like to save the results to a Text File?");
+                    Console.WriteLine("Please enter Y or N.");
+                    string save = Console.ReadLine().ToLower();
+                    commandProcessor.handleSaveDialog(save, CSMarkVersion);
 
                     continue;
                 }
                 else if(newCommand == "exit"){
                     break;
+                }
+                else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean"){
+                    Console.Clear();
+                    continue;
                 }
                 else{
                     Console.ForegroundColor = ConsoleColor.Red;

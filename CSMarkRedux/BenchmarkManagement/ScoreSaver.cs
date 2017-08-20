@@ -15,15 +15,23 @@ namespace CSMark
         string trigonometry_Multi;
         string fizzBuzz_Single;
         string fizzBuzz_Multi;
-        //  string overall_Single;
-        //    string overall_Multi;
+
+        string geometricSumN_Single;
+        string geometricSumN_Multi;
+        string compoundInterest_Single;
+        string compoundInterest_Multi;
+
+          string overall_Single;
+            string overall_Multi;
         string arithmeticSumN_Scaling;
         string pythagoras_Scaling;
         string percentageError_Scaling;
         string trigonometry_Scaling;
         string fizzBuzz_Scaling;
-
-        public void saveToTextFile(string directory, string AppVersion, string AccuracyLevel, bool AccuracyConfigured)
+        string geometricSumN_Scaling;
+        string compoundInterest_Scaling;
+        
+        public void saveToTextFile(string directory, string AppVersion, string AccuracyLevel)
         {
             Directory.CreateDirectory(directory);
 
@@ -36,38 +44,50 @@ namespace CSMark
                     sw.WriteLine("CSMarkVersion_" + AppVersion);
                     sw.WriteLine("Date_" + DateTime.Now.ToString());
                     sw.WriteLine("AccuracyLevel_" + AccuracyLevel);
-                    sw.WriteLine("AccuracyConfigured_" + AccuracyConfigured.ToString());
                     sw.WriteLine("ThreadCount_" + Environment.ProcessorCount.ToString());
                     sw.WriteLine("-------------------------------------------------");
-
+                    sw.WriteLine("CSMark_Overall_SingleThreaded__" + overall_Single);
+                    sw.WriteLine("CSMark_Overall_MultiThreaded__" + overall_Multi);
+                    sw.WriteLine("-------------------------------------------------");
                     sw.WriteLine("SingleThreaded_ArithmeticSumN__" + arithmeticSumN_Single);
                     sw.WriteLine("MultiThreaded_ArithmeticSumN__" + arithmeticSumN_Multi);
-                    sw.WriteLine("Scaling_ArithmeticSumN__" + arithmeticSumN_Scaling + "%");
+                    sw.WriteLine("Scaling_ArithmeticSumN__" + arithmeticSumN_Scaling + "x");
                     sw.WriteLine("                                                   ");
                     sw.WriteLine("SingleThreaded_Pythagoras__" + pythagoras_Single);
                     sw.WriteLine("MultiThreaded_Pythagoras__" + pythagoras_Multi);
-                    sw.WriteLine("Scaling_Pythagoras__" + pythagoras_Scaling + "%");
+                    sw.WriteLine("Scaling_Pythagoras__" + pythagoras_Scaling + "x");
                     sw.WriteLine("                                                   ");
                     sw.WriteLine("SingleThreaded_Trigonometry__" + trigonometry_Single);
                     sw.WriteLine("MultiThreaded_Trigonometry__" + trigonometry_Multi);
-                    sw.WriteLine("Scaling_Trigonometry__" + trigonometry_Scaling + "%");
+                    sw.WriteLine("Scaling_Trigonometry__" + trigonometry_Scaling + "x");
                     sw.WriteLine("                                                   ");
                     sw.WriteLine("SingleThreaded_PercentageError__" + percentageError_Single);
                     sw.WriteLine("MultiThreaded_PercentageError__" + percentageError_Multi);
-                    sw.WriteLine("Scaling_PercentageError__" + percentageError_Scaling + "%");
+                    sw.WriteLine("Scaling_PercentageError__" + percentageError_Scaling + "x");
                     sw.WriteLine("                                                   ");
                     sw.WriteLine("SingleThreaded_FizzBuzz__" + fizzBuzz_Single);
                     sw.WriteLine("MultiThreaded_FizzBuzz__" + fizzBuzz_Multi);
-                    sw.WriteLine("Scaling_FizzBuzz__" + fizzBuzz_Scaling + "%");
+                    sw.WriteLine("Scaling_FizzBuzz__" + fizzBuzz_Scaling + "x");
+                    sw.WriteLine("                                                   ");
+                    sw.WriteLine("SingleThreaded_GeomtricSumN__" + geometricSumN_Single);
+                    sw.WriteLine("MultiThreaded_GeometricSumN__" + geometricSumN_Multi);
+                    sw.WriteLine("Scaling_GeometricSumN__" + geometricSumN_Scaling + "x");
+                    sw.WriteLine("                                                   ");
+                    sw.WriteLine("SingleThreaded_CompoundInterest__" + compoundInterest_Single);
+                    sw.WriteLine("MultiThreaded_CompoundInterest__" + compoundInterest_Multi);
+                    sw.WriteLine("Scaling_CompoundInterest__" + compoundInterest_Scaling + "x");
                 }
                 Console.WriteLine("The file was saved at ... " + directory);
             }
-            catch
-            {
+            catch{
                 Console.WriteLine("The file couldn't be saved. Please try again later.");
             }
         }
-
+        public void setOverall(string single, string multi)
+        {
+            overall_Single = single;
+            overall_Multi = multi;
+        }
         public void setArithmeticSumN(string single, string multi)
         {
             arithmeticSumN_Single = single;
@@ -93,13 +113,25 @@ namespace CSMark
             fizzBuzz_Single = single;
             fizzBuzz_Multi = multi;
         }
-        public void setScaling(string fizzBuzz, string pythagoras, string trigonometry, string arithmeticSumN, string percentageError)
+        public void setCompoundInterest(string single, string multi)
+        {
+            compoundInterest_Single = single;
+            compoundInterest_Multi = multi;
+        }
+        public void setGeomtricSumN(string single, string multi)
+        {
+            geometricSumN_Single = single;
+            geometricSumN_Multi = multi;
+        }
+        public void setScaling(string fizzBuzz, string pythagoras, string trigonometry, string arithmeticSumN, string percentageError, string geometricSumN, string compoundInterest)
         {
             fizzBuzz_Scaling = fizzBuzz;
             pythagoras_Scaling = pythagoras;
             trigonometry_Scaling = trigonometry;
             arithmeticSumN_Scaling = arithmeticSumN;
             percentageError_Scaling = percentageError;
+            geometricSumN_Scaling = geometricSumN;
+            compoundInterest_Scaling = compoundInterest;
         }
     }
 }

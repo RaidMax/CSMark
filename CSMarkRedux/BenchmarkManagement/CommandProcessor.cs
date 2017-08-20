@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CSMark;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace CSMarkRedux.BenchmarkManagement
@@ -11,6 +13,8 @@ namespace CSMarkRedux.BenchmarkManagement
         BenchmarkController bench = new BenchmarkController();
         double _maxIterations;
 
+        string saveAccuracy;
+
         double overallMulti;
         double overallSingle;
 
@@ -19,7 +23,7 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         public void setMaxIterations(string accuracyLevel){
             accuracyLevel = accuracyLevel.ToUpper();
-
+            saveAccuracy = accuracyLevel;
             if (accuracyLevel == "MX1"){
                 _maxIterations = 0.2 * 1000.0 * 1000 * 1000;
             }
@@ -70,6 +74,31 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         public double returnMaxIterations(){
             return _maxIterations;
+        }
+
+        public void handleSaveDialog(string saveConfirm, string CSMarkVersion){
+            if (saveConfirm == "y" || saveConfirm != "n")
+            {
+                var score = new ScoreSaver();
+
+                string dir = Directory.GetCurrentDirectory() + "\\results";
+
+                Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
+                score.setOverall(overallSingle.ToString(), overallMulti.ToString());
+                score.setGeomtricSumN(bench.returnSingleThreadedGeometricSumN().ToString(), bench.returnMultiThreadedGeometricSumN().ToString());
+                score.setCompoundInterest(bench.returnSingleThreadedCompoundInterest().ToString(), bench.returnMultiThreadedCompoundInterest().ToString());
+                score.setArithmeticSumN(bench.returnSingleThreadedArithmeticSumN().ToString(), bench.returnMultiThreadedArithmeticSumN().ToString());
+                score.setFizzBuzz(bench.returnSingleThreadedFizzBuzz().ToString(), bench.returnMultiThreadedFizzBuzz().ToString());
+                score.setPythagoras(bench.returnSingleThreadedPythagoras().ToString(), bench.returnMultiThreadedPythagoras().ToString());
+                score.setTrigonometry(bench.returnSingleThreadedTrigonometry().ToString(), bench.returnMultiThreadedTrigonometry().ToString());
+                score.setPercentageError(bench.returnSingleThreadedPercentageError().ToString(), bench.returnMultiThreadedPercentageError().ToString());
+                score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString(),bench.returnScalingGeometricSumN().ToString(),bench.returnScalingCompoundInterest().ToString());
+                score.saveToTextFile(dir, CSMarkVersion, saveAccuracy);
+            }
+            else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n")
+            {
+                //Do nothing, the app will automatically continue and will restart the While Loop.
+            }
         }
 
         private void calculateOverallSingleScore(){
@@ -161,6 +190,11 @@ namespace CSMarkRedux.BenchmarkManagement
             {
                   calculateOverallMultiScore();
             }
+
+            Console.WriteLine("                                                            ");
+            Console.WriteLine("                                                            ");
+                Console.WriteLine("If you have any doubts about the accuracy of this score, please re-run the test several times and get the average.");
+            Console.WriteLine("If the averaged results are still greater or less than the original scores by more than 10% then please contact support for details.");
         }
 
         public void startBenchmark_Single(){
