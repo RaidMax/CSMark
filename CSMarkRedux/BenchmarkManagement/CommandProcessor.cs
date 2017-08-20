@@ -11,6 +11,9 @@ namespace CSMarkRedux.BenchmarkManagement
         BenchmarkController bench = new BenchmarkController();
         double _maxIterations;
 
+        double overallMulti;
+        double overallSingle;
+
         public void setMaxIterations(double maxIterations){
             _maxIterations = maxIterations;
         }
@@ -56,6 +59,9 @@ namespace CSMarkRedux.BenchmarkManagement
             else if (accuracyLevel == "W7"){
                 _maxIterations = 512.0 * 1000.0 * 1000 * 1000;
             }
+            else{
+                _maxIterations = 0.2 * 1000.0 * 1000 * 1000;
+            }
             
             Console.WriteLine("Accuracy Level " + accuracyLevel + " has been selected.");
         }
@@ -66,29 +72,66 @@ namespace CSMarkRedux.BenchmarkManagement
             return _maxIterations;
         }
 
-        public void showResults(bool singleThreads, bool multiThreads){
-            Console.WriteLine("                                                            ");
-            Console.WriteLine("Results:");
-            Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+        private void calculateOverallSingleScore(double singlePythagoras, double singleArithemticSumN, double singlePercentageError, double singleGeometricSumN, double singleCompoundInterest, double singleTrigonometry, double singleFizzBuzz){
+            overallSingle = singlePercentageError + singleArithemticSumN + singleCompoundInterest + singleFizzBuzz + singleGeometricSumN + singleTrigonometry + singlePythagoras;
+            overallSingle = overallSingle / 7;
 
-            if (singleThreads == true)
-            {
-                Console.WriteLine("Pythagoras Test Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
-                Console.WriteLine("Trigonometry Test Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
-                Console.WriteLine("PercentageError Test Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
-                Console.WriteLine("ArithmeticSumN Test Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                Console.WriteLine("FizzBuzz Test Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
-                Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+            if(overallSingle.ToString().Length <= 6){
+                Console.WriteLine("Overall Single Threaded Score: " + overallSingle + " CSMark Points");
             }
-            if(multiThreads == true)
+            else{
+                overallSingle = overallSingle / 1000;
+                Console.WriteLine("Overall Single Threaded Score: " + overallSingle + " Million CSMark Points");
+            }
+        }
+        private void calculateOverallMultiScore(double multiPythagoras, double multiArithemticSumN, double multiPercentageError, double multiGeometricSumN, double multiCompoundInterest, double multiTrigonometry, double multiFizzBuzz){
+            overallMulti = multiPercentageError + multiArithemticSumN + multiCompoundInterest + multiFizzBuzz + multiGeometricSumN + multiTrigonometry + multiPythagoras;
+            overallMulti = overallMulti / 7;
+
+            if (overallMulti.ToString().Length <= 6)
             {
-                //Multi threaded CPU benchmarks
-                Console.WriteLine("Pythagoras Test Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
-                Console.WriteLine("Trigonometry Test Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
-                Console.WriteLine("PercentageError Test Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
-                Console.WriteLine("ArithmeticSumN Test Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
-                Console.WriteLine("FizzBuzz Test Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
+                Console.WriteLine("Overall multi Threaded Score: " + overallMulti + " CSMark Points");
+            }
+            else
+            {
+                overallMulti = overallMulti / 1000;
+                Console.WriteLine("Overall multi Threaded Score: " + overallMulti + " Million CSMark Points");
+            }
+        }
+
+        public void showResults(bool singleThreads, bool multiThreads){
+            //    calculateOverallSingleScore(bench.returnSingleThreadedPythagoras(), bench.returnSingleThreadedArithmeticSumN(), bench.returnSingleThreadedPercentageError(), bench.returnSingleThreadedGeometricSumN(), bench.returnSingleThreadedCompoundInterest(), bench.returnSingleThreadedTrigonometry(), bench.returnSingleThreadedFizzBuzz());
+            if (singleThreads == true){
+                Console.WriteLine("                                                            ");
+                Console.WriteLine("Single Threaded Results:");
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                Console.WriteLine("Pythagoras Single Threaded Score: " + bench.returnSingleThreadedPythagoras() + " Calculations Per Millisecond");
+                Console.WriteLine("Trigonometry Single Threaded Score: " + bench.returnSingleThreadedTrigonometry() + " Calculations Per Millisecond");
+                Console.WriteLine("PercentageError Single Threaded Score: " + bench.returnSingleThreadedPercentageError() + " Calculations Per Millisecond");
+                Console.WriteLine("ArithmeticSumN Single Threaded Score: " + bench.returnSingleThreadedArithmeticSumN() + " Calculations Per Millisecond");
+                Console.WriteLine("FizzBuzz Single Threaded Score: " + bench.returnSingleThreadedFizzBuzz() + " Calculations Per Millisecond");
+                Console.WriteLine("GeometricSumN Single Threaded Score: " + bench.returnSingleThreadedGeometricSumN() + " Calculations Per Millisecond");
+                Console.WriteLine("Compound Interest Single Threaded Score: " + bench.returnSingleThreadedCompoundInterest() + " Calculations Per Millisecond");
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                
+            }
+            if (multiThreads == true){
+                //  calculateOverallMultiScore(bench.returnMultiThreadedPythagoras(), bench.returnMultiThreadedArithmeticSumN(), bench.returnMultiThreadedPercentageError(), bench.returnMultiThreadedGeometricSumN(), bench.returnMultiThreadedCompoundInterest(), bench.returnMultiThreadedTrigonometry(), bench.returnScalingFizzBuzz());
+                Console.WriteLine("                                                            ");
+                Console.WriteLine("Multi Threaded Results:");
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+                Console.WriteLine("Pythagoras Multi Threaded Score: " + bench.returnMultiThreadedPythagoras() + " Calculations Per Millisecond");
+                Console.WriteLine("Trigonometry Multi Threaded Score: " + bench.returnMultiThreadedTrigonometry() + " Calculations Per Millisecond");
+                Console.WriteLine("PercentageError Multi Threaded Score: " + bench.returnMultiThreadedPercentageError() + " Calculations Per Millisecond");
+                Console.WriteLine("ArithmeticSumN Multi Threaded Score: " + bench.returnMultiThreadedArithmeticSumN() + " Calculations Per Millisecond");
+                Console.WriteLine("FizzBuzz Multi Threaded Score: " + bench.returnMultiThreadedFizzBuzz() + " Calculations Per Millisecond");
+                Console.WriteLine("GeometricSumN Multi Threaded Score: " + bench.returnMultiThreadedGeometricSumN() + " Calculations Per Millisecond");
+                Console.WriteLine("Compound Interest Multi Threaded Score: " + bench.returnMultiThreadedCompoundInterest() + " Calculations Per Millisecond");
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------");
+              
+            }
+            if (multiThreads == true & singleThreads == true)
+            {
                 //Benchmark scaling
                 Console.WriteLine("Improvements compared to Single Threaded Performance: ");
                 Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "x");
@@ -96,6 +139,8 @@ namespace CSMarkRedux.BenchmarkManagement
                 Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "x");
                 Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "x");
                 Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "x");
+                Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "x");
+                Console.WriteLine("Compound Interest Test Improvement: " + bench.returnScalingCompoundInterest().ToString() + "x");
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------");
             }
 

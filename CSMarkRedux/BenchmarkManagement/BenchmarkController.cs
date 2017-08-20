@@ -10,26 +10,35 @@ namespace CSMarkRedux.BenchmarkManagement
         BenchPercentageError bpe1 = new BenchPercentageError();
         BenchArithmeticSumN bas1 = new BenchArithmeticSumN();
         BenchFizzBuzz bfz1 = new BenchFizzBuzz();
-
+        BenchCompoundInterest bci1 = new BenchCompoundInterest();
+        BenchGeometricSumN bgs1 = new BenchGeometricSumN();
 
         BenchTrigonometry bty2 = new BenchTrigonometry();
         BenchPythagoras bps2 = new BenchPythagoras();
         BenchPercentageError bpe2 = new BenchPercentageError();
         BenchArithmeticSumN bas2 = new BenchArithmeticSumN();
         BenchFizzBuzz bfz2 = new BenchFizzBuzz();
+        BenchCompoundInterest bci2 = new BenchCompoundInterest();
+        BenchGeometricSumN bgs2 = new BenchGeometricSumN();
 
         double pythagorasScaling = 0;
         double trigonometryScaling = 0;
         double percentageErrorScaling = 0;
         double arithmeticSumNScaling = 0;
         double fizzBuzzScaling = 0;
+        double geometricSumNScaling = 0;
+        double compoundInterestScaling = 0;
 
+        double[] compoundInterest_Single = new double[5];
+        double[] geometricSumN_Single = new double[5];
         double[] pythagoras_single = new double[5];
         double[] trigonometry_single = new double[5];
         double[] fizzBuzz_single = new double[5];
         double[] percentageError_single = new double[5];
         double[] arithmeticSumN_single = new double[5];
 
+        double[] compoundInterest_Multi = new double[5];
+        double[] geometricSumN_Multi = new double[5];
         double[] pythagoras_multi = new double[5];
         double[] trigonometry_multi = new double[5];
         double[] fizzBuzz_multi = new double[5];
@@ -76,6 +85,23 @@ namespace CSMarkRedux.BenchmarkManagement
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
             bty2.multiThreadedBench(maxIteration);
         }
+        public void startCompoundInterestTest_Single(double maxIteration){
+            Console.WriteLine("Starting Compound Interest single threaded benchmark");
+            bci1.singleThreadedBench(maxIteration);
+        }
+        public void startCompoundInterestTest_Multi(double maxIteration){
+            Console.WriteLine("Starting Compound Interest multi threaded benchmark");
+            bci2.multiThreadedBench(maxIteration);
+        }
+        public void startGeometricSumNTest_Single(double maxIteration){
+            Console.WriteLine("Starting GeometricSumN single threaded benchmark");
+            bgs1.singleThreadedBench(maxIteration);
+        }
+        public void startGeometricSumNTest_Multi(double maxIteration){
+            Console.WriteLine("Starting GeometricSumN multi threaded benchmark");
+            bgs2.multiThreadedBench(maxIteration);
+        }
+
         public double returnSingleThreadedPythagoras(){
             return bps1.returnSingleScore();
         }
@@ -115,6 +141,22 @@ namespace CSMarkRedux.BenchmarkManagement
         {
             return bpe2.returnMultiScore();
         }
+        public double returnSingleThreadedCompoundInterest()
+        {
+            return bci1.returnSingleScore();
+        }
+        public double returnMultiThreadedCompoundInterest()
+        {
+            return bci2.returnMultiScore();
+        }
+        public double returnSingleThreadedGeometricSumN()
+        {
+            return bgs1.returnSingleScore();
+        }
+        public double returnMultiThreadedGeometricSumN()
+        {
+            return bgs2.returnMultiScore();
+        }
 
         public double returnScalingPythagoras()
         {
@@ -150,6 +192,20 @@ namespace CSMarkRedux.BenchmarkManagement
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
             fizzBuzzScaling = Math.Round(fizzBuzzScaling, 2, MidpointRounding.AwayFromZero);
             return fizzBuzzScaling;
+        }
+        public double returnScalingGeometricSumN()
+        {
+            geometricSumNScaling = returnSingleThreadedGeometricSumN() / returnMultiThreadedGeometricSumN();
+            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
+            fizzBuzzScaling = Math.Round(geometricSumNScaling, 2, MidpointRounding.AwayFromZero);
+            return geometricSumNScaling;
+        }
+        public double returnScalingCompoundInterest()
+        {
+            compoundInterestScaling = returnSingleThreadedCompoundInterest() / returnMultiThreadedCompoundInterest();
+            //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
+            compoundInterestScaling = Math.Round(compoundInterestScaling, 2, MidpointRounding.AwayFromZero);
+            return compoundInterestScaling;
         }
     }
 }

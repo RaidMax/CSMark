@@ -2,21 +2,24 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace CSMark.Benchmarks
 {
-    class BenchArithmeticSumN{
-        ArithmeticSumN arithmeticN = new ArithmeticSumN();
-        static double N = 59000;
-        static double D = 30000;
-        static double U1 = 85000;
+    class BenchCompoundInterest{
+        CompoundInterest comp = new CompoundInterest();
+        static double PV = 10.0 * 1000 * 1000;
+        static double K = 12; // Compounded monthly
+        static double R = 18; // This 18% interest rate is an absolute steal!
+        static double N = 7; // 7 years in a vault? That's real commitment!
 
-        double singleTime;
-        double multiTime;
+        double singleTime = 0;
+        double multiTime = 0;
         double _maxIteration;
+
         public double returnSingleScore(){
             singleTime = _maxIteration / singleTime;
-            singleTime = Math.Round(singleTime, 1, MidpointRounding.AwayFromZero);
+            singleTime = Math.Round(singleTime,1, MidpointRounding.AwayFromZero);
             return singleTime;
         }
         public double returnMultiScore(){
@@ -26,26 +29,26 @@ namespace CSMark.Benchmarks
         }
         public void singleThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
-          double iteration = 0;
-            Stopwatch stopwatch1 = new Stopwatch();
-            stopwatch1.Start();
+            Stopwatch stopwatch = new Stopwatch();           
+           double iteration = 0;
+            stopwatch.Start();
             while (iteration <= maxIterations){
-                arithmeticN.calculateArithmeticSumN(N, D, U1);
+                comp.calculateFutureValue(PV, R, K, N);
                 //Increment our counter
                 iteration++;
             }
-            stopwatch1.Stop();
-            singleTime = stopwatch1.ElapsedMilliseconds;
-            stopwatch1.Reset();
+            stopwatch.Stop();
+            singleTime = stopwatch.ElapsedMilliseconds;
+            stopwatch.Reset();
         }
         private static double threadCalc(double maxThreadIterations){
-            ArithmeticSumN arithmeticN1 = new ArithmeticSumN();
-            double iteration = 0;
+            CompoundInterest comp1 = new CompoundInterest();
+            double iteration = 0;        
             while (iteration <= maxThreadIterations){
-                arithmeticN1.calculateArithmeticSumN(N, D, U1);
+                comp1.calculateFutureValue(PV, R, K, N);
                 //Increment our counter
                 iteration++;
-            }
+            }                     
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
@@ -54,11 +57,13 @@ namespace CSMark.Benchmarks
             stopwatch2.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
-            for (int i = 0; i < Environment.ProcessorCount; i++){
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
                 workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
                 workerThreads[i].Join();
             }
             stopwatch2.Stop();

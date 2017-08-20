@@ -14,12 +14,12 @@ namespace CSMark.Benchmarks
 
         public double returnSingleScore(){
             singleTime = _maxIteration / singleTime;
-            singleTime = Math.Round(singleTime, 0, MidpointRounding.AwayFromZero);
+            singleTime = Math.Round(singleTime, 1, MidpointRounding.AwayFromZero);
             return singleTime;
         }
         public double returnMultiScore(){
             multiTime = _maxIteration / multiTime;
-            multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
+            multiTime = Math.Round(multiTime, 1, MidpointRounding.AwayFromZero);
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
@@ -49,9 +49,9 @@ namespace CSMark.Benchmarks
         public void multiThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
             Stopwatch stopwatch2 = new Stopwatch();
-            stopwatch2.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
+            stopwatch2.Start();
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
                 workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));

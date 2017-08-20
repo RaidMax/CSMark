@@ -2,16 +2,20 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace CSMark.Benchmarks{
-    public class BenchPercentageError{
-        PercentageError pe = new PercentageError();
-        //This what we'll use for H,O and A.
-        double exp = 4800;
-        double act = 6300;
+namespace CSMark.Benchmarks
+{
+    class BenchGeometricSumN{
+        GeometricSumN geometricN = new GeometricSumN();
+        static double R = 4000;
+        static double N = 30000;
+        static double U1 = 47000;
+
         double singleTime;
         double multiTime;
         double _maxIteration;
+
         public double returnSingleScore(){
             singleTime = _maxIteration / singleTime;
             singleTime = Math.Round(singleTime, 1, MidpointRounding.AwayFromZero);
@@ -23,12 +27,12 @@ namespace CSMark.Benchmarks{
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
+            Stopwatch stopwatch1 = new Stopwatch();
             _maxIteration = maxIterations;
             double iteration = 0;
-            Stopwatch stopwatch1 = new Stopwatch();
             stopwatch1.Start();
             while (iteration <= maxIterations){
-                pe.calcPercentageError(exp, act);
+                geometricN.calculateGeometricSumN(N,R,U1);
                 //Increment our counter
                 iteration++;
             }
@@ -36,12 +40,11 @@ namespace CSMark.Benchmarks{
             singleTime = stopwatch1.ElapsedMilliseconds;
             stopwatch1.Reset();
         }
-        private static double threadCalc(double exp1, double act1, double maxThreadIterations) {
-            PercentageError peX = new PercentageError();
+        private static double threadCalc(double maxThreadIterations){
+            GeometricSumN geomtricN1 = new GeometricSumN();
             double iteration = 0;
-            while (iteration <= maxThreadIterations)
-            {
-                peX.calcPercentageError(exp1, act1);
+            while (iteration <= maxThreadIterations){
+                geomtricN1.calculateGeometricSumN(N,R, U1);
                 //Increment our counter
                 iteration++;
             }
@@ -50,14 +53,18 @@ namespace CSMark.Benchmarks{
         public void multiThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
             Stopwatch stopwatch2 = new Stopwatch();
+            stopwatch2.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
-            stopwatch2.Start();
-            for (int i = 0; i < Environment.ProcessorCount; i++){
-                workerThreads[i] = new Thread(() => threadCalc(exp,act, maxThreadIterations));
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
+                workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
                 workerThreads[i].Start();
             }
-            for (int i = 0; i < Environment.ProcessorCount; i++){
+
+            for (int i = 0; i < Environment.ProcessorCount; i++)
+            {
                 workerThreads[i].Join();
             }
             stopwatch2.Stop();

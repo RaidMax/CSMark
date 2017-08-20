@@ -15,13 +15,13 @@ namespace CSMark.Benchmarks{
         public double returnSingleScore()
         {
             singleTime = _maxIteration / singleTime;
-            singleTime = Math.Round(singleTime, 0, MidpointRounding.AwayFromZero);
+            singleTime = Math.Round(singleTime, 1, MidpointRounding.AwayFromZero);
             return singleTime;
         }
         public double returnMultiScore()
         {
             multiTime = _maxIteration / multiTime;
-            multiTime = Math.Round(multiTime, 0, MidpointRounding.AwayFromZero);
+            multiTime = Math.Round(multiTime, 1, MidpointRounding.AwayFromZero);
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
