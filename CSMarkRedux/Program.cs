@@ -11,11 +11,11 @@ namespace CSMarkRedux
 
             Console.Title = "CSMark Redux 0.14.0";
             string CSMarkVersion = "0.14.0_PreRelease";
-            string CSMarkBranch = "1.0_PreRelease";
 
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
-
+            Console.WriteLine("To check for updates, go to https://www.github.com/AluminiumTech/CSMark/releases/");
+            Console.WriteLine("For Support Status, go to https://github.com/AluminiumTech/CSMark/blob/master/Support.MD");
             string benchAccuracy = "MX2";
             string newCommand;
             string timedStress;
@@ -72,6 +72,30 @@ namespace CSMarkRedux
                         }
                     }
 
+                    Console.WriteLine("                                                ");
+                    Console.WriteLine("Would you like to save the results to a File?");
+                    Console.WriteLine("Please enter Y or N.");
+                    string saveConfirm = Console.ReadLine().ToLower();
+
+                    if (saveConfirm == "y" || saveConfirm != "n")
+                    {
+                        var score = new ScoreSaver();
+
+                        Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
+
+                        score.setArithmeticSumN(bench.returnSingleThreadedArithmeticSumN().ToString(), bench.returnMultiThreadedArithmeticSumN().ToString());
+                        score.setFizzBuzz(bench.returnSingleThreadedFizzBuzz().ToString(), bench.returnMultiThreadedFizzBuzz().ToString());
+                        score.setPythagoras(bench.returnSingleThreadedPythagoras().ToString(), bench.returnMultiThreadedPythagoras().ToString());
+                        score.setTrigonometry(bench.returnSingleThreadedTrigonometry().ToString(), bench.returnMultiThreadedTrigonometry().ToString());
+                        score.setPercentageError(bench.returnSingleThreadedPercentageError().ToString(), bench.returnMultiThreadedPercentageError().ToString());
+                        score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString());
+                        score.saveToTextFile(Directory.GetCurrentDirectory() + "\\results", CSMarkVersion, benchAccuracy, accuracyConfigured);
+                    }
+                    else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n")
+                    {
+                        //Do nothing, the app will automatically continue and will restart the While Loop.
+                    }
+
                     continue;
                 }
                 else if (newCommand.Contains("bench"))
@@ -107,6 +131,11 @@ namespace CSMarkRedux
                 }
                 else if(newCommand == "exit"){
                     break;
+                }
+                else{
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command correctly.");
+                    continue;
                 }
             }
 

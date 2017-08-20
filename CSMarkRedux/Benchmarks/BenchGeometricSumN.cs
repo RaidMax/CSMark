@@ -2,7 +2,6 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace CSMark.Benchmarks
 {
@@ -27,6 +26,10 @@ namespace CSMark.Benchmarks
             return multiTime;
         }
         public void singleThreadedBench(double maxIterations){
+            Random rnd = new Random();
+            R = rnd.NextDouble() * 4000;
+            N = rnd.NextDouble() * 30000;
+            U1 = rnd.NextDouble() * 47000;
             Stopwatch stopwatch1 = new Stopwatch();
             _maxIteration = maxIterations;
             double iteration = 0;
@@ -51,12 +54,16 @@ namespace CSMark.Benchmarks
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
+            Random rnd1 = new Random();
+            R = rnd1.NextDouble() * 4000;
+            N = rnd1.NextDouble() * 30000;
+            U1 = rnd1.NextDouble() * 47000;
             _maxIteration = maxIterations;
-            Stopwatch stopwatch2 = new Stopwatch();
-            stopwatch2.Start();
+            Stopwatch stopwatch2 = new Stopwatch();   
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
 
+            stopwatch2.Start();
             for (int i = 0; i < Environment.ProcessorCount; i++)
             {
                 workerThreads[i] = new Thread(() => threadCalc(maxThreadIterations));
@@ -67,6 +74,7 @@ namespace CSMark.Benchmarks
             {
                 workerThreads[i].Join();
             }
+
             stopwatch2.Stop();
             multiTime = stopwatch2.ElapsedMilliseconds;
             stopwatch2.Reset();
