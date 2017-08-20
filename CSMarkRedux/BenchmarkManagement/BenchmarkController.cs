@@ -1,7 +1,5 @@
 ﻿using CSMark.Benchmarks;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CSMarkRedux.BenchmarkManagement
 {
@@ -12,6 +10,7 @@ namespace CSMarkRedux.BenchmarkManagement
         BenchPercentageError bpe1 = new BenchPercentageError();
         BenchArithmeticSumN bas1 = new BenchArithmeticSumN();
         BenchFizzBuzz bfz1 = new BenchFizzBuzz();
+
 
         BenchTrigonometry bty2 = new BenchTrigonometry();
         BenchPythagoras bps2 = new BenchPythagoras();
@@ -76,6 +75,46 @@ namespace CSMarkRedux.BenchmarkManagement
         public void startTrigonometryTest_Multi(double maxIteration){
             Console.WriteLine("Starting Trigonometry multi threaded benchmark");
             bty2.multiThreadedBench(maxIteration);
+        }
+
+        public double returnSingleThreadedPythagoras(){
+            return bps1.returnSingleScore();
+        }
+        public double returnMultiThreadedPythagoras()
+        {
+            return bps2.returnMultiScore();
+        }
+        public double returnSingleThreadedTrigonometry()
+        {
+            return bty1.returnSingleScore();
+        }
+        public double returnMultiThreadedTrigonometry()
+        {
+            return bty2.returnSingleScore();
+        }
+        public double returnSingleThreadedFizzBuzz()
+        {
+            return bfz1.returnSingleScore();
+        }
+        public double returnMultiThreadedFizzBuzz()
+        {
+            return bfz2.returnSingleScore();
+        }
+        public double returnSingleThreadedArithmeticSumN()
+        {
+            return bas1.returnSingleScore();
+        }
+        public double returnMultiThreadedArithmeticSumN()
+        {
+            return bas2.returnSingleScore();
+        }
+        public double returnSingleThreadedPercentageError()
+        {
+            return bpe1.returnSingleScore();
+        }
+        public double returnMultiThreadedPercentageError()
+        {
+            return bpe2.returnSingleScore();
         }
 
         public double returnScalingPythagoras()
