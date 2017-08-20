@@ -5,14 +5,13 @@ using System.Threading;
 namespace CSMark.Benchmarks{
      class BenchPythagoras{
         Pythagoras py = new Pythagoras();
-        Stopwatch stopwatch = new Stopwatch();
-        double iteration = 0;
         double H = 7900;
         double O = 6800;
         double A = 4900;
         double singleTime;
         double multiTime;
         double _maxIteration;
+
         public double returnSingleScore()
         {
             singleTime = _maxIteration / singleTime;
@@ -27,10 +26,11 @@ namespace CSMark.Benchmarks{
         }
         public void singleThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
-            iteration = 0;
+            double iteration = 0;
             double randomNumber;
             Random random = new Random();
-            stopwatch.Start();
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
             while (iteration <= maxIterations){
                 randomNumber = random.Next(3);
                 switch (randomNumber){
@@ -47,9 +47,9 @@ namespace CSMark.Benchmarks{
                 //Increment our counter
                 iteration++;
             }
-            stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+            stopwatch1.Stop();
+            singleTime = stopwatch1.ElapsedMilliseconds;
+            stopwatch1.Reset();
             iteration = 0;
         }
         private static double threadCalc(double H, double O, double A, double maxThreadIterations){
@@ -76,8 +76,9 @@ namespace CSMark.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
-            iteration = 0;
-            stopwatch.Start();
+            _maxIteration = maxIterations;
+            Stopwatch stopwatch2 = new Stopwatch();
+            stopwatch2.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
                 for (int i = 0; i < Environment.ProcessorCount; i++){
@@ -90,9 +91,9 @@ namespace CSMark.Benchmarks{
             for (int i = 0; i < Environment.ProcessorCount; i++){
                 workerThreads[i].Join();
             }
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+            stopwatch2.Stop();
+            multiTime = stopwatch2.ElapsedMilliseconds;
+            stopwatch2.Reset();
         }
     }
 }

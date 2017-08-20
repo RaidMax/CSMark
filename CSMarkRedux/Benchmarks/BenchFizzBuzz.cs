@@ -8,8 +8,6 @@ namespace CSMark.Benchmarks
     class BenchFizzBuzz
     {
         FizzBuzz fizz = new FizzBuzz();
-        Stopwatch stopwatch = new Stopwatch();
-        double iteration = 0;
         double singleTime;
         double multiTime;
         double _maxIteration;
@@ -26,17 +24,17 @@ namespace CSMark.Benchmarks
         }
         public void singleThreadedBench(double maxIterations){
             _maxIteration = maxIterations;
-            iteration = 0;
-            stopwatch.Start();
+           double iteration = 0;
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
             while (iteration <= maxIterations){
                 fizz.calculateFizzBuzz(iteration);
                 //Increment our counter
                 iteration++;
             }
-            stopwatch.Stop();
-            singleTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
-            iteration = 0;
+            stopwatch1.Stop();
+            singleTime = stopwatch1.ElapsedMilliseconds;
+            stopwatch1.Reset();
         }
         private static double threadCalc(double maxThreadIterations){
             FizzBuzz fizz2 = new FizzBuzz();
@@ -49,8 +47,9 @@ namespace CSMark.Benchmarks
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
-            iteration = 0;
-            stopwatch.Start();
+            _maxIteration = maxIterations;
+            Stopwatch stopwatch2 = new Stopwatch();
+            stopwatch2.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
             for (int i = 0; i < Environment.ProcessorCount; i++)
@@ -62,9 +61,9 @@ namespace CSMark.Benchmarks
             {
                 workerThreads[i].Join();
             }
-            stopwatch.Stop();
-            multiTime = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+            stopwatch2.Stop();
+            multiTime = stopwatch2.ElapsedMilliseconds;
+            stopwatch2.Reset();
         }
     }
 }
