@@ -3,6 +3,8 @@ This document outlines CSMark Support policies as well as supported versions and
 
 This may not be 100% representative or accurate of support policies followed and is intended for reference purposes only.
 
+CSMark is a constantly evolving project and thus may recieve updates. Users must remain on a recent version of CSMark to remain supported. 
+
 ### Support Categorization
 There are 2 Categories of Support.
 
@@ -16,28 +18,17 @@ These are:
 
 ## CSMark Support by Release Category
 
-| Release Category  | Release Category Description | Mainstream Support Period      | Extended Support Period      | End of Support Extension|
+| Release Category  | Release Category Description | Mainstream Support End     | Extended Support End | End of Support Extension|
 |-------------------|------------------------------|--------------------------------|------------------------------|----------------|
-| Pre-Release       | A pre-release version of CSMark | 30 Days after release | Optional 30 Days after MainStream Support End | Possible if critical |
-| Current           | An official stable release of CSMark| 30-90 days after Release | 1 Year of Support | Likely if critical|
+| Pre-Release | A pre-release version of CSMark | 30 Days after release OR After 3 new pre-release versions have been published (E.g. 0.15.0, 0.16.0, 0.17.0) | (Optional) 30 Days after MainStream Support End OR (Optional) After 6 Service/Security releases for the version have been published | Possible if critical |
+| Current | An official stable release of CSMark| 1 Year after release OR After 4 new release versions have been published | 1 Additional Year of Support OR After 10 Service/Security releases for the version | Likely if critical|
 
 ## CSMark Support By Release
 
-### Versions no longer supported
-
-| Release Version  |  Release Date | Latest Supported Version | Mainstream Support End | Extended Support End |
-|-------------------|---------------|-------------------------|-------------------------|----------------|
-| 0.5 | April 23rd 2017 | None| May 23rd 2017 | June 23rd 2017 |
-| 0.6 | May 27th 2017 | 0.6.1 released on July 11th 2017 | June 27th 2017 | July 22nd 2017 |
-| 0.7 | June 3rd 2017 | 0.7.1 released on July 11th 2017 | July 3rd 2017 | July 22nd 2017 |
-| 0.8 | June 29th 2017 | 0.8.1 released on July 11th 2017 | July 29th 2017 | July 29th 2017 |
-| 0.9 | July 6th 2017 | 0.9.2 released on August 14th 2017 | August 6th 2017 | August 6th 2017 * Extended due to exceptional circumstances|
-| 0.10 | July 17th 2017 | 0.10.1 released on August 14th 2017 | August 17th 2017 | August 17th 2017 |
-
 ### Supported Versions
 
-| Release Version  |  Release Date | Latest Supported Version | Mainstream Support End | Extended Support End |
+| Release Version  |  Release Date | Latest Service Pack/Patch Release | Mainstream Support End | Extended Support End |
 |-------------------|---------------|-------------------------|-------------------------|----------------|
-| 0.11 | July 24th 2017 | 0.11.1 released on August 14th 2017 | August 24th 2017 | August 24th 2017  |
+
 | 0.12 | August 5th 2017 | 0.12.1 released on August 14th 2017 | September 5th 2017 | September 5th 2017 |
 | 0.13 | August 10th 2017 | 0.13.3 released on August 14th 2017 | September 10th 2017 | September 10th 2017 |
