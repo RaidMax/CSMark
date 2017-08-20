@@ -75,7 +75,7 @@ namespace CSMark.Benchmarks{
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
-            iteration = 0;
+            _maxIteration = maxIterations;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;
             Thread[] workerThreads = new Thread[Environment.ProcessorCount];
@@ -93,7 +93,6 @@ namespace CSMark.Benchmarks{
             stopwatch.Stop();
             multiTime = stopwatch.ElapsedMilliseconds;
             stopwatch.Reset();
-            iteration = 0;
         }
     }
 }

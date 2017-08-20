@@ -49,6 +49,7 @@ namespace CSMark.Benchmarks
             return 0;
         }
         public void multiThreadedBench(double maxIterations){
+            _maxIteration = maxIterations;
             iteration = 0;
             stopwatch.Start();
             double maxThreadIterations = maxIterations / Environment.ProcessorCount;

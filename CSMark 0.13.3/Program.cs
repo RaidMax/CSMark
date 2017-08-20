@@ -10,12 +10,14 @@ namespace CSMark {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            Console.Title = "CSMark 0.13.3 - CSMark August 2017-002 Critical Security Update";
-            string CSMarkVersion = "0.13.3__CSM-CSU2017-002_PreRelease";
+            Console.Title = "CSMark 0.13.4";
+            string CSMarkVersion = "0.13.4_PreRelease";
             bool previewBranch = false;
 
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
+            Console.WriteLine("To check for updates, go to https://www.github.com/AluminiumTech/CSMark/releases/");
+            Console.WriteLine("For Support Status, go to https://github.com/AluminiumTech/CSMark/blob/master/Support.MD");
             string newCommand;
             bool accuracyConfigured = false;
             Stopwatch time = new Stopwatch();
