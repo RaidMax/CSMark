@@ -8,10 +8,10 @@ namespace CSMarkRedux.BenchmarkManagement
     /// </summary>
     class ConfigEditor
     {
-        Management mgnt = new Management();
+        Management mgnt2 = new Management();
         string configDirectory;
 
-        string newDir = configDirectory + "\\CSMark_Config.txt";
+        string newDir;
 
         bool configExists;
 
@@ -48,11 +48,11 @@ namespace CSMarkRedux.BenchmarkManagement
             }     
         }
         private void setDefaults(){
-            if(mgnt.returnPlatform() == "Mac"){
+            if(mgnt2.returnPlatform() == "Mac"){
                 backgroundColor = "White";
                 standardForegroundColor = "Black";
             }
-            else if(mgnt.returnPlatform() == "Windows" || mgnt.returnPlatform() == "Linux"){
+            else if(mgnt2.returnPlatform() == "Windows" || mgnt2.returnPlatform() == "Linux"){
                 backgroundColor = "Black";
                 standardForegroundColor = "Gray";
             }
@@ -74,7 +74,7 @@ namespace CSMarkRedux.BenchmarkManagement
         }
 
         public bool doesConfigurationExist(){
-
+            newDir = configDirectory + "\\CSMark_Config.txt";
             if (Directory.Exists(newDir))
             {
                 configExists = true;
@@ -94,9 +94,9 @@ namespace CSMarkRedux.BenchmarkManagement
                         sw.WriteLine("CSMarkVersion_" + AppVersion);
                         sw.WriteLine("Date_" + DateTime.Now.ToString());
                         sw.WriteLine("ThreadCount_" + Environment.ProcessorCount.ToString());
-                        sw.WriteLine("OSPlatform__" + mgnt.returnPlatform());
-                        sw.WriteLine("OSArchitecture__" + mgnt.returnOSArchitecture());
-                        sw.WriteLine("ProcessorArchitecture__" + mgnt.returnProcessorArchitecture());
+                        sw.WriteLine("OSPlatform__" + mgnt2.returnPlatform());
+                        sw.WriteLine("OSArchitecture__" + mgnt2.returnOSArchitecture());
+                        sw.WriteLine("ProcessorArchitecture__" + mgnt2.returnProcessorArchitecture());
                         sw.WriteLine("-------------------------------------------------");
                         sw.WriteLine("BackgroundColor__" + backgroundColor);
                         sw.WriteLine("StandardForegroundColor__" + standardForegroundColor);

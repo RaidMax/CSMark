@@ -6,8 +6,6 @@ namespace CSMarkRedux.BenchmarkManagement
 {
     class Management
     {
-        ConfigEditor confEdit = new ConfigEditor();
-        bool configExists;
         Platform platform;
         string osArch;
         string processArch;
@@ -70,14 +68,6 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         private void testConfigExists(string _AppVersion){
 
-         if(confEdit.doesConfigurationExist() == true){
-              //Do nothing if it already exists. We don't want settings to be overrided.
-            }
-         else if(confEdit.doesConfigurationExist() == false){
-                //If the configuratione doesn't exist then let's make it.
-                confEdit.createConfigDirectory();
-                confEdit.createConfiguration(_AppVersion);
-            }
         }
         private void applyThemes(){
 
