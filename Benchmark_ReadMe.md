@@ -12,25 +12,26 @@ All benchmarks included in CSMark are written in C# and are designed to be scala
 
 * Difficulty Level refers to how demanding the benchmark is relatively speaking
 
-| Benchmark Name | Added in | Removed in | Status | Difficulty Level|
+| Benchmark Name | Added in | Removed in | Status | Difficulty Level| Notes |
 |----------------|-------------------------|-------------------|-------------------|-------------------|
 | Pythagoras | 0.1.0.0 | - |  Maintained | DL 1 |
-| Trigonometry | 0.2.0.0 | - | Maintained | DL 1|
-| Gradient | 0.4.0.0 | 0.5.0.0 | Discontinued |DL 0 |
-| PercentageError | 0.6.0.0 | -| Maintained |DL 1 |
-| ArithmeticSumN | 0.10.0.0 | - | Maintained | DL 1 |
-| FizzBuzz | 0.13.0.0 | - |  Maintained| DL 2 |
+| Trigonometry | 0.2.0.0 | - | Maintained | DL 1| |
+| Gradient | 0.4.0.0 | 0.5.0.0 | Discontinued |DL 0 | |
+| PercentageError | 0.6.0.0 | -| Maintained |DL 1 | |
+| ArithmeticSumN | 0.10.0.0 | - | Maintained | DL 1 | |
+| FizzBuzz | 0.13.0.0 | - | Maintained| DL 2 | Could possibly removed in the future due to how much it can affect the CSMark Points sore. |
+| GeometricSumN | 0.14.0.0 | - |  Maintained | DL 2 | |
+| Compound Interest | 0.14.0.0 | - |  Maintained | DL 2 | |
 
-### Benchmarks which could be introduced:
+### Benchmarks which could be introduced in the future:
 
-| Benchmark Name | Added in | Removed in | Status | Difficulty Level|
+| Benchmark Name | Could be Added in  | Status | Difficulty Level|
 |----------------|-------------------------|-------------------|-------------------|-------------------|
-| Fibonacci | 0.15.0.0 | - |  Will be added | |
-| GeometricSumN | 0.14.0.0 | - |  Will be added | DL 2 |
-| TileCostFinder | 0.14.0.0 or 0.15.0.0 | - |  Could be added | |
-| ChangeReturnUS | 0.15.0.0 | - |  Could be added | |
-| MortgageMaster | 0.15.0.0 | - |  Could be added | |
-| SortAlg | 0.15.0.0 or 0.16.0.0 | - |  Could be added | |
-| PalindromeCheck | 0.16.0.0 | - |  Could be added | |
-| VowelCount | 0.16.0.0 | - |  Could be added | |
-| CaesarShift | 0.16.0.0 | - |  Could be added | |
+| Fibonacci | 0.15.0.0 | Could be added | |
+| TileCostFinder | 0.15.0.0 | Could be added | |
+| ChangeReturnUS | 0.15.0.0 |  Could be added | |
+| MortgageMaster | 0.15.0.0 |  Could be added | |
+| SortAlg | 0.16.0.0 |  Could be added | |
+| PalindromeCheck | 0.16.0.0 | Could be added | |
+| VowelCount | 0.16.0.0 |  Could be added | |
+| CaesarShift | 0.16.0.0 |  Could be added | |
