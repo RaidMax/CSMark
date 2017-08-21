@@ -13,7 +13,7 @@ All benchmarks included in CSMark are written in C# and are designed to be scala
 * Difficulty Level refers to how demanding the benchmark is relatively speaking
 
 | Benchmark Name | Added in | Removed in | Status | Difficulty Level| Notes |
-|----------------|-------------------------|-------------------|-------------------|-------------------|
+|----------------|-------------------------|-------------------|-------------------|-------------------|-------------------|
 | Pythagoras | 0.1.0.0 | - |  Maintained | DL 1 |
 | Trigonometry | 0.2.0.0 | - | Maintained | DL 1| |
 | Gradient | 0.4.0.0 | 0.5.0.0 | Discontinued |DL 0 | |
@@ -26,7 +26,7 @@ All benchmarks included in CSMark are written in C# and are designed to be scala
 ### Benchmarks which could be introduced in the future:
 
 | Benchmark Name | Could be Added in  | Status | Difficulty Level|
-|----------------|-------------------------|-------------------|-------------------|-------------------|
+|----------------|-------------------------|-------------------|-------------------|
 | Fibonacci | 0.15.0.0 | Could be added | |
 | TileCostFinder | 0.15.0.0 | Could be added | |
 | ChangeReturnUS | 0.15.0.0 |  Could be added | |
