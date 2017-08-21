@@ -23,12 +23,12 @@ These are:
 | Pre-Release | A pre-release version of CSMark | 30 Days after release OR After 3 new pre-release versions have been published (E.g. 0.15.0, 0.16.0, 0.17.0) | (Optional) 30 Days after MainStream Support End OR (Optional) After 6 Service/Security releases for the version have been published | Possible if critical |
 | Current | An official stable release of CSMark| 1 Year after release OR After 4 new release versions have been published | 1 Additional Year of Support OR After 10 Service/Security releases for the version | Likely if critical|
 
-## CSMark Support By Release
+## CSMark Version Support By Release
 
 ### Supported Versions
 
 | Release Version  |  Release Date | Latest Service Pack/Patch Release | Mainstream Support End | Extended Support End |
 |-------------------|---------------|-------------------------|-------------------------|----------------|
-
 | 0.12 | August 5th 2017 | 0.12.1 released on August 14th 2017 | September 5th 2017 | September 5th 2017 |
-| 0.13 | August 10th 2017 | 0.13.3 released on August 14th 2017 | September 10th 2017 | September 10th 2017 |
+| 0.13 | August 10th 2017 | 0.13.4 released on August 20th 2017 | September 10th 2017 | September 10th 2017 |
+| 0.14 | August 20th 2017 | - | September 20th 2017 | September 20th 2017 |
