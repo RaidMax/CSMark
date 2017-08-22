@@ -4,12 +4,15 @@ using System.Runtime.InteropServices;
 
 namespace CSMarkRedux.BenchmarkManagement
 {
-    class Management
-    {
+    class Management{
         Platform platform;
         string osArch;
         string processArch;
         string _appVersion;
+
+        public void update(){
+
+        }
 
         public string returnOSArchitecture(){
             getOSArchitecture();

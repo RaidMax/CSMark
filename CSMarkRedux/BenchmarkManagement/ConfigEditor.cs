@@ -15,12 +15,12 @@ namespace CSMarkRedux.BenchmarkManagement
 
         bool configExists;
 
-        string backgroundColor;
-        string standardForegroundColor;
-        string singleThreadResultColor;
-        string multiThreadResultColor;
-        string warningColor;
-        string overallScoreColor;
+        ConsoleColor backgroundColor;
+        ConsoleColor standardForegroundColor;
+        ConsoleColor singleThreadResultColor;
+        ConsoleColor multiThreadResultColor;
+        ConsoleColor warningColor;
+        ConsoleColor overallScoreColor;
 
         string stressTestShortkey;
         string benchmarkShortkey;
@@ -31,7 +31,7 @@ namespace CSMarkRedux.BenchmarkManagement
         string defaultTimedStressMinutes;
         string defaultTimedStressSeconds;
 
-        public void createConfigDirectory(){
+        private void createConfigDirectory(){
             configDirectory = Directory.GetCurrentDirectory() + "\\Settings\\";
 
             if (Directory.Exists(configDirectory))
@@ -49,14 +49,14 @@ namespace CSMarkRedux.BenchmarkManagement
         }
         private void setDefaults(){
             if(mgnt2.returnPlatform() == "Mac"){
-                backgroundColor = "White";
-                standardForegroundColor = "Black";
+                backgroundColor = ConsoleColor.White;
+                standardForegroundColor = ConsoleColor.Black;
             }
             else if(mgnt2.returnPlatform() == "Windows" || mgnt2.returnPlatform() == "Linux"){
-                backgroundColor = "Black";
-                standardForegroundColor = "Gray";
+                backgroundColor = ConsoleColor.Black;
+                standardForegroundColor = ConsoleColor.Gray;
             }
-            warningColor = "DarkRed";
+            warningColor = ConsoleColor.DarkRed;
 
             benchmarkShortkey = "Ctrl+B";
             benchmarkSingleShortkey = "Ctrl+Shift+S";

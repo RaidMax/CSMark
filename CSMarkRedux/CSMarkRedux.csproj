@@ -25,4 +25,10 @@
     <Folder Include="Properties\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="AutoUpdaterNetStandard">
+      <HintPath>..\..\AutoUpdaterNetStandard\AutoUpdaterNetStandard\bin\Debug\netstandard2.0\AutoUpdaterNetStandard.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

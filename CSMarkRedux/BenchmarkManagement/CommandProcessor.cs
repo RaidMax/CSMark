@@ -17,6 +17,17 @@ namespace CSMarkRedux.BenchmarkManagement
 
         double overallMulti;
         double overallSingle;
+        
+        public void processOutput(ConsoleColor normalForegroundColor, ConsoleColor TextColor, string Message){
+            Console.ForegroundColor = TextColor;
+            Console.WriteLine(Message);
+            Console.ForegroundColor = normalForegroundColor;
+        }
+        public void outputWarning(ConsoleColor normalForegroundColor, ConsoleColor warningColor, string Message){
+            Console.ForegroundColor = warningColor;
+            Console.WriteLine(Message);
+            Console.ForegroundColor = normalForegroundColor;
+        }
 
         public void setMaxIterations(double maxIterations){
             _maxIterations = maxIterations;

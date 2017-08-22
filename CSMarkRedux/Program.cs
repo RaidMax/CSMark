@@ -7,10 +7,28 @@ namespace CSMarkRedux
     {
         static void Main(string[] args)
         {
+            //This checks for updates.
+            AutoUpdaterNetStandard.AutoUpdater.Start("__________");
+
+            //You can later choose to download the update
+            AutoUpdaterNetStandard.AutoUpdater.DownloadUpdate();
+
             CommandProcessor commandProcessor = new CommandProcessor();
             Management mgnt = new Management();
+            ConfigEditor conf = new ConfigEditor();
+
             Console.Title = "CSMark 0.14.0";
-            string CSMarkVersion = "0.14.0_PreRelease";          
+            string CSMarkVersion = "0.14.0_PreRelease";
+
+            conf.doesConfigurationExist();
+            if(conf.doesConfigurationExist() == true){
+                //Proceed to CSMark
+            }
+            else if(conf.doesConfigurationExist() == false){
+                Console.WriteLine("Performing First Time Setup.");
+                conf.createConfiguration(CSMarkVersion);
+            }
+           
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
             mgnt.startManagement(CSMarkVersion);
