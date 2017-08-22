@@ -5,13 +5,17 @@ namespace CSMarkRedux
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             //This checks for updates.
-            AutoUpdaterNetStandard.AutoUpdater.Start("__________");
+            AutoUpdaterNetStandard.AutoUpdater.Start("https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/checkForUpdate.xml");
 
-            //You can later choose to download the update
+            /*
+            if()
+            {
+            //Download the update
             AutoUpdaterNetStandard.AutoUpdater.DownloadUpdate();
+            }
+            */
 
             CommandProcessor commandProcessor = new CommandProcessor();
             Management mgnt = new Management();
@@ -32,8 +36,8 @@ namespace CSMarkRedux
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
             mgnt.startManagement(CSMarkVersion);
-            Console.WriteLine("To check for updates, go to https://www.github.com/AluminiumTech/CSMark/releases/");
-            Console.WriteLine("For Support Status, go to https://github.com/AluminiumTech/CSMark/blob/master/Support.MD");
+            Console.WriteLine("To check for updates, go to https://www.github.com/CSMarkBenchmark/CSMark/releases/");
+            Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
             string benchAccuracy = "MX2";
             string newCommand;
             string timedStress;
@@ -153,7 +157,6 @@ namespace CSMarkRedux
                     continue;
                 }
             }
-
 
         }
     }
