@@ -2,8 +2,7 @@
 
 namespace CSMarkRedux
 {
-    class Program
-    {
+    class Program{
         static void Main(string[] args)
         {
             //This checks for updates.
@@ -20,19 +19,19 @@ namespace CSMarkRedux
             Console.Title = "CSMark 0.14.0";
             string CSMarkVersion = "0.14.0_PreRelease";
 
-            conf.doesConfigurationExist();
-            if (conf.doesConfigurationExist() == true)
-            {
-                //Proceed to CSMark
-            }
-            else if (conf.doesConfigurationExist() == false)
-            {
+        //    conf.doesConfigurationExist();
+          //  if (conf.doesConfigurationExist() == true)
+        //    {
+        //        //Proceed to CSMark
+       //     }
+       //     else if (conf.doesConfigurationExist() == false)
+       //     {
                 Console.WriteLine("Performing First Time Setup.");
-                conf.createConfiguration(CSMarkVersion);
+             //   conf.createConfiguration(CSMarkVersion);
 
                 Console.WriteLine("Welcome to CSMark.");
                 Console.WriteLine("The current time is " + DateTime.Now.ToString());
-                mgnt.startManagement(CSMarkVersion);
+            //    mgnt.startManagement(CSMarkVersion);
                 Console.WriteLine("To check for updates, go to https://www.github.com/CSMarkBenchmark/CSMark/releases/");
                 Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
                 string benchAccuracy = "MX2";
@@ -41,8 +40,7 @@ namespace CSMarkRedux
                 string stressTime;
                 string stressConfirm;
                 while (true){
-                    mgnt.managementChecks();
-
+              //      mgnt.managementChecks();
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
                     Console.Write("To run the single threaded and multi threaded tests, please enter ");

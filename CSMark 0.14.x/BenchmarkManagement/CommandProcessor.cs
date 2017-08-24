@@ -200,15 +200,15 @@ namespace CSMarkRedux.BenchmarkManagement{
             if (singleThreads == true & multiThreads == true){
                   calculateOverallSingleScore();
                   calculateOverallMultiScore();
+                Console.WriteLine("                                                                                ");
+                scalingCheck(bench.returnScalingPythagoras(), bench.returnScalingTrigonometry(), bench.returnScalingArithmeticSumN(), bench.returnScalingFizzBuzz(), bench.returnScalingGeometricSumN(), bench.returnScalingCompoundInterest(), bench.returnScalingPercentageError());
             }
             else if (singleThreads == true & multiThreads == false){
                    calculateOverallSingleScore();
             }
             else if (singleThreads == false & multiThreads == true){
                   calculateOverallMultiScore();
-            }
-            Console.WriteLine("                                                            ");
-            scalingCheck(bench.returnScalingPythagoras(),bench.returnScalingTrigonometry(),bench.returnScalingArithmeticSumN(),bench.returnScalingFizzBuzz(),bench.returnScalingGeometricSumN(),bench.returnScalingCompoundInterest(),bench.returnScalingPercentageError());
+            }          
             Console.WriteLine("                                                            ");
                 Console.WriteLine("If you have any doubts about the accuracy of this score, please re-run the test several times and get the average.");
             Console.WriteLine("If the averaged results are still greater or less than the original scores by more than 10% then please contact support for details.");
