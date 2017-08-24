@@ -1,10 +1,11 @@
-﻿using CSMarkRedux.BenchmarkManagement;
-using System;
+﻿using System;
 
 namespace CSMarkRedux
 {
-    class Program{
-        static void Main(string[] args) {
+    class Program
+    {
+        static void Main(string[] args)
+        {
             //This checks for updates.
             AutoUpdaterNetStandard.AutoUpdater.Start("https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/checkForUpdate.xml");
 
@@ -16,22 +17,18 @@ namespace CSMarkRedux
             }
             */
 
-            bool debug = true;
-
-            CommandProcessor commandProcessor = new CommandProcessor();
-            Management mgnt = new Management();
-            ConfigEditor conf = new ConfigEditor();
-
             Console.Title = "CSMark 0.14.0";
             string CSMarkVersion = "0.14.0_PreRelease";
 
             conf.doesConfigurationExist();
-            if (conf.doesConfigurationExist() == true) {
+            if (conf.doesConfigurationExist() == true)
+            {
                 //Proceed to CSMark
             }
-            else if (conf.doesConfigurationExist() == false) {
+            else if (conf.doesConfigurationExist() == false)
+            {
                 Console.WriteLine("Performing First Time Setup.");
-                conf.createConfiguration(CSMarkVersion, debug);
+                conf.createConfiguration(CSMarkVersion);
 
                 Console.WriteLine("Welcome to CSMark.");
                 Console.WriteLine("The current time is " + DateTime.Now.ToString());
@@ -43,8 +40,7 @@ namespace CSMarkRedux
                 string timedStress;
                 string stressTime;
                 string stressConfirm;
-                while (true)
-                {
+                while (true){
                     mgnt.managementChecks();
 
                     Console.ForegroundColor = ConsoleColor.Gray;
@@ -73,21 +69,25 @@ namespace CSMarkRedux
                     Console.ForegroundColor = ConsoleColor.Gray;
                     newCommand = Console.ReadLine().ToLower();
 
-                    if (newCommand == "stress" || newCommand == "stress_test") {
+                    if (newCommand == "stress" || newCommand == "stress_test")
+                    {
                         Console.WriteLine("To terminate the stress test enter BREAK or STOP.");
                         commandProcessor.startStressTest();
                         Console.WriteLine("Starting stress test.");
                         Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
                         newCommand = Console.ReadLine();
-                        if (newCommand == "break" || newCommand == "stop") {
+                        if (newCommand == "break" || newCommand == "stop")
+                        {
                             commandProcessor.stopStressTest();
                         }
-                        else {
+                        else
+                        {
                             commandProcessor.stopStressTest();
                         }
                         continue;
                     }
-                    else if (newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test") {
+                    else if (newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test")
+                    {
                         Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
                         timedStress = Console.ReadLine().ToLower();
 
@@ -98,39 +98,48 @@ namespace CSMarkRedux
                         Console.WriteLine("Please enter Y or N");
                         stressConfirm = Console.ReadLine();
 
-                        if (stressConfirm == "y") {
-                            if (timedStress == "seconds") {
+                        if (stressConfirm == "y")
+                        {
+                            if (timedStress == "seconds")
+                            {
                                 commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
                             }
-                            else if (timedStress == "minutes") {
+                            else if (timedStress == "minutes")
+                            {
                                 commandProcessor.startStressTest_Minutes(Double.Parse(stressTime));
                             }
-                            else if (timedStress == "hours") {
+                            else if (timedStress == "hours")
+                            {
                                 commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
                             }
                         }
                         continue;
                     }
-                    else if (newCommand.Contains("bench")) {
+                    else if (newCommand.Contains("bench"))
+                    {
                         Console.WriteLine("Please enter an accuracy level.");
                         Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
                         benchAccuracy = Console.ReadLine().ToUpper();
 
                         commandProcessor.setMaxIterations(benchAccuracy);
 
-                        if (newCommand == "bench_single") {
+                        if (newCommand == "bench_single")
+                        {
                             commandProcessor.startBenchmark_Single();
                             commandProcessor.showResults(true, false);
                         }
-                        else if (newCommand == "bench_multi" || newCommand == "bench-multi") {
+                        else if (newCommand == "bench_multi" || newCommand == "bench-multi")
+                        {
                             commandProcessor.startBenchmark_Multi();
                             commandProcessor.showResults(false, true);
                         }
-                        else if (newCommand == "bench") {
+                        else if (newCommand == "bench")
+                        {
                             commandProcessor.startBenchmark();
                             commandProcessor.showResults(true, true);
                         }
-                        else {
+                        else
+                        {
                             commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
                             commandProcessor.startBenchmark();
                             commandProcessor.showResults(true, true);
@@ -144,14 +153,17 @@ namespace CSMarkRedux
 
                         continue;
                     }
-                    else if (newCommand == "exit") {
+                    else if (newCommand == "exit")
+                    {
                         break;
                     }
-                    else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean") {
+                    else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean")
+                    {
                         Console.Clear();
                         continue;
                     }
-                    else {
+                    else
+                    {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command correctly.");
                         continue;
@@ -160,3 +172,5 @@ namespace CSMarkRedux
 
             }
         }
+    }
+}
