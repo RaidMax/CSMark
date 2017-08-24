@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace CSMarkRedux.BenchmarkManagement
@@ -31,28 +32,28 @@ namespace CSMarkRedux.BenchmarkManagement
         string defaultTimedStressMinutes;
         string defaultTimedStressSeconds;
 
-        private void createConfigDirectory(){
+        private void createConfigDirectory() {
             configDirectory = Directory.GetCurrentDirectory() + "\\Settings\\";
 
             if (Directory.Exists(configDirectory))
             {
                 Console.WriteLine("The Configuration Directory already exists at ... " + configDirectory);
             }
-            else if (!Directory.Exists(configDirectory)){
-                try{
+            else if (!Directory.Exists(configDirectory)) {
+                try {
                     Directory.CreateDirectory(configDirectory);
                 }
-                catch{
+                catch {
                     Console.WriteLine("CSMark was unable to create the Configuration Directory at ... " + configDirectory);
                 }
-            }     
+            }
         }
-        private void setDefaults(){
-            if(mgnt2.returnPlatform() == "Mac"){
+        private void setDefaults() {
+            if (mgnt2.returnPlatform() == "Mac") {
                 backgroundColor = ConsoleColor.White;
                 standardForegroundColor = ConsoleColor.Black;
             }
-            else if(mgnt2.returnPlatform() == "Windows" || mgnt2.returnPlatform() == "Linux"){
+            else if (mgnt2.returnPlatform() == "Windows" || mgnt2.returnPlatform() == "Linux") {
                 backgroundColor = ConsoleColor.Black;
                 standardForegroundColor = ConsoleColor.Gray;
             }
@@ -68,10 +69,14 @@ namespace CSMarkRedux.BenchmarkManagement
             defaultTimedStressSeconds = "30";
         }
 
-        public void createConfiguration(string appVersion){
+        public void createConfiguration(string appVersion, bool debug) {
+            if(debug == true){
+                
+            }
+
             createConfigDirectory();
             createConfigurationFile(appVersion);
-        }
+            }
 
         public bool doesConfigurationExist(){
             newDir = configDirectory + "\\CSMark_Config.txt";
