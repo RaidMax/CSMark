@@ -3,25 +3,21 @@ using System;
 
 namespace CSMarkRedux
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+    class Program{
+        static void Main(string[] args){
             CommandProcessor commandProcessor = new CommandProcessor();
-            Console.Title = "CSMark 0.14.0";
-            string CSMarkVersion = "0.14.0_PreRelease";
-
+            Console.Title = "CSMark 0.14.1";
+            string CSMarkVersion = "0.14.1_PreRelease";
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("The current time is " + DateTime.Now.ToString());
-            Console.WriteLine("To check for updates, go to https://www.github.com/AluminiumTech/CSMark/releases/");
-            Console.WriteLine("For Support Status, go to https://github.com/AluminiumTech/CSMark/blob/master/Support.MD");
+            Console.WriteLine("To check for updates, go to https://www.github.com/CSMarkBenchmark/CSMark/releases/");
+            Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
             string benchAccuracy = "MX2";
             string newCommand;
             string timedStress;
            string stressTime;
             string stressConfirm;
-            while (true)
-            {
+            while (true){
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
                 Console.Write("To run the single threaded and multi threaded tests, please enter ");
@@ -44,8 +40,9 @@ namespace CSMarkRedux
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("STRESS_TIMED.");
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Please give feedback, or report bugs by opening a GitHub issue at https://github.com/AluminiumTech/CSMark/issues/new ");
+                Console.WriteLine("Please give feedback, or report bugs by opening a GitHub issue at https://github.com/CSMarkBenchmark/CSMark/issues/new ");
                 Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("                                                                        ");
                 newCommand = Console.ReadLine().ToLower();
 
                 if(newCommand == "stress" || newCommand == "stress_test"){
@@ -92,7 +89,6 @@ namespace CSMarkRedux
                     benchAccuracy = Console.ReadLine().ToUpper();
 
                     commandProcessor.setMaxIterations(benchAccuracy);
-
                     if (newCommand == "bench_single"){
                         commandProcessor.startBenchmark_Single();
                         commandProcessor.showResults(true, false);
@@ -116,7 +112,6 @@ namespace CSMarkRedux
                     Console.WriteLine("Please enter Y or N.");
                     string save = Console.ReadLine().ToLower();
                     commandProcessor.handleSaveDialog(save, CSMarkVersion);
-
                     continue;
                 }
                 else if(newCommand == "exit"){
@@ -132,8 +127,6 @@ namespace CSMarkRedux
                     continue;
                 }
             }
-
-
         }
     }
 }

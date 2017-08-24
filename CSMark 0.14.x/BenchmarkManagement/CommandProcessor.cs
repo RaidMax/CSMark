@@ -1,20 +1,14 @@
 ﻿using CSMark;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 
-namespace CSMarkRedux.BenchmarkManagement
-{
-    class CommandProcessor
-    {
+namespace CSMarkRedux.BenchmarkManagement{
+    class CommandProcessor{
         StressTestController stress = new StressTestController();
         BenchmarkController bench = new BenchmarkController();
         double _maxIterations;
-
         string saveAccuracy;
-
         double overallMulti;
         double overallSingle;
 
@@ -75,12 +69,9 @@ namespace CSMarkRedux.BenchmarkManagement
         public double returnMaxIterations(){
             return _maxIterations;
         }
-
         public void handleSaveDialog(string saveConfirm, string CSMarkVersion){
-            if (saveConfirm == "y" || saveConfirm != "n")
-            {
+            if (saveConfirm == "y" || saveConfirm != "n"){
                 var score = new ScoreSaver();
-
                 string dir = Directory.GetCurrentDirectory() + "\\results";
 
                 Console.WriteLine("The file will be created in CSMark's Current Directory in a folder called RESULTS.");
@@ -95,12 +86,10 @@ namespace CSMarkRedux.BenchmarkManagement
                 score.setScaling(bench.returnScalingFizzBuzz().ToString(), bench.returnScalingPythagoras().ToString(), bench.returnScalingTrigonometry().ToString(), bench.returnScalingArithmeticSumN().ToString(), bench.returnScalingPercentageError().ToString(),bench.returnScalingGeometricSumN().ToString(),bench.returnScalingCompoundInterest().ToString());
                 score.saveToTextFile(dir, CSMarkVersion, saveAccuracy);
             }
-            else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n")
-            {
+            else if (saveConfirm == "n" || saveConfirm != "y" & saveConfirm != "n"){
                 //Do nothing, the app will automatically continue and will restart the While Loop.
             }
         }
-
         private void calculateOverallSingleScore(){
             double pyS = bench.returnSingleThreadedPythagoras();
             double trS = bench.returnSingleThreadedTrigonometry();
@@ -129,7 +118,41 @@ namespace CSMarkRedux.BenchmarkManagement
             overallMulti = Math.Round(overallMulti, 0, MidpointRounding.AwayFromZero);
             Console.WriteLine("Overall Multi Threaded Score: " + overallMulti.ToString() + " CSMark Points");
         }
+        private void scalingCheck(double pyScaling, double trigScaling, double arithScaling, double fbScaling, double geoScaling, double compScaling, double percentScaling){
+            bool isScalingReasonable = false;
 
+            double minReasonableScaling = (Environment.ProcessorCount * 0.8) * 100;
+            double maxReasonableScaling = (Environment.ProcessorCount * 1.6) * 100;
+
+            if (pyScaling >= minReasonableScaling & pyScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+            if (trigScaling >= minReasonableScaling & trigScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+            if (arithScaling >= minReasonableScaling & arithScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+            if (fbScaling >= minReasonableScaling & fbScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+            if (geoScaling >= minReasonableScaling & geoScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+            if (compScaling >= minReasonableScaling & compScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+            if (percentScaling >= minReasonableScaling & percentScaling <= maxReasonableScaling){
+                isScalingReasonable = true;
+            }
+
+            if(isScalingReasonable == true){
+                //Do nothing
+            }
+            else if(isScalingReasonable == false){
+                Console.WriteLine("WARNING: The scaling performance seems a bit weird. You may want to re-run the benchmark test.");
+            }
+        }
         public void showResults(bool singleThreads, bool multiThreads){
             Console.WriteLine("Individual Score Breakdown:   ");
 
@@ -159,8 +182,7 @@ namespace CSMarkRedux.BenchmarkManagement
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------");
               
             }
-            if (multiThreads == true & singleThreads == true)
-            {
+            if (multiThreads == true & singleThreads == true){
                 //Benchmark scaling
                 Console.WriteLine("Improvements compared to Single Threaded Performance: ");
                 Console.WriteLine("Pythagoras Test Improvement: " + bench.returnScalingPythagoras().ToString() + "x");
@@ -172,26 +194,21 @@ namespace CSMarkRedux.BenchmarkManagement
                 Console.WriteLine("Compound Interest Test Improvement: " + bench.returnScalingCompoundInterest().ToString() + "x");
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------");
             }
-
-
             Console.WriteLine("CPU Thread count: " + Environment.ProcessorCount.ToString());
             Console.WriteLine("-----------------------------------------------------------------------------------------------------");
             Console.WriteLine("                                                            ");
-            if (singleThreads == true & multiThreads == true)
-            {
+            if (singleThreads == true & multiThreads == true){
                   calculateOverallSingleScore();
                   calculateOverallMultiScore();
             }
-            else if (singleThreads == true & multiThreads == false)
-            {
+            else if (singleThreads == true & multiThreads == false){
                    calculateOverallSingleScore();
             }
-            else if (singleThreads == false & multiThreads == true)
-            {
+            else if (singleThreads == false & multiThreads == true){
                   calculateOverallMultiScore();
             }
-
             Console.WriteLine("                                                            ");
+            scalingCheck(bench.returnScalingPythagoras(),bench.returnScalingTrigonometry(),bench.returnScalingArithmeticSumN(),bench.returnScalingFizzBuzz(),bench.returnScalingGeometricSumN(),bench.returnScalingCompoundInterest(),bench.returnScalingPercentageError());
             Console.WriteLine("                                                            ");
                 Console.WriteLine("If you have any doubts about the accuracy of this score, please re-run the test several times and get the average.");
             Console.WriteLine("If the averaged results are still greater or less than the original scores by more than 10% then please contact support for details.");
@@ -263,6 +280,5 @@ namespace CSMarkRedux.BenchmarkManagement
         public void startStressTest_Hours(double durationHours){
             startStressTest_Minutes(durationHours * 60);
         }
-
         }
     }
