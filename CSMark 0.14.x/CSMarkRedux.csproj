@@ -17,4 +17,10 @@
     <Authors>AluminiumTech</Authors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
