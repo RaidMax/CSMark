@@ -1,4 +1,21 @@
-﻿using CSMarkRedux.BenchmarkManagement;
+﻿/*
+ CSMark
+    Copyright (C) 2017  AluminiumTech
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+using CSMarkRedux.BenchmarkManagement;
 using System;
 
 namespace CSMarkRedux
@@ -9,7 +26,24 @@ namespace CSMarkRedux
             Console.Title = "CSMark 0.14.1";
             string CSMarkVersion = "0.14.1_PreRelease";
             Console.WriteLine("Welcome to CSMark.");
-            Console.WriteLine("The current time is " + DateTime.Now.ToString());
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Copyright (C) 2017 AluminiumTech");
+            Console.WriteLine("This product is licensed under the GNU General Public License (GPL) v3 open source license.");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("This is free software (As defined at https://www.gnu.org/philosophy/free-sw.html) :");
+            Console.WriteLine("you can re-distribute it and/or modify it under the terms of the GNU General Public License as published by");
+            Console.WriteLine("the Free Software Foundation.");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY;");
+            Console.WriteLine("without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
+            Console.WriteLine("See the GNU General Public License for more details.");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("You should have received a copy of the GNU General Public License along with this program.");
+            Console.WriteLine("If not, see http://www.gnu.org/licenses/");
+            Console.WriteLine("To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("                                                                    ");
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("To check for updates, go to https://www.github.com/CSMarkBenchmark/CSMark/releases/");
             Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
             string benchAccuracy = "MX2";

@@ -15,23 +15,29 @@ namespace CSMarkRedux
             AutoUpdaterNetStandard.AutoUpdater.DownloadUpdate();
             }
             */
-
-            Console.Title = "CSMark 0.14.0";
-            string CSMarkVersion = "0.14.0_PreRelease";
-
-        //    conf.doesConfigurationExist();
-          //  if (conf.doesConfigurationExist() == true)
-        //    {
-        //        //Proceed to CSMark
-       //     }
-       //     else if (conf.doesConfigurationExist() == false)
-       //     {
-                Console.WriteLine("Performing First Time Setup.");
-             //   conf.createConfiguration(CSMarkVersion);
+            Console.Title = "CSMark 0.15.0";
+            string CSMarkVersion = "0.15.0_PreRelease";
 
                 Console.WriteLine("Welcome to CSMark.");
-                Console.WriteLine("The current time is " + DateTime.Now.ToString());
-            //    mgnt.startManagement(CSMarkVersion);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Copyright (C) 2017 AluminiumTech");
+            Console.WriteLine("This product is licensed under the GNU General Public License (GPL) v3 open source license.");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("This is free software (As defined at https://www.gnu.org/philosophy/free-sw.html) :");
+            Console.WriteLine("you can re-distribute it and/or modify it under the terms of the GNU General Public License as published by");
+            Console.WriteLine("the Free Software Foundation.");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY;");
+            Console.WriteLine("without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
+            Console.WriteLine("See the GNU General Public License for more details.");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("You should have received a copy of the GNU General Public License along with this program.");
+            Console.WriteLine("If not, see http://www.gnu.org/licenses/");
+            Console.WriteLine("To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/");
+            Console.WriteLine("                                                                    ");
+            Console.WriteLine("                                                                    ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
                 Console.WriteLine("To check for updates, go to https://www.github.com/CSMarkBenchmark/CSMark/releases/");
                 Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
                 string benchAccuracy = "MX2";
@@ -40,7 +46,6 @@ namespace CSMarkRedux
                 string stressTime;
                 string stressConfirm;
                 while (true){
-              //      mgnt.managementChecks();
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
                     Console.Write("To run the single threaded and multi threaded tests, please enter ");
@@ -70,17 +75,17 @@ namespace CSMarkRedux
                     if (newCommand == "stress" || newCommand == "stress_test")
                     {
                         Console.WriteLine("To terminate the stress test enter BREAK or STOP.");
-                        commandProcessor.startStressTest();
+                      //  commandProcessor.startStressTest();
                         Console.WriteLine("Starting stress test.");
                         Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
                         newCommand = Console.ReadLine();
                         if (newCommand == "break" || newCommand == "stop")
                         {
-                            commandProcessor.stopStressTest();
+                          //  commandProcessor.stopStressTest();
                         }
                         else
                         {
-                            commandProcessor.stopStressTest();
+                            //commandProcessor.stopStressTest();
                         }
                         continue;
                     }
@@ -100,15 +105,15 @@ namespace CSMarkRedux
                         {
                             if (timedStress == "seconds")
                             {
-                                commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
+                          //      commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
                             }
                             else if (timedStress == "minutes")
                             {
-                                commandProcessor.startStressTest_Minutes(Double.Parse(stressTime));
+                         //       commandProcessor.startStressTest_Minutes(Double.Parse(stressTime));
                             }
                             else if (timedStress == "hours")
                             {
-                                commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
+                         //       commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
                             }
                         }
                         continue;
@@ -119,35 +124,35 @@ namespace CSMarkRedux
                         Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
                         benchAccuracy = Console.ReadLine().ToUpper();
 
-                        commandProcessor.setMaxIterations(benchAccuracy);
+                    //    commandProcessor.setMaxIterations(benchAccuracy);
 
                         if (newCommand == "bench_single")
                         {
-                            commandProcessor.startBenchmark_Single();
-                            commandProcessor.showResults(true, false);
+                       //     commandProcessor.startBenchmark_Single();
+                     //       commandProcessor.showResults(true, false);
                         }
                         else if (newCommand == "bench_multi" || newCommand == "bench-multi")
                         {
-                            commandProcessor.startBenchmark_Multi();
-                            commandProcessor.showResults(false, true);
+                       //     commandProcessor.startBenchmark_Multi();
+                        //    commandProcessor.showResults(false, true);
                         }
                         else if (newCommand == "bench")
                         {
-                            commandProcessor.startBenchmark();
-                            commandProcessor.showResults(true, true);
+                       //     commandProcessor.startBenchmark();
+                       //     commandProcessor.showResults(true, true);
                         }
                         else
                         {
-                            commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
-                            commandProcessor.startBenchmark();
-                            commandProcessor.showResults(true, true);
+                       //     commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
+                        //    commandProcessor.startBenchmark();
+                       //     commandProcessor.showResults(true, true);
                         }
 
                         Console.WriteLine("                                                ");
                         Console.WriteLine("Would you like to save the results to a Text File?");
                         Console.WriteLine("Please enter Y or N.");
                         string save = Console.ReadLine().ToLower();
-                        commandProcessor.handleSaveDialog(save, CSMarkVersion);
+                    //    commandProcessor.handleSaveDialog(save, CSMarkVersion);
 
                         continue;
                     }
@@ -171,4 +176,3 @@ namespace CSMarkRedux
             }
         }
     }
-}
