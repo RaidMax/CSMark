@@ -34,13 +34,12 @@ namespace CSMarkRedux
             Console.WriteLine("you can re-distribute it and/or modify it under the terms of the GNU General Public License as published by");
             Console.WriteLine("the Free Software Foundation.");
             Console.WriteLine("                                                                    ");
-            Console.WriteLine("This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY;");
+            Console.WriteLine("This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY");
             Console.WriteLine("without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
             Console.WriteLine("See the GNU General Public License for more details.");
             Console.WriteLine("                                                                    ");
             Console.WriteLine("You should have received a copy of the GNU General Public License along with this program.");
             Console.WriteLine("If not, see http://www.gnu.org/licenses/");
-            Console.WriteLine("To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/");
             Console.WriteLine("                                                                    ");
             Console.WriteLine("                                                                    ");
             Console.ForegroundColor = ConsoleColor.Gray;
