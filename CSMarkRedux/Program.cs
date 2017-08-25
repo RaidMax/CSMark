@@ -1,4 +1,20 @@
-﻿using System;
+﻿/* CSMark
+    Copyright (C) 2017  AluminiumTech
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+using System;
 
 namespace CSMarkRedux
 {
@@ -18,7 +34,7 @@ namespace CSMarkRedux
             Console.Title = "CSMark 0.15.0";
             string CSMarkVersion = "0.15.0_PreRelease";
 
-                Console.WriteLine("Welcome to CSMark.");
+            Console.WriteLine("Welcome to CSMark.");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Copyright (C) 2017 AluminiumTech");
             Console.WriteLine("This product is licensed under the GNU General Public License (GPL) v3 open source license.");
@@ -45,6 +61,7 @@ namespace CSMarkRedux
                 string timedStress;
                 string stressTime;
                 string stressConfirm;
+
                 while (true){
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
@@ -89,8 +106,7 @@ namespace CSMarkRedux
                         }
                         continue;
                     }
-                    else if (newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test")
-                    {
+                    else if (newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test"){
                         Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
                         timedStress = Console.ReadLine().ToLower();
 
@@ -118,8 +134,7 @@ namespace CSMarkRedux
                         }
                         continue;
                     }
-                    else if (newCommand.Contains("bench"))
-                    {
+                    else if (newCommand.Contains("bench")){
                         Console.WriteLine("Please enter an accuracy level.");
                         Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
                         benchAccuracy = Console.ReadLine().ToUpper();
@@ -156,23 +171,19 @@ namespace CSMarkRedux
 
                         continue;
                     }
-                    else if (newCommand == "exit")
-                    {
+                    else if (newCommand == "exit"){
                         break;
                     }
-                    else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean")
-                    {
+                    else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean"){
                         Console.Clear();
                         continue;
                     }
-                    else
-                    {
+                    else{
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command correctly.");
                         continue;
                     }
                 }
-
             }
         }
     }
