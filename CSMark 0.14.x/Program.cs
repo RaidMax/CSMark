@@ -29,7 +29,10 @@ namespace CSMarkRedux{
 
             //This checks for updates on startup
             checkUpdateTimer.Start();
-            AutoUpdaterNetStandard.AutoUpdater.Start("https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/checkForUpdate.xml");
+
+            CSMarkPlatform cSMarkPlatform = new CSMarkPlatform();
+            
+            AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
             AutoUpdaterNetStandard.AutoUpdater autoUpdater = new AutoUpdaterNetStandard.AutoUpdater();
 
             Console.WriteLine("Checking for updates to CSMark. This should just take a moment.");
