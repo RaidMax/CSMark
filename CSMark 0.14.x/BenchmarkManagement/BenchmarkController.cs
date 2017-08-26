@@ -214,7 +214,7 @@ namespace CSMarkRedux.BenchmarkManagement
         {
             geometricSumNScaling = returnSingleThreadedGeometricSumN() / returnMultiThreadedGeometricSumN();
             //https://stackoverflow.com/questions/2357855/round-double-in-two-decimal-places-in-c
-            fizzBuzzScaling = Math.Round(geometricSumNScaling, 2, MidpointRounding.AwayFromZero);
+            geometricSumNScaling = Math.Round(geometricSumNScaling, 2, MidpointRounding.AwayFromZero);
             return geometricSumNScaling;
         }
         public double returnScalingCompoundInterest()
