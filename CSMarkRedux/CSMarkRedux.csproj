@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <Reference Include="AutoUpdaterNetStandard">
-      <HintPath>..\..\AutoUpdaterNetStandard\AutoUpdaterNetStandard\bin\Debug\netstandard2.0\AutoUpdaterNetStandard v1.0.1\AutoUpdaterNetStandard.dll</HintPath>
+      <HintPath>..\..\AutoUpdaterNetStandard\AutoUpdaterNetStandard\bin\Debug\netstandard2.0\AutoUpdaterNetStandard.dll</HintPath>
     </Reference>
   </ItemGroup>
 

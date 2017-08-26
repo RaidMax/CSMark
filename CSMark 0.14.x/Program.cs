@@ -23,6 +23,7 @@ namespace CSMarkRedux
     class Program{
         static void Main(string[] args){
             CommandProcessor commandProcessor = new CommandProcessor();
+
             Console.Title = "CSMark 0.14.1";
             string CSMarkVersion = "0.14.1_PreRelease";
             Console.WriteLine("Welcome to CSMark.");
