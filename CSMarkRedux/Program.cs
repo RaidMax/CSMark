@@ -16,14 +16,14 @@
 */
 using System;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace CSMarkRedux
 {
     class Program{
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             Stopwatch checkUpdateTimer = new Stopwatch();
-            Console.Title = "CSMark 0.15.0";
+            Console.Title = "CSMark " + Assembly.GetEntryAssembly().GetName().Version.ToString();
             string CSMarkVersion = "0.15.0_PreRelease";
 
             //This checks for updates on startup
