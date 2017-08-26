@@ -29,12 +29,9 @@ namespace CSMarkRedux{
 
             //This checks for updates on startup
             checkUpdateTimer.Start();
-
             CSMarkPlatform cSMarkPlatform = new CSMarkPlatform();
-            
             AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
             AutoUpdaterNetStandard.AutoUpdater autoUpdater = new AutoUpdaterNetStandard.AutoUpdater();
-
             Console.WriteLine("Checking for updates to CSMark. This should just take a moment.");
             //If it takes longer than 30 seconds to check for updates then stop and tell the user it couldn't check for updates.
             while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (30.0 * 1000)){

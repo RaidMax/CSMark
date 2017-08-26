@@ -21,13 +21,13 @@ namespace CSMarkRedux
             osPlatform = isLinux ? OSPlatform.Linux : osPlatform;
             return osPlatform;
         }
-        string downloadURL = "https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/Check_For_Updates/";
+       
         string osID;
         string archID;
         public string returnDownloadURL(){
             getPlatform();
             getArch();
-            downloadURL = downloadURL + "checkForUpdate_" + osID + "-" + archID + ".xml";
+            string downloadURL = "https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/Check_For_Updates/checkForUpdate_" + osID + "-" + archID + ".xml";
             return downloadURL;
         }
         public void getArch(){
@@ -56,7 +56,7 @@ namespace CSMarkRedux
             }
             else if (GetOSPlatform().ToString().ToLower() == "mac"){
                 if (RuntimeInformation.OSDescription.Contains("OSX 10.12")){
-                    osID = "OSX";
+                    osID = "OSX10.12";
                 }
             }
             else if (GetOSPlatform().ToString().ToLower() == "linux"){
