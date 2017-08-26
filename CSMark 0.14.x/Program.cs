@@ -17,15 +17,61 @@
 */
 using CSMarkRedux.BenchmarkManagement;
 using System;
-
-namespace CSMarkRedux
-{
+using System.Diagnostics;
+using System.Reflection;
+namespace CSMarkRedux{
     class Program{
         static void Main(string[] args){
             CommandProcessor commandProcessor = new CommandProcessor();
+            Stopwatch checkUpdateTimer = new Stopwatch();
+            Console.Title = "CSMark " + Assembly.GetEntryAssembly().GetName().Version.ToString();
+            string CSMarkVersion = "0.14.2_PreRelease";
 
-            Console.Title = "CSMark 0.14.1";
-            string CSMarkVersion = "0.14.1_PreRelease";
+            //This checks for updates on startup
+            checkUpdateTimer.Start();
+            AutoUpdaterNetStandard.AutoUpdater.Start("https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/checkForUpdate.xml");
+            AutoUpdaterNetStandard.AutoUpdater autoUpdater = new AutoUpdaterNetStandard.AutoUpdater();
+
+            Console.WriteLine("Checking for updates to CSMark. This should just take a moment.");
+            //If it takes longer than 30 seconds to check for updates then stop and tell the user it couldn't check for updates.
+            while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (30.0 * 1000)){
+
+            }
+            if (autoUpdater.checkForUpdateCompleted() == false){
+                Console.WriteLine("Checking for updates failed. Proceeding to start CSMark.");
+            }
+            else{
+                Console.WriteLine("Took " + (checkUpdateTimer.ElapsedMilliseconds / 1000) + " seconds to check for updates.");
+            }
+
+            if (autoUpdater.currentVersion() == autoUpdater.installedVersion()){
+                //Do nothing
+                Console.WriteLine("This product is up to date. Proceeding to CSMark.");
+                Console.WriteLine("                                     ");
+            }
+            else if (autoUpdater.currentVersion() != autoUpdater.installedVersion())
+            {
+                Console.WriteLine("A new update for CSMark is available!");
+                Console.WriteLine("                                     ");
+                Console.WriteLine("Latest CSMark Version: " + autoUpdater.currentVersion());
+                Console.WriteLine("Intalled CSMark Version: " + autoUpdater.installedVersion());
+                Console.WriteLine("The changelog for the latest version can be found here: " + autoUpdater.changeLogURL());
+                Console.WriteLine("                                     ");
+                Console.WriteLine("Would you like to download and install updates?");
+                Console.WriteLine("Enter Y or N");
+                string update = Console.ReadLine().ToLower();
+
+                if (update == "y")
+                {
+                    Console.WriteLine("Downloading and Installing CSMark " + autoUpdater.currentVersion());
+                    //Download and install the update
+                    AutoUpdaterNetStandard.AutoUpdater.DownloadUpdate();
+                }
+                else if (update == "n"){
+                    //Do nothing and continue to CSMark.
+                    Console.WriteLine("                                     ");
+                }
+            }
             Console.WriteLine("Welcome to CSMark.");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Copyright (C) 2017 AluminiumTech");

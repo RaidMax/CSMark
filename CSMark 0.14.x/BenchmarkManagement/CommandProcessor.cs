@@ -138,27 +138,33 @@ namespace CSMarkRedux.BenchmarkManagement{
         private void scalingCheck(double pyScaling, double trigScaling, double arithScaling, double fbScaling, double geoScaling, double compScaling, double percentScaling){
             bool isScalingReasonable = false;
 
-            double minReasonableScaling = (Environment.ProcessorCount * 0.8) * 100;
-            double maxReasonableScaling = (Environment.ProcessorCount * 1.6) * 100;
+            double minReasonableScaling = (Environment.ProcessorCount * 0.7) * 100;
+            double maxReasonableScaling = (Environment.ProcessorCount * 2.1) * 100;
 
             if (pyScaling >= minReasonableScaling & pyScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
+            isScalingReasonable = false;
             if (trigScaling >= minReasonableScaling & trigScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
+            isScalingReasonable = false;
             if (arithScaling >= minReasonableScaling & arithScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
+            isScalingReasonable = false;
             if (fbScaling >= minReasonableScaling & fbScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
+            isScalingReasonable = false;
             if (geoScaling >= minReasonableScaling & geoScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
+            isScalingReasonable = false;
             if (compScaling >= minReasonableScaling & compScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
+            isScalingReasonable = false;
             if (percentScaling >= minReasonableScaling & percentScaling <= maxReasonableScaling){
                 isScalingReasonable = true;
             }
@@ -207,7 +213,7 @@ namespace CSMarkRedux.BenchmarkManagement{
                 Console.WriteLine("PercentageError Test Improvement: " + bench.returnScalingPercentageError().ToString() + "x");
                 Console.WriteLine("ArithmeticSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "x");
                 Console.WriteLine("FizzBuzz Test Improvement: " + bench.returnScalingFizzBuzz().ToString() + "x");
-                Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingArithmeticSumN().ToString() + "x");
+                Console.WriteLine("GeometricSumN Test Improvement: " + bench.returnScalingGeometricSumN().ToString() + "x");
                 Console.WriteLine("Compound Interest Test Improvement: " + bench.returnScalingCompoundInterest().ToString() + "x");
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------");
             }
