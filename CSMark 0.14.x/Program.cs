@@ -25,7 +25,7 @@ namespace CSMarkRedux{
             CommandProcessor commandProcessor = new CommandProcessor();
             Stopwatch checkUpdateTimer = new Stopwatch();
             Console.Title = "CSMark " + Assembly.GetEntryAssembly().GetName().Version.ToString();
-            string CSMarkVersion = "0.14.2_PreRelease";
+            string CSMarkVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
 
             //This checks for updates on startup
             checkUpdateTimer.Start();
@@ -41,7 +41,7 @@ namespace CSMarkRedux{
                 Console.WriteLine("Checking for updates failed. Proceeding to start CSMark.");
             }
             else{
-                Console.WriteLine("Took " + (checkUpdateTimer.ElapsedMilliseconds / 1000) + " seconds to check for updates.");
+                Console.WriteLine("Took " + checkUpdateTimer.ElapsedMilliseconds + " milliseconds to check for updates.");
             }
 
             if (autoUpdater.currentVersion() == autoUpdater.installedVersion()){
@@ -54,23 +54,11 @@ namespace CSMarkRedux{
                 Console.WriteLine("A new update for CSMark is available!");
                 Console.WriteLine("                                     ");
                 Console.WriteLine("Latest CSMark Version: " + autoUpdater.currentVersion());
-                Console.WriteLine("Intalled CSMark Version: " + autoUpdater.installedVersion());
+                Console.WriteLine("Installed CSMark Version: " + autoUpdater.installedVersion());
                 Console.WriteLine("The changelog for the latest version can be found here: " + autoUpdater.changeLogURL());
                 Console.WriteLine("                                     ");
-                Console.WriteLine("Would you like to download and install updates?");
-                Console.WriteLine("Enter Y or N");
-                string update = Console.ReadLine().ToLower();
-
-                if (update == "y")
-                {
-                    Console.WriteLine("Downloading and Installing CSMark " + autoUpdater.currentVersion());
-                    //Download and install the update
-                    AutoUpdaterNetStandard.AutoUpdater.DownloadUpdate();
-                }
-                else if (update == "n"){
-                    //Do nothing and continue to CSMark.
-                    Console.WriteLine("                                     ");
-                }
+                Console.WriteLine("To download the update, go to this URL: " + autoUpdater.downloadURL());
+                Console.WriteLine("                                     ");
             }
             Console.WriteLine("Welcome to CSMark.");
             Console.ForegroundColor = ConsoleColor.Magenta;
