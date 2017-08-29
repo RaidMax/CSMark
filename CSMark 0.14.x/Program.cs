@@ -49,8 +49,7 @@ namespace CSMarkRedux{
                 Console.WriteLine("This product is up to date. Proceeding to CSMark.");
                 Console.WriteLine("                                     ");
             }
-            else if (autoUpdater.currentVersion() != autoUpdater.installedVersion())
-            {
+            else if (autoUpdater.currentVersion() != autoUpdater.installedVersion()){
                 Console.WriteLine("A new update for CSMark is available!");
                 Console.WriteLine("                                     ");
                 Console.WriteLine("Latest CSMark Version: " + autoUpdater.currentVersion());
