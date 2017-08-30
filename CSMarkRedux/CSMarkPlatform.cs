@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
-
 namespace CSMarkRedux{
     class CSMarkPlatform{
-        public static OSPlatform GetOSPlatform(){
+        string osID;
+        string archID;
+
+        public static OSPlatform GetOSPlatform()
+        {
             OSPlatform osPlatform = OSPlatform.Create("Other Platform");
             // Check if it's windows
             bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
@@ -18,9 +19,7 @@ namespace CSMarkRedux{
             osPlatform = isLinux ? OSPlatform.Linux : osPlatform;
             return osPlatform;
         }
-       
-        string osID;
-        string archID;
+
         public string returnDownloadURL(){
             getPlatform();
             getArch();
@@ -62,8 +61,7 @@ namespace CSMarkRedux{
         }       
     }
 }
-enum CSMarkPlatform
-{
+enum CSMarkPlatform{
     Win10,
     Win10ARM,
     Win10ARM64,
