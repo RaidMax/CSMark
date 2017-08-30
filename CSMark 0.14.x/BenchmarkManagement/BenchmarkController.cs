@@ -18,10 +18,8 @@
 using CSMark.Benchmarks;
 using System;
 
-namespace CSMarkRedux.BenchmarkManagement
-{
-    class BenchmarkController
-    {
+namespace CSMarkRedux.BenchmarkManagement{
+    class BenchmarkController{
         BenchTrigonometry bty1 = new BenchTrigonometry();
         BenchPythagoras bps1 = new BenchPythagoras();
         BenchPercentageError bpe1 = new BenchPercentageError();

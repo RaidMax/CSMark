@@ -18,9 +18,7 @@ using CSMarkLib.BenchmarkManagement;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-
-namespace CSMarkRedux
-{
+namespace CSMarkRedux{
     class Program{
         static void Main(string[] args){
             Stopwatch checkUpdateTimer = new Stopwatch();
@@ -28,7 +26,6 @@ namespace CSMarkRedux
             string CSMarkVersion = Assembly.GetEntryAssembly().GetName().Version.ToString() + "_PreRelease";
             CSMarkPlatform cSMarkPlatform = new CSMarkPlatform();
             CommandProcessor commandProcessor = new CommandProcessor();
-
             //This checks for updates on startup
             checkUpdateTimer.Reset();
             checkUpdateTimer.Start();
@@ -140,7 +137,6 @@ namespace CSMarkRedux
                     else if (newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test" || newCommand == "4"){
                         Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
                         timedStress = Console.ReadLine().ToLower();
-
                         Console.WriteLine("How many " + timedStress + " would you like the stress test to run for?");
                         stressTime = Console.ReadLine().ToLower();
                         Console.WriteLine("Are you sure you want to run the stress test for " + stressTime + " " + timedStress + "?");
@@ -195,10 +191,7 @@ namespace CSMarkRedux
                             commandProcessor.startBenchmarkNormal();
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
-
-
-                    if (newCommand.Contains("--save"))
-                    {
+                    if (newCommand.Contains("--save")){
                         commandProcessor.handleSaveDialog("y", CSMarkVersion);
                     }
                     else{
@@ -208,8 +201,7 @@ namespace CSMarkRedux
                         string save = Console.ReadLine().ToLower();
                         commandProcessor.handleSaveDialog(save, CSMarkVersion);
                         continue;
-                    }
-                       
+                        }              
                     }
                     else if (newCommand == "exit"){
                         break;
