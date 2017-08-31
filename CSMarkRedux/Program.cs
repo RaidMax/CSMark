@@ -26,8 +26,6 @@ namespace CSMarkRedux{
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
             info.checkForUpdate();
-            ProjectInformation projInfo = new ProjectInformation();
-            projInfo.getProjInfo();
 
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
@@ -36,6 +34,7 @@ namespace CSMarkRedux{
                 string timedStress;
                 string stressTime;
                 string stressConfirm;
+            string choseTimed;
 
                 while (true){
                     Console.ForegroundColor = ConsoleColor.Gray;
@@ -56,15 +55,12 @@ namespace CSMarkRedux{
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("STRESS_TEST or 3");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("To run the stress test utility for a set amount of time, please enter ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("STRESS_TIMED or 4");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To run the Extreme benchmark (Experimental) enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" --extreme");
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("To ensure results are saved after running the benchmark you can enter");
+                Console.Write("To force results to be saved immediately after running the benchmark you can enter");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" --save");
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -73,28 +69,18 @@ namespace CSMarkRedux{
                     newCommand = Console.ReadLine().ToLower();
 
                     if (newCommand == "stress" || newCommand == "stress_test" || newCommand == "3"){
-                        Console.WriteLine("To terminate the stress test enter BREAK or STOP.");
-                       commandProcessor.startStressTest();
-                        Console.WriteLine("Starting stress test.");
-                        Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
-                        newCommand = Console.ReadLine();
-                        if (newCommand == "break" || newCommand == "stop"){
-                          commandProcessor.stopStressTest();
-                        }
-                        else{
-                           commandProcessor.stopStressTest();
-                        }
-                        continue;
-                    }
-                    else if (newCommand == "stress_timed" || newCommand == "timed_stress" || newCommand == "timed-stress" || newCommand == "stress_test_timed" || newCommand == "timed_stress_test" || newCommand == "4"){
+                    Console.WriteLine("Do you want to run a timed Stress Test?");
+                    Console.WriteLine("Enter Y or N");
+                   choseTimed = Console.ReadLine().ToLower();
+
+                   if(choseTimed == "y"){
                         Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
                         timedStress = Console.ReadLine().ToLower();
                         Console.WriteLine("How many " + timedStress + " would you like the stress test to run for?");
                         stressTime = Console.ReadLine().ToLower();
                         Console.WriteLine("Are you sure you want to run the stress test for " + stressTime + " " + timedStress + "?");
                         Console.WriteLine("Please enter Y or N");
-                        stressConfirm = Console.ReadLine();
-
+                        stressConfirm = Console.ReadLine().ToLower();
                         if (stressConfirm == "y"){
                             if (timedStress == "seconds"){
                                 commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
@@ -106,7 +92,25 @@ namespace CSMarkRedux{
                                 commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
                             }
                         }
+                        else{
+                            //Do nothing,the program will "continue" if the user doesn't say yes.
+                        }
                         continue;
+                    }
+                   else if(choseTimed == "n"){
+                        Console.WriteLine("To terminate the stress test enter BREAK or STOP.");
+                        commandProcessor.startStressTest();
+                        Console.WriteLine("Starting stress test.");
+                        Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
+                        newCommand = Console.ReadLine();
+                        if (newCommand == "break" || newCommand == "stop"){
+                            commandProcessor.stopStressTest();
+                        }
+                        else{
+                            commandProcessor.stopStressTest();
+                        }
+                        continue;
+                        }                    
                     }
                     else if (newCommand.Contains("bench") || newCommand == "0" || newCommand == "1" || newCommand == "2"){
                         Console.WriteLine("Please enter an accuracy level.");
