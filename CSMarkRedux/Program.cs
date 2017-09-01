@@ -18,7 +18,6 @@ using CSMarkLib;
 using CSMarkLib.BenchmarkManagement;
 using System;
 using System.Runtime.InteropServices;
-
 namespace CSMarkRedux{
     class Program{
         static void Main(string[] args){
@@ -44,26 +43,26 @@ namespace CSMarkRedux{
                     Console.WriteLine("                                                                        ");
                     Console.Write("To run the single threaded and multi threaded tests, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("BENCH or 0");
+                    Console.WriteLine("BENCH");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("To run the single threaded tests only, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("BENCH_SINGLE or 1");
+                    Console.WriteLine("BENCH_SINGLE");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("To run the multi threaded tests only, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("BENCH_MULTI or 2");
+                    Console.WriteLine("BENCH_MULTI");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("To run the stress test utility, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("STRESS_TEST or 3");
+                    Console.WriteLine("STRESS_TEST");
                     Console.ForegroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To run the Extreme benchmark (Experimental) enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" --extreme");
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("To force results to be saved immediately after running the benchmark you can enter");
+                Console.Write("To force results to be saved immediately after running the benchmark, enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" --save");
                 Console.ForegroundColor = ConsoleColor.Gray;
