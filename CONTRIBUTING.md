@@ -14,6 +14,8 @@
 
 [How to report a bug](#how-to-report-a-bug)
 
+[Building Release Binaries](#building-release-binaries)
+
 [Where do I Chat with maintainers?](#chat-with-maintainers)
 
 [How do I get recognized for my contributions?](#contribution-recognition)
@@ -106,7 +108,7 @@ In DotNetCore 2.0, more Linux distros will be supported along with a generic Lin
 In all honesty, you can use any Git client you like. GitHub currently doesn't have a linux version of their new GitHub desktop program but I suspect that we could see a linux build in the future.
 For now though, any Git client will work but you'll have to configure it yourself.
 
-### How to submit changes
+## How to submit changes
 You can submit changes by:
 1. Forking this repository - It's as simple as pressing that fork button.
 2. Cloning your fork of the repository onto your PC - This can be through GitHub Desktop's easy cloning functionality or through Git Clone on any computer.
@@ -117,6 +119,30 @@ You can submit changes by:
 7. Include screenshots if possible
 8. Avoid Platform Dependant Code. Use Platform Adaptive Code or Native Cross Platform code.
 9. Wait for a Maintainer to check your Pull Request. If it's up to standard and provides meaningful improvements such as new features or bug fixes, then Maintainers can accept the Pull Request and Merge it into the main branch.
+
+## Building Release Binaries
+So, you want to build release binaries of CSMark?
+
+You'll need all the SDKs and Tools mentioned above in [Setting up your environment](#setting-up-your-environment).
+
+Creating binaries currently requires using the .NET CLI Build commands. I've listed them below for your convenience.
+You can run the commands from any Shell such as CMD on Windows or Terminal on Mac or Linux.
+
+For Windows 10 64 Bit: `` dotnet publish -c Release -r win10-x64  ``
+For Windows 10 ARM 64 Bit: `` dotnet publish -c Release -r win10-arm64  ``
+For Windows 10 ARM 32 Bit: `` dotnet publish -c Release -r win10-arm  ``
+For Windows 7 SP1 64 Bit: `` dotnet publish -c Release -r win7-x64  ``
+For Windows 8.1 64 Bit: `` dotnet publish -c Release -r win81-x64  ``
+For macOS 10.12 "Sierra": `` dotnet publish -c Release -r osx.10.12-x64 ``
+For 64 Bit Linux Distros: `` dotnet publish -c Release -r linux-x64  ``
+For ARM 32 Bit Linux Distros: `` dotnet publish -c Release -r linux-arm  ``
+
+The license file has been set to be copied every time you create a new binary so you don't need to worry about that.
+
+You may wish to ZIP the files for publishing or distributing them.
+
+The Windows Installers for CSMark releases are typically made using [Inno Setup](http://www.jrsoftware.org/isinfo.php).
+That doesn't mean that if you make your own releases that you have to. You can use [NSIS](http://nsis.sourceforge.net/Main%5FPage) if you're more familiar with that.
 
 ## Code Of Conduct
 Everybody participating in the CSMark project must abide by the [CSMark Code of Conduct](https://github.com/AluminiumTech/CSMark/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
