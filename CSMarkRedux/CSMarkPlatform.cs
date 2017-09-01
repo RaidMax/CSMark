@@ -19,7 +19,14 @@ namespace CSMarkRedux{
             osPlatform = isLinux ? OSPlatform.Linux : osPlatform;
             return osPlatform;
         }
-
+        public string returnOSPlatform(){
+            getPlatform();
+            return osID;
+        }
+        public string returnOSArch(){
+            getArch();
+            return archID;
+        }
         public string returnDownloadURL(){
             getPlatform();
             getArch();

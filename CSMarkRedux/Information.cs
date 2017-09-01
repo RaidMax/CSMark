@@ -1,57 +1,42 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
-using System.Runtime.Serialization.Json;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CSMarkRedux{
-    class Information
-    {
+    class Information{
         AutoUpdaterNetStandard.AutoUpdater autoUpdater = new AutoUpdaterNetStandard.AutoUpdater();
         CSMarkPlatform cSMarkPlatform = new CSMarkPlatform();
         Stopwatch checkUpdateTimer = new Stopwatch();
         Stopwatch licenseWatch = new Stopwatch();
-        public string returnCSMarkVersionString()
-        {
+        public string returnCSMarkVersionString(){
             return Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
-        public Version returnCSMarkVersion()
-        {
+        public Version returnCSMarkVersion(){
             return Assembly.GetEntryAssembly().GetName().Version;
         }
-
-        public void checkForUpdate()
-        {
+        public void checkForUpdate(){
             //This checks for updates on startup
             checkUpdateTimer.Reset();
             checkUpdateTimer.Start();
             AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
             Console.WriteLine("Checking for updates to CSMark. This should just take a moment.");
             //If it takes longer than 30 seconds to check for updates then stop and tell the user it couldn't check for updates.
-            while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (30.0 * 1000))
-            {
+            while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (30.0 * 1000)){
 
             }
-            if (autoUpdater.checkForUpdateCompleted() == false)
-            {
+            if (autoUpdater.checkForUpdateCompleted() == false){
                 Console.WriteLine("Checking for updates failed. Proceeding to start CSMark.");
             }
-            else
-            {
+            else{
                 Console.WriteLine("Took " + checkUpdateTimer.ElapsedMilliseconds + " milliseconds to check for updates.");
             }
 
-            if (autoUpdater.currentVersion() == autoUpdater.installedVersion())
-            {
+            if (autoUpdater.currentVersion() == autoUpdater.installedVersion()){
                 //Do nothing
                 Console.WriteLine("This product is up to date.");
                 Console.WriteLine("                                     ");
             }
-            else if (autoUpdater.currentVersion() != autoUpdater.installedVersion())
-            {
+            else if (autoUpdater.currentVersion() != autoUpdater.installedVersion()){
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("                                     ");
                 Console.WriteLine("A new update for CSMark is available!");
@@ -65,8 +50,7 @@ namespace CSMarkRedux{
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
-        public void showLicenseInfo()
-        {
+        public void showLicenseInfo(){
             Console.Clear();
             licenseWatch.Reset();
             licenseWatch.Start();

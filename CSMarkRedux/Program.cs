@@ -17,9 +17,12 @@
 using CSMarkLib;
 using CSMarkLib.BenchmarkManagement;
 using System;
+using System.Runtime.InteropServices;
+
 namespace CSMarkRedux{
     class Program{
         static void Main(string[] args){
+            CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
             Console.Title = "CSMark " + info.returnCSMarkVersionString();
             string CSMarkVersion = info.returnCSMarkVersionString() + "_PreRelease";
@@ -165,9 +168,28 @@ namespace CSMarkRedux{
                     else if(newCommand == "about" || newCommand == "version" || newCommand == "info" || newCommand == "-v"){
                     Console.WriteLine("                                     ");
                     Console.WriteLine("                                     ");
-                    Console.WriteLine("CSMark Version: " + info.returnCSMarkVersionString());
-                    Console.WriteLine("CSMarkLib Version: " + new AboutLib().returnCSMarkLibVersionString());
-                    Console.WriteLine("AutoUpdaterNetStandard Version: " + new AutoUpdaterNetStandard.AboutLib().returnVersionString());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("CSMark Version: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(info.returnCSMarkVersionString());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("CSMarkLib Version: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(new AboutLib().returnCSMarkLibVersionString());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("AutoUpdaterNetStandard Version: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(new AutoUpdaterNetStandard.AboutLib().returnVersionString());          
+                    csM.getPlatform();
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("OS ID: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(RuntimeInformation.OSDescription);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("OS Architecture: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(csM.returnOSArch());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                 }
                     else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean"){
                         Console.Clear();
