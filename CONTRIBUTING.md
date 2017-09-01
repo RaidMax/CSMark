@@ -129,12 +129,19 @@ Creating binaries currently requires using the .NET CLI Build commands. I've lis
 You can run the commands from any Shell such as CMD on Windows or Terminal on Mac or Linux.
 
 For Windows 10 64 Bit: `` dotnet publish -c Release -r win10-x64  ``
+
 For Windows 10 ARM 64 Bit: `` dotnet publish -c Release -r win10-arm64  ``
+
 For Windows 10 ARM 32 Bit: `` dotnet publish -c Release -r win10-arm  ``
+
 For Windows 7 SP1 64 Bit: `` dotnet publish -c Release -r win7-x64  ``
+
 For Windows 8.1 64 Bit: `` dotnet publish -c Release -r win81-x64  ``
+
 For macOS 10.12 "Sierra": `` dotnet publish -c Release -r osx.10.12-x64 ``
+
 For 64 Bit Linux Distros: `` dotnet publish -c Release -r linux-x64  ``
+
 For ARM 32 Bit Linux Distros: `` dotnet publish -c Release -r linux-arm  ``
 
 The license file has been set to be copied every time you create a new binary so you don't need to worry about that.
