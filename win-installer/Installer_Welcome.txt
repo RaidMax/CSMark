@@ -1,0 +1,8 @@
+This installer will guide you through installing CSMark.
+
+This installer does not contain the DotNetCore Runtime. 
+
+Make sure to download and install DotNetCore 2.0 Runtime to be able to run CSMark.
+
+You can download the DotNetCore 2.0 Runtime from this website:
+https://www.microsoft.com/net/download/core#/runtime
