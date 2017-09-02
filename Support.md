@@ -28,6 +28,6 @@ These are:
 ### Supported Versions
 
 | Release Status | Release Version  |  Release Date | Latest Service Pack Release | Mainstream Support End | Extended Support End |
-|-------------------|---------------|-------------------------|-------------------------|----------------|
+|-------------------|---------------|-------------------------|-------------------------|----------------|----------------|
 | Pre-release | 0.14 | August 20th 2017 | 0.14.3 released on August 29th 2017 |  |  |
 | Pre-release | 0.15 | September 1st 2017 |  |  |  |
