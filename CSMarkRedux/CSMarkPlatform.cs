@@ -5,8 +5,7 @@ namespace CSMarkRedux{
         string osID;
         string archID;
 
-        public static OSPlatform GetOSPlatform()
-        {
+        public static OSPlatform GetOSPlatform(){
             OSPlatform osPlatform = OSPlatform.Create("Other Platform");
             // Check if it's windows
             bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);

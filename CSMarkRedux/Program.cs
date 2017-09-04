@@ -37,6 +37,7 @@ namespace CSMarkRedux{
                 string stressTime;
                 string stressConfirm;
             string choseTimed;
+            string threads = "proc";
 
                 while (true){
                     Console.ForegroundColor = ConsoleColor.Gray;
@@ -58,6 +59,9 @@ namespace CSMarkRedux{
                     Console.WriteLine("STRESS_TEST");
                     Console.ForegroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("To run test using a specified amount of threads enter the benchmark command followed by");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(" --threads");
                 Console.Write("To run the Extreme benchmark (Experimental) enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" --extreme");
@@ -95,7 +99,7 @@ namespace CSMarkRedux{
                             }
                         }
                         else{
-                            //Do nothing,the program will "continue" if the user doesn't say yes.
+                            //Do nothing, the program will "continue" if the user doesn't say yes.
                         }
                         continue;
                     }
@@ -114,41 +118,60 @@ namespace CSMarkRedux{
                         continue;
                         }                    
                     }
-                    else if (newCommand.Contains("bench") || newCommand == "0" || newCommand == "1" || newCommand == "2"){
+                    else if (newCommand.Contains("bench")){
                         Console.WriteLine("Please enter an accuracy level.");
                         Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
                         benchAccuracy = Console.ReadLine().ToUpper();
                        commandProcessor.setMaxIterations(benchAccuracy);
 
-                        if (newCommand.Contains("bench_single") || newCommand == "1"){
-                            commandProcessor.startBenchmarkNormal_Single();
-                        commandProcessor.showNormalResultsConsole(true,false);
-                         }
-                        else if (newCommand.Contains("bench_multi") || newCommand == "bench-multi" || newCommand == "2"){
-                            commandProcessor.startBenchmarkNormal_Multi();
-                        commandProcessor.showNormalResultsConsole(false, true);
-                         }
-                        else if (newCommand.Contains("bench") || newCommand == "0"){
-                            commandProcessor.startBenchmarkNormal();
-                        commandProcessor.showNormalResultsConsole(true, true);
-                        }
-                        else if(newCommand.Contains("bench --extreme")){
+                    if (newCommand.Contains("--threads")){
+                        Console.WriteLine("How many threads would you like to complete the benchmark?");
+                        Console.WriteLine("If you would like to run all from 1 to the total amount on your CPU.please enter PROC.");
+                        threads = Console.ReadLine().ToLower();
+                    }
+
+                    if (newCommand.Contains("bench") & newCommand.Contains("--extreme")){
                         commandProcessor.startBenchmarkExtreme();
                         commandProcessor.showExtremeResultsConsole(true, true);
-                       }
-                    else if (newCommand.Contains("bench_single --extreme")){
+                    }
+                    else if (newCommand.Contains("bench_single") & newCommand.Contains("--extreme")){
                         commandProcessor.startBenchmarkExtreme_Single();
                         commandProcessor.showExtremeResultsConsole(true, false);
                     }
-                    else if (newCommand.Contains("bench_multi --extreme")){
+                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("--extreme")){
                         commandProcessor.startBenchmarkExtreme_Multi();
                         commandProcessor.showExtremeResultsConsole(false, true);
                     }
-                    else{
-                           commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
+                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("--threads")){
+                             
+                        if(threads == "proc"){
+
+                        }
+                        else{
+
+                        }
+                    }
+                    else if (newCommand.Contains("bench") & newCommand.Contains("--threads")){
+                        commandProcessor.startBenchmarkExtreme();
+                        commandProcessor.showExtremeResultsConsole(true, true);
+                    }
+                    else if (newCommand.Contains("bench_single") || newCommand.Contains("bench-single")){
+                            commandProcessor.startBenchmarkNormal_Single();
+                        commandProcessor.showNormalResultsConsole(true,false);
+                         }
+                  else if (newCommand.Contains("bench_multi") || newCommand == "bench-multi"){
+                            commandProcessor.startBenchmarkNormal_Multi();
+                        commandProcessor.showNormalResultsConsole(false, true);
+                         }
+                   else if (newCommand.Contains("bench")){
+                            commandProcessor.startBenchmarkNormal();
+                        commandProcessor.showNormalResultsConsole(true, true);
+                        }    
+                    else{ commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
                             commandProcessor.startBenchmarkNormal();
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
+
                     if (newCommand.Contains("--save")){
                         commandProcessor.handleSaveDialog("y", CSMarkVersion);
                     }

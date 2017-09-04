@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
-
 namespace CSMarkRedux{
     class Information{
         AutoUpdaterNetStandard.AutoUpdater autoUpdater = new AutoUpdaterNetStandard.AutoUpdater();
@@ -40,11 +39,9 @@ namespace CSMarkRedux{
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("                                     ");
                 Console.WriteLine("A new update for CSMark is available!");
-                Console.WriteLine("                                     ");
                 Console.WriteLine("Latest CSMark Version: " + autoUpdater.currentVersion());
                 Console.WriteLine("Installed CSMark Version: " + autoUpdater.installedVersion());
                 Console.WriteLine("The changelog for the latest version can be found here: " + autoUpdater.changeLogURL());
-                Console.WriteLine("                                     ");
                 Console.WriteLine("To download the update, go to this URL: " + autoUpdater.downloadURL());
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
