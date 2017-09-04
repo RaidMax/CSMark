@@ -35,11 +35,23 @@ Check out the [Benchmarks ReadMe](https://github.com/CSMarkBenchmark/CSMarkLib/b
 Check out the [Accuracy Levels Guide](https://github.com/CSMarkBenchmark/CSMark/blob/master/AccuracyLevels.md).
 
 ## Notes
-* Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Patch], than another version should not be compared unless explicitly stated otherwise.
+* Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Build].[Revision] , than another version should not be compared unless explicitly stated otherwise.
 * When comparing CPUs, the same exact version of the benchmark should be used across testing platforms.
 
-## Support  
+## Support
 If your OS isn't stated above then it's quite likely that it's not supported.
 If you'd like to see an OS supported then please [suggest an improvement](https://github.com/CSMarkBenchmark/CSMark/issues/).
 
-There are no plans to support Windows Vista or earlier versions of Windows.
+There are no plans to support Windows Vista or earlier versions of Windows due to lack of support from Microsoft.
+
+## Community Support vs Priority Support
+You may be wondering what type of support can be provided to CSMark users.
+
+Community support consists of receiving support from the Community and possibly maintainers or contributors. This can be on GitHub issues pages or elsewhere. This is the standard support provided for CSMark.
+
+Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users.
+
+## I want to review CSMark
+If you'd like to review CSMark, I'd like to get in contact with you prior to the publishing of your review.
+Preferably by either email, Discord DM or a message in the [CSMark Discord](https://discord.gg/CMeFZbN).
+I will try to respond and If I'm busy, another maintainer or a contributor could respond.
