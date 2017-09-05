@@ -20,8 +20,8 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 | 8 Billion |  | PX5 | |  | 0.16.0 |
 | 12 Billion | |  | WX1 | Server Grade Hardware Reviews | 0.16.0 |   
 | 16 Billion |  |  | WX2 | | 0.16.0 |
-| 24 Billion |  |  | WX3 | Server Grade Hardware Reviews | 0.16.0 |
-| 32 Billion |  |  | WX4 | Incredibly Accurate Server Grade Hardware Reviews | 0.16.0 |
+| 24 Billion |  |  | WX3 | Incredibly Accurate Server Grade Hardware Reviews | 0.16.0 |
+| 32 Billion |  |  | WX4 | | 0.16.0 |
 | 48 Billion |  |  | WX5 | OEM product testing | 0.16.0 |
 | 64 Billion |  |  | WX6 |  | 0.16.0 |
 | 96 Billion |  |  | WX7 |  | 0.16.0 |
