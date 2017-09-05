@@ -20,10 +20,46 @@ using System;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class Program{
+        public static string benchCommand;
+        public static string accuracyLevel;
+        public static bool saveToFile;
+        public static bool exitOnComplete;
+        public static string threadsArg;
+
         static void Main(string[] args){
-            CSMarkPlatform csM = new CSMarkPlatform();
+         
+            ///
+            ///Accept command line arguments
+            ///
+            if(args.Length == 2){
+                benchCommand = args[0];
+                accuracyLevel = args[1];
+            }
+            else if(args.Length == 3){
+                benchCommand = args[0];
+                accuracyLevel = args[1];
+                saveToFile = bool.Parse(args[2]);
+            }
+            else if (args.Length == 4){
+                benchCommand = args[0];
+                accuracyLevel = args[1];
+                saveToFile = bool.Parse(args[2]);
+                exitOnComplete = bool.Parse(args[3]);
+            }
+            else if (args.Length == 5){
+                benchCommand = args[0];
+                accuracyLevel = args[1];
+                saveToFile = bool.Parse(args[2]);
+                exitOnComplete = bool.Parse(args[3]);
+                threadsArg = args[4];
+            }
+            else{
+                //Do nothing.
+            }
+
+        CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
-            Console.Title = "CSMark " + info.returnCSMarkVersionString();
+            Console.Title = "CSMark " + info.returnCSMarkVersionString();  
             string CSMarkVersion = info.returnCSMarkVersionString() + "_PreRelease";
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
@@ -32,14 +68,16 @@ namespace CSMarkRedux{
             Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
                 string benchAccuracy = "MX2";
-                string newCommand;
-                string timedStress;
-                string stressTime;
-                string stressConfirm;
-            string choseTimed;
+                string newCommand = "";
+                string timedStress = "";
+                string stressTime = "";
+                string stressConfirm = "";
+            string choseTimed = "";
             string threads = "proc";
+            int threadsD = 0;
+            int threadDIteration = 2;
 
-                while (true){
+            while (true){
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
                     Console.Write("To run the single threaded and multi threaded tests, please enter ");
@@ -61,18 +99,24 @@ namespace CSMarkRedux{
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To run test using a specified amount of threads enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" --threads");
+                Console.WriteLine(" _threads");
                 Console.Write("To run the Extreme benchmark (Experimental) enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" --extreme");
+                Console.WriteLine(" _extreme");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To force results to be saved immediately after running the benchmark, enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" --save");
+                Console.WriteLine(" _save");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Please give feedback, or report bugs by opening a GitHub issue at https://github.com/CSMarkBenchmark/CSMark/issues/new ");
                     Console.ForegroundColor = ConsoleColor.Gray;
+
+                if (benchCommand == null){
                     newCommand = Console.ReadLine().ToLower();
+                }
+                else{
+                    newCommand = benchCommand;
+                }
 
                     if (newCommand == "stress" || newCommand == "stress_test" || newCommand == "3"){
                     Console.WriteLine("Do you want to run a timed Stress Test?");
@@ -86,7 +130,11 @@ namespace CSMarkRedux{
                         stressTime = Console.ReadLine().ToLower();
                         Console.WriteLine("Are you sure you want to run the stress test for " + stressTime + " " + timedStress + "?");
                         Console.WriteLine("Please enter Y or N");
-                        stressConfirm = Console.ReadLine().ToLower();
+
+                        if(benchCommand == null){
+                            stressConfirm = Console.ReadLine().ToLower();
+                        }
+                       
                         if (stressConfirm == "y"){
                             if (timedStress == "seconds"){
                                 commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
@@ -120,59 +168,83 @@ namespace CSMarkRedux{
                     }
                     else if (newCommand.Contains("bench")){
                         Console.WriteLine("Please enter an accuracy level.");
-                        Console.WriteLine("Accepted Accuracy Levels are MX1-MX2, P1-P4 and W1-W7");
-                        benchAccuracy = Console.ReadLine().ToUpper();
-                       commandProcessor.setMaxIterations(benchAccuracy);
+                        Console.WriteLine("Accepted Accuracy Levels are CM0-CM5, PX1-PX5 and WX1-WX12");
+                    Console.WriteLine("For more information on accuracy levels, go to: ");
+                    Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/AccuracyLevels.md");
 
-                    if (newCommand.Contains("--threads")){
+                    if (benchCommand == null){
+                        benchAccuracy = Console.ReadLine().ToUpper();
+                        commandProcessor.setMaxIterations(benchAccuracy);
+                    }
+                    else{
+                        commandProcessor.setMaxIterations(accuracyLevel);
+                    }
+
+                    if (newCommand.Contains("_threads")){
                         Console.WriteLine("How many threads would you like to complete the benchmark?");
                         Console.WriteLine("If you would like to run all from 1 to the total amount on your CPU.please enter PROC.");
-                        threads = Console.ReadLine().ToLower();
+                      
+                        if(benchCommand == null){
+                            threads = Console.ReadLine().ToLower();
+                        }
+                        else{
+                            threads = threadsArg;
+                        }
+
+                        if (threads == "proc"){
+                            threadsD = Environment.ProcessorCount;
+                        }
+                        else{
+                            threadsD = int.Parse(threads);
+                        }
                     }
 
                     if (newCommand.Contains("bench") & newCommand.Contains("--extreme")){
-                        commandProcessor.startBenchmarkExtreme();
+                        commandProcessor.startBenchmarkExtreme(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, true);
                     }
-                    else if (newCommand.Contains("bench_single") & newCommand.Contains("--extreme")){
-                        commandProcessor.startBenchmarkExtreme_Single();
+                    else if (newCommand.Contains("bench_single") & newCommand.Contains("_extreme")){
+                        commandProcessor.startBenchmarkExtreme_Single(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, false);
                     }
-                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("--extreme")){
-                        commandProcessor.startBenchmarkExtreme_Multi();
+                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_extreme")){
+                        commandProcessor.startBenchmarkExtreme_Multi(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(false, true);
                     }
-                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("--threads")){
-                             
-                        if(threads == "proc"){
-
-                        }
-                        else{
-
+                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_threads")){                                          
+                        while (threadDIteration <= threadsD){
+                            commandProcessor.startBenchmarkNormal_Multi(threadDIteration);
+                            commandProcessor.showNormalResultsConsole(false, true);
+                            threadDIteration++;
                         }
                     }
-                    else if (newCommand.Contains("bench") & newCommand.Contains("--threads")){
-                        commandProcessor.startBenchmarkExtreme();
-                        commandProcessor.showExtremeResultsConsole(true, true);
+                    else if (newCommand.Contains("bench") & newCommand.Contains("_threads")){
+                        while (threadDIteration <= threadsD){
+                            commandProcessor.startBenchmarkNormal(threadDIteration);
+                            commandProcessor.showNormalResultsConsole(true, true);
+                            threadDIteration++;
+                        }
                     }
-                    else if (newCommand.Contains("bench_single") || newCommand.Contains("bench-single")){
-                            commandProcessor.startBenchmarkNormal_Single();
+                    else if (newCommand.Contains("bench_single")){
+                            commandProcessor.startBenchmarkNormal_Single(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(true,false);
                          }
                   else if (newCommand.Contains("bench_multi") || newCommand == "bench-multi"){
-                            commandProcessor.startBenchmarkNormal_Multi();
+                            commandProcessor.startBenchmarkNormal_Multi(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(false, true);
                          }
                    else if (newCommand.Contains("bench")){
-                            commandProcessor.startBenchmarkNormal();
+                            commandProcessor.startBenchmarkNormal(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(true, true);
                         }    
-                    else{ commandProcessor.setMaxIterations(0.2 * 1000 * 1000);
-                            commandProcessor.startBenchmarkNormal();
+                    else{
+                        //Make CM2 the default accuracy level.
+                        commandProcessor.setMaxIterations("CM2");
+                            commandProcessor.startBenchmarkNormal(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
 
-                    if (newCommand.Contains("--save")){
+                    if (newCommand.Contains("--save") || saveToFile == true){
                         commandProcessor.handleSaveDialog("y", CSMarkVersion);
                     }
                     else{
@@ -222,6 +294,15 @@ namespace CSMarkRedux{
                         Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command correctly.");
                         continue;
                     }
+
+                benchCommand = "";
+                accuracyLevel = "";
+                saveToFile = false;
+                threadsArg = "";
+
+                if(exitOnComplete == true){
+                    Environment.Exit(0);
+                }
                 }
             }
         }
