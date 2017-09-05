@@ -6,7 +6,7 @@ These are the various accuracy levels in CSMark starting from CSMark (Desktop) 0
 * "PX" Accuracy levels denote accuracy levels designated for High End PCs
 * "WX" Accuracy levels denote Accuracy levels designated for Servers, Workstations and Super Computers)
 
-| Calculations | Mid Range PC Accuracy Levels | Extremely High End PC Accuracy Level | Servers, Workstations and Super Computers  | Suggested Use Cases | Introduction |
+| Calculations | Lower End & Mid Range PC Accuracy Levels | Extremely High End PC Accuracy Level | Servers, Workstations and Super Computers  | Suggested Use Cases | Introduction |
 |--------------|-----------------------|-------------------|---|---|---|
 | 100 Million | CM1 | | | | 0.16.0 |
 | 200 Million | CM2 | | |  Casual users looking for a quick benchmark run. | 0.16.0 |
