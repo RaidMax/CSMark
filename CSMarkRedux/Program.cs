@@ -219,8 +219,10 @@ namespace CSMarkRedux{
                         }
                     }
                     else if (newCommand.Contains("bench") & newCommand.Contains("_threads")){
+                        commandProcessor.startBenchmarkNormal_Single(threadsD);
+                        commandProcessor.showNormalResultsConsole(true, true);
                         while (threadDIteration <= threadsD){
-                            commandProcessor.startBenchmarkNormal(threadDIteration);
+                            commandProcessor.startBenchmarkNormal_Multi(threadDIteration);
                             commandProcessor.showNormalResultsConsole(true, true);
                             threadDIteration++;
                         }
@@ -248,10 +250,13 @@ namespace CSMarkRedux{
                         commandProcessor.handleSaveDialog("y", CSMarkVersion);
                     }
                     else{
-                        Console.WriteLine("                                                ");
-                        Console.WriteLine("Would you like to save the results to a Text File?");
-                        Console.WriteLine("Please enter Y or N.");
-                        string save = Console.ReadLine().ToLower();
+                        string save = "";
+                        if (benchCommand == null){
+                            Console.WriteLine("                                                ");
+                            Console.WriteLine("Would you like to save the results to a Text File?");
+                            Console.WriteLine("Please enter Y or N.");
+                            save = Console.ReadLine().ToLower();
+                        }                
                         commandProcessor.handleSaveDialog(save, CSMarkVersion);
                         continue;
                         }              
@@ -301,8 +306,8 @@ namespace CSMarkRedux{
                 threadsArg = "";
 
                 if(exitOnComplete == true){
-                    Environment.Exit(0);
-                }
+                    break;
+                     }
                 }
             }
         }
