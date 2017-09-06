@@ -26,8 +26,7 @@ namespace CSMarkRedux{
         public static bool exitOnComplete = false;
         public static string threadsArg;
 
-        static void Main(string[] args){
-         
+        static void Main(string[] args){       
             ///
             ///Accept command line arguments
             ///
@@ -64,7 +63,6 @@ namespace CSMarkRedux{
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
             info.checkForUpdate();
-
             Console.WriteLine("Welcome to CSMark Community Edition.");
             Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
                 string benchAccuracy = "CM2";
@@ -168,7 +166,7 @@ namespace CSMarkRedux{
                     }
                     else if (newCommand.Contains("bench")){
                         Console.WriteLine("Please enter an accuracy level.");
-                        Console.WriteLine("Accepted Accuracy Levels are CM0-CM5, PX1-PX5 and WX1-WX12");
+                        Console.WriteLine("Accepted Accuracy Levels are CM1-CM5, PX1-PX5 and WX1-WX12");
                     Console.WriteLine("For more information on accuracy levels, go to: ");
                     Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/AccuracyLevels.md");
 
@@ -199,7 +197,7 @@ namespace CSMarkRedux{
                         }
                     }
 
-                    if (newCommand.Contains("bench") & newCommand.Contains("--extreme")){
+                    if (newCommand.Contains("bench") & newCommand.Contains("_extreme")){
                         commandProcessor.startBenchmarkExtreme(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, true);
                     }
