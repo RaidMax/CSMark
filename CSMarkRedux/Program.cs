@@ -23,7 +23,7 @@ namespace CSMarkRedux{
         public static string benchCommand;
         public static string accuracyLevel;
         public static bool saveToFile;
-        public static bool exitOnComplete;
+        public static bool exitOnComplete = false;
         public static string threadsArg;
 
         static void Main(string[] args){
@@ -59,15 +59,15 @@ namespace CSMarkRedux{
 
         CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
-            Console.Title = "CSMark " + info.returnCSMarkVersionString();  
-            string CSMarkVersion = info.returnCSMarkVersionString() + "_PreRelease";
+            Console.Title = "CSMark " + info.returnCSMarkVersionString() + " Community Edition";  
+            string CSMarkVersion = info.returnCSMarkVersionString() + "_CommunityEdition";
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
             info.checkForUpdate();
 
-            Console.WriteLine("Welcome to CSMark.");
+            Console.WriteLine("Welcome to CSMark Community Edition.");
             Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
-                string benchAccuracy = "MX2";
+                string benchAccuracy = "CM2";
                 string newCommand = "";
                 string timedStress = "";
                 string stressTime = "";
@@ -204,7 +204,7 @@ namespace CSMarkRedux{
                         commandProcessor.showExtremeResultsConsole(true, true);
                     }
                     else if (newCommand.Contains("bench_single") & newCommand.Contains("_extreme")){
-                        commandProcessor.startBenchmarkExtreme_Single(Environment.ProcessorCount);
+                        commandProcessor.startBenchmarkExtreme_Single();
                         commandProcessor.showExtremeResultsConsole(true, false);
                     }
                     else if (newCommand.Contains("bench_multi") & newCommand.Contains("_extreme")){
@@ -219,7 +219,7 @@ namespace CSMarkRedux{
                         }
                     }
                     else if (newCommand.Contains("bench") & newCommand.Contains("_threads")){
-                        commandProcessor.startBenchmarkNormal_Single(threadsD);
+                        commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true, true);
                         while (threadDIteration <= threadsD){
                             commandProcessor.startBenchmarkNormal_Multi(threadDIteration);
@@ -228,7 +228,7 @@ namespace CSMarkRedux{
                         }
                     }
                     else if (newCommand.Contains("bench_single")){
-                            commandProcessor.startBenchmarkNormal_Single(Environment.ProcessorCount);
+                            commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true,false);
                          }
                   else if (newCommand.Contains("bench_multi") || newCommand == "bench-multi"){
