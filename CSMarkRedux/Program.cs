@@ -59,13 +59,13 @@ namespace CSMarkRedux{
 
         CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
-            Console.Title = "CSMark " + info.returnCSMarkVersionString() + " Community Edition";  
-            string CSMarkVersion = info.returnCSMarkVersionString() + "_CommunityEdition";
+            Console.Title = "CSMark " + info.returnCSMarkVersionString();  
+            string CSMarkVersion = info.returnCSMarkVersionString() + "_PreRelease";
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
             info.checkForUpdate();
 
-            Console.WriteLine("Welcome to CSMark - Community Edition.");
+            Console.WriteLine("Welcome to CSMark.");
             Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
                 string benchAccuracy = "MX2";
                 string newCommand = "";
