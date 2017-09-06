@@ -70,7 +70,7 @@ namespace CSMarkRedux{
             Console.WriteLine("                                                                    ");
             Console.ForegroundColor = ConsoleColor.Gray;
 
-            while (licenseWatch.ElapsedMilliseconds <= 5.0 * 1000){
+            while (licenseWatch.ElapsedMilliseconds <= 3.0 * 1000){
                 //Do nothing to make sure everybody sees the license.
             }
         }
