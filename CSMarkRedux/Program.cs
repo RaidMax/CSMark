@@ -111,10 +111,12 @@ namespace CSMarkRedux{
                 if (benchCommand == null){
                     newCommand = Console.ReadLine().ToLower();
                 }
-                else{
+                else if (benchCommand != null){
                     newCommand = benchCommand;
                 }
-
+                else{
+                    newCommand = Console.ReadLine().ToLower();
+                }
                     if (newCommand == "stress" || newCommand == "stress_test" || newCommand == "3"){
                     Console.WriteLine("Do you want to run a timed Stress Test?");
                     Console.WriteLine("Enter Y or N");
