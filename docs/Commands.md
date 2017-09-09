@@ -1,5 +1,5 @@
 ## Commands
-These are the officially supported commands in CSMark.
+These are the officially supported CLI commands in CSMark.
 
 ### Bench
 The ``bench`` command runs both the single-threaded and multi-threaded test. It runs the single threaded tests first and the multi-threaded tests afterwards.
