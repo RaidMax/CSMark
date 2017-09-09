@@ -32,7 +32,7 @@ __List Of Supported Platforms__
 Check out the [Benchmarks ReadMe](https://github.com/CSMarkBenchmark/CSMarkLib/blob/master/Benchmark_ReadMe.md)
 
 ### How do I know what accuracy level to choose?
-Check out the [Accuracy Levels Guide](https://github.com/CSMarkBenchmark/CSMark/blob/master/AccuracyLevels.md).
+Check out the [Accuracy Levels Documentation](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.md).
 
 ## Notes
 * Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Build].[Revision] , than another version should not be compared unless explicitly stated otherwise.
