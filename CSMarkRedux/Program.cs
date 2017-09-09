@@ -133,7 +133,9 @@ namespace CSMarkRedux{
                         if(benchCommand == null){
                             stressConfirm = Console.ReadLine().ToLower();
                         }
-                       
+                        else if(benchCommand != null){
+
+                        }
                         if (stressConfirm == "y"){
                             if (timedStress == "seconds"){
                                 commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
@@ -169,7 +171,7 @@ namespace CSMarkRedux{
                         Console.WriteLine("Please enter an accuracy level.");
                         Console.WriteLine("Accepted Accuracy Levels are CM1-CM5, PX1-PX5 and WX1-WX12");
                     Console.WriteLine("For more information on accuracy levels, go to: ");
-                    Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/AccuracyLevels.md");
+                    Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.md");
 
                     if (benchCommand == null){
                         benchAccuracy = Console.ReadLine().ToUpper();
@@ -293,9 +295,22 @@ namespace CSMarkRedux{
                         Console.Clear();
                         continue;
                     }
+                    else if(newCommand == "help" || newCommand == "commands" || newCommand == "list_commands" || newCommand == "list_cmd" || newCommand == "halp"){
+                    Console.WriteLine("List of supported commands: ");
+                    Console.WriteLine("bench");
+                    Console.WriteLine("bench_single");
+                    Console.WriteLine("bench_multi");
+                    Console.WriteLine("stress_test");
+                    Console.WriteLine("clear");
+                    Console.WriteLine("about");
+                    Console.WriteLine("exit");
+                    Console.WriteLine("                                        ");
+                    Console.WriteLine("For more information on what these commands do, please go to: ");
+                    Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/Commands.md");
+                }
                     else{
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command correctly.");
+                        Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command.");
                         continue;
                     }
 
