@@ -82,28 +82,16 @@ If you want to use [VS Code](https://visualstudio.com/code) instead then that al
 ### Setting up your environment on macOS
 Developing CSMark on Mac is a little bit complicated but not impossible.
 * I recommend downloading [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac/).
-* You'll need to install the latest version of OpenSSL. The easiest way to do that is through [HomeBrew](https://brew.sh/)
-
-Once you've installed HomeBrew, you'll need to install OpenSSL.
-```
-    brew update
-    brew install openssl
-    mkdir -p /usr/local/lib
-    ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-    ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-```
 * You should download [GitHub Desktop](https://desktop.github.com/) to be able to easily [submit changes](#how-to-submit-changes)
 
-You don't need to download anything else to get setup. If you'd like to try out CSMark on a system without the DotNetCore SDK (the SDK is included in the Visual Studio DotNetCore package), you may want to download the [DotNetCore Runtime](https://www.microsoft.com/net/download/core#/runtime).
+You don't need to download anything else to get setup. If you'd like to try out CSMark on a system without the DotNetCore SDK, you may want to download the [DotNetCore Runtime](https://www.microsoft.com/net/download/core#/runtime).
 
 ### Setting up your environment on Linux
 So, you're running that hip cool thing called Linux?
 
 If you happen to run one of the few Linux Distros supported and the version you're using is supported then this is for you.
-In DotNetCore 2.0, more Linux distros will be supported along with a generic Linux-x64 binary for platforms which don't have dedicated binaries.
-
 * You'll probably want to install [VS Code](https://visualstudio.com/code). I know I said that Windows users shouldn't necessarily use it but that's only because they have access to the VS IDE.
-* Youi'll want to download the latest [DotNetCore SDK for Linux](https://www.microsoft.com/net/download/linux) (We're using DotNetCore 1.1 at the moment so make sure to install the correct SDK for that version.
+* Youi'll want to download the latest [DotNetCore SDK for Linux](https://www.microsoft.com/net/download/linux) (We're using DotNetCore 2.0 at the moment so make sure to install the correct SDK for that version.
 
 In all honesty, you can use any Git client you like. GitHub currently doesn't have a linux version of their new GitHub desktop program but I suspect that we could see a linux build in the future.
 For now though, any Git client will work but you'll have to configure it yourself.
