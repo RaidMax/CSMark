@@ -1,7 +1,7 @@
 # CSMark
 A simple CPU benchmark using the cross-platform C# .NET Core .
 
-This application works on Windows 7 SP1 +, macOS 10.11 + and Linux Distributions.
+This application works on Windows 7 SP1 +, macOS 10.12 + and Linux Distributions.
 
 ## Contributing
 For details on Contributing check out the [Contribution Guide](https://github.com/CSMarkBenchmark/CSMark/blob/master/CONTRIBUTING.md)
@@ -9,7 +9,7 @@ For details on Contributing check out the [Contribution Guide](https://github.co
 ## Benchmarks
 
 ### Requirements for running the Benchmarks
-* CSMark 0.14.0 or newer: DotNetCore runtime 2.0 is required
+DotNetCore runtime 2.0 is required
 
 [Download the DotNetCore runtime here](https://www.microsoft.com/net/download/core#/runtime)
 
@@ -50,6 +50,9 @@ You may be wondering what type of support can be provided to CSMark users.
 Community support consists of receiving support from the Community and possibly maintainers or contributors. This can be on GitHub issues pages or elsewhere. This is the standard support provided for CSMark.
 
 Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users.
+
+## Where can I hang out with the CSMark community?
+There's a [CSMark Discord](https://discord.gg/CMeFZbN) and a [CSMark Steam Group]()
 
 ## I want to review CSMark
 If you'd like to review CSMark, I'd like to get in contact with you prior to the publishing of your review.
