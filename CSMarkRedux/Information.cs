@@ -35,7 +35,7 @@ namespace CSMarkRedux{
             AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
             Console.WriteLine("Checking for updates to CSMark. This should just take a moment.");
             //If it takes longer than 10 seconds to check for updates then stop and tell the user it couldn't check for updates.
-            while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (10.0 * 1000)){
+            while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (5.0 * 1000)){
 
             }
             if (autoUpdater.checkForUpdateCompleted() == false){
@@ -47,13 +47,14 @@ namespace CSMarkRedux{
             if(autoUpdater.currentVersion() == "0.0.0.0"){
                 Console.WriteLine("Experienced networking issues whilst checking for updates.");
                 Console.WriteLine("Starting CSMark.");
+                Console.WriteLine("                                     ");
             }
-            if (autoUpdater.currentVersion() != null && autoUpdater.currentVersion() == autoUpdater.installedVersion()){
+            if (autoUpdater.currentVersion() != "0.0.0.0" && autoUpdater.currentVersion() == autoUpdater.installedVersion()){
                 //Do nothing
                 Console.WriteLine("This product is up to date.");
                 Console.WriteLine("                                     ");
             }
-            else if (autoUpdater.currentVersion() != null && autoUpdater.currentVersion() != autoUpdater.installedVersion()){
+            else if (autoUpdater.currentVersion() != "0.0.0.0" && autoUpdater.currentVersion() != autoUpdater.installedVersion()){
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("                                     ");
                 Console.WriteLine("A new update for CSMark is available!");
