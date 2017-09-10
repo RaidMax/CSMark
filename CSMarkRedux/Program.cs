@@ -79,19 +79,19 @@ namespace CSMarkRedux{
                     Console.WriteLine("                                                                        ");
                     Console.Write("To run the single threaded and multi threaded tests, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("BENCH");
+                    Console.WriteLine("0");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("To run the single threaded tests only, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("BENCH_SINGLE");
+                    Console.WriteLine("1");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("To run the multi threaded tests only, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("BENCH_MULTI");
+                    Console.WriteLine("2");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write("To run the stress test utility, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("STRESS_TEST");
+                    Console.WriteLine("3");
                     Console.ForegroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To run test using a specified amount of threads enter the benchmark command followed by");
@@ -117,7 +117,7 @@ namespace CSMarkRedux{
                 else{
                     newCommand = Console.ReadLine().ToLower();
                 }
-                    if (newCommand == "stress" || newCommand == "stress_test"){
+                    if (newCommand == "3" || newCommand == "stress" || newCommand == "stress_test"){
                     Console.WriteLine("Do you want to run a timed Stress Test?");
                     Console.WriteLine("Enter Y or N");
                    choseTimed = Console.ReadLine().ToLower();
@@ -167,7 +167,7 @@ namespace CSMarkRedux{
                         continue;
                         }                    
                     }
-                    else if (newCommand.Contains("bench")){
+                    else if (newCommand.Contains("0") || newCommand.Contains("1") || newCommand.Contains("2") || newCommand.Contains("bench")){
                         Console.WriteLine("Please enter an accuracy level.");
                         Console.WriteLine("Accepted Accuracy Levels are CM1-CM5, PX1-PX5 and WX1-WX12");
                     Console.WriteLine("For more information on accuracy levels, go to: ");
@@ -201,26 +201,27 @@ namespace CSMarkRedux{
                     }
 
                     Console.WriteLine("Starting Tests...");
-                    if (newCommand.Contains("bench") & newCommand.Contains("_extreme")){
+                    if (newCommand.Contains("bench") & newCommand.Contains("_extreme") || newCommand.Contains("0") & newCommand.Contains("_extreme")){
                         commandProcessor.startBenchmarkExtreme(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, true);
                     }
-                    else if (newCommand.Contains("bench_single") & newCommand.Contains("_extreme")){
+                    else if (newCommand.Contains("bench_single") & newCommand.Contains("_extreme") || newCommand.Contains("1") & newCommand.Contains("_extreme")){
                         commandProcessor.startBenchmarkExtreme_Single();
                         commandProcessor.showExtremeResultsConsole(true, false);
                     }
-                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_extreme")){
+                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_extreme") || newCommand.Contains("2") & newCommand.Contains("_extreme")){
                         commandProcessor.startBenchmarkExtreme_Multi(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(false, true);
                     }
-                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_threads")){                                          
+                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_threads") || newCommand.Contains("2") & newCommand.Contains("_threads"))
+                    {                                          
                         while (threadDIteration <= threadsD){
                             commandProcessor.startBenchmarkNormal_Multi(threadDIteration);
                             commandProcessor.showNormalResultsConsole(false, true);
                             threadDIteration++;
                         }
                     }
-                    else if (newCommand.Contains("bench") & newCommand.Contains("_threads")){
+                    else if (newCommand.Contains("bench") & newCommand.Contains("_threads") || newCommand.Contains("0") & newCommand.Contains("_threads")){
                         commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true, true);
                         while (threadDIteration <= threadsD){
@@ -229,15 +230,15 @@ namespace CSMarkRedux{
                             threadDIteration++;
                         }
                     }
-                    else if (newCommand.Contains("bench_single")){
+                    else if (newCommand.Contains("bench_single") || newCommand.Contains("1")){
                             commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true,false);
                          }
-                  else if (newCommand.Contains("bench_multi") || newCommand == "bench-multi"){
+                  else if (newCommand.Contains("bench_multi") ||  newCommand == "bench-multi" || newCommand.Contains("2")){
                             commandProcessor.startBenchmarkNormal_Multi(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(false, true);
                          }
-                   else if (newCommand.Contains("bench")){
+                   else if (newCommand.Contains("bench") || newCommand.Contains("0")){
                             commandProcessor.startBenchmarkNormal(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(true, true);
                         }    
