@@ -9,7 +9,7 @@ For details on Contributing check out the [Contribution Guide](https://github.co
 ## Benchmarks
 
 ### Requirements for running the Benchmarks
-DotNetCore runtime 2.0 is required
+DotNetCore runtime 2.0.0 is required
 
 [Download the DotNetCore runtime here](https://www.microsoft.com/net/download/core#/runtime)
 
