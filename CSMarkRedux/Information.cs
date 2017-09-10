@@ -90,7 +90,7 @@ namespace CSMarkRedux{
             Console.WriteLine("To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/");
             Console.WriteLine("                                                                    ");
             Console.WriteLine("                                                                    ");
-            Console.ForegroundColor = ConsoleColor.Gray
+            Console.ForegroundColor = ConsoleColor.Gray;
 
             while (licenseWatch.ElapsedMilliseconds <= 2.0 * 1000){
                 //Do nothing to make sure everybody sees the license.
