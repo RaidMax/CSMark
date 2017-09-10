@@ -60,24 +60,28 @@ namespace CSMarkRedux{
         }
         public void getPlatform(){
 
-            if(GetOSPlatform().ToString().ToLower() == "windows"){
-                if (RuntimeInformation.OSDescription.Contains("Windows 10")){
+            if (GetOSPlatform().ToString().ToLower() == "windows") {
+                if (RuntimeInformation.OSDescription.Contains("Windows 10")) {
                     osID = "Win10";
                 }
-                else if (RuntimeInformation.OSDescription.Contains("Windows 8.1")){
+                else if (RuntimeInformation.OSDescription.Contains("Windows 8.1")) {
                     osID = "Win8.1";
                 }
-                else if (RuntimeInformation.OSDescription.Contains("Windows 7")){
+                else if (RuntimeInformation.OSDescription.Contains("Windows 7")) {
                     osID = "Win7";
                 }
             }
-            else if (GetOSPlatform().ToString().ToLower() == "mac"){
-                if (RuntimeInformation.OSDescription.Contains("OSX 10.12")){
+            else if (GetOSPlatform().ToString().ToLower() == "mac") {
+                if (RuntimeInformation.OSDescription.Contains("OSX 10.12")) {
                     osID = "OSX10.12";
                 }
             }
-            else if (GetOSPlatform().ToString().ToLower() == "linux"){
-                    osID = "linux";
+            else if (GetOSPlatform().ToString().ToLower() == "linux") {
+                osID = "linux";
+            }
+            else
+            {
+                osID = "linux";
             }
         }       
     }
