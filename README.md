@@ -33,7 +33,7 @@ __List Of Supported Platforms__
 * [Running CSMark On Linux](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md)
 
 ### Benchmarks included and upcoming
-Check out the [Benchmarks ReadMe](https://github.com/CSMarkBenchmark/CSMarkLib/blob/master/Benchmark_ReadMe.md)
+Check out the [Benchmarks ReadMe](https://github.com/CSMarkBenchmark/CSMarkLib/blob/master/Benchmarks.md)
 
 ### How do I know what accuracy level to choose?
 Check out the [Accuracy Levels Documentation](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.md).
