@@ -73,7 +73,6 @@ namespace CSMarkRedux{
             Console.Clear();
             licenseWatch.Reset();
             licenseWatch.Start();
-            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Copyright (C) 2017 AluminiumTech");
             Console.WriteLine("This product is licensed under the GNU General Public License (GPL) v3 open source license.");
             Console.WriteLine("                                                                    ");
@@ -90,7 +89,6 @@ namespace CSMarkRedux{
             Console.WriteLine("To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/");
             Console.WriteLine("                                                                    ");
             Console.WriteLine("                                                                    ");
-            Console.ForegroundColor = ConsoleColor.Gray;
 
             while (licenseWatch.ElapsedMilliseconds <= 2.0 * 1000){
                 //Do nothing to make sure everybody sees the license.

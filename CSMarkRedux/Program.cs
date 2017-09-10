@@ -117,7 +117,7 @@ namespace CSMarkRedux{
                 else{
                     newCommand = Console.ReadLine().ToLower();
                 }
-                    if (newCommand == "stress" || newCommand == "stress_test" || newCommand == "3"){
+                    if (newCommand == "stress" || newCommand == "stress_test"){
                     Console.WriteLine("Do you want to run a timed Stress Test?");
                     Console.WriteLine("Enter Y or N");
                    choseTimed = Console.ReadLine().ToLower();
@@ -200,6 +200,7 @@ namespace CSMarkRedux{
                         }
                     }
 
+                    Console.WriteLine("Starting Tests...");
                     if (newCommand.Contains("bench") & newCommand.Contains("_extreme")){
                         commandProcessor.startBenchmarkExtreme(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, true);
@@ -273,6 +274,10 @@ namespace CSMarkRedux{
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine(info.returnCSMarkVersionString());
                     Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("CSMark RID: ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(new CSMarkPlatform().returnRID());
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.Write("CSMarkLib Version: ");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine(new AboutLib().returnCSMarkLibVersionString());
@@ -313,11 +318,6 @@ namespace CSMarkRedux{
                         Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command.");
                         continue;
                     }
-
-                benchCommand = "";
-                accuracyLevel = "";
-                saveToFile = false;
-                threadsArg = "";
 
                 if(exitOnComplete == true){
                     break;
