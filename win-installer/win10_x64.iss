@@ -7,8 +7,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{64C3B2C6-57C9-4C9A-8FA5-190BAFB6C508}
 AppName=CSMark
-AppVersion=0.16.1
-;AppVerName=CSMark 0.16.1
+AppVersion=0.16.2
+;AppVerName=CSMark 0.16.2
 AppPublisher=AluminiumTech
 AppPublisherURL=http://www.github.com/CSMarkBenchmark/CSMark/
 AppSupportURL=http://www.github.com/CSMarkBenchmark/CSMark/
@@ -19,7 +19,7 @@ LicenseFile=D:\Documents\GitHub\CSMark\win-installer\License.txt
 InfoBeforeFile=D:\Documents\GitHub\CSMark\win-installer\Installer_Welcome.txt
 InfoAfterFile=D:\Documents\GitHub\CSMark\win-installer\Installer_End.txt
 OutputDir=D:\Documents\GitHub\CSMark\CSMarkRedux\bin\Release\netcoreapp2.0
-OutputBaseFilename=CSMark0.16.1_Setup_Win10-x64
+OutputBaseFilename=CSMark0.16.2_Setup_Win10-x64
 Compression=lzma
 SolidCompression=yes
 
@@ -30,8 +30,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Documents\GitHub\CSMark\CSMarkRedux\bin\Release\netcoreapp2.0\win10-x64\publish\CSMarkRedux.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Documents\GitHub\CSMark\CSMarkRedux\bin\Release\netcoreapp2.0\win10-x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Documents\GitHub\CSMark\CSMarkRedux\bin\Release\netcoreapp2.0\win10-x64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
