@@ -97,9 +97,9 @@ namespace CSMarkRedux{
                 Console.Write("To run test using a specified amount of threads enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" _threads");
-                Console.Write("To run the Extreme benchmark (Experimental) please enter 0,1, or 2 followed by");
+                Console.Write("To run the Extreme benchmark (Experimental) please enter 0, 1, or 2 followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("X");
+                Console.WriteLine(" X");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("To force results to be saved immediately after running the benchmark, enter the benchmark command followed by");
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -265,7 +265,7 @@ namespace CSMarkRedux{
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
 
-                    if (newCommand.Contains("--save") || saveToFile == true){
+                    if (newCommand.Contains("_save") || saveToFile == true){
                         commandProcessor.handleSaveDialog("y", CSMarkVersion);
                     }
                     else{

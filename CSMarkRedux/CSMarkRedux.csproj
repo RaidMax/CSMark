@@ -49,6 +49,7 @@
     <EmbeddedResource Update="locales\locale_EN-US.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>locale_EN-US.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
