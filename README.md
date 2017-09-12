@@ -1,7 +1,7 @@
 # CSMark
 A simple CPU benchmark using the cross-platform C# .NET Core .
 
-This application works on Windows 7 SP1 +, macOS 10.12 + and Linux Distributions.
+This application works on Windows 7 SP1 +, macOS 10.12 + and Linux Distributions [(See Linux Installation Guide for more details)](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md).
 
 ## Contributing
 For details on Contributing check out the [Contribution Guide](https://github.com/CSMarkBenchmark/CSMark/blob/master/CONTRIBUTING.md)
@@ -21,13 +21,14 @@ __List Of Supported Platforms__
 * Windows 10 ARM 64 Bit (Build 14393 or newer required)
 * macOS 10.12 "Sierra"
 * Ubuntu 16.04 LTS or Ubuntu 17.04
-* Debian 8.7 (or newer) or Debian 9.
+* Debian 8.7 (or newer) or Debian 9
 * CentOS or RedHat Linux Enterprise 7 (or newer)
 * SUSE Linux Enterprise 12 SP2 +
 * Fedora 26 (or newer)
 * openSUSE 42.2 (or newer)
 * LinuxMint 18 (or newer)
 
+[See OS Support Document for more details]()
 
 ### Installation Guides
 * [Running CSMark On Linux](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md)
