@@ -37,8 +37,7 @@ namespace CSMarkRedux{
             getPlatform();
             return osID;
         }
-        public string returnOSArch()
-        {
+        public string returnOSArch(){
             getArch();
             return archID;
         }
