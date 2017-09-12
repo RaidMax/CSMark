@@ -57,7 +57,7 @@ Community support consists of receiving support from the Community and possibly 
 Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users.
 
 ## Where can I hang out with the CSMark community?
-There's a [CSMark Discord](https://discord.gg/CMeFZbN) and a [CSMark Steam Group]()
+There's a [CSMark Discord](https://discord.gg/CMeFZbN) and a [CSMark Steam Group](http://steamcommunity.com/groups/csmark)
 
 ## I want to review CSMark
 If you'd like to review CSMark, I'd like to get in contact with you prior to the publishing of your review.
