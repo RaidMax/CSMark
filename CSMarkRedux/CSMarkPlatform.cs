@@ -92,13 +92,3 @@ namespace CSMarkRedux{
         }       
     }
 }
-enum CSMarkPlatform{
-    Win10,
-    Win10ARM,
-    Win10ARM64,
-    Win7,
-    Win81,
-    LinuxX64,
-    LinuxARM,
-    OSX10_12,
-}

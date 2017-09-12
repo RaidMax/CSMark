@@ -123,7 +123,7 @@ namespace CSMarkRedux{
                 }
                     if (newCommand == "3" || newCommand == "stress" || newCommand == "stress_test"){
                     Console.WriteLine("Do you want to run a timed Stress Test?");
-                    Console.WriteLine("Enter Y or N");
+                    Console.WriteLine("Please enter Y or N");
                    choseTimed = Console.ReadLine().ToLower();
 
                    if(choseTimed == "y"){
@@ -161,7 +161,7 @@ namespace CSMarkRedux{
                         commandProcessor.startStressTest();
                         Console.WriteLine("Starting stress test.");
                         Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
-                        newCommand = Console.ReadLine();
+                        newCommand = Console.ReadLine().ToLower();
                         if (newCommand == "break" || newCommand == "stop"){
                             commandProcessor.stopStressTest();
                         }
@@ -199,7 +199,7 @@ namespace CSMarkRedux{
 
                     if (newCommand.Contains("_threads")){
                         Console.WriteLine("How many threads would you like to complete the benchmark?");
-                        Console.WriteLine("If you would like to run all from 1 to the total amount on your CPU.please enter PROC.");
+                        Console.WriteLine("If you would like to run all from 1 to the total amount on your CPU. Please enter SYSTEM.");
                       
                         if(benchCommand == null){
                             threads = Console.ReadLine().ToLower();
@@ -208,7 +208,7 @@ namespace CSMarkRedux{
                             threads = threadsArg;
                         }
 
-                        if (threads == "proc"){
+                        if (threads == "system"){
                             threadsD = Environment.ProcessorCount;
                         }
                         else{
@@ -319,10 +319,10 @@ namespace CSMarkRedux{
                     }
                     else if(newCommand == "help" || newCommand == "commands" || newCommand == "list_commands" || newCommand == "list_cmd" || newCommand == "halp"){
                     Console.WriteLine("List of supported commands: ");
-                    Console.WriteLine("bench");
-                    Console.WriteLine("bench_single");
-                    Console.WriteLine("bench_multi");
-                    Console.WriteLine("stress_test");
+                    Console.WriteLine("0");
+                    Console.WriteLine("1");
+                    Console.WriteLine("2");
+                    Console.WriteLine("3");
                     Console.WriteLine("clear");
                     Console.WriteLine("about");
                     Console.WriteLine("exit");
