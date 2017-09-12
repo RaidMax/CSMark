@@ -28,7 +28,7 @@ __List Of Supported Platforms__
 * openSUSE 42.2 (or newer)
 * LinuxMint 18 (or newer)
 
-[See OS Support Document for more details]()
+[See OS Support Document for more details](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/OS_Support.md)
 
 ### Installation Guides
 * [Running CSMark On Linux](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md)
