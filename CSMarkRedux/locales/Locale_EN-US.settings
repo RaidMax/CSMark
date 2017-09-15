@@ -1,0 +1,235 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CSMarkRedux.locales" GeneratedClassName="Locale_EN-US">
+  <Profiles />
+  <Settings>
+    <Setting Name="_Edition" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_CommunityEdition</Value>
+    </Setting>
+    <Setting Name="acceptedAccuracyLevel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Accepted Accuracy Levels are CM1-CM5, PX1-PX5 and WX1-WX12</Value>
+    </Setting>
+    <Setting Name="accuracyInfo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">For more information on accuracy levels, go to:</Value>
+    </Setting>
+    <Setting Name="accuracyInfoURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.mhttps://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.m</Value>
+    </Setting>
+    <Setting Name="accuracyLevel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Please enter an accuracy level.</Value>
+    </Setting>
+    <Setting Name="archID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OS Architecture:</Value>
+    </Setting>
+    <Setting Name="autoUpdaterNetStandardVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AutoUpdaterNetStandard Version:</Value>
+    </Setting>
+    <Setting Name="calculations" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Please enter the amount of calculations you'd like to be performed in millions:</Value>
+    </Setting>
+    <Setting Name="calculations_Failed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Failed to set the custom amount of calculations.</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Available" Type="System.String" Scope="User">
+      <Value Profile="(Default)">A new update for CSMark is available!</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_ChangeLog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">The changelog for the latest version can be found here:</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_DownloadInstruction" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To download the update, go to this URL:</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Failed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Checking for updates failed. Proceeding to start CSMark.</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Installed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Installed CSMark Version:</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Latest" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Latest CSMark Version:</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_NetworkIssues" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Experienced networking issues whilst checking for updates.</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Notice" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Checking for updates to CSMark. This should just take a moment.</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Time" Type="System.String" Scope="User">
+      <Value Profile="(Default)">milliseconds to check for updates.</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_Took" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Took</Value>
+    </Setting>
+    <Setting Name="checkForUpdate_UpToDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">This product is up to date.</Value>
+    </Setting>
+    <Setting Name="command_CustomCalc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run the test with a specific amount of calculations, please enter</Value>
+    </Setting>
+    <Setting Name="command_Extreme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X</Value>
+    </Setting>
+    <Setting Name="command_Feedback" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Please give feedback, or report bugs by opening a GitHub issue at https://github.com/CSMarkBenchmark/CSMark/issues/new</Value>
+    </Setting>
+    <Setting Name="command_ForceSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To force results to be saved immediately after running the benchmark, enter the benchmark command followed by</Value>
+    </Setting>
+    <Setting Name="command_Number0" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="command_Number1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="command_Number2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="command_Number3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="command_runExtreme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run the Extreme benchmark (Experimental) please enter 0,1, or 2 followed by</Value>
+    </Setting>
+    <Setting Name="command_runMulti" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run the multi threaded tests only, please enter</Value>
+    </Setting>
+    <Setting Name="command_runSingle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run the single threaded tests only, please enter</Value>
+    </Setting>
+    <Setting Name="command_runStress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run the stress test utility, please enter</Value>
+    </Setting>
+    <Setting Name="command_Threads" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_threads</Value>
+    </Setting>
+    <Setting Name="commandAbout" Type="System.String" Scope="User">
+      <Value Profile="(Default)">About</Value>
+    </Setting>
+    <Setting Name="commandCalc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_calc</Value>
+    </Setting>
+    <Setting Name="commandClear" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Clear</Value>
+    </Setting>
+    <Setting Name="commandExit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Exit</Value>
+    </Setting>
+    <Setting Name="commandHelp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Help</Value>
+    </Setting>
+    <Setting Name="commandNotSupported" Type="System.String" Scope="User">
+      <Value Profile="(Default)">That's not a command supported by CSMark! Please enter a supported command.</Value>
+    </Setting>
+    <Setting Name="commands_SupportedInfo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">List of supported commands:</Value>
+    </Setting>
+    <Setting Name="commandsExtraInfo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">For more information on what these commands do, please go to:</Value>
+    </Setting>
+    <Setting Name="commandsExtraInfo_URL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/Commands.md</Value>
+    </Setting>
+    <Setting Name="confirmSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Would you like to save the results to a Text File?</Value>
+    </Setting>
+    <Setting Name="csmarkLibVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CSMarkLib Version:</Value>
+    </Setting>
+    <Setting Name="csmarkRID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CSMark RunTime Identifier:</Value>
+    </Setting>
+    <Setting Name="csmarkVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CSMark Version:</Value>
+    </Setting>
+    <Setting Name="license" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Copyright (C) 2017 AluminiumTech
+This product is licensed under the GNU General Public License (GPL) v3 open source license.
+
+This is free software (As defined at https://www.gnu.org/philosophy/free-sw.html) :
+you can re-distribute it and/or modify it under the terms of the GNU General Public License as published by
+the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.
+If not, see http://www.gnu.org/licenses/
+To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</Value>
+    </Setting>
+    <Setting Name="osID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OS ID:</Value>
+    </Setting>
+    <Setting Name="responseNo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">N</Value>
+    </Setting>
+    <Setting Name="responseYorN" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Please enter Y or N</Value>
+    </Setting>
+    <Setting Name="selectTimeFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Select the time format in SECONDS, MINUTES or HOURS.</Value>
+    </Setting>
+    <Setting Name="starting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Starting CSMark.</Value>
+    </Setting>
+    <Setting Name="stressTest_Break" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BREAK</Value>
+    </Setting>
+    <Setting Name="stressTest_Stop" Type="System.String" Scope="User">
+      <Value Profile="(Default)">STOP</Value>
+    </Setting>
+    <Setting Name="stressTest_StopMessage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To stop the stress test, please exit the program or enter STOP or BREAK</Value>
+    </Setting>
+    <Setting Name="stressTest_TerminateMessage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To terminate the stress test enter BREAK or STOP.</Value>
+    </Setting>
+    <Setting Name="stressTestConfirm" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Are you sure you want to run the stress test for</Value>
+    </Setting>
+    <Setting Name="test_Starting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Starting Tests...</Value>
+    </Setting>
+    <Setting Name="threads_HowMany" Type="System.String" Scope="User">
+      <Value Profile="(Default)">How many threads would you like to complete the benchmark?</Value>
+    </Setting>
+    <Setting Name="threads_Proc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">If you would like to run all from 1 to the total amount on your CPU.please enter SYSTEM.</Value>
+    </Setting>
+    <Setting Name="timedStressTest" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Do you want to run a timed Stress Test?</Value>
+    </Setting>
+    <Setting Name="timeFormat_HowMany" Type="System.String" Scope="User">
+      <Value Profile="(Default)">How many</Value>
+    </Setting>
+    <Setting Name="timeFormat_Time" Type="System.String" Scope="User">
+      <Value Profile="(Default)">would you like the stress test to run for?</Value>
+    </Setting>
+    <Setting Name="title_CommunityEdition" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Community Edition</Value>
+    </Setting>
+    <Setting Name="title_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CSMark</Value>
+    </Setting>
+    <Setting Name="title_Support" Type="System.String" Scope="User">
+      <Value Profile="(Default)">For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md</Value>
+    </Setting>
+    <Setting Name="title_Welcome" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Welcome to CSMark Community Edition.</Value>
+    </Setting>
+    <Setting Name="command_runNormal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run the single threaded and multi threaded tests, please enter</Value>
+    </Setting>
+    <Setting Name="command_Save" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_save</Value>
+    </Setting>
+    <Setting Name="command_runThreads" Type="System.String" Scope="User">
+      <Value Profile="(Default)">To run test using a specified amount of threads enter the benchmark command followed by</Value>
+    </Setting>
+    <Setting Name="responseYes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Y</Value>
+    </Setting>
+    <Setting Name="stressTest_Start" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Starting stress test.</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

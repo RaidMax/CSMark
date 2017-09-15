@@ -38,24 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="locales\locale_EN-US.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>locale_EN-US.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="locales\locale_EN-US.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>locale_EN-US.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="License.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="locales\Locale_EN-US.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
     </None>
   </ItemGroup>
 

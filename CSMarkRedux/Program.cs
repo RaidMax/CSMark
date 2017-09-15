@@ -16,6 +16,7 @@
 using CSMarkLib;
 using CSMarkLib.BenchmarkManagement;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class Program{
@@ -25,11 +26,11 @@ namespace CSMarkRedux{
         public static bool exitOnComplete = false;
         public static string threadsArg;
 
-        static void Main(string[] args){       
+        static void Main(string[] args){
             ///
             ///Accept command line arguments
             ///
-            if(args.Length == 2){
+            if (args.Length == 2){
                 benchCommand = args[0];
                 accuracyLevel = args[1];
             }
@@ -54,10 +55,10 @@ namespace CSMarkRedux{
             else{
                 //Do nothing.
             }
-
-        CSMarkPlatform csM = new CSMarkPlatform();
+            CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
-            Console.Title = "CSMark " + info.returnCSMarkVersionString() + " Community Edition";  
+          Console.Title = "CSMark " + info.returnCSMarkVersionString() + " Community Edition";
+
             string CSMarkVersion = info.returnCSMarkVersionString() + "_CommunityEdition";
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
@@ -75,7 +76,7 @@ namespace CSMarkRedux{
             int threadDIteration = 2;
 
             while (true){
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
                     Console.Write("To run the single threaded and multi threaded tests, please enter ");
                     Console.ForegroundColor = ConsoleColor.Green;
