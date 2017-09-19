@@ -36,7 +36,7 @@ namespace CSMarkRedux{
                     //Do nothing. Checking Locale will happen elsewhere.
                     fileExists = true;
                 }
-                else{   
+                else if(!Directory.Exists(configDir + "\\CSMark_Config.txt")){   
                     try{
                         using (StreamWriter sw = File.CreateText(configDir + "\\CSMark_Config.txt")){
                             sw.WriteLine("CSMarkVersion_" + new Information().returnCSMarkVersionString());
@@ -69,13 +69,9 @@ namespace CSMarkRedux{
                     if (line.Contains("Locale_EN")){
                         result = "EN";
                     }
-                    else{
-                        result = "EN";
-                    }
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 Console.WriteLine(ex);
             }
         }
@@ -85,7 +81,8 @@ namespace CSMarkRedux{
                     //Settings folder already exists, so we don't need to do anything.
                     folderExists = true;
                 }
-                else{
+                else if(!Directory.Exists(configDir))
+                {
                     Directory.CreateDirectory(configDir);
                     folderExists = false;
                 }

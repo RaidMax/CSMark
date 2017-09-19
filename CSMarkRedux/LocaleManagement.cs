@@ -14,13 +14,13 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 using System;
+using System.IO;
 
-namespace CSMarkRedux
-{
-    class LocaleManagement
-    {
+namespace CSMarkRedux{
+    class LocaleManagement{
         string _locale;
         string _language;
+        string configDir = Environment.CurrentDirectory + "\\Config\\";
         Configuration config = new Configuration();
 
         public void performLocaleSetup(){
@@ -33,10 +33,10 @@ namespace CSMarkRedux
             Console.WriteLine("Please enter the number for the language you'd like to use.");
             Console.WriteLine("E.g. For English enter 1");
             string languageNumber = Console.ReadLine().ToLower();
+           int langNum = int.Parse(languageNumber);
 
-            if (languageNumber == "1")
-            {
-                _locale = "EN-US";
+            if (langNum == 1){
+                _locale = "EN";
                 _language = "English";
             }
 
@@ -48,26 +48,15 @@ namespace CSMarkRedux
             Console.WriteLine("Quitting CSMark");
             Environment.Exit(0);
         }
-        public void checkLocale()
-        {
-            config.createSettingsFolder();
-            config.createSettingsFile(_locale, _language);
+        public void checkLocale(){
+            config.readSettingsFile();
 
-            if (config.returnFileExists() == false || config.returnFolderExists() == false)
-            {
+            if(config.returnResult() == ""){
                 performLocaleSetup();
             }
-            else if (config.returnFileExists() == true && config.returnFolderExists() == true)
-            {
-                //Check the Locale
-                config.readSettingsFile();
-                //Check if we need to load locales
-
-
-                //Load locales if necessary
-
-                //Proceed to CSMark.
-            }
+        }
+        public string returnLocale(){
+            return config.returnResult();
         }
     }
 }

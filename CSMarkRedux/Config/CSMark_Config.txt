@@ -1,0 +1,8 @@
+CSMarkVersion_0.17.0.0
+Date_9/19/2017 10:42:32 AM
+ThreadCount_4
+OSPlatform__Win10
+OSArchitecture__x64
+Language_English
+Locale_EN
+-------------------------------------------------

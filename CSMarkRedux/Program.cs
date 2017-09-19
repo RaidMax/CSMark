@@ -15,6 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 using CSMarkLib;
 using CSMarkLib.BenchmarkManagement;
+using CSMarkRedux.locales;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -57,15 +58,24 @@ namespace CSMarkRedux{
             }
             CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
-          Console.Title = "CSMark " + info.returnCSMarkVersionString() + " Community Edition";
+            LocaleManagement locales = new LocaleManagement();
+            locales.checkLocale();
+            string locale = locales.returnLocale();
+
+            if(locale == "EN"){
+                Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() +  " " + locale_EN.title_CommunityEdition;
+            }         
 
             string CSMarkVersion = info.returnCSMarkVersionString() + "_CommunityEdition";
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
             info.checkForUpdate();
-            Console.WriteLine("Welcome to CSMark Community Edition.");
-            Console.WriteLine("For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md");
-                string benchAccuracy = "CM2";
+
+            if(locale == "EN"){
+                Console.WriteLine(locale_EN.title_Welcome);
+                Console.WriteLine(locale_EN.title_Support);
+            }
+                string benchAccuracy = "Auto";
                 string newCommand = "";
                 string timedStress = "";
                 string stressTime = "";
