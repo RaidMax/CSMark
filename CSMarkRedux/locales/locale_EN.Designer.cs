@@ -573,7 +573,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to N.
+        ///   Looks up a localized string similar to NO.
         /// </summary>
         internal static string responseNo {
             get {
@@ -582,7 +582,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Y.
+        ///   Looks up a localized string similar to YES.
         /// </summary>
         internal static string responseYes {
             get {
@@ -591,7 +591,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter Y or N.
+        ///   Looks up a localized string similar to Please enter YES or NO.
         /// </summary>
         internal static string responseYorN {
             get {
