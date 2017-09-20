@@ -223,6 +223,7 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.accuracyInfo);
                             Console.WriteLine(locale_EN.accuracyInfoURL);
                           benchAccuracy =  Console.ReadLine();
+                            commandProcessor.setMaxIterations(benchAccuracy);
                         }
                     }
                     else if(newCommand.Contains(calcCommand)){
@@ -319,7 +320,11 @@ namespace CSMarkRedux{
                         string save = "";
                             Console.WriteLine("                                                ");
                             if(locales.returnLocale() == "EN"){
+                            
+                            ///We don't need to show this message to mac or linux users
+                            if (new CSMarkPlatform().returnOSPlatform().Contains("win")){
                                 Console.WriteLine(locale_EN.save_ReminderInstall);
+                            }                  
                                 Console.WriteLine(locale_EN.confirmSave);
                                 Console.WriteLine(locale_EN.responseYorN);   
                         }
@@ -328,10 +333,10 @@ namespace CSMarkRedux{
                         continue;
                         }              
                     }
-                    else if (newCommand == exitCommand){
+                    else if (newCommand.ToLower() == exitCommand.ToLower()){
                         break;
                     }
-                    else if(newCommand == aboutCommand || newCommand == versionCommand){
+                    else if(newCommand.ToLower() == aboutCommand.ToLower() || newCommand.ToLower() == versionCommand.ToLower()){
                     Console.WriteLine("                                     ");
                     Console.WriteLine("                                     ");
 
@@ -365,11 +370,11 @@ namespace CSMarkRedux{
                     }
                            
                 }
-                    else if (newCommand == clearCommand){
+                    else if (newCommand.ToLower() == clearCommand.ToLower()){
                         Console.Clear();
                         continue;
                     }
-                    else if(newCommand == helpCommand){
+                    else if(newCommand.ToLower() == helpCommand.ToLower()){
                     if(locales.returnLocale() == "EN"){
                         Console.WriteLine(locale_EN.commands_SupportedInfo);
                         Console.WriteLine(locale_EN.command_Number0);
