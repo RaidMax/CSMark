@@ -9,6 +9,7 @@ namespace CSMarkRedux{
 
         public void performLocaleSetup(){
             Console.Clear();
+            Console.Title = "CSMark First Time Setup.";
             Console.WriteLine("Welcome. Bienvenue.");
             Console.WriteLine("Performing First Time Setup.");
             Console.WriteLine("Language(s) Available for CSMark: ");
@@ -30,11 +31,23 @@ namespace CSMarkRedux{
             config.createSettingsFile(_locale, _language);
             Console.WriteLine("To use CSMark with your Language. Please restart CSMark.");
             Console.WriteLine("Quitting CSMark");
+            Console.ReadLine();
             Environment.Exit(0);
         }
         public void checkLocale(){
-            config.readSettingsFile();
+            try{
+                config.createSettingsFile("EN", "English");
 
+                if (config.returnFileExists() == false){
+                    performLocaleSetup();
+                }
+                else if(config.returnFileExists() == true){
+                    config.readSettingsFile();
+                }
+            }
+            catch{
+                performLocaleSetup();
+            }
             if(config.returnResult() == ""){
                 performLocaleSetup();
             }

@@ -16,55 +16,49 @@ namespace CSMarkRedux{
         public Version returnCSMarkVersion(){
             return Assembly.GetEntryAssembly().GetName().Version;
         }
-        public void checkForUpdate(){
+        public void checkForUpdate(string locale){
             //This checks for updates on startup
             checkUpdateTimer.Reset();
             checkUpdateTimer.Start();
             AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
-           if(locales.returnLocale() == "EN")
-            {
+          
                 Console.WriteLine(locale_EN.checkForUpdate_Notice);
-            }
+       
             //If it takes longer than 10 seconds to check for updates then stop and tell the user it couldn't check for updates.
             while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (5.0 * 1000)){
 
             }
             if (autoUpdater.checkForUpdateCompleted() == false){
-                if(locales.returnLocale() == "EN")
-                {
+              
                     Console.WriteLine(locale_EN.checkForUpdate_Failed);
-                }
+                
             }
             else{
-                if(locales.returnLocale() == "EN"){
-                    Console.WriteLine(locale_EN.checkForUpdate_Took + " " + checkUpdateTimer.ElapsedMilliseconds + locale_EN.checkForUpdate_Time);
-                }
+                    Console.WriteLine(locale_EN.checkForUpdate_Took + " " + checkUpdateTimer.ElapsedMilliseconds + " " + locale_EN.checkForUpdate_Time);
+                
                 
             }
             if(autoUpdater.currentVersion() == "0.0.0.0"){
-                if(locales.returnLocale() == "EN"){
-                    Console.WriteLine(locale_EN.checkForUpdate_NetworkIssues);
+                   Console.WriteLine(locale_EN.checkForUpdate_NetworkIssues);
                     Console.WriteLine(locale_EN.starting);
-                }
+                
                 Console.WriteLine("                                     ");
             }
             if (autoUpdater.currentVersion() != "0.0.0.0" && autoUpdater.currentVersion() == autoUpdater.installedVersion()){
                 //Do nothing
-               if(locales.returnLocale() == "EN"){
                     Console.WriteLine(locale_EN.checkForUpdate_UpToDate);
-                }
+                
                 Console.WriteLine("                                     ");
             }
             else if (autoUpdater.currentVersion() != "0.0.0.0" && autoUpdater.currentVersion() != autoUpdater.installedVersion()){
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("                                     ");
-                if(locales.returnLocale() == "EN"){
                     Console.WriteLine(locale_EN.checkForUpdate_Available);
                     Console.WriteLine(locale_EN.checkForUpdate_Latest + " " + autoUpdater.currentVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_Installed + " " + autoUpdater.installedVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_ChangeLog);
                     Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction);
-                }
+                
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
@@ -76,29 +70,26 @@ namespace CSMarkRedux{
             Console.Clear();
             licenseWatch.Reset();
             licenseWatch.Start();
-            Console.ForegroundColor = ConsoleColor.Magenta;            
-            if(locales.returnLocale() == "EN"){
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
                 Console.WriteLine("Copyright (C) 2017 AluminiumTech");
-                Console.WriteLine("This product is licensed under the GNU General Public License (GPL) v3 open source license.");
+                Console.WriteLine("This product is licensed under the 1st Draft of the AluminiumTech v1 open source license.");
                 Console.WriteLine("                                                                    ");
                 Console.WriteLine("This is free software (As defined at https://www.gnu.org/philosophy/free-sw.html) :");
-                Console.WriteLine("you can re-distribute it and/or modify it under the terms of the GNU General Public License as published by");
-                Console.WriteLine("the Free Software Foundation.");
+                Console.WriteLine("you can re-distribute it and/or modify it under the terms of the AluminiumTech License published by AluminiumTech.");
                 Console.WriteLine("                                                                    ");
                 Console.WriteLine("This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY;");
                 Console.WriteLine("without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
-                Console.WriteLine("See the GNU General Public License for more details.");
+                Console.WriteLine("See the AluminiumTech License for more details.");
                 Console.WriteLine("                                                                    ");
-                Console.WriteLine("You should have received a copy of the GNU General Public License along with this program.");
-                Console.WriteLine("If not, see http://www.gnu.org/licenses/");
-                Console.WriteLine("To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/");
+                Console.WriteLine("You should have received a copy of the AluminiumTech License along with this program.");
+                Console.WriteLine("If not, see http://www.github.com/CSMarkBenchmark/CSMark/blob/master/LICENSE");
                 Console.WriteLine("                                                                    ");
                 Console.WriteLine("                                                                    ");
-            }
-        
+            
             Console.ForegroundColor = ConsoleColor.Gray;
 
-            while (licenseWatch.ElapsedMilliseconds <= 2.0 * 1000){
+            while (licenseWatch.ElapsedMilliseconds <= 3.0 * 1000){
                 //Do nothing to make sure everybody sees the license.
             }
         }

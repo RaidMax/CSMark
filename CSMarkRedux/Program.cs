@@ -6,14 +6,16 @@ using System;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class Program{
-        public static string benchCommandArg;
-        public static string accuracyLevel;
-        public static bool saveToFile;
-        public static bool exitOnComplete = false;
-        public static string threadsArg;
 
         static void Main(string[] args){
-            ///
+            /*
+             ///
+
+                   public static string benchCommandArg = "";
+            public static string accuracyLevel = "";
+            public static bool saveToFile = false;
+            public static bool exitOnComplete = false;
+            public static string threadsArg = "";
             ///Accept command line arguments
             ///
             if (args.Length == 2){
@@ -41,28 +43,21 @@ namespace CSMarkRedux{
             else{
                 //Do nothing.
             }
+            */
             CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
             LocaleManagement locales = new LocaleManagement();
+
             locales.checkLocale();
+
             string locale = locales.returnLocale();
             string CSMarkVersion = info.returnCSMarkVersionString() + "_";
 
-            if (locale == "EN"){
-                Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() +  " " + locale_EN.title_CommunityEdition;
-                CSMarkVersion = CSMarkVersion + locale_EN._Edition;
-            }         
-
-          
-
             CommandProcessor commandProcessor = new CommandProcessor();
-            info.showLicenseInfo();
-            info.checkForUpdate();
 
-            if(locale == "EN"){
-                Console.WriteLine(locale_EN.title_Welcome);
-                Console.WriteLine(locale_EN.title_Support);
-            }
+            info.showLicenseInfo();
+            info.checkForUpdate(locale);
+            
             //int langID;
 
             string exitCommand = "";
@@ -111,64 +106,64 @@ namespace CSMarkRedux{
                 versionCommand = locale_EN.commandVersion;
             }
 
-                string benchAccuracy = "Auto";
+              string benchAccuracy = "Auto";
                 string newCommand = "";
                 string timedStress = "";
                 string stressTime = "";
                 string stressConfirm = "";
             string choseTimed = "";
-            string threads = "proc";
+        //    string threads = "system";
             int threadsD = 0;
             int threadDIteration = 2;
+
+            if (locale == "EN")
+            {
+                Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() + " " + locale_EN.title_CommunityEdition;
+                CSMarkVersion = CSMarkVersion + locale_EN._Edition;
+                Console.WriteLine(locale_EN.title_Welcome);
+                Console.WriteLine(locale_EN.title_Support);
+            }
 
             while (true){
                 Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
                 if(locales.returnLocale() == "EN"){
-                    Console.WriteLine(locale_EN.command_runNormal);
+                    Console.Write(locale_EN.command_runNormal + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Number0);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_runSingle);
+                    Console.Write(locale_EN.command_runSingle + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Number1);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_runMulti);
+                    Console.Write(locale_EN.command_runMulti + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Number2);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_runStress);
+                    Console.Write(locale_EN.command_runStress + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Number3);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_runThreads);
+                    Console.Write(locale_EN.command_runThreads + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Threads);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_runExtreme);
+                    Console.Write(locale_EN.command_runExtreme + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Extreme);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_ForceSave);
+                    Console.Write(locale_EN.command_ForceSave + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Save);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(locale_EN.command_Feedback + " " + locale_EN.commandsExtraInfo_URL);
+                    Console.WriteLine(locale_EN.command_Feedback);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(locale_EN.command_Number0);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
+                    newCommand = Console.ReadLine().ToLower();
+                
 
-                if (benchCommandArg == null){
-                    newCommand = Console.ReadLine().ToLower();
-                }
-                else if (benchCommandArg != null){
-                    newCommand = benchCommandArg;
-                }
-                else{
-                    newCommand = Console.ReadLine().ToLower();
-                }
-                    if (newCommand == stressCommand || newCommand == "stress" || newCommand == "stress_test"){
+                    if (newCommand == stressCommand){
                    if(locales.returnLocale() == "EN"){
                         Console.WriteLine(locale_EN.timedStressTest);
                         Console.WriteLine(locale_EN.responseYorN);
@@ -188,12 +183,6 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.responseYorN);
                         }
 
-                        if(benchCommandArg == null){
-                            stressConfirm = Console.ReadLine().ToLower();
-                        }
-                        else if(benchCommandArg != null){
-
-                        }
                         if (stressConfirm == respondYes){
                             if (timedStress == respondSeconds){
                                 commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
@@ -233,6 +222,7 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.acceptedAccuracyLevel);
                             Console.WriteLine(locale_EN.accuracyInfo);
                             Console.WriteLine(locale_EN.accuracyInfoURL);
+                          benchAccuracy =  Console.ReadLine();
                         }
                     }
                     else if(newCommand.Contains(calcCommand)){
@@ -248,49 +238,37 @@ namespace CSMarkRedux{
                             }
                         }
                     }
-                    if (benchCommand == null && !newCommand.Contains(calcCommand)){
-                        benchAccuracy = Console.ReadLine().ToUpper();
-                        commandProcessor.setMaxIterations(benchAccuracy);
-                    }
-                    else if (benchCommand != null && !newCommand.Contains(calcCommand)){
-                        commandProcessor.setMaxIterations(accuracyLevel);
-                    }
                     if (newCommand.Contains(benchThreadsCommand)){
                         if(locales.returnLocale() == "EN"){
                             Console.WriteLine(locale_EN.threads_HowMany);
                             Console.WriteLine(locale_EN.threads_All);
                         }
-                      
-                        if(benchCommand == null){
-                            threads = Console.ReadLine().ToLower();
-                        }
-                        else{
-                            threads = threadsArg;
-                        }
-                        if (threads == "system"){
+                      /*
+                        if (threads == respondSystem){
                             threadsD = Environment.ProcessorCount;
                         }
                         else{
                             threadsD = int.Parse(threads);
                         }
+                        */
                     }
 
                     if(locales.returnLocale() == "EN"){
                         Console.WriteLine(locale_EN.test_Starting);
                     }
-                    if (newCommand.Contains(benchCommand) & newCommand.Contains(benchExtremeCommand)){
+                    if (newCommand.Contains(benchCommand) && newCommand.Contains(benchExtremeCommand)){
                         commandProcessor.startBenchmarkExtreme(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, true);
                     }
-                    else if (newCommand.Contains(benchSingleCommand) & newCommand.Contains(benchExtremeCommand)){
+                    else if (newCommand.Contains(benchSingleCommand) && newCommand.Contains(benchExtremeCommand)){
                         commandProcessor.startBenchmarkExtreme_Single();
                         commandProcessor.showExtremeResultsConsole(true, false);
                     }
-                    else if (newCommand.Contains(benchMultiCommand) & newCommand.Contains(benchExtremeCommand)){
+                    else if (newCommand.Contains(benchMultiCommand) && newCommand.Contains(benchExtremeCommand)){
                         commandProcessor.startBenchmarkExtreme_Multi(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(false, true);
                     }
-                    else if (newCommand.Contains(benchMultiCommand) & newCommand.Contains(benchThreadsCommand))
+                    else if (newCommand.Contains(benchMultiCommand) && newCommand.Contains(benchThreadsCommand))
                     {                                          
                         while (threadDIteration <= threadsD){
                             commandProcessor.startBenchmarkNormal_Multi(threadDIteration);
@@ -298,7 +276,7 @@ namespace CSMarkRedux{
                             threadDIteration++;
                         }
                     }
-                    else if (newCommand.Contains(benchCommand) & newCommand.Contains(benchThreadsCommand)){
+                    else if (newCommand.Contains(benchCommand) && newCommand.Contains(benchThreadsCommand)){
                         commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true, true);
                         while (threadDIteration <= threadsD){
@@ -326,7 +304,7 @@ namespace CSMarkRedux{
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
 
-                    if (newCommand.Contains(saveCommand) || saveToFile == true){
+                    if (newCommand.Contains(saveCommand)){
                         if (locales.returnLocale() == "EN"){
                             Console.WriteLine(locale_EN.save_ReminderInstall);
                         }
@@ -339,15 +317,13 @@ namespace CSMarkRedux{
                     }
                     else{
                         string save = "";
-                        if (benchCommand == null){
                             Console.WriteLine("                                                ");
                             if(locales.returnLocale() == "EN"){
                                 Console.WriteLine(locale_EN.save_ReminderInstall);
                                 Console.WriteLine(locale_EN.confirmSave);
-                                Console.WriteLine(locale_EN.responseYorN);
-                            }
-                            save = Console.ReadLine().ToLower();
-                        }                
+                                Console.WriteLine(locale_EN.responseYorN);   
+                        }
+                        save = Console.ReadLine().ToLower();
                         commandProcessor.handleSaveDialog(save, CSMarkVersion);
                         continue;
                         }              
@@ -415,10 +391,6 @@ namespace CSMarkRedux{
                     }
                         continue;
                     }
-
-                if(exitOnComplete == true){
-                    break;
-                     }
                 }
             }
         }
