@@ -466,6 +466,15 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VERSION.
+        /// </summary>
+        internal static string commandVersion {
+            get {
+                return ResourceManager.GetString("commandVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Would you like to save the results to a Text File?.
         /// </summary>
         internal static string confirmSave {
@@ -551,6 +560,15 @@ namespace CSMarkRedux.locales {
         internal static string respondSeconds {
             get {
                 return ResourceManager.GetString("respondSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SYSTEM.
+        /// </summary>
+        internal static string respondSystem {
+            get {
+                return ResourceManager.GetString("respondSystem", resourceCulture);
             }
         }
         
@@ -672,20 +690,20 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you would like to run all from 1 to the total amount on your CPU.please enter SYSTEM..
+        /// </summary>
+        internal static string threads_All {
+            get {
+                return ResourceManager.GetString("threads_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How many threads would you like to complete the benchmark?.
         /// </summary>
         internal static string threads_HowMany {
             get {
                 return ResourceManager.GetString("threads_HowMany", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you would like to run all from 1 to the total amount on your CPU.please enter SYSTEM..
-        /// </summary>
-        internal static string threads_Proc {
-            get {
-                return ResourceManager.GetString("threads_Proc", resourceCulture);
             }
         }
         

@@ -3,7 +3,6 @@ using CSMarkLib;
 using CSMarkLib.BenchmarkManagement;
 using CSMarkRedux.locales;
 using System;
-using System.IO;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class Program{
@@ -47,12 +46,15 @@ namespace CSMarkRedux{
             LocaleManagement locales = new LocaleManagement();
             locales.checkLocale();
             string locale = locales.returnLocale();
+            string CSMarkVersion = info.returnCSMarkVersionString() + "_";
 
-            if(locale == "EN"){
+            if (locale == "EN"){
                 Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() +  " " + locale_EN.title_CommunityEdition;
+                CSMarkVersion = CSMarkVersion + locale_EN._Edition;
             }         
 
-            string CSMarkVersion = info.returnCSMarkVersionString() + "_CommunityEdition";
+          
+
             CommandProcessor commandProcessor = new CommandProcessor();
             info.showLicenseInfo();
             info.checkForUpdate();
@@ -82,6 +84,8 @@ namespace CSMarkRedux{
             string respondStop = "";
             string respondBreak = "";
             string benchThreadsCommand = "";
+            string respondSystem = "";
+            string versionCommand = "";
 
             if(locales.returnLocale() == "EN"){
                exitCommand = locale_EN.commandExit;
@@ -103,6 +107,8 @@ namespace CSMarkRedux{
                 respondBreak = locale_EN.stressTest_Break;
                 benchExtremeCommand = locale_EN.command_Extreme;
                 benchThreadsCommand = locale_EN.command_Threads;
+                respondSystem = locale_EN.respondSystem;
+                versionCommand = locale_EN.commandVersion;
             }
 
                 string benchAccuracy = "Auto";
@@ -249,9 +255,11 @@ namespace CSMarkRedux{
                     else if (benchCommand != null && !newCommand.Contains(calcCommand)){
                         commandProcessor.setMaxIterations(accuracyLevel);
                     }
-                    if (newCommand.Contains("_threads")){
-                        Console.WriteLine("How many threads would you like to complete the benchmark?");
-                        Console.WriteLine("If you would like to run all from 1 to the total amount on your CPU. Please enter SYSTEM.");
+                    if (newCommand.Contains(benchThreadsCommand)){
+                        if(locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.threads_HowMany);
+                            Console.WriteLine(locale_EN.threads_All);
+                        }
                       
                         if(benchCommand == null){
                             threads = Console.ReadLine().ToLower();
@@ -319,9 +327,10 @@ namespace CSMarkRedux{
                         }
 
                     if (newCommand.Contains(saveCommand) || saveToFile == true){
-
-                        try
-                        {
+                        if (locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.save_ReminderInstall);
+                        }
+                            try{
                             commandProcessor.handleSaveDialog("y", CSMarkVersion);
                         }
                         catch{
@@ -346,56 +355,64 @@ namespace CSMarkRedux{
                     else if (newCommand == exitCommand){
                         break;
                     }
-                    else if(newCommand == aboutCommand || newCommand == "version" || newCommand == "info"){
+                    else if(newCommand == aboutCommand || newCommand == versionCommand){
                     Console.WriteLine("                                     ");
                     Console.WriteLine("                                     ");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("CSMark Version: ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(info.returnCSMarkVersionString());
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("CSMark RID: ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(new CSMarkPlatform().returnRID());
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("CSMarkLib Version: ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(new AboutLib().returnCSMarkLibVersionString());
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("AutoUpdaterNetStandard Version: ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(new AutoUpdaterNetStandard.AboutLib().returnVersionString());          
-                    csM.getPlatform();
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("OS ID: ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(RuntimeInformation.OSDescription);
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("OS Architecture: ");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine(csM.returnOSArch());
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+
+                    if (locales.returnLocale() == "EN"){
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(locale_EN.csmarkVersion);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(info.returnCSMarkVersionString());
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(locale_EN.csmarkRID);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(new CSMarkPlatform().returnRID());
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(locale_EN.csmarkLibVersion);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(new AboutLib().returnCSMarkLibVersionString());
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(locale_EN.autoUpdaterNetStandardVersion);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(new AutoUpdaterNetStandard.AboutLib().returnVersionString());
+                        csM.getPlatform();
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(locale_EN.osID);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(RuntimeInformation.OSDescription);
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(locale_EN.archID);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(csM.returnOSArch());
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                    }
+                           
                 }
                     else if (newCommand == clearCommand){
                         Console.Clear();
                         continue;
                     }
                     else if(newCommand == helpCommand){
-                    Console.WriteLine("List of supported commands: ");
-                    Console.WriteLine("0");
-                    Console.WriteLine("1");
-                    Console.WriteLine("2");
-                    Console.WriteLine("3");
-                    Console.WriteLine("clear");
-                    Console.WriteLine("about");
-                    Console.WriteLine("exit");
-                    Console.WriteLine("                                        ");
-                    Console.WriteLine("For more information on what these commands do, please go to: ");
-                    Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/Commands.md");
+                    if(locales.returnLocale() == "EN"){
+                        Console.WriteLine(locale_EN.commands_SupportedInfo);
+                        Console.WriteLine(locale_EN.command_Number0);
+                        Console.WriteLine(locale_EN.command_Number1);
+                        Console.WriteLine(locale_EN.command_Number2);
+                        Console.WriteLine(locale_EN.command_Number3);
+                        Console.WriteLine(locale_EN.commandClear);
+                        Console.WriteLine(locale_EN.commandAbout);
+                        Console.WriteLine(locale_EN.commandExit);
+                        Console.WriteLine("                                        ");
+                        Console.WriteLine(locale_EN.commandsExtraInfo);
+                        Console.WriteLine(locale_EN.commandsExtraInfo_URL);
+                    }
                 }
                     else{
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("That's not a command supported by CSMark! Please enter a supported command.");
+                    if(locales.returnLocale() == "EN"){
+                        Console.WriteLine(locale_EN.commandNotSupported);
+                    }
                         continue;
                     }
 

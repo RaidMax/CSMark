@@ -316,7 +316,7 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   <data name="threads_HowMany" xml:space="preserve">
     <value>How many threads would you like to complete the benchmark?</value>
   </data>
-  <data name="threads_Proc" xml:space="preserve">
+  <data name="threads_All" xml:space="preserve">
     <value>If you would like to run all from 1 to the total amount on your CPU.please enter SYSTEM.</value>
   </data>
   <data name="timedStressTest" xml:space="preserve">
@@ -357,5 +357,11 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="respondSeconds" xml:space="preserve">
     <value>Seconds</value>
+  </data>
+  <data name="commandVersion" xml:space="preserve">
+    <value>VERSION</value>
+  </data>
+  <data name="respondSystem" xml:space="preserve">
+    <value>SYSTEM</value>
   </data>
 </root>
