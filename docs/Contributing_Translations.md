@@ -5,9 +5,8 @@ This documents outlines how users can contribute translations to CSMark.
 Locales are stored in .resx files in CSMark. This is how translations can easily be added.
 
 ### How to contribute translations if you are a code contributor
-1. Users who are code contributors can simply copy the ``locale_EN.resx`` file and rename it to an appropriate name for their langage.
-E.g ``locale_FR.resx``
-2. Simply replace the contents of the copied file with the translations as appropriate by double clicking on the file and using the Visual Editor
+1. Users who are code contributors can create a new .resx file in the format of ``locale_`` + locale + ``.resx`` such as ``locale_EN.resx``and add all the fields required.
+2. Simply replace the contents of the copied file with the translations as appropriate by double clicking on the file and using the Visual Editor (VS2017 only)
 3. Once you've made all the translations you can. Please inform a maintainer so they can add support for it.
 
 ### How to contribute translations if you are not a code contributor
