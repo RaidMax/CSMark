@@ -1,18 +1,5 @@
-﻿/* CSMark
-    Copyright (C) 2017  AluminiumTech
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+﻿/* CSMark Copyright (C) 2017  AluminiumTech  */
+using CSMarkRedux.locales;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -22,6 +9,7 @@ namespace CSMarkRedux{
         CSMarkPlatform cSMarkPlatform = new CSMarkPlatform();
         Stopwatch checkUpdateTimer = new Stopwatch();
         Stopwatch licenseWatch = new Stopwatch();
+        LocaleManagement locales = new LocaleManagement();
         public string returnCSMarkVersionString(){
             return Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
@@ -33,35 +21,50 @@ namespace CSMarkRedux{
             checkUpdateTimer.Reset();
             checkUpdateTimer.Start();
             AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
-            Console.WriteLine("Checking for updates to CSMark. This should just take a moment.");
+           if(locales.returnLocale() == "EN")
+            {
+                Console.WriteLine(locale_EN.checkForUpdate_Notice);
+            }
             //If it takes longer than 10 seconds to check for updates then stop and tell the user it couldn't check for updates.
             while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (5.0 * 1000)){
 
             }
             if (autoUpdater.checkForUpdateCompleted() == false){
-                Console.WriteLine("Checking for updates failed. Proceeding to start CSMark.");
+                if(locales.returnLocale() == "EN")
+                {
+                    Console.WriteLine(locale_EN.checkForUpdate_Failed);
+                }
             }
             else{
-                Console.WriteLine("Took " + checkUpdateTimer.ElapsedMilliseconds + " milliseconds to check for updates.");
+                if(locales.returnLocale() == "EN"){
+                    Console.WriteLine(locale_EN.checkForUpdate_Took + " " + checkUpdateTimer.ElapsedMilliseconds + locale_EN.checkForUpdate_Time);
+                }
+                
             }
             if(autoUpdater.currentVersion() == "0.0.0.0"){
-                Console.WriteLine("Experienced networking issues whilst checking for updates.");
-                Console.WriteLine("Starting CSMark.");
+                if(locales.returnLocale() == "EN"){
+                    Console.WriteLine(locale_EN.checkForUpdate_NetworkIssues);
+                    Console.WriteLine(locale_EN.starting);
+                }
                 Console.WriteLine("                                     ");
             }
             if (autoUpdater.currentVersion() != "0.0.0.0" && autoUpdater.currentVersion() == autoUpdater.installedVersion()){
                 //Do nothing
-                Console.WriteLine("This product is up to date.");
+               if(locales.returnLocale() == "EN"){
+                    Console.WriteLine(locale_EN.checkForUpdate_UpToDate);
+                }
                 Console.WriteLine("                                     ");
             }
             else if (autoUpdater.currentVersion() != "0.0.0.0" && autoUpdater.currentVersion() != autoUpdater.installedVersion()){
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("                                     ");
-                Console.WriteLine("A new update for CSMark is available!");
-                Console.WriteLine("Latest CSMark Version: " + autoUpdater.currentVersion());
-                Console.WriteLine("Installed CSMark Version: " + autoUpdater.installedVersion());
-                Console.WriteLine("The changelog for the latest version can be found here: " + autoUpdater.changeLogURL());
-                Console.WriteLine("To download the update, go to this URL: " + autoUpdater.downloadURL());
+                if(locales.returnLocale() == "EN"){
+                    Console.WriteLine(locale_EN.checkForUpdate_Available);
+                    Console.WriteLine(locale_EN.checkForUpdate_Latest + " " + autoUpdater.currentVersion());
+                    Console.WriteLine(locale_EN.checkForUpdate_Installed + " " + autoUpdater.installedVersion());
+                    Console.WriteLine(locale_EN.checkForUpdate_ChangeLog);
+                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction);
+                }
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
@@ -73,8 +76,7 @@ namespace CSMarkRedux{
             Console.Clear();
             licenseWatch.Reset();
             licenseWatch.Start();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            LocaleManagement locales = new LocaleManagement();
+            Console.ForegroundColor = ConsoleColor.Magenta;            
             if(locales.returnLocale() == "EN"){
                 Console.WriteLine("Copyright (C) 2017 AluminiumTech");
                 Console.WriteLine("This product is licensed under the GNU General Public License (GPL) v3 open source license.");

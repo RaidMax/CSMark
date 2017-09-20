@@ -528,6 +528,33 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hours.
+        /// </summary>
+        internal static string respondHours {
+            get {
+                return ResourceManager.GetString("respondHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minutes.
+        /// </summary>
+        internal static string respondMinutes {
+            get {
+                return ResourceManager.GetString("respondMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seconds.
+        /// </summary>
+        internal static string respondSeconds {
+            get {
+                return ResourceManager.GetString("respondSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to N.
         /// </summary>
         internal static string responseNo {
@@ -551,6 +578,24 @@ namespace CSMarkRedux.locales {
         internal static string responseYorN {
             get {
                 return ResourceManager.GetString("responseYorN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The text file could not be saved..
+        /// </summary>
+        internal static string save_Fail {
+            get {
+                return ResourceManager.GetString("save_Fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you installed CSMark using the .exe installer, please run CSMark as an administrator to be able to save the results file..
+        /// </summary>
+        internal static string save_ReminderInstall {
+            get {
+                return ResourceManager.GetString("save_ReminderInstall", resourceCulture);
             }
         }
         
@@ -605,15 +650,6 @@ namespace CSMarkRedux.locales {
         internal static string stressTest_StopMessage {
             get {
                 return ResourceManager.GetString("stressTest_StopMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To terminate the stress test enter BREAK or STOP..
-        /// </summary>
-        internal static string stressTest_TerminateMessage {
-            get {
-                return ResourceManager.GetString("stressTest_TerminateMessage", resourceCulture);
             }
         }
         

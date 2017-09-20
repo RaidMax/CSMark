@@ -25,6 +25,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="locales\locale_EN.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>locale_EN.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
 
@@ -38,14 +46,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="locales\locale_EN.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>locale_EN.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
+    <EmbeddedResource Update="locales\locale_FR.resx">
+      <LastGenOutput>locale_FR.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="locales\locale_EN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>locale_EN.Designer.cs</LastGenOutput>

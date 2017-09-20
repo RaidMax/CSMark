@@ -1,18 +1,4 @@
-﻿/* CSMark
-    Copyright (C) 2017  AluminiumTech
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+﻿/* CSMark Copyright (C) 2017  AluminiumTech */
 using CSMarkLib;
 using CSMarkLib.BenchmarkManagement;
 using CSMarkRedux.locales;
@@ -21,7 +7,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class Program{
-        public static string benchCommand;
+        public static string benchCommandArg;
         public static string accuracyLevel;
         public static bool saveToFile;
         public static bool exitOnComplete = false;
@@ -32,22 +18,22 @@ namespace CSMarkRedux{
             ///Accept command line arguments
             ///
             if (args.Length == 2){
-                benchCommand = args[0];
+                benchCommandArg = args[0];
                 accuracyLevel = args[1];
             }
             else if(args.Length == 3){
-                benchCommand = args[0];
+                benchCommandArg = args[0];
                 accuracyLevel = args[1];
                 saveToFile = bool.Parse(args[2]);
             }
             else if (args.Length == 4){
-                benchCommand = args[0];
+                benchCommandArg = args[0];
                 accuracyLevel = args[1];
                 saveToFile = bool.Parse(args[2]);
                 exitOnComplete = bool.Parse(args[3]);
             }
             else if (args.Length == 5){
-                benchCommand = args[0];
+                benchCommandArg = args[0];
                 accuracyLevel = args[1];
                 saveToFile = bool.Parse(args[2]);
                 exitOnComplete = bool.Parse(args[3]);
@@ -75,6 +61,50 @@ namespace CSMarkRedux{
                 Console.WriteLine(locale_EN.title_Welcome);
                 Console.WriteLine(locale_EN.title_Support);
             }
+            //int langID;
+
+            string exitCommand = "";
+            string aboutCommand = "";
+            string benchCommand = "";
+            string calcCommand = "";
+            string stressCommand = "";
+            string benchSingleCommand = "";
+            string benchMultiCommand = "";
+            string benchExtremeCommand = "";
+            string saveCommand = "";
+            string clearCommand = "";
+            string helpCommand = "";
+            string respondYes = "";
+            string respondNo = "";
+            string respondSeconds = "";
+            string respondMinutes = "";
+            string respondHours = "";
+            string respondStop = "";
+            string respondBreak = "";
+            string benchThreadsCommand = "";
+
+            if(locales.returnLocale() == "EN"){
+               exitCommand = locale_EN.commandExit;
+                aboutCommand = locale_EN.commandAbout;
+                calcCommand = locale_EN.commandCalc;
+                clearCommand = locale_EN.commandClear;
+                helpCommand = locale_EN.commandHelp;
+                saveCommand = locale_EN.command_Save;
+                stressCommand = locale_EN.command_Number3;
+                benchCommand = locale_EN.command_Number0;
+                benchSingleCommand = locale_EN.command_Number1;
+                benchMultiCommand = locale_EN.command_Number2;
+                respondYes = locale_EN.responseYes;
+                respondNo = locale_EN.responseNo;
+                respondSeconds = locale_EN.respondSeconds;
+                respondMinutes = locale_EN.respondMinutes;
+                respondHours = locale_EN.respondHours;
+                respondStop = locale_EN.stressTest_Stop;
+                respondBreak = locale_EN.stressTest_Break;
+                benchExtremeCommand = locale_EN.command_Extreme;
+                benchThreadsCommand = locale_EN.command_Threads;
+            }
+
                 string benchAccuracy = "Auto";
                 string newCommand = "";
                 string timedStress = "";
@@ -88,77 +118,84 @@ namespace CSMarkRedux{
             while (true){
                 Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("                                                                        ");
-                    Console.Write("To run the single threaded and multi threaded tests, please enter ");
+                if(locales.returnLocale() == "EN"){
+                    Console.WriteLine(locale_EN.command_runNormal);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("0");
+                    Console.WriteLine(locale_EN.command_Number0);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("To run the single threaded tests only, please enter ");
+                    Console.WriteLine(locale_EN.command_runSingle);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("1");
+                    Console.WriteLine(locale_EN.command_Number1);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("To run the multi threaded tests only, please enter ");
+                    Console.WriteLine(locale_EN.command_runMulti);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("2");
+                    Console.WriteLine(locale_EN.command_Number2);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("To run the stress test utility, please enter ");
+                    Console.WriteLine(locale_EN.command_runStress);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("3");
+                    Console.WriteLine(locale_EN.command_Number3);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("To run test using a specified amount of threads enter the benchmark command followed by");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" _threads");
-                Console.Write("To run the Extreme benchmark (Experimental) please enter 0, 1, or 2 followed by");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" X");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("To force results to be saved immediately after running the benchmark, enter the benchmark command followed by");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" _save");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("To run the test with a specific amount of calculations, please enter");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(" _calc");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Please give feedback, or report bugs by opening a GitHub issue at https://github.com/CSMarkBenchmark/CSMark/issues/new ");
+                    Console.WriteLine(locale_EN.command_runThreads);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(locale_EN.command_Threads);
                     Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(locale_EN.command_runExtreme);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(locale_EN.command_Extreme);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(locale_EN.command_ForceSave);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(locale_EN.command_Save);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(locale_EN.command_Feedback + " " + locale_EN.commandsExtraInfo_URL);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(locale_EN.command_Number0);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
 
-                if (benchCommand == null){
+                if (benchCommandArg == null){
                     newCommand = Console.ReadLine().ToLower();
                 }
-                else if (benchCommand != null){
-                    newCommand = benchCommand;
+                else if (benchCommandArg != null){
+                    newCommand = benchCommandArg;
                 }
                 else{
                     newCommand = Console.ReadLine().ToLower();
                 }
-                    if (newCommand == "3" || newCommand == "stress" || newCommand == "stress_test"){
-                    Console.WriteLine("Do you want to run a timed Stress Test?");
-                    Console.WriteLine("Please enter Y or N");
+                    if (newCommand == stressCommand || newCommand == "stress" || newCommand == "stress_test"){
+                   if(locales.returnLocale() == "EN"){
+                        Console.WriteLine(locale_EN.timedStressTest);
+                        Console.WriteLine(locale_EN.responseYorN);
+                    }
                    choseTimed = Console.ReadLine().ToLower();
 
-                   if(choseTimed == "y"){
-                        Console.WriteLine("Select the time format in SECONDS, MINUTES or HOURS.");
+                   if(choseTimed == respondYes){
+                        if(locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.selectTimeFormat);
+                        }
                         timedStress = Console.ReadLine().ToLower();
-                        Console.WriteLine("How many " + timedStress + " would you like the stress test to run for?");
-                        stressTime = Console.ReadLine().ToLower();
-                        Console.WriteLine("Are you sure you want to run the stress test for " + stressTime + " " + timedStress + "?");
-                        Console.WriteLine("Please enter Y or N");
 
-                        if(benchCommand == null){
+                        if(locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.timeFormat_HowMany + " " + stressTime + " " + locale_EN.timeFormat_Time);
+                            stressTime = Console.ReadLine().ToLower();
+                            Console.WriteLine(locale_EN.stressTestConfirm + " " + stressTime + " " + timedStress + "?");
+                            Console.WriteLine(locale_EN.responseYorN);
+                        }
+
+                        if(benchCommandArg == null){
                             stressConfirm = Console.ReadLine().ToLower();
                         }
-                        else if(benchCommand != null){
+                        else if(benchCommandArg != null){
 
                         }
-                        if (stressConfirm == "y"){
-                            if (timedStress == "seconds"){
+                        if (stressConfirm == respondYes){
+                            if (timedStress == respondSeconds){
                                 commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
                             }
-                            else if (timedStress == "minutes"){
+                            else if (timedStress == respondMinutes){
                                 commandProcessor.startStressTest_Minutes(Double.Parse(stressTime));
                             }
-                            else if (timedStress == "hours"){
+                            else if (timedStress == respondHours){
                                 commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
                             }
                         }
@@ -167,13 +204,14 @@ namespace CSMarkRedux{
                         }
                         continue;
                     }
-                   else if(choseTimed == "n"){
-                        Console.WriteLine("To terminate the stress test enter BREAK or STOP.");
+                   else if(choseTimed == respondNo){
+                        if(locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.stressTest_Start);
+                            Console.WriteLine(locale_EN.stressTest_StopMessage);
+                        }
                         commandProcessor.startStressTest();
-                        Console.WriteLine("Starting stress test.");
-                        Console.WriteLine("To stop the stress test, please exit the program or enter STOP or BREAK");
                         newCommand = Console.ReadLine().ToLower();
-                        if (newCommand == "break" || newCommand == "stop"){
+                        if (newCommand == respondBreak || newCommand == respondStop){
                             commandProcessor.stopStressTest();
                         }
                         else{
@@ -182,32 +220,35 @@ namespace CSMarkRedux{
                         continue;
                         }                    
                     }
-                    else if (newCommand.Contains("0") || newCommand.Contains("1") || newCommand.Contains("2") || newCommand.Contains("bench")){
-
-                    if (!newCommand.Contains("_calc")){
-                        Console.WriteLine("Please enter an accuracy level.");
-                        Console.WriteLine("Accepted Accuracy Levels are CM1-CM5, PX1-PX5 and WX1-WX12");
-                        Console.WriteLine("For more information on accuracy levels, go to: ");
-                        Console.WriteLine("https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.md");
+                    else if (newCommand.Contains(benchCommand) || newCommand.Contains(benchSingleCommand) || newCommand.Contains(benchMultiCommand)){  
+                    if (!newCommand.Contains(calcCommand)){
+                        if(locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.accuracyLevel);
+                            Console.WriteLine(locale_EN.acceptedAccuracyLevel);
+                            Console.WriteLine(locale_EN.accuracyInfo);
+                            Console.WriteLine(locale_EN.accuracyInfoURL);
+                        }
                     }
-                    else if(newCommand.Contains("_calc")){
-                        Console.WriteLine("Please enter the amount of calculations you'd like to be performed in millions:");
+                    else if(newCommand.Contains(calcCommand)){
+                        if(locales.returnLocale() == "EN"){
+                            Console.WriteLine(locale_EN.calculations);
+                        }
                         try {
                             commandProcessor.setMaxIterations(double.Parse(Console.ReadLine()) * 1000 * 1000);
                         }
                         catch{
-                            Console.WriteLine("Failed to set the custom amount of calculations.");
+                            if(locales.returnLocale() == "EN"){
+                                Console.WriteLine(locale_EN.calculations_Failed);
+                            }
                         }
                     }
-
-                    if (benchCommand == null && !newCommand.Contains("_calc")){
+                    if (benchCommand == null && !newCommand.Contains(calcCommand)){
                         benchAccuracy = Console.ReadLine().ToUpper();
                         commandProcessor.setMaxIterations(benchAccuracy);
                     }
-                    else if (benchCommand != null && !newCommand.Contains("_calc")){
+                    else if (benchCommand != null && !newCommand.Contains(calcCommand)){
                         commandProcessor.setMaxIterations(accuracyLevel);
                     }
-
                     if (newCommand.Contains("_threads")){
                         Console.WriteLine("How many threads would you like to complete the benchmark?");
                         Console.WriteLine("If you would like to run all from 1 to the total amount on your CPU. Please enter SYSTEM.");
@@ -218,7 +259,6 @@ namespace CSMarkRedux{
                         else{
                             threads = threadsArg;
                         }
-
                         if (threads == "system"){
                             threadsD = Environment.ProcessorCount;
                         }
@@ -227,20 +267,22 @@ namespace CSMarkRedux{
                         }
                     }
 
-                    Console.WriteLine("Starting Tests...");
-                    if (newCommand.Contains("bench") & newCommand.Contains("_extreme") || newCommand.Contains("0") & newCommand.Contains("X")){
+                    if(locales.returnLocale() == "EN"){
+                        Console.WriteLine(locale_EN.test_Starting);
+                    }
+                    if (newCommand.Contains(benchCommand) & newCommand.Contains(benchExtremeCommand)){
                         commandProcessor.startBenchmarkExtreme(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(true, true);
                     }
-                    else if (newCommand.Contains("bench_single") & newCommand.Contains("_extreme") || newCommand.Contains("1") & newCommand.Contains("X")){
+                    else if (newCommand.Contains(benchSingleCommand) & newCommand.Contains(benchExtremeCommand)){
                         commandProcessor.startBenchmarkExtreme_Single();
                         commandProcessor.showExtremeResultsConsole(true, false);
                     }
-                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_extreme") || newCommand.Contains("2") & newCommand.Contains("X")){
+                    else if (newCommand.Contains(benchMultiCommand) & newCommand.Contains(benchExtremeCommand)){
                         commandProcessor.startBenchmarkExtreme_Multi(Environment.ProcessorCount);
                         commandProcessor.showExtremeResultsConsole(false, true);
                     }
-                    else if (newCommand.Contains("bench_multi") & newCommand.Contains("_threads") || newCommand.Contains("2") & newCommand.Contains("_threads"))
+                    else if (newCommand.Contains(benchMultiCommand) & newCommand.Contains(benchThreadsCommand))
                     {                                          
                         while (threadDIteration <= threadsD){
                             commandProcessor.startBenchmarkNormal_Multi(threadDIteration);
@@ -248,7 +290,7 @@ namespace CSMarkRedux{
                             threadDIteration++;
                         }
                     }
-                    else if (newCommand.Contains("bench") & newCommand.Contains("_threads") || newCommand.Contains("0") & newCommand.Contains("_threads")){
+                    else if (newCommand.Contains(benchCommand) & newCommand.Contains(benchThreadsCommand)){
                         commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true, true);
                         while (threadDIteration <= threadsD){
@@ -257,15 +299,15 @@ namespace CSMarkRedux{
                             threadDIteration++;
                         }
                     }
-                    else if (newCommand.Contains("bench_single") || newCommand.Contains("1")){
+                    else if (newCommand.Contains(benchSingleCommand)){
                             commandProcessor.startBenchmarkNormal_Single();
                         commandProcessor.showNormalResultsConsole(true,false);
                          }
-                  else if (newCommand.Contains("bench_multi") ||  newCommand == "bench-multi" || newCommand.Contains("2")){
+                  else if (newCommand.Contains(benchMultiCommand)){
                             commandProcessor.startBenchmarkNormal_Multi(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(false, true);
                          }
-                   else if (newCommand.Contains("bench") || newCommand.Contains("0")){
+                   else if (newCommand.Contains(benchCommand)){
                             commandProcessor.startBenchmarkNormal(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(true, true);
                         }    
@@ -276,25 +318,35 @@ namespace CSMarkRedux{
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
 
-                    if (newCommand.Contains("_save") || saveToFile == true){
-                        commandProcessor.handleSaveDialog("y", CSMarkVersion);
+                    if (newCommand.Contains(saveCommand) || saveToFile == true){
+
+                        try
+                        {
+                            commandProcessor.handleSaveDialog("y", CSMarkVersion);
+                        }
+                        catch{
+                            Console.WriteLine(locale_EN.save_Fail);
+                        }
                     }
                     else{
                         string save = "";
                         if (benchCommand == null){
                             Console.WriteLine("                                                ");
-                            Console.WriteLine("Would you like to save the results to a Text File?");
-                            Console.WriteLine("Please enter Y or N.");
+                            if(locales.returnLocale() == "EN"){
+                                Console.WriteLine(locale_EN.save_ReminderInstall);
+                                Console.WriteLine(locale_EN.confirmSave);
+                                Console.WriteLine(locale_EN.responseYorN);
+                            }
                             save = Console.ReadLine().ToLower();
                         }                
                         commandProcessor.handleSaveDialog(save, CSMarkVersion);
                         continue;
                         }              
                     }
-                    else if (newCommand == "exit"){
+                    else if (newCommand == exitCommand){
                         break;
                     }
-                    else if(newCommand == "about" || newCommand == "version" || newCommand == "info" || newCommand == "-v"){
+                    else if(newCommand == aboutCommand || newCommand == "version" || newCommand == "info"){
                     Console.WriteLine("                                     ");
                     Console.WriteLine("                                     ");
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -324,11 +376,11 @@ namespace CSMarkRedux{
                     Console.WriteLine(csM.returnOSArch());
                     Console.ForegroundColor = ConsoleColor.Magenta;
                 }
-                    else if (newCommand == "clear" || newCommand == "restart" || newCommand == "clean"){
+                    else if (newCommand == clearCommand){
                         Console.Clear();
                         continue;
                     }
-                    else if(newCommand == "help" || newCommand == "commands" || newCommand == "list_commands" || newCommand == "list_cmd" || newCommand == "halp"){
+                    else if(newCommand == helpCommand){
                     Console.WriteLine("List of supported commands: ");
                     Console.WriteLine("0");
                     Console.WriteLine("1");

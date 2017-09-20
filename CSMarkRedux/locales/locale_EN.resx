@@ -310,9 +310,6 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   <data name="stressTest_StopMessage" xml:space="preserve">
     <value>To stop the stress test, please exit the program or enter STOP or BREAK</value>
   </data>
-  <data name="stressTest_TerminateMessage" xml:space="preserve">
-    <value>To terminate the stress test enter BREAK or STOP.</value>
-  </data>
   <data name="test_Starting" xml:space="preserve">
     <value>Starting Tests...</value>
   </data>
@@ -345,5 +342,20 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="_Edition" xml:space="preserve">
     <value>_CommunityEdition</value>
+  </data>
+  <data name="save_Fail" xml:space="preserve">
+    <value>The text file could not be saved.</value>
+  </data>
+  <data name="save_ReminderInstall" xml:space="preserve">
+    <value>If you installed CSMark using the .exe installer, please run CSMark as an administrator to be able to save the results file.</value>
+  </data>
+  <data name="respondHours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="respondMinutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="respondSeconds" xml:space="preserve">
+    <value>Seconds</value>
   </data>
 </root>
