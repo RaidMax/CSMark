@@ -6,16 +6,12 @@ using System;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class Program{
+        public static string benchCommandArg = "";
+        public static string accuracyLevel = "";
+        public static bool saveToFile = false;
+        public static string threadsArg = "";
 
-        static void Main(string[] args){
-            /*
-             ///
-
-                   public static string benchCommandArg = "";
-            public static string accuracyLevel = "";
-            public static bool saveToFile = false;
-            public static bool exitOnComplete = false;
-            public static string threadsArg = "";
+        static void Main(string[] args) {     
             ///Accept command line arguments
             ///
             if (args.Length == 2){
@@ -26,24 +22,14 @@ namespace CSMarkRedux{
                 benchCommandArg = args[0];
                 accuracyLevel = args[1];
                 saveToFile = bool.Parse(args[2]);
-            }
+}
             else if (args.Length == 4){
                 benchCommandArg = args[0];
                 accuracyLevel = args[1];
                 saveToFile = bool.Parse(args[2]);
-                exitOnComplete = bool.Parse(args[3]);
+                threadsArg = args[3];
             }
-            else if (args.Length == 5){
-                benchCommandArg = args[0];
-                accuracyLevel = args[1];
-                saveToFile = bool.Parse(args[2]);
-                exitOnComplete = bool.Parse(args[3]);
-                threadsArg = args[4];
-            }
-            else{
-                //Do nothing.
-            }
-            */
+
             CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
             LocaleManagement locales = new LocaleManagement();
@@ -83,27 +69,27 @@ namespace CSMarkRedux{
             string versionCommand = "";
 
             if(locales.returnLocale() == "EN"){
-               exitCommand = locale_EN.commandExit;
-                aboutCommand = locale_EN.commandAbout;
-                calcCommand = locale_EN.commandCalc;
-                clearCommand = locale_EN.commandClear;
-                helpCommand = locale_EN.commandHelp;
-                saveCommand = locale_EN.command_Save;
+               exitCommand = locale_EN.commandExit.ToLower();
+                aboutCommand = locale_EN.commandAbout.ToLower();
+                calcCommand = locale_EN.commandCalc.ToLower();
+                clearCommand = locale_EN.commandClear.ToLower();
+                helpCommand = locale_EN.commandHelp.ToLower();
+                saveCommand = locale_EN.command_Save.ToLower();
                 stressCommand = locale_EN.command_Number3;
                 benchCommand = locale_EN.command_Number0;
                 benchSingleCommand = locale_EN.command_Number1;
                 benchMultiCommand = locale_EN.command_Number2;
-                respondYes = locale_EN.responseYes;
-                respondNo = locale_EN.responseNo;
-                respondSeconds = locale_EN.respondSeconds;
-                respondMinutes = locale_EN.respondMinutes;
-                respondHours = locale_EN.respondHours;
-                respondStop = locale_EN.stressTest_Stop;
-                respondBreak = locale_EN.stressTest_Break;
-                benchExtremeCommand = locale_EN.command_Extreme;
-                benchThreadsCommand = locale_EN.command_Threads;
-                respondSystem = locale_EN.respondSystem;
-                versionCommand = locale_EN.commandVersion;
+                respondYes = locale_EN.responseYes.ToLower();
+                respondNo = locale_EN.responseNo.ToLower();
+                respondSeconds = locale_EN.respondSeconds.ToLower();
+                respondMinutes = locale_EN.respondMinutes.ToLower();
+                respondHours = locale_EN.respondHours.ToLower();
+                respondStop = locale_EN.stressTest_Stop.ToLower();
+                respondBreak = locale_EN.stressTest_Break.ToLower();
+                benchExtremeCommand = locale_EN.command_Extreme.ToLower();
+                benchThreadsCommand = locale_EN.command_Threads.ToLower();
+                respondSystem = locale_EN.respondSystem.ToLower();
+                versionCommand = locale_EN.commandVersion.ToLower();
             }
 
               string benchAccuracy = "Auto";
@@ -299,8 +285,8 @@ namespace CSMarkRedux{
                         commandProcessor.showNormalResultsConsole(true, true);
                         }    
                     else{
-                        //Make CM2 the default accuracy level.
-                        commandProcessor.setMaxIterations("CM2");
+                        //Make AUTO the default accuracy level.
+                        commandProcessor.setMaxIterations("Auto");
                             commandProcessor.startBenchmarkNormal(Environment.ProcessorCount);
                         commandProcessor.showNormalResultsConsole(true, true);
                         }
@@ -310,7 +296,12 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.save_ReminderInstall);
                         }
                             try{
-                            commandProcessor.handleSaveDialog("y", CSMarkVersion);
+                            if (newCommand.Contains(benchExtremeCommand)){
+                                commandProcessor.handleSaveDialog_Extreme("y", CSMarkVersion);
+                            }
+                            else{
+                                commandProcessor.handleSaveDialog_Normal("y", CSMarkVersion);
+                            }
                         }
                         catch{
                             Console.WriteLine(locale_EN.save_Fail);
@@ -329,7 +320,19 @@ namespace CSMarkRedux{
                                 Console.WriteLine(locale_EN.responseYorN);   
                         }
                         save = Console.ReadLine().ToLower();
-                        commandProcessor.handleSaveDialog(save, CSMarkVersion);
+    
+                        if (newCommand.Contains(benchExtremeCommand))
+                        {
+                            commandProcessor.handleSaveDialog_Extreme(save, CSMarkVersion);
+                        }
+                        else
+                        {
+                            if(save.ToLower() == "yes"){
+                                commandProcessor.handleSaveDialog_Normal("y", CSMarkVersion);
+                            }
+                          
+                        }
+                       
                         continue;
                         }              
                     }
@@ -399,4 +402,4 @@ namespace CSMarkRedux{
                 }
             }
         }
-    }
+      }

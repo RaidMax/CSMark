@@ -56,8 +56,8 @@ namespace CSMarkRedux{
                     Console.WriteLine(locale_EN.checkForUpdate_Available);
                     Console.WriteLine(locale_EN.checkForUpdate_Latest + " " + autoUpdater.currentVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_Installed + " " + autoUpdater.installedVersion());
-                    Console.WriteLine(locale_EN.checkForUpdate_ChangeLog);
-                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction);
+                    Console.WriteLine(locale_EN.checkForUpdate_ChangeLog + " " + autoUpdater.changeLogURL());
+                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL());
                 
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
