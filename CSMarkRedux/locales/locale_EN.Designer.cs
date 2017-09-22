@@ -70,7 +70,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accepted Accuracy Levels are CM1-CM4, PX1-PX5 and WX1-WX6.
+        ///   Looks up a localized string similar to Accepted Accuracy Levels are Auto, CM1-CM4, PX1-PX5 and WX1-WX6.
         /// </summary>
         internal static string acceptedAccuracyLevel {
             get {

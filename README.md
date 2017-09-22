@@ -1,7 +1,7 @@
 # CSMark
 A simple CPU benchmark using the cross-platform C# .NET Core .
 
-This application works on Windows 7 SP1 +, macOS 10.12 + and Linux Distributions [(See Linux Installation Guide for more details)](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md).
+This application works on Windows, macOS and Linux Distributions [(See Linux Installation Guide for more details)](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md).
 
 ## Contributing
 For details on Contributing check out the [Contribution Guide](https://github.com/CSMarkBenchmark/CSMark/blob/master/CONTRIBUTING.md)
@@ -14,8 +14,8 @@ DotNetCore runtime 2.0.0 is required
 [Download the DotNetCore runtime here](https://www.microsoft.com/net/download/core#/runtime)
 
 __List Of Supported Platforms__
-* Windows 7 SP1 64 Bit or Windows Server 2008 R2 SP1 +
-* Windows 8.1 64 Bit with [KB2919355](https://support.microsoft.com/en-us/help/2919355/windows-rt-8-1--windows-8-1--and-windows-server-2012-r2-update-april-2) or Windows Server 2012 R2 with [KB2919355](https://support.microsoft.com/en-us/help/2919355/windows-rt-8-1--windows-8-1--and-windows-server-2012-r2-update-april-2)
+* Windows 7 SP1 64 Bit or Windows Server 2008 R2 SP1 with the latest updates.
+* Windows 8.1 64 Bit with Update [2919355](https://support.microsoft.com/en-us/help/2919355/windows-rt-8-1--windows-8-1--and-windows-server-2012-r2-update-april-2) or Windows Server 2012 R2 with Update [2919355](https://support.microsoft.com/en-us/help/2919355/windows-rt-8-1--windows-8-1--and-windows-server-2012-r2-update-april-2)
 * Windows 10 64 Bit (Build 14393 or newer required) or Windows Server 2016
 * Windows 10 ARM 32 Bit (Build 14393 or newer required)
 * Windows 10 ARM 64 Bit (Build 14393 or newer required)
@@ -49,12 +49,12 @@ If you'd like to see an OS supported then please [suggest an improvement](https:
 
 There are no plans to support Windows Vista or earlier versions of Windows due to lack of support from Microsoft.
 
-## Community Support vs Priority Support
+## Community Support vs Priority/Extended Support
 You may be wondering what type of support can be provided to CSMark users.
 
 Community support consists of receiving support from the Community and possibly maintainers or contributors. This can be on GitHub issues pages or elsewhere. This is the standard support provided for CSMark.
 
-Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users.
+Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users. Extended support consists of bug fixes and security updates to a version of CSMark after the verison no longer receieve mainstream support. This is usually only available to select users. 
 
 ## Where can I hang out with the CSMark community?
 There's a [CSMark Discord](https://discord.gg/CMeFZbN) and a [CSMark Steam Group](http://steamcommunity.com/groups/csmark)

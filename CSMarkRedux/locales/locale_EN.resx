@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="acceptedAccuracyLevel" xml:space="preserve">
-    <value>Accepted Accuracy Levels are CM1-CM4, PX1-PX5 and WX1-WX6</value>
+    <value>Accepted Accuracy Levels are Auto, CM1-CM4, PX1-PX5 and WX1-WX6</value>
   </data>
   <data name="accuracyInfo" xml:space="preserve">
     <value>For more information on accuracy levels, go to:</value>

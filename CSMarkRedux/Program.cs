@@ -255,14 +255,7 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.threads_HowMany);
                             Console.WriteLine(locale_EN.threads_All);
                         }
-                      /*
-                        if (threads == respondSystem){
-                            threadsD = Environment.ProcessorCount;
-                        }
-                        else{
-                            threadsD = int.Parse(threads);
-                        }
-                        */
+                       
                     }
 
                     if(locales.returnLocale() == "EN"){
