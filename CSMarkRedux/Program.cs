@@ -102,12 +102,37 @@ namespace CSMarkRedux{
             int threadsD = 0;
             int threadDIteration = 2;
 
-            if (locale == "EN")
-            {
+            if (locale == "EN"){
                 Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() + " " + locale_EN.title_CommunityEdition;
                 CSMarkVersion = CSMarkVersion + locale_EN._Edition;
                 Console.WriteLine(locale_EN.title_Welcome);
                 Console.WriteLine(locale_EN.title_Support);
+            }
+            else{
+                locales.checkLocale();
+
+                if(locales.returnLocale() != locale){
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Locale Detection took a long time to respond. Applying correct Locales.");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+
+                    if(locales.returnLocale() == "EN"){
+                        Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() + " " + locale_EN.title_CommunityEdition;
+                        CSMarkVersion = CSMarkVersion + locale_EN._Edition;
+                        Console.WriteLine(locale_EN.title_Welcome);
+                        Console.WriteLine(locale_EN.title_Support);
+                    }
+                }
+                else{
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Locale Detection didn't respond in time. Falling back to English as default.");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Title = locale_EN.title_Name + " " + info.returnCSMarkVersionString() + " " + locale_EN.title_CommunityEdition;
+                    CSMarkVersion = CSMarkVersion + locale_EN._Edition;
+                    Console.WriteLine(locale_EN.title_Welcome);
+                    Console.WriteLine(locale_EN.title_Support);
+                }              
+
             }
 
             while (true){

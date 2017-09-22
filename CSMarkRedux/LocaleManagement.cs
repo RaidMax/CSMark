@@ -30,7 +30,7 @@ namespace CSMarkRedux{
             //Try to create the settings file to store the locale and language.
             config.createSettingsFile(_locale, _language);
             Console.WriteLine("To use CSMark with your Language. Please restart CSMark.");
-            Console.WriteLine("Quitting CSMark");
+            Console.WriteLine("You can quit this dialog by pressing ENTER.");
             Console.ReadLine();
             Environment.Exit(0);
         }
