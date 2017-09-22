@@ -1,4 +1,0 @@
-Thanks for installing CSMark!
-
-If you experience any issues or bugs or just want to submit feedback,  please go to the CSMark GitHub page:
-https://www.github.com/CSMarkBenchmark/CSMark/issues/
