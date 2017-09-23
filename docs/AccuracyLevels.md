@@ -9,7 +9,7 @@ CSMark uses accuracy levels to determine how many times a benchmark test has to 
 
 ### CM Accuracy Levels
 These are intended for use in a quick benchmarking session and in user reviews (depending on accuracy level).
-The accuracy levels in this category are: CM1, CM2, CM3, CM4, and CM5. The higher the number at the end of the CM level, the more accurate it is.
+The accuracy levels in this category are: CM1, CM2, CM3, and CM4. The higher the number at the end of the CM level, the more accurate it is.
 This accuracy level is typically for laptops and low end to mid range desktop PCs. Attempting to run this on hardware which substantially more capable than this can result in a lower accuracy of results due to how fast it can complete the tests.
 
 ### PX Accuracy Levels
@@ -18,7 +18,7 @@ The higher the number at the end of the PX level, the more accurate it is. This 
 
 ### WX Accuracy Levels
 These are intended for use in professional server grade hardware reviews such as a review of a 32 Core CPU or a system with multiple sockets and multiple CPUs in it.
-This can also be used for OEM product testing. The higher the number at the end of the WX level, the more accurate it is. The accuracy levels in this category are: WX1, WX2, WX3, WX4, WX5, WX6, WX7, WX8, WX9, WX10, WX11, and WX12. The higher the number at the end of the WX level, the more accurate it is.
+This can also be used for OEM product testing. The higher the number at the end of the WX level, the more accurate it is. The accuracy levels in this category are: WX1, WX2, WX3, WX4, WX5, and WX6. The higher the number at the end of the WX level, the more accurate it is.
 This accuracy level is typically for server grade hardware such as systems with Up To 8 Sockets and Up To 8 CPUs with Up To 32 Cores each. Attempting to run this on hardware which is substantially more capable than this can result in a lower accuracy of results due to how fast it can complete the tests.
 
 ### Accuracy Level comparison
@@ -41,9 +41,3 @@ This accuracy level is typically for server grade hardware such as systems with 
 | 32 Billion |  |  | WX4 | | 0.16.0 |
 | 48 Billion |  |  | WX5 | OEM product testing | 0.16.0 |
 | 64 Billion |  |  | WX6 |  | 0.16.0 |
-| 96 Billion |  |  | WX7 |  | 0.16.0 |
-| 128 Billion |  |  | WX8 |  | 0.16.0 |
-| 192 Billion |  |  | WX9 |  | 0.16.0 |
-| 256 Billion |  |  | WX10 |  | 0.16.0 |
-| 384 Billion |  |  | WX11 |  | 0.16.0 |
-| 512 Billion |  |  | WX12 |  | 0.16.0 |
