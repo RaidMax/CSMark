@@ -35,12 +35,9 @@ namespace CSMarkRedux{
             LocaleManagement locales = new LocaleManagement();
 
             locales.checkLocale();
-
             string locale = locales.returnLocale();
             string CSMarkVersion = info.returnCSMarkVersionString() + "_";
-
             CommandProcessor commandProcessor = new CommandProcessor();
-
             info.showLicenseInfo();
             info.checkForUpdate(locale);
             

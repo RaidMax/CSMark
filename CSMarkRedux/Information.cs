@@ -24,7 +24,7 @@ namespace CSMarkRedux{
           
                 Console.WriteLine(locale_EN.checkForUpdate_Notice);
        
-            //If it takes longer than 10 seconds to check for updates then stop and tell the user it couldn't check for updates.
+            //If it takes longer than 5 seconds to check for updates then stop and tell the user it couldn't check for updates.
             while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (5.0 * 1000)){
 
             }
@@ -70,8 +70,13 @@ namespace CSMarkRedux{
             Console.Clear();
             licenseWatch.Reset();
             licenseWatch.Start();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-
+            CSMarkPlatform csM = new CSMarkPlatform();
+            if(csM.returnOSPlatform().ToLower().Contains("win")){
+                Console.ForegroundColor = ConsoleColor.Magenta;
+            }
+            else if(csM.returnOSPlatform().ToLower().Contains("mac") || csM.returnOSPlatform().ToLower().Contains("linux")){
+                //Keep the native console forground color to ensure it remains readable.
+            }
                 Console.WriteLine("Copyright (C) 2017 AluminiumTech");
                 Console.WriteLine("This product is licensed under the 1st Draft of the AluminiumTech v1 open source license.");
                 Console.WriteLine("                                                                    ");
