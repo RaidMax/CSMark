@@ -5,7 +5,7 @@ This may not be 100% representative or accurate of support policies followed and
 
 CSMark is a constantly evolving project and thus may recieve updates. Users must remain on a recent version of CSMark to remain supported. 
 
-Updates are not cumulative, each update contains only the binaries for that version. Users should remain up to date within a Major Version to remain supported.
+Updates are not cumulative, each update contains only the binaries for that version. Users should install the latest service pack/patch within a major version to remain supported. If the major version is no longer supported, users should migrate to a newer supported verion.
 
 ### Support Categorization
 There are 2 Categories of Support.
@@ -30,4 +30,4 @@ These are:
 
 | Release Status | Release Version  |  Release Date | Latest Service Pack Release | Mainstream Support Start | Mainstream Support End | Extended Support End |
 |-------------------|---------------|--------------|-------------------------|-------------------------|----------------|----------------|
-| Current | CSMark Pre-release (0.x) | April 12th 2017 | 0.18.0 released on September 22nd 2017 | April 12th 2017 | April 12th 2018 | - |
+| Current | CSMark 0.x Pre-release | April 12th 2017 | 0.18.0 released on September 22nd 2017 | April 12th 2017 | April 12th 2018 | - |
