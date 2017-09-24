@@ -250,15 +250,6 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to X.
-        /// </summary>
-        internal static string command_Extreme {
-            get {
-                return ResourceManager.GetString("command_Extreme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please give feedback, or report bugs by opening a GitHub issue at https://github.com/CSMarkBenchmark/CSMark/issues/new.
         /// </summary>
         internal static string command_Feedback {
@@ -309,15 +300,6 @@ namespace CSMarkRedux.locales {
         internal static string command_Number3 {
             get {
                 return ResourceManager.GetString("command_Number3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To run the Extreme benchmark (Experimental) please enter 0,1, or 2 followed by.
-        /// </summary>
-        internal static string command_runExtreme {
-            get {
-                return ResourceManager.GetString("command_runExtreme", resourceCulture);
             }
         }
         

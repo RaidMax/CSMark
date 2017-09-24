@@ -90,8 +90,8 @@ namespace CSMarkRedux{
                 Console.WriteLine("You should have received a copy of the AluminiumTech License along with this program.");
                 Console.WriteLine("If not, see http://www.github.com/CSMarkBenchmark/CSMark/blob/master/LICENSE");
                 Console.WriteLine("                                                                    ");
-                Console.WriteLine("                                                                    ");
-            
+            Console.WriteLine("By using this program, you agree to be bound to this license. If you do not agree, please exit the program.");
+            Console.WriteLine("                                                                    ");
             Console.ForegroundColor = ConsoleColor.Gray;
 
             while (licenseWatch.ElapsedMilliseconds <= 3.0 * 1000){
