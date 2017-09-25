@@ -1,6 +1,5 @@
 # CSMark
 A simple CPU benchmark using the cross-platform C# .NET Core .
-
 This application works on Windows, macOS and Linux Distributions [(See Linux Installation Guide for more details)](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/RunningCSMarkOnLinux.md).
 
 ## Contributing
@@ -43,23 +42,36 @@ Check out the [Accuracy Levels Documentation](https://github.com/CSMarkBenchmark
 * Results from CSMark versions which are of a different major or minor version, in the format of [Major].[Minor].[Build].[Revision] , than another version should not be compared unless explicitly stated otherwise.
 * When comparing CPUs, the same exact version of the benchmark should be used across testing platforms.
 
-## Support
-If your OS isn't stated above then it's quite likely that it's not supported.
+## FAQ
+__Question:__ Why is CSMark a CLI program?
+__Answer:__ To allow it to run on Windows, Mac and Linux. DotNetCore currently doesn't contain a cross-platform GUI component however if one does come in the future, an attempt to migrate to a GUI based program will be attempted.
+
+__Question:__ I'm having issues running CSMark.
+__Answer:__ That's not a question :P. Try checking out the [Troubleshooting Documentation](https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/Troubleshooting.md).
+
+__Question:__ What's up with the accuracy levels?
+__Answer:__ Most people can comfortably use the "Auto" accuracy. Users requiring higher accuracy can choose "Auto_Extreme".
+
+__Question:__ Does CSMark work offline?
+__Answer:__ Yes, CSMark can function complete normally when offline. Users should note that checking for updates is not available when online. Users wanting to check if a version is supported or checking documentation will require internet access.
+
+__Question:__ Where can I hang out with the CSMark community?
+__Answer:__ There's a [CSMark Discord](https://discord.gg/CMeFZbN) and a [CSMark Steam Group](http://steamcommunity.com/groups/csmark).
+
+__Question:__ Can I (or an organization) review CSMark?
+__Answer:__ Of course! We'd like to get in contact with you prior to the publishing of your review. Email or Discord DM a maintainer is preferable. I will try to respond and if I'm busy, another maintainer or contributor could respond.
+
+__Question:__ Can I make videos or educational content around CSMark?
+__Answer:__ Of course! We're happy to allow Standard Users to create educational videos and/or content around CSMark. I don't sponsor videos but I will be happy to answer any questions if you send an email or Discord DM to me.
+
+__Question:__ What support am I eligible for?
+__Answer:__ All users are eligible for Community Support. Community Support usually consists of receiving support from the Community and possibly maintainers or contributors. This can be on [GitHub Issues](https://github.com/CSMarkBenchmark/CSMark/issues/) or elsewhere. This is the standard support provided for CSMark.
+
+Some users may be eligible for Extended Support or Priority Support. These cases are handed on a case by case basis. Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users. Extended support consists of bug fixes and security updates to a version of CSMark after the verison no longer receieve mainstream support. This is also usually only available to select users.
+
+__Question:__ Is the version of CSMark I'm using supported?
+__Answer:__ You can check the status of CSMark support at the [CSMark Support Documentation](https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md).
+
+__Question:__ Is my OS supported?
+__Answer:__ If your OS isn't stated above then it's quite likely that it's not supported.
 If you'd like to see an OS supported then please [suggest an improvement](https://github.com/CSMarkBenchmark/CSMark/issues/).
-
-There are no plans to support Windows Vista or earlier versions of Windows due to lack of support from Microsoft.
-
-## Community Support vs Priority/Extended Support
-You may be wondering what type of support can be provided to CSMark users.
-
-Community support consists of receiving support from the Community and possibly maintainers or contributors. This can be on GitHub issues pages or elsewhere. This is the standard support provided for CSMark.
-
-Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users. Extended support consists of bug fixes and security updates to a version of CSMark after the verison no longer receieve mainstream support. This is usually only available to select users. 
-
-## Where can I hang out with the CSMark community?
-There's a [CSMark Discord](https://discord.gg/CMeFZbN) and a [CSMark Steam Group](http://steamcommunity.com/groups/csmark)
-
-## I want to review CSMark
-If you'd like to review CSMark, I'd like to get in contact with you prior to the publishing of your review.
-Preferably by either email, Discord DM or a message in the [CSMark Discord](https://discord.gg/CMeFZbN).
-I will try to respond and If I'm busy, another maintainer or a contributor could respond.
