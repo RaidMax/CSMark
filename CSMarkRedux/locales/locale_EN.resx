@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="acceptedAccuracyLevel" xml:space="preserve">
-    <value>Accepted Accuracy Levels are Auto, CM1-CM4, PX1-PX5 and WX1-WX6</value>
+    <value>Accepted Accuracy Levels are Auto, Auto_Lite and Auto_Extreme. </value>
   </data>
   <data name="accuracyInfo" xml:space="preserve">
     <value>For more information on accuracy levels, go to:</value>
@@ -127,7 +127,7 @@
     <value>https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.md</value>
   </data>
   <data name="accuracyLevel" xml:space="preserve">
-    <value>Please enter an accuracy level.</value>
+    <value>Please enter an accuracy level. If you wish to use Auto accuracy, you can simply press ENTER.</value>
   </data>
   <data name="archID" xml:space="preserve">
     <value>OS Architecture:</value>
@@ -218,9 +218,6 @@
   </data>
   <data name="command_Number2" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="command_Number3" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="command_runMulti" xml:space="preserve">
     <value>To run the multi threaded tests only, please enter</value>
@@ -357,5 +354,8 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="respondSystem" xml:space="preserve">
     <value>SYSTEM</value>
+  </data>
+  <data name="command_Number3" xml:space="preserve">
+    <value>3</value>
   </data>
 </root>
