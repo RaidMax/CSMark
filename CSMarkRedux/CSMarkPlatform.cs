@@ -65,8 +65,8 @@ namespace CSMarkRedux{
                 }
             }
             else if (GetOSPlatform().ToString().ToLower() == "mac") {
-                if (RuntimeInformation.OSDescription.Contains("OSX 10.12")) {
-                    osID = "OSX10.12";
+                if (RuntimeInformation.OSDescription.Contains("OSX")) {
+                    osID = "OSX";
                 }
             }
             else if (GetOSPlatform().ToString().ToLower() == "linux") {

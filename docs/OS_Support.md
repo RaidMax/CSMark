@@ -10,6 +10,7 @@ This document outlines OS versions supported in different CSMark versions.
 | Windows 10 Build 14393 | 0.2.0 | April 12th 2017| CSMark Pre-release |   |
 | Windows 10 Build 15063 | 0.2.0 | April 12th 2017 | CSMark Pre-release |   |
 | macOS 10.12 | 0.14.0 | August 20th 2017 | CSMark Pre-release |   |
+| macOS 10.13 | 0.19.0 | September 27th 2017 | CSMark Pre-release |   |
 | Ubuntu 16.04 | 0.2.0 | April 12th 2017 | CSMark Pre-release |   |
 | Ubuntu 17.04 | 0.14.0 | August 20th 2017 | CSMark Pre-release |   |
 | Debian 8 | 0.7.0 | June 3rd 2017 | CSMark Pre-release |   |

@@ -12,7 +12,3 @@ This is a table of all Issues found and reported in CSMark. CSMark versions affe
 | CSM-2    | Bug | 0.13.0 | 0.13.1 | Accuracy Level was not reset after each benchmark run. | After each iteration of the Program While Loop, the accuracy is reset to the default value. | Moderate| Patched on August 11th 2017 |
 | CSM-3    | Bug | 0.13.0 to 0.13.1 | 0.13.2 | Multi-threaded results were not normal after running Bench Average | Removal of Bench Average | Moderate | Patched on August 11th 2017|
 | CSM-1    | Bug | 0.4.0.0 to 0.9.0 | 0.6.1, 0.7.1, 0.8.1, 0.9.1 and 0.10.0 |  | Iteration must be reset to 0 before a benchmark is run. | Moderate | Patched on July 11th 2017 |
-
-
-
-

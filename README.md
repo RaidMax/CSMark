@@ -19,6 +19,7 @@ __List Of Supported Platforms__
 * Windows 10 ARM 32 Bit (Build 14393 or newer required)
 * Windows 10 ARM 64 Bit (Build 14393 or newer required)
 * macOS 10.12 "Sierra"
+* macOS 10.13 "High Sierra"
 * Ubuntu 16.04 LTS or Ubuntu 17.04
 * Debian 8.7 (or newer) or Debian 9
 * CentOS or RedHat Linux Enterprise 7 (or newer)
