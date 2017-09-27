@@ -34,13 +34,21 @@ namespace CSMarkRedux{
             Information info = new Information();
             LocaleManagement locales = new LocaleManagement();
 
-            locales.checkLocale();
+            try{
+                locales.checkLocale();
+            }
+            catch (Exception ex){
+                Console.WriteLine(ex);
+                Console.ReadLine();
+            }
+
             string locale = locales.returnLocale();
             string CSMarkVersion = info.returnCSMarkVersionString() + "_";
             CommandProcessor commandProcessor = new CommandProcessor();
+
             info.showLicenseInfo();
             info.checkForUpdate(locale);
-            
+
             //int langID;
 
             string exitCommand = "";
