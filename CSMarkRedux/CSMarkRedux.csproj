@@ -15,9 +15,9 @@
     <RepositoryUrl>https://github.com/CSMarkBenchmark/CSMark/</RepositoryUrl>
     <Copyright>2017 AluminiumTech</Copyright>
     <Authors>AluminiumTech</Authors>
-    <AssemblyVersion>0.19.0.0</AssemblyVersion>
-    <FileVersion>0.19.0.0</FileVersion>
-    <Version>0.19.0</Version>
+    <AssemblyVersion>0.19.1.0</AssemblyVersion>
+    <FileVersion>0.19.1.0</FileVersion>
+    <Version>0.19.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,7 +33,7 @@
       <HintPath>..\dependencies\AutoUpdaterNetStandard 1.0.3\AutoUpdaterNetStandard.dll</HintPath>
     </Reference>
     <Reference Include="CSMarkLib">
-      <HintPath>..\dependencies\CSMarkLib 0.22.0\CSMarkLib.dll</HintPath>
+      <HintPath>..\dependencies\CSMarkLib 0.22.1\CSMarkLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -43,12 +43,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>locale_EN.resx</DependentUpon>
     </Compile>
+    <Compile Update="locales\Locale_FR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Locale_FR.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="locales\locale_EN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>locale_EN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="locales\Locale_FR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Locale_FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
