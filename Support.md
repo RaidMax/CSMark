@@ -30,4 +30,4 @@ These are:
 
 | Release Status | Release Version  |  Release Date | Latest Service Pack Release | Mainstream Support Start | Mainstream Support End | Extended Support End |
 |-------------------|---------------|--------------|-------------------------|-------------------------|----------------|----------------|
-| Current | CSMark 0.x Pre-release | April 12th 2017 | 0.19.0 released on September 27th 2017 | April 12th 2017 | April 12th 2018 | - |
+| Current | CSMark 0.x Pre-release | April 12th 2017 | 0.19.1 released on September 28th 2017 | April 12th 2017 | April 12th 2018 | - |
