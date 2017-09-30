@@ -70,42 +70,6 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accepted Accuracy Levels are Auto, Auto_Lite and Auto_Extreme. .
-        /// </summary>
-        internal static string acceptedAccuracyLevel {
-            get {
-                return ResourceManager.GetString("acceptedAccuracyLevel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to For more information on accuracy levels, go to:.
-        /// </summary>
-        internal static string accuracyInfo {
-            get {
-                return ResourceManager.GetString("accuracyInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://github.com/CSMarkBenchmark/CSMark/blob/master/docs/AccuracyLevels.md.
-        /// </summary>
-        internal static string accuracyInfoURL {
-            get {
-                return ResourceManager.GetString("accuracyInfoURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter an accuracy level. If you wish to use Auto accuracy, you can simply press ENTER..
-        /// </summary>
-        internal static string accuracyLevel {
-            get {
-                return ResourceManager.GetString("accuracyLevel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to OS Architecture:.
         /// </summary>
         internal static string archID {

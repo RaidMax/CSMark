@@ -33,7 +33,7 @@
       <HintPath>..\dependencies\AutoUpdaterNetStandard 1.0.3\AutoUpdaterNetStandard.dll</HintPath>
     </Reference>
     <Reference Include="CSMarkLib">
-      <HintPath>..\dependencies\CSMarkLib 0.22.1\CSMarkLib.dll</HintPath>
+      <HintPath>..\dependencies\CSMarkLib 0.23.0\CSMarkLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
