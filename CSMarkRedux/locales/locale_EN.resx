@@ -219,14 +219,8 @@
   <data name="command_runStress" xml:space="preserve">
     <value>To run the stress test utility, please enter</value>
   </data>
-  <data name="command_runThreads" xml:space="preserve">
-    <value>To run test using a specified amount of threads enter the benchmark command followed by</value>
-  </data>
   <data name="command_Save" xml:space="preserve">
     <value>_save</value>
-  </data>
-  <data name="command_Threads" xml:space="preserve">
-    <value>_threads</value>
   </data>
   <data name="confirmSave" xml:space="preserve">
     <value>Would you like to save the results to a Text File?</value>
@@ -292,12 +286,6 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   <data name="test_Starting" xml:space="preserve">
     <value>Starting Tests...</value>
   </data>
-  <data name="threads_HowMany" xml:space="preserve">
-    <value>How many threads would you like to complete the benchmark?</value>
-  </data>
-  <data name="threads_All" xml:space="preserve">
-    <value>If you would like to run all from 1 to the total amount on your CPU.please enter SYSTEM.</value>
-  </data>
   <data name="timedStressTest" xml:space="preserve">
     <value>Do you want to run a timed Stress Test?</value>
   </data>
@@ -339,9 +327,6 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="commandVersion" xml:space="preserve">
     <value>VERSION</value>
-  </data>
-  <data name="respondSystem" xml:space="preserve">
-    <value>SYSTEM</value>
   </data>
   <data name="command_Number3" xml:space="preserve">
     <value>3</value>

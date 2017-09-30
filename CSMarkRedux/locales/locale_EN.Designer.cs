@@ -304,29 +304,11 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To run test using a specified amount of threads enter the benchmark command followed by.
-        /// </summary>
-        internal static string command_runThreads {
-            get {
-                return ResourceManager.GetString("command_runThreads", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _save.
         /// </summary>
         internal static string command_Save {
             get {
                 return ResourceManager.GetString("command_Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _threads.
-        /// </summary>
-        internal static string command_Threads {
-            get {
-                return ResourceManager.GetString("command_Threads", resourceCulture);
             }
         }
         
@@ -510,15 +492,6 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SYSTEM.
-        /// </summary>
-        internal static string respondSystem {
-            get {
-                return ResourceManager.GetString("respondSystem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to NO.
         /// </summary>
         internal static string responseNo {
@@ -632,24 +605,6 @@ namespace CSMarkRedux.locales {
         internal static string test_Starting {
             get {
                 return ResourceManager.GetString("test_Starting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you would like to run all from 1 to the total amount on your CPU.please enter SYSTEM..
-        /// </summary>
-        internal static string threads_All {
-            get {
-                return ResourceManager.GetString("threads_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to How many threads would you like to complete the benchmark?.
-        /// </summary>
-        internal static string threads_HowMany {
-            get {
-                return ResourceManager.GetString("threads_HowMany", resourceCulture);
             }
         }
         

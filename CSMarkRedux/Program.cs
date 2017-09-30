@@ -13,7 +13,6 @@ namespace CSMarkRedux{
 
         static void Main(string[] args) {     
             ///Accept command line arguments
-            ///
             if (args.Length == 2){
                 benchCommandArg = args[0];
                 accuracyLevel = args[1];
@@ -23,7 +22,6 @@ namespace CSMarkRedux{
                 accuracyLevel = args[1];
                 saveToFile = bool.Parse(args[2]);
 }
-
             CSMarkPlatform csM = new CSMarkPlatform();
             Information info = new Information();
             LocaleManagement locales = new LocaleManagement();
@@ -43,8 +41,6 @@ namespace CSMarkRedux{
             info.showLicenseInfo();
             info.checkForUpdate(locale);
 
-            //int langID;
-
             string exitCommand = "";
             string aboutCommand = "";
             string benchCommand = "";
@@ -62,8 +58,6 @@ namespace CSMarkRedux{
             string respondHours = "";
             string respondStop = "";
             string respondBreak = "";
-            string benchThreadsCommand = "";
-            string respondSystem = "";
             string versionCommand = "";
 
             if(locales.returnLocale() == "EN"){
@@ -84,8 +78,6 @@ namespace CSMarkRedux{
                 respondHours = locale_EN.respondHours.ToLower();
                 respondStop = locale_EN.stressTest_Stop.ToLower();
                 respondBreak = locale_EN.stressTest_Break.ToLower();
-                benchThreadsCommand = locale_EN.command_Threads.ToLower();
-                respondSystem = locale_EN.respondSystem.ToLower();
                 versionCommand = locale_EN.commandVersion.ToLower();
             }
 
@@ -147,10 +139,6 @@ namespace CSMarkRedux{
                     Console.Write(locale_EN.command_runStress + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Number3);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(locale_EN.command_runThreads + " ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(locale_EN.command_Threads);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.Write(locale_EN.command_ForceSave + " ");
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -217,7 +205,7 @@ namespace CSMarkRedux{
                 }
                 else if (newCommand.Contains(benchCommand) || newCommand.Contains(benchSingleCommand) || newCommand.Contains(benchMultiCommand)) {
                     if (!newCommand.Contains(calcCommand)) {
-                        commandProcessor.setMaxIterations();
+                        commandProcessor.setAutoMaxIterations();
                     }
                 }
                 else if (newCommand.Contains(calcCommand)) {
@@ -233,19 +221,12 @@ namespace CSMarkRedux{
                         }
                     }
                 }
-                if (newCommand.Contains(benchThreadsCommand)) {
-                    if (locales.returnLocale() == "EN") {
-                        Console.WriteLine(locale_EN.threads_HowMany);
-                        Console.WriteLine(locale_EN.threads_All);
-                    }
-
-                }
 
                 if (locales.returnLocale() == "EN") {
                     Console.WriteLine(locale_EN.test_Starting);
                 }
 
-                else if (newCommand.Contains(benchSingleCommand)) {
+                if (newCommand.Contains(benchSingleCommand)) {
                     commandProcessor.startBenchmarkNormal_Single();
                     commandProcessor.showNormalResultsConsole(true, false);
                 }
@@ -254,11 +235,6 @@ namespace CSMarkRedux{
                     commandProcessor.showNormalResultsConsole(false, true);
                 }
                 else if (newCommand.Contains(benchCommand)) {
-                    commandProcessor.startBenchmarkNormal();
-                    commandProcessor.showNormalResultsConsole(true, true);
-                }
-                else {
-                    commandProcessor.setMaxIterations();
                     commandProcessor.startBenchmarkNormal();
                     commandProcessor.showNormalResultsConsole(true, true);
                 }
