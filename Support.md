@@ -21,8 +21,8 @@ These are:
 ## CSMark Support by Release Category
 | Release Category  | Release Category Description | Mainstream Support End | Extended Support End | End of Support Extension|
 |-------------------|------------------------------|--------------------------------|------------------------------|----------------|
-| Current | An official stable release of CSMark | 1 Year from original release | 2 Years from original release (Optional for Pre-release versions) | Possible if critical|
-| Long Term Support | An official stable release of CSMark with LTS Status | 2 Years from original release | 4 Years from original release | Likely if critical|
+| Current | An official stable release of CSMark | 12 months from original release or 6 months after the latest new release version. | 24 months from original release (Optional for Pre-release versions) or 12 months after the latest new release | Possible if critical|
+| Long Term Support | An official stable release of CSMark with LTS Status | 24 months from original release or 12 months after the latest new release | 48 months from original release or 24 months after the latest release | Likely if critical|
 
 ## CSMark Version Support By Release
 
@@ -30,4 +30,4 @@ These are:
 
 | Release Status | Release Version  |  Release Date | Latest Service Pack Release | Mainstream Support Start | Mainstream Support End | Extended Support End |
 |-------------------|---------------|--------------|-------------------------|-------------------------|----------------|----------------|
-| Current | CSMark 0.x Pre-release | April 12th 2017 | 0.19.0 released on September 27th 2017 | April 12th 2017 | April 12th 2018 | - |
+| Current | CSMark 0.x Pre-release | April 12th 2017 | 0.20.0 released on September 30th 2017 | April 12th 2017 | April 12th 2018 | - |
