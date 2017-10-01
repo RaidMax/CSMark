@@ -48,7 +48,6 @@ namespace CSMarkRedux{
             string stressCommand = "";
             string benchSingleCommand = "";
             string benchMultiCommand = "";
-            string saveCommand = "";
             string clearCommand = "";
             string helpCommand = "";
             string respondYes = "";
@@ -66,7 +65,6 @@ namespace CSMarkRedux{
                 calcCommand = locale_EN.commandCalc.ToLower();
                 clearCommand = locale_EN.commandClear.ToLower();
                 helpCommand = locale_EN.commandHelp.ToLower();
-                saveCommand = locale_EN.command_Save.ToLower();
                 stressCommand = locale_EN.command_Number3;
                 benchCommand = locale_EN.command_Number0;
                 benchSingleCommand = locale_EN.command_Number1;
@@ -140,9 +138,6 @@ namespace CSMarkRedux{
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(locale_EN.command_Number3);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(locale_EN.command_ForceSave + " ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(locale_EN.command_Save);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine(locale_EN.command_Feedback);
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -239,18 +234,7 @@ namespace CSMarkRedux{
                     commandProcessor.showNormalResultsConsole(true, true);
                 }
 
-                if (newCommand.Contains(saveCommand)) {
-                    if (locales.returnLocale() == "EN") {
-                        Console.WriteLine(locale_EN.save_ReminderInstall);
-                    }
-                    try {
-                        commandProcessor.handleSaveDialog_Normal(CSMarkVersion);
-                    }
-                    catch {
-                        Console.WriteLine(locale_EN.save_Fail);
-                    }
-                }
-                else {
+                if (newCommand != null) {
                     string save = "";
                     Console.WriteLine("                                                ");
                     if (locales.returnLocale() == "EN") {

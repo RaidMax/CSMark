@@ -195,9 +195,6 @@
   <data name="command_Feedback" xml:space="preserve">
     <value>Please give feedback, or report bugs by opening a GitHub issue at https://github.com/CSMarkBenchmark/CSMark/issues/new</value>
   </data>
-  <data name="command_ForceSave" xml:space="preserve">
-    <value>To force results to be saved immediately after running the benchmark, enter the benchmark command followed by</value>
-  </data>
   <data name="command_Number0" xml:space="preserve">
     <value>0</value>
   </data>
@@ -218,9 +215,6 @@
   </data>
   <data name="command_runStress" xml:space="preserve">
     <value>To run the stress test utility, please enter</value>
-  </data>
-  <data name="command_Save" xml:space="preserve">
-    <value>_save</value>
   </data>
   <data name="confirmSave" xml:space="preserve">
     <value>Would you like to save the results to a Text File?</value>

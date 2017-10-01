@@ -223,15 +223,6 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To force results to be saved immediately after running the benchmark, enter the benchmark command followed by.
-        /// </summary>
-        internal static string command_ForceSave {
-            get {
-                return ResourceManager.GetString("command_ForceSave", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 0.
         /// </summary>
         internal static string command_Number0 {
@@ -300,15 +291,6 @@ namespace CSMarkRedux.locales {
         internal static string command_runStress {
             get {
                 return ResourceManager.GetString("command_runStress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _save.
-        /// </summary>
-        internal static string command_Save {
-            get {
-                return ResourceManager.GetString("command_Save", resourceCulture);
             }
         }
         
