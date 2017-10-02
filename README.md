@@ -13,7 +13,6 @@ DotNetCore runtime 2.0.0 is required
 [Download the DotNetCore runtime here](https://www.microsoft.com/net/download/core#/runtime)
 
 __List Of Supported Platforms__
-* Windows 7 SP1 64 Bit or Windows Server 2008 R2 SP1 with the latest updates.
 * Windows 8.1 64 Bit with Update [2919355](https://support.microsoft.com/en-us/help/2919355/windows-rt-8-1--windows-8-1--and-windows-server-2012-r2-update-april-2) or Windows Server 2012 R2 with Update [2919355](https://support.microsoft.com/en-us/help/2919355/windows-rt-8-1--windows-8-1--and-windows-server-2012-r2-update-april-2)
 * Windows 10 64 Bit (Build 14393 or newer required) or Windows Server 2016
 * Windows 10 ARM 32 Bit (Build 14393 or newer required)
