@@ -5,7 +5,6 @@ This document outlines OS versions supported in different CSMark versions.
 
 | Operating System | First CSMark version Supported | Support Started | Version(s) supported | Expected End of Support Date|
 |---|---|---|---|---|
-| Windows 7 SP1 | 0.2.0 | April 12th 2017 | CSMark Pre-release |  |
 | Windows 8.1 with KB2919355 | 0.11.0 | July 22nd 2017 | CSMark Pre-release |   |
 | Windows 10 Build 14393 | 0.2.0 | April 12th 2017| CSMark Pre-release |   |
 | Windows 10 Build 15063 | 0.2.0 | April 12th 2017 | CSMark Pre-release |   |
@@ -29,6 +28,7 @@ This document outlines OS versions supported in different CSMark versions.
 | macOS 10.11 | 0.2.0 | 0.13.4 | August 20th 2017 | Moved to DotNetCore 2.0 |
 | Windows 10 Build 10240 | 0.2.0 | 0.13.4 | August 20th 2017 | Moved to DotNetCore 2.0 |
 | Windows 10 Build 10586 | 0.2.0 | 0.13.4 | August 20th 2017 | Moved to DotNetCore 2.0 |
+| Windows 7 SP1 | 0.2.0 | 0.20.0 | October 2nd 2017 | CSMark Pre-release | Poor compatability and many issues with running on Windows 7.|
 
 ### OS versions we've never supported
 
