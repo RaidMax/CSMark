@@ -58,10 +58,7 @@ namespace CSMarkRedux{
                     osID = "Win10";
                 }
                 else if (RuntimeInformation.OSDescription.Contains("Windows 8.1")) {
-                    osID = "Win8.1";
-                }
-                else if (RuntimeInformation.OSDescription.Contains("Windows 7")) {
-                    osID = "Win7";
+                    osID = "Win81";
                 }
             }
             else if (GetOSPlatform().ToString().ToLower() == "mac") {
@@ -72,8 +69,7 @@ namespace CSMarkRedux{
             else if (GetOSPlatform().ToString().ToLower() == "linux") {
                 osID = "linux";
             }
-            else
-            {
+            else{
                 osID = "linux";
             }
         }       
