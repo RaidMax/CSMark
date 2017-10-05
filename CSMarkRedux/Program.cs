@@ -218,7 +218,7 @@ namespace CSMarkRedux{
                     }
                 }
 
-                if (locales.returnLocale() == "EN") {
+                if (locales.returnLocale() == "EN" && newCommand.ToLower() == benchCommand.ToLower() || locales.returnLocale() == "EN" && newCommand.ToLower() == benchSingleCommand.ToLower() || locales.returnLocale() == "EN" && newCommand.ToLower() == benchMultiCommand.ToLower()) {
                     Console.WriteLine(locale_EN.test_Starting);
                 }
 
@@ -235,7 +235,8 @@ namespace CSMarkRedux{
                     commandProcessor.showNormalResultsConsole(true, true);
                 }
 
-                if (newCommand != null) {
+                if (newCommand != null && newCommand == benchCommand || newCommand != null && newCommand == benchSingleCommand || newCommand != null && newCommand == benchMultiCommand)
+                {
                     string save = "";
                     Console.WriteLine("                                                ");
                     if (locales.returnLocale() == "EN") {
