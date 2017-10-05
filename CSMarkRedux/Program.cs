@@ -160,10 +160,11 @@ namespace CSMarkRedux{
                         timedStress = Console.ReadLine().ToLower();
 
                         if (locales.returnLocale() == "EN") {
-                            Console.WriteLine(locale_EN.timeFormat_HowMany + " " + stressTime + " " + locale_EN.timeFormat_Time);
+                            Console.WriteLine(locale_EN.timeFormat_HowMany + " " + timedStress + " " + locale_EN.timeFormat_Time);
                             stressTime = Console.ReadLine().ToLower();
                             Console.WriteLine(locale_EN.stressTestConfirm + " " + stressTime + " " + timedStress + "?");
                             Console.WriteLine(locale_EN.responseYorN);
+                            stressConfirm = Console.ReadLine().ToLower();
                         }
 
                         if (stressConfirm == respondYes) {
