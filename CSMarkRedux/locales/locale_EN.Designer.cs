@@ -385,6 +385,15 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Exit CSMark?.
+        /// </summary>
+        internal static string confirmExit {
+            get {
+                return ResourceManager.GetString("confirmExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Would you like to save the results to a Text File?.
         /// </summary>
         internal static string confirmSave {

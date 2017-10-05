@@ -325,4 +325,7 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   <data name="command_Number3" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="confirmExit" xml:space="preserve">
+    <value>Are you sure you want to Exit CSMark?</value>
+  </data>
 </root>

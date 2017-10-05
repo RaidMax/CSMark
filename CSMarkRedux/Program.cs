@@ -58,6 +58,8 @@ namespace CSMarkRedux{
             string respondStop = "";
             string respondBreak = "";
             string versionCommand = "";
+            string confirmExit = "";
+            string responseYorN = "";
 
             if(locales.returnLocale() == "EN"){
                exitCommand = locale_EN.commandExit.ToLower();
@@ -77,8 +79,10 @@ namespace CSMarkRedux{
                 respondStop = locale_EN.stressTest_Stop.ToLower();
                 respondBreak = locale_EN.stressTest_Break.ToLower();
                 versionCommand = locale_EN.commandVersion.ToLower();
+                confirmExit = locale_EN.confirmExit.ToLower();
+                responseYorN = locale_EN.responseYorN;
             }
-
+            string exitConfirmation ="";
                 string newCommand = "";
                 string timedStress = "";
                 string stressTime = "";
@@ -257,7 +261,14 @@ namespace CSMarkRedux{
                 }
 
                 if (newCommand.ToLower() == exitCommand.ToLower()){
-                        break;
+                    Console.WriteLine(confirmExit);
+                    Console.WriteLine(responseYorN);
+                    exitConfirmation = Console.ReadLine().ToLower();
+
+                    if (exitConfirmation == respondYes){
+                        Console.WriteLine("Terminating the application.");
+                        Environment.Exit(0);
+                        }
                     }
                     else if(newCommand.ToLower() == aboutCommand.ToLower() || newCommand.ToLower() == versionCommand.ToLower()){
                     Console.WriteLine("                                     ");
