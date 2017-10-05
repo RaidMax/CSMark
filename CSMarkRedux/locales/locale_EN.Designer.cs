@@ -259,7 +259,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To run the multi threaded tests only, please enter.
+        ///   Looks up a localized string similar to To run the multi tasking tests only, please enter.
         /// </summary>
         internal static string command_runMulti {
             get {
@@ -430,6 +430,15 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t turn off your Device..
+        /// </summary>
+        internal static string dontTurnOff {
+            get {
+                return ResourceManager.GetString("dontTurnOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copyright (C) 2017 AluminiumTech
         ///This product is licensed under the GNU General Public License (GPL) v3 open source license.
         ///
@@ -587,6 +596,15 @@ namespace CSMarkRedux.locales {
         internal static string stressTestConfirm {
             get {
                 return ResourceManager.GetString("stressTestConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will take several minutes..
+        /// </summary>
+        internal static string takesSeveralMinutes {
+            get {
+                return ResourceManager.GetString("takesSeveralMinutes", resourceCulture);
             }
         }
         

@@ -61,6 +61,9 @@ namespace CSMarkRedux{
             string confirmExit = "";
             string responseYorN = "";
 
+            string shutdownNotice = "";
+            string timeNotice = "";
+
             if(locales.returnLocale() == "EN"){
                exitCommand = locale_EN.commandExit.ToLower();
                 aboutCommand = locale_EN.commandAbout.ToLower();
@@ -81,6 +84,8 @@ namespace CSMarkRedux{
                 versionCommand = locale_EN.commandVersion.ToLower();
                 confirmExit = locale_EN.confirmExit.ToLower();
                 responseYorN = locale_EN.responseYorN;
+                timeNotice = locale_EN.takesSeveralMinutes;
+                shutdownNotice = locale_EN.dontTurnOff;
             }
             string exitConfirmation ="";
                 string newCommand = "";
@@ -153,7 +158,7 @@ namespace CSMarkRedux{
                 if (newCommand == stressCommand) {
                     if (locales.returnLocale() == "EN") {
                         Console.WriteLine(locale_EN.timedStressTest);
-                        Console.WriteLine(locale_EN.responseYorN);
+                        Console.WriteLine(responseYorN);
                     }
                     choseTimed = Console.ReadLine().ToLower();
 
@@ -167,7 +172,7 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.timeFormat_HowMany + " " + timedStress + " " + locale_EN.timeFormat_Time);
                             stressTime = Console.ReadLine().ToLower();
                             Console.WriteLine(locale_EN.stressTestConfirm + " " + stressTime + " " + timedStress + "?");
-                            Console.WriteLine(locale_EN.responseYorN);
+                            Console.WriteLine(responseYorN);
                             stressConfirm = Console.ReadLine().ToLower();
                         }
 
@@ -224,6 +229,8 @@ namespace CSMarkRedux{
 
                 if (locales.returnLocale() == "EN" && newCommand.ToLower() == benchCommand.ToLower() || locales.returnLocale() == "EN" && newCommand.ToLower() == benchSingleCommand.ToLower() || locales.returnLocale() == "EN" && newCommand.ToLower() == benchMultiCommand.ToLower()) {
                     Console.WriteLine(locale_EN.test_Starting);
+                    Console.WriteLine(shutdownNotice);
+                    Console.WriteLine(timeNotice);
                 }
 
                 if (newCommand.Contains(benchSingleCommand)) {
@@ -250,7 +257,7 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.save_ReminderInstall);
                         }
                         Console.WriteLine(locale_EN.confirmSave);
-                        Console.WriteLine(locale_EN.responseYorN);
+                        Console.WriteLine(responseYorN);
                     }
                     save = Console.ReadLine().ToLower();
 

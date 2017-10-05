@@ -205,7 +205,7 @@
     <value>2</value>
   </data>
   <data name="command_runMulti" xml:space="preserve">
-    <value>To run the multi threaded tests only, please enter</value>
+    <value>To run the multi tasking tests only, please enter</value>
   </data>
   <data name="command_runNormal" xml:space="preserve">
     <value>To run the single threaded and multi threaded tests, please enter</value>
@@ -327,5 +327,11 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="confirmExit" xml:space="preserve">
     <value>Are you sure you want to Exit CSMark?</value>
+  </data>
+  <data name="dontTurnOff" xml:space="preserve">
+    <value>Don't turn off your Device.</value>
+  </data>
+  <data name="takesSeveralMinutes" xml:space="preserve">
+    <value>This will take several minutes.</value>
   </data>
 </root>
