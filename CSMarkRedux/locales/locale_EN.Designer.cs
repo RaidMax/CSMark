@@ -61,7 +61,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _CommunityEdition.
+        ///   Looks up a localized string similar to _OpenSourceEdition.
         /// </summary>
         internal static string _Edition {
             get {
@@ -246,15 +246,6 @@ namespace CSMarkRedux.locales {
         internal static string command_Number2 {
             get {
                 return ResourceManager.GetString("command_Number2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 3.
-        /// </summary>
-        internal static string command_Number3 {
-            get {
-                return ResourceManager.GetString("command_Number3", resourceCulture);
             }
         }
         
@@ -645,11 +636,11 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Community Edition.
+        ///   Looks up a localized string similar to Open Source Edition.
         /// </summary>
-        internal static string title_CommunityEdition {
+        internal static string title_Edition {
             get {
-                return ResourceManager.GetString("title_CommunityEdition", resourceCulture);
+                return ResourceManager.GetString("title_Edition", resourceCulture);
             }
         }
         
@@ -672,7 +663,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to CSMark Community Edition..
+        ///   Looks up a localized string similar to Welcome to CSMark Open Source Edition..
         /// </summary>
         internal static string title_Welcome {
             get {

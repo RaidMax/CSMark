@@ -1,5 +1,4 @@
-﻿/* CSMark
-    Copyright (C) 2017  AluminiumTech . */
+﻿/* CSMark Copyright (C) 2017  AluminiumTech. */
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{

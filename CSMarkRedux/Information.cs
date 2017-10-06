@@ -1,4 +1,4 @@
-﻿/* CSMark Copyright (C) 2017  AluminiumTech  */
+﻿/* CSMark Copyright (C) 2017  AluminiumTech */
 using CSMarkRedux.locales;
 using System;
 using System.Diagnostics;

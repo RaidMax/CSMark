@@ -289,8 +289,8 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   <data name="timeFormat_Time" xml:space="preserve">
     <value>would you like the stress test to run for?</value>
   </data>
-  <data name="title_CommunityEdition" xml:space="preserve">
-    <value>Community Edition</value>
+  <data name="title_Edition" xml:space="preserve">
+    <value>Open Source Edition</value>
   </data>
   <data name="title_Name" xml:space="preserve">
     <value>CSMark</value>
@@ -299,10 +299,10 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
     <value>For Support Status, go to https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md</value>
   </data>
   <data name="title_Welcome" xml:space="preserve">
-    <value>Welcome to CSMark Community Edition.</value>
+    <value>Welcome to CSMark Open Source Edition.</value>
   </data>
   <data name="_Edition" xml:space="preserve">
-    <value>_CommunityEdition</value>
+    <value>_OpenSourceEdition</value>
   </data>
   <data name="save_Fail" xml:space="preserve">
     <value>The text file could not be saved.</value>
@@ -321,9 +321,6 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="commandVersion" xml:space="preserve">
     <value>VERSION</value>
-  </data>
-  <data name="command_Number3" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="confirmExit" xml:space="preserve">
     <value>Are you sure you want to Exit CSMark?</value>
