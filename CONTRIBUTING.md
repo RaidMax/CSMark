@@ -122,11 +122,9 @@ For Windows 10 ARM 64 Bit: `` dotnet publish -c Release -r win10-arm64  ``
 
 For Windows 10 ARM 32 Bit: `` dotnet publish -c Release -r win10-arm  ``
 
-For Windows 7 SP1 64 Bit: `` dotnet publish -c Release -r win7-x64  ``
-
 For Windows 8.1 64 Bit: `` dotnet publish -c Release -r win81-x64  ``
 
-For macOS 10.12 "Sierra": `` dotnet publish -c Release -r osx.10.12-x64 ``
+For macOS 10.12 "Sierra" and macOS 10.13 "High Sierra" ": `` dotnet publish -c Release -r osx-x64 ``
 
 For 64 Bit Linux Distros: `` dotnet publish -c Release -r linux-x64  ``
 
@@ -136,7 +134,6 @@ The license file has been set to be copied every time you create a new binary so
 
 You may wish to ZIP the files for publishing or distributing them.
 
-The Windows Installers for CSMark releases are typically made using [Inno Setup](http://www.jrsoftware.org/isinfo.php).
 That doesn't mean that if you make your own releases that you have to. You can use [NSIS](http://nsis.sourceforge.net/Main%5FPage) if you're more familiar with that.
 
 ## Code Of Conduct
