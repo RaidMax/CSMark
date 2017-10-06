@@ -47,23 +47,6 @@ Notice that the program also tells the user where they can find the results. Bec
 The user should always be informed about what is going on. 
 
 Users don't often have to be told why they can't do something, but when it happens it needs to be clear and concise language which lets the user know what the problem is.
-For example, let's say the user has a CPU with 6 Cores and 12 Threads. It is common knowledge among PC enthusiasts that higher core count CPUs may not necessarily be the highest single threaded performers out there for a variety of reasons include clockspeed or architecturally.
-Thus we can safely assume that running a single threaded only benchmark on a heavily multi-threaded CPU is a waste of time. In the code example below, we can politely inform the user why they can't run it. But doing this can be a little bit complicated as we need to have multiple checks in place to make sure we don't stop all users from being able to use it.
-
-```
-if (benchAccuracy == "MX1" & Environment.ProcessorCount >= 4 & newCommand == "bench-multi" || benchAccuracy == "MX2" & Environment.ProcessorCount >= 4 & newCommand == "bench-multi"){
-   Console.WriteLine("Your CPU is probably too powerful for this accuracy level. Please try a different accuracy level.");
-    continue;
-      }
-    else if (benchAccuracy == "MX1" & newCommand != "bench-multi") {
-     maxIterations = 0.2 * 1000.0 * 1000 * 1000;
-          }
-     else if (benchAccuracy == "MX2" & newCommand != "bench-multi") {
-       maxIterations = 0.5 * 1000.0 * 1000 * 1000;
-       }     
-  ```
-  
-These are the kind of quality of life improvements we need to implement to ensure that the user has a pleasant experience.
 
 ## Setting up your environment
 Setting up your environment for developing CSMark would normally be pretty straight forward except for how many options there are to do so.
