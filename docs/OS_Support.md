@@ -5,12 +5,11 @@ This document outlines OS versions supported in different CSMark versions.
 
 | Operating System | First CSMark version Supported | Support Started | Version(s) supported | Expected End of Support Date|
 |---|---|---|---|---|
-| Windows 8.1 with KB2919355 | 0.11.0 | July 22nd 2017 | CSMark Pre-release |   |
 | Windows 10 Build 14393 | 0.2.0 | April 12th 2017| CSMark Pre-release |   |
 | Windows 10 Build 15063 | 0.2.0 | April 12th 2017 | CSMark Pre-release |   |
 | macOS 10.12 | 0.14.0 | August 20th 2017 | CSMark Pre-release |   |
 | macOS 10.13 | 0.19.0 | September 27th 2017 | CSMark Pre-release |   |
-| Ubuntu 16.04 | 0.2.0 | April 12th 2017 | CSMark Pre-release |   |
+| Ubuntu 16.04 LTS | 0.2.0 | April 12th 2017 | CSMark Pre-release |   |
 | Ubuntu 17.04 | 0.14.0 | August 20th 2017 | CSMark Pre-release |   |
 | Debian 8 | 0.7.0 | June 3rd 2017 | CSMark Pre-release |   |
 | Debian 9 | 0.14.0 | August 20th 2017 | CSMark Pre-release |   |
@@ -29,10 +28,11 @@ This document outlines OS versions supported in different CSMark versions.
 | Windows 10 Build 10240 | 0.2.0 | 0.13.4 | August 20th 2017 | Moved to DotNetCore 2.0 |
 | Windows 10 Build 10586 | 0.2.0 | 0.13.4 | August 20th 2017 | Moved to DotNetCore 2.0 |
 | Windows 7 SP1 | 0.2.0 | 0.20.0 | October 2nd 2017 | CSMark Pre-release | Poor compatability and many issues with running on Windows 7.|
+| Windows 8.1 | 0.11.0 | 1.0 RC1 | - | Discontinued support ahead of end of Mainstream support from Microsoft. |
 
 ### OS versions we've never supported
 
-| OS Name | OS Version | Reason why it was never supported|
+| OS Name | Reason why it was never supported|
 |---|---|---|
-| Microsoft Windows | Vista SP2 | DotNetCore 1.1 did not support Vista and no newer version does. | 
-| Ubuntu | 14.04 LTS | I don't think this is still incredibly popular and support ends for it from Canonical before CSMark Release support may end. | 
+| Microsoft Windows Vista SP2 | DotNetCore 1.1 did not support Vista and no newer version does. | 
+| Ubuntu 14.04 LTS | I don't think this is still incredibly popular and support ends for it from Canonical before CSMark Release support may end. | 

@@ -56,9 +56,6 @@ namespace CSMarkRedux{
                 if (RuntimeInformation.OSDescription.Contains("Windows 10")) {
                     osID = "Win10";
                 }
-                else if (RuntimeInformation.OSDescription.Contains("Windows 8.1")) {
-                    osID = "Win81";
-                }
             }
             else if (GetOSPlatform().ToString().ToLower() == "mac") {
                 if (RuntimeInformation.OSDescription.Contains("OSX")) {

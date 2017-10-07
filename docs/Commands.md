@@ -2,19 +2,15 @@
 These are the officially supported CLI commands in CSMark.
 
 ### Bench
-The ``bench`` command runs both the single-threaded and multi-threaded test. It runs the single threaded tests first and the multi-threaded tests afterwards.
+The ``0`` numerical command runs both the single-threaded and multi-threaded test. It runs the single threaded tests first and the multi-threaded tests afterwards.
 This is advised for comparing performance of CPUs across different manufacturers or architectures.
 
 ### Bench_Single
-The ``bench_single`` command runs the single threaded test only. The multi-threaded test is not run. At the end of the test, the single threaded results will be displayed to the Console.
+The ``1`` numerical command runs the single threaded test only. The multi-threaded test is not run. At the end of the test, the single threaded results will be displayed to the Console.
 This is advised for comparing performance of CPUs across different manufacturers or architectures.
 
-### Bench_Multi
-The ``bench_multi`` command runs the multi threaded test only. The single-threaded test is not run. At the end of the test, the single threaded results will be displayed to the Console.
-This is advised for comparing performance of CPUs across the same architecture or manufacturer but only if the single threaded results are not required.
-
 ### Stress_Test
-The ``stress_test`` command runs the Stress Test Utility. This can be configured to run for a specified period of time or to run until you tell it to stop.
+The ``2`` numerical command runs the Stress Test Utility. This can be configured to run for a specified period of time or to run until you tell it to stop.
 
 ### About
 The ``about`` command lists the CSMark version, CSMarkLib version and AutoUpdaterNetStandard version.

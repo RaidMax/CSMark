@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PackageId>CSMark</PackageId>
     <StartupObject>CSMarkRedux.Program</StartupObject>
-<RuntimeIdentifiers>win81-x64;win10-x64;win10-arm;win10-arm64;osx-x64;linux-x64;linux-arm;</RuntimeIdentifiers>
+<RuntimeIdentifiers>win10-x64;win10-arm;win10-arm64;osx-x64;linux-x64;linux-arm;</RuntimeIdentifiers>
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
         <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
