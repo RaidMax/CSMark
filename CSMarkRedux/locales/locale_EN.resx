@@ -254,7 +254,7 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
     <value>YES</value>
   </data>
   <data name="responseYorN" xml:space="preserve">
-    <value>Please enter YES or NO</value>
+    <value>Please enter YES or NO.</value>
   </data>
   <data name="selectTimeFormat" xml:space="preserve">
     <value>Select the time format in SECONDS, MINUTES or HOURS.</value>

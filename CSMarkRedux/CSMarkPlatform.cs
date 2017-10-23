@@ -23,7 +23,7 @@ namespace CSMarkRedux{
             getPlatform();
             return osID;
         }
-        public string returnOSArch(){
+        public string returnArch(){
             getArch();
             return archID;
         }
@@ -36,7 +36,7 @@ namespace CSMarkRedux{
         public string returnDownloadURL(){
             getPlatform();
             getArch();
-            string downloadURL = "https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/Check_For_Updates/checkForUpdate_" + osID + "-" + archID + ".xml";
+            string downloadURL = "https://raw.githubusercontent.com/CSMarkBenchmark/CSMark/master/Check_For_Updates/checkForUpdate_" + osID + ".xml";
             return downloadURL;
         }
         public void getArch(){

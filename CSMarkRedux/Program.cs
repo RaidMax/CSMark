@@ -35,7 +35,7 @@ namespace CSMarkRedux{
 
             string locale = locales.returnLocale();
             string CSMarkVersion = info.returnCSMarkVersionString() + "_";
-            CommandProcessor commandProcessor = new CommandProcessor();
+            BenchmarkController bench = new BenchmarkController();
 
             info.showLicenseInfo();
             info.checkForUpdate(locale);
@@ -171,13 +171,13 @@ namespace CSMarkRedux{
 
                         if (stressConfirm == respondYes) {
                             if (timedStress == respondSeconds) {
-                                commandProcessor.startStressTest_Seconds(Double.Parse(stressTime));
+                               bench.startStressTest_Seconds(Double.Parse(stressTime));
                             }
                             else if (timedStress == respondMinutes) {
-                                commandProcessor.startStressTest_Minutes(Double.Parse(stressTime));
+                               bench.startStressTest_Minutes(Double.Parse(stressTime));
                             }
                             else if (timedStress == respondHours) {
-                                commandProcessor.startStressTest_Hours(Double.Parse(stressTime));
+                                bench.startStressTest_Hours(Double.Parse(stressTime));
                             }
                         }
                         else {
@@ -190,20 +190,20 @@ namespace CSMarkRedux{
                             Console.WriteLine(locale_EN.stressTest_Start);
                             Console.WriteLine(locale_EN.stressTest_StopMessage);
                         }
-                        commandProcessor.startStressTest();
+                        bench.startStressTest();
                         newCommand = Console.ReadLine().ToLower();
                         if (newCommand == respondBreak || newCommand == respondStop) {
-                            commandProcessor.stopStressTest();
+                            bench.stopStressTest();
                         }
                         else {
-                            commandProcessor.stopStressTest();
+                            bench.stopStressTest();
                         }
                         continue;
                     }
                 }
                 else if (newCommand.Equals(benchCommand) || newCommand.Equals(benchSingleCommand)) {
                     if (!newCommand.Contains(calcCommand)) {
-                        commandProcessor.setAutoMaxIterations();
+                        bench.setAutoMaxIterations();
                     }
                 }
                 else if (newCommand.Contains(calcCommand)) {
@@ -211,7 +211,7 @@ namespace CSMarkRedux{
                         Console.WriteLine(locale_EN.calculations);
                     }
                     try {
-                        commandProcessor.setMaxIterations(double.Parse(Console.ReadLine()) * 1000 * 1000);
+                        bench.setMaxIterations(double.Parse(Console.ReadLine()) * 1000 * 1000);
                     }
                     catch {
                         if (locales.returnLocale() == "EN") {
@@ -227,12 +227,12 @@ namespace CSMarkRedux{
                 }
 
                 if (newCommand.Equals(benchSingleCommand)) {
-                    commandProcessor.startBenchmarkNormal_Single();
-                    commandProcessor.showNormalResultsConsole(true, false);
+                    bench.startBenchmark_Single();
+                    bench.showNormalResultsConsole(true, false);
                 }
                 else if (newCommand.Equals(benchCommand)) {
-                    commandProcessor.startBenchmarkNormal();
-                    commandProcessor.showNormalResultsConsole(true, true);
+                    bench.startBenchmarkNormal();
+                    bench.showNormalResultsConsole(true, true);
                 }
 
                 if (newCommand != null && newCommand == benchCommand || newCommand != null && newCommand == benchSingleCommand){
@@ -250,7 +250,7 @@ namespace CSMarkRedux{
                     save = Console.ReadLine().ToLower();
 
                     if (save.ToLower() == "yes") {
-                        commandProcessor.handleSaveDialog_Normal(CSMarkVersion);
+                        bench.handleSaveDialog_Normal(CSMarkVersion);
                     }
                     continue;
                 }
@@ -294,7 +294,7 @@ namespace CSMarkRedux{
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write(locale_EN.archID + " ");
                         Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(csM.returnOSArch());
+                        Console.WriteLine(csM.returnArch());
                         Console.ForegroundColor = ConsoleColor.Magenta;
                     }
                            

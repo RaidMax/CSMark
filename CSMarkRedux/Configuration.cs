@@ -30,7 +30,7 @@ namespace CSMarkRedux{
                             sw.WriteLine("Date_" + DateTime.Now.ToString());
                             sw.WriteLine("ThreadCount_" + Environment.ProcessorCount.ToString());
                             sw.WriteLine("OSPlatform__" + new CSMarkPlatform().returnOSPlatform());
-                            sw.WriteLine("OSArchitecture__" + new CSMarkPlatform().returnOSArch());
+                            sw.WriteLine("OSArchitecture__" + new CSMarkPlatform().returnArch());
                             sw.WriteLine("Language_" + language);
                             sw.WriteLine("Locale_" + locale);
                             sw.WriteLine("-------------------------------------------------");

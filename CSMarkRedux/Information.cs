@@ -10,6 +10,8 @@ namespace CSMarkRedux{
         Stopwatch checkUpdateTimer = new Stopwatch();
         Stopwatch licenseWatch = new Stopwatch();
         LocaleManagement locales = new LocaleManagement();
+
+        CSMarkPlatform csM = new CSMarkPlatform();
         public string returnCSMarkVersionString(){
             return Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
@@ -17,6 +19,7 @@ namespace CSMarkRedux{
             return Assembly.GetEntryAssembly().GetName().Version;
         }
         public void checkForUpdate(string locale){
+
             //This checks for updates on startup
             checkUpdateTimer.Reset();
             checkUpdateTimer.Start();
@@ -28,18 +31,16 @@ namespace CSMarkRedux{
             while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (5.0 * 1000)){
 
             }
-            if (autoUpdater.checkForUpdateCompleted() == false){
-              
+            if (autoUpdater.checkForUpdateCompleted() == false){      
                     Console.WriteLine(locale_EN.checkForUpdate_Failed);
-                
             }
             else{
                     Console.WriteLine(locale_EN.checkForUpdate_Took + " " + checkUpdateTimer.ElapsedMilliseconds + " " + locale_EN.checkForUpdate_Time);
-                
-                
             }
             if(autoUpdater.currentVersion() == "0.0.0.0"){
+                 Console.ForegroundColor = ConsoleColor.Red;
                    Console.WriteLine(locale_EN.checkForUpdate_NetworkIssues);
+                         Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine(locale_EN.starting);
                 
                 Console.WriteLine("                                     ");
@@ -57,7 +58,7 @@ namespace CSMarkRedux{
                     Console.WriteLine(locale_EN.checkForUpdate_Latest + " " + autoUpdater.currentVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_Installed + " " + autoUpdater.installedVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_ChangeLog + " " + autoUpdater.changeLogURL());
-                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL());
+                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL() + "-" + csM.returnArch());
                 
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;

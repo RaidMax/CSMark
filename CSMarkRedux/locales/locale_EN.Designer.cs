@@ -501,7 +501,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter YES or NO.
+        ///   Looks up a localized string similar to Please enter YES or NO..
         /// </summary>
         internal static string responseYorN {
             get {
