@@ -29,6 +29,7 @@ namespace CSMarkRedux{
                 locales.checkLocale();
             }
             catch (Exception ex){
+                Console.WriteLine("We ran into some issues. Here's the details of the error in case you need it: ");
                 Console.WriteLine(ex);
                 Console.ReadLine();
             }
@@ -50,6 +51,7 @@ namespace CSMarkRedux{
             string helpCommand = "";
             string respondYes = "";
             string respondNo = "";
+            string respondMilliseconds = "";
             string respondSeconds = "";
             string respondMinutes = "";
             string respondHours = "";
@@ -73,6 +75,7 @@ namespace CSMarkRedux{
                 benchSingleCommand = locale_EN.command_Number1;
                 respondYes = locale_EN.responseYes.ToLower();
                 respondNo = locale_EN.responseNo.ToLower();
+                respondMilliseconds = locale_EN.respondMSeconds.ToLower();
                 respondSeconds = locale_EN.respondSeconds.ToLower();
                 respondMinutes = locale_EN.respondMinutes.ToLower();
                 respondHours = locale_EN.respondHours.ToLower();
@@ -169,8 +172,11 @@ namespace CSMarkRedux{
                             stressConfirm = Console.ReadLine().ToLower();
                         }
 
-                        if (stressConfirm == respondYes) {
-                            if (timedStress == respondSeconds) {
+                        if (stressConfirm == respondYes){
+                            if (timedStress == respondMilliseconds){
+                                bench.startStressTest_MilliSeconds(Double.Parse(stressTime));
+                            }
+                            else if (timedStress == respondSeconds) {
                                bench.startStressTest_Seconds(Double.Parse(stressTime));
                             }
                             else if (timedStress == respondMinutes) {

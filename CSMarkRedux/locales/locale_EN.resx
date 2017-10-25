@@ -257,7 +257,7 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
     <value>Please enter YES or NO.</value>
   </data>
   <data name="selectTimeFormat" xml:space="preserve">
-    <value>Select the time format in SECONDS, MINUTES or HOURS.</value>
+    <value>Select the time format in MILLISECONDS, SECONDS, MINUTES or HOURS.</value>
   </data>
   <data name="starting" xml:space="preserve">
     <value>Starting CSMark.</value>
@@ -330,5 +330,8 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   </data>
   <data name="takesSeveralMinutes" xml:space="preserve">
     <value>This will take several minutes.</value>
+  </data>
+  <data name="respondMSeconds" xml:space="preserve">
+    <value>Milliseconds</value>
   </data>
 </root>

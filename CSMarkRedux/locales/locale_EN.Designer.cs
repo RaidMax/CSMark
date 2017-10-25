@@ -474,6 +474,15 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Milliseconds.
+        /// </summary>
+        internal static string respondMSeconds {
+            get {
+                return ResourceManager.GetString("respondMSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seconds.
         /// </summary>
         internal static string respondSeconds {
@@ -528,7 +537,7 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the time format in SECONDS, MINUTES or HOURS..
+        ///   Looks up a localized string similar to Select the time format in MILLISECONDS, SECONDS, MINUTES or HOURS..
         /// </summary>
         internal static string selectTimeFormat {
             get {
