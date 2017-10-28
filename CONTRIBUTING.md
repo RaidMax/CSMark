@@ -105,8 +105,6 @@ For Windows 10 ARM 64 Bit: `` dotnet publish -c Release -r win10-arm64  ``
 
 For Windows 10 ARM 32 Bit: `` dotnet publish -c Release -r win10-arm  ``
 
-For Windows 8.1 64 Bit: `` dotnet publish -c Release -r win81-x64  ``
-
 For macOS 10.12 "Sierra" and macOS 10.13 "High Sierra" ": `` dotnet publish -c Release -r osx-x64 ``
 
 For 64 Bit Linux Distros: `` dotnet publish -c Release -r linux-x64  ``
