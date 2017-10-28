@@ -70,7 +70,7 @@ namespace CSMarkRedux{
             if(locales.returnLocale() == "EN"){
                 memoryUsage = locale_EN.memoryUsage;
                 aboutMemory = locale_EN.aboutMemory;
-                processCommand = locale_EN.command_AboutProcess;
+                processCommand = locale_EN.command_AboutProcess.ToLower();
                exitCommand = locale_EN.commandExit.ToLower();
                 aboutCommand = locale_EN.commandAbout.ToLower();
                 calcCommand = locale_EN.commandCalc.ToLower();
