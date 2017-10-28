@@ -60,11 +60,17 @@ namespace CSMarkRedux{
             string versionCommand = "";
             string confirmExit = "";
             string responseYorN = "";
+            string aboutMemory = "";
+            string memoryUsage = "";
+            string processCommand = "";
 
             string shutdownNotice = "";
             string timeNotice = "";
 
             if(locales.returnLocale() == "EN"){
+                memoryUsage = locale_EN.memoryUsage;
+                aboutMemory = locale_EN.aboutMemory;
+                processCommand = locale_EN.command_AboutProcess;
                exitCommand = locale_EN.commandExit.ToLower();
                 aboutCommand = locale_EN.commandAbout.ToLower();
                 calcCommand = locale_EN.commandCalc.ToLower();
@@ -127,7 +133,12 @@ namespace CSMarkRedux{
 
             }
 
+            Console.Title += " " + info.check64Bits();
+
             while (true) {
+                //Warn the user if the process count is quite high.
+                info.warnProcessCount();
+
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
                 if (locales.returnLocale() == "EN") {
@@ -145,6 +156,9 @@ namespace CSMarkRedux{
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine(locale_EN.command_Feedback);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine(locale_EN.aboutProcess);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
@@ -261,21 +275,25 @@ namespace CSMarkRedux{
                     continue;
                 }
 
-                if (newCommand.ToLower() == exitCommand.ToLower()){
+                if (newCommand.ToLower() == exitCommand.ToLower()) {
                     Console.WriteLine(confirmExit);
                     Console.WriteLine(responseYorN);
                     exitConfirmation = Console.ReadLine().ToLower();
 
-                    if (exitConfirmation == respondYes){
+                    if (exitConfirmation == respondYes) {
                         Console.WriteLine("Terminating the application.");
                         Environment.Exit(0);
-                        }
                     }
-                    else if(newCommand.ToLower() == aboutCommand.ToLower() || newCommand.ToLower() == versionCommand.ToLower()){
+                }
+
+                else if (newCommand.ToLower() == aboutCommand.ToLower() || newCommand.ToLower() == versionCommand.ToLower()) {
                     Console.WriteLine("                                     ");
                     Console.WriteLine("                                     ");
 
-                    if (locales.returnLocale() == "EN"){
+                    if (locales.returnLocale() == "EN") {
+                        Console.WriteLine("                                   ");
+                        Console.WriteLine("                                   ");
+                        Console.WriteLine(memoryUsage + " " + info.returnWorkingSet() + " " + aboutMemory);
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write(locale_EN.csmarkVersion + " ");
                         Console.ForegroundColor = ConsoleColor.Gray;
@@ -303,14 +321,13 @@ namespace CSMarkRedux{
                         Console.WriteLine(csM.returnArch());
                         Console.ForegroundColor = ConsoleColor.Magenta;
                     }
-                           
                 }
-                    else if (newCommand.ToLower() == clearCommand.ToLower()){
-                        Console.Clear();
-                        continue;
-                    }
-                    else if(newCommand.ToLower() == helpCommand.ToLower()){
-                    if(locales.returnLocale() == "EN"){
+                else if (newCommand.ToLower() == clearCommand.ToLower()) {
+                    Console.Clear();
+                    continue;
+                }
+                else if (newCommand.ToLower() == helpCommand.ToLower()) {
+                    if (locales.returnLocale() == "EN") {
                         Console.WriteLine(locale_EN.commands_SupportedInfo);
                         Console.WriteLine(locale_EN.command_Number0);
                         Console.WriteLine(locale_EN.command_Number1);
@@ -322,14 +339,24 @@ namespace CSMarkRedux{
                         Console.WriteLine(locale_EN.commandsExtraInfo);
                         Console.WriteLine(locale_EN.commandsExtraInfo_URL);
                     }
+
                 }
-                    else{
-                        Console.ForegroundColor = ConsoleColor.Red;
-                    if(locales.returnLocale() == "EN"){
+                else if (newCommand.ToLower() == processCommand){
+                    Console.WriteLine("                                    ");
+                    Console.WriteLine("                                    ");
+
+                    if (locale == "EN"){
+                        Console.WriteLine(locale_EN.process_List);
+                    }   
+                    info.listAllProcesses();
+                }
+                else {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    if (locales.returnLocale() == "EN") {
                         Console.WriteLine(locale_EN.commandNotSupported);
                     }
-                        continue;
-                    }
+                    continue;
+                }
                 }
             }
         }

@@ -70,6 +70,24 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to of System Memory..
+        /// </summary>
+        internal static string aboutMemory {
+            get {
+                return ResourceManager.GetString("aboutMemory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To find out what Processes may be harming your score, please enter the &quot;process&quot; command..
+        /// </summary>
+        internal static string aboutProcess {
+            get {
+                return ResourceManager.GetString("aboutProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OS Architecture:.
         /// </summary>
         internal static string archID {
@@ -201,6 +219,15 @@ namespace CSMarkRedux.locales {
         internal static string checkForUpdate_UpToDate {
             get {
                 return ResourceManager.GetString("checkForUpdate_UpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process.
+        /// </summary>
+        internal static string command_AboutProcess {
+            get {
+                return ResourceManager.GetString("command_AboutProcess", resourceCulture);
             }
         }
         
@@ -447,11 +474,29 @@ namespace CSMarkRedux.locales {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CSMark is using.
+        /// </summary>
+        internal static string memoryUsage {
+            get {
+                return ResourceManager.GetString("memoryUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OS ID:.
         /// </summary>
         internal static string osID {
             get {
                 return ResourceManager.GetString("osID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of processes running on this PC currently:.
+        /// </summary>
+        internal static string process_List {
+            get {
+                return ResourceManager.GetString("process_List", resourceCulture);
             }
         }
         
@@ -677,6 +722,15 @@ namespace CSMarkRedux.locales {
         internal static string title_Welcome {
             get {
                 return ResourceManager.GetString("title_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: CSMark has detected a large amount of processes are running on your PC. For the best performance possible, reduce the amount of background processes running..
+        /// </summary>
+        internal static string warningCount {
+            get {
+                return ResourceManager.GetString("warningCount", resourceCulture);
             }
         }
     }

@@ -10,8 +10,8 @@ namespace CSMarkRedux{
         Stopwatch checkUpdateTimer = new Stopwatch();
         Stopwatch licenseWatch = new Stopwatch();
         LocaleManagement locales = new LocaleManagement();
-
         CSMarkPlatform csM = new CSMarkPlatform();
+
         public string returnCSMarkVersionString(){
             return Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
@@ -58,7 +58,7 @@ namespace CSMarkRedux{
                     Console.WriteLine(locale_EN.checkForUpdate_Latest + " " + autoUpdater.currentVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_Installed + " " + autoUpdater.installedVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_ChangeLog + " " + autoUpdater.changeLogURL());
-                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL() + "-" + csM.returnArch());
+                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL());
                 
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -91,12 +91,75 @@ namespace CSMarkRedux{
                 Console.WriteLine("You should have received a copy of the AluminiumTech License along with this program.");
                 Console.WriteLine("If not, see http://www.github.com/CSMarkBenchmark/CSMark/blob/master/LICENSE");
                 Console.WriteLine("                                                                    ");
-            Console.WriteLine("By using this program, you agree to be bound to this license. If you do not agree, please exit the program.");
+            Console.WriteLine("By using this program, you agree to the terms and conditions outlines in this license. If you do not agree, please exit the program.");
             Console.WriteLine("                                                                    ");
             Console.ForegroundColor = ConsoleColor.Gray;
 
             while (licenseWatch.ElapsedMilliseconds <= 3.0 * 1000){
                 //Do nothing to make sure everybody sees the license.
+            }
+        }
+
+        /// <summary>
+        /// Check to see if there any any processes running in the background.
+        /// </summary>
+        public void processChecking(){
+
+        }
+
+        /// <summary>
+        /// Warn the user if the process count is extremely high.
+        /// </summary>
+        public void warnProcessCount(){
+
+            if(processCount() >= 200){
+                Console.WriteLine(locale_EN.warningCount);
+            }
+        }
+        
+        public string returnWorkingSet(){
+            long workingSet_MB = Environment.WorkingSet / 10000000;
+            return workingSet_MB.ToString() + "MB";
+        }
+
+        public string check64Bits(){
+            bool bitness = Environment.Is64BitProcess;
+
+            if (bitness){
+                return "64 Bit";
+            }
+            else{
+                return "32 Bit";
+            }
+        }
+
+        /// <summary>
+        /// Check how many processes are currently running.
+        /// </summary>
+        /// <returns></returns>
+        public int processCount(){
+            int count = 0;
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process process in processes) {
+                //Get whatever attribute for process
+
+                count++;
+            }     
+            return count;
+        }
+
+        /// <summary>
+        /// Print all the processes running to the Console.
+        /// </summary>
+        public void listAllProcesses(){         
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process process in processes){
+                //Get whatever attribute for process
+
+                    Console.WriteLine("Process " + process.Id + ": " + process.ProcessName);
+               
             }
         }
     }

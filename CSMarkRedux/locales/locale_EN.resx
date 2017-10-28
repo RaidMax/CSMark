@@ -334,4 +334,22 @@ To learn more about the GPL v3 license, go to http://www.gnu.org/licenses/</valu
   <data name="respondMSeconds" xml:space="preserve">
     <value>Milliseconds</value>
   </data>
+  <data name="aboutMemory" xml:space="preserve">
+    <value>of System Memory.</value>
+  </data>
+  <data name="aboutProcess" xml:space="preserve">
+    <value>To find out what Processes may be harming your score, please enter the "process" command.</value>
+  </data>
+  <data name="command_AboutProcess" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="memoryUsage" xml:space="preserve">
+    <value>CSMark is using</value>
+  </data>
+  <data name="process_List" xml:space="preserve">
+    <value>List of processes running on this PC currently:</value>
+  </data>
+  <data name="warningCount" xml:space="preserve">
+    <value>Warning: CSMark has detected a large amount of processes are running on your PC. For the best performance possible, reduce the amount of background processes running.</value>
+  </data>
 </root>
