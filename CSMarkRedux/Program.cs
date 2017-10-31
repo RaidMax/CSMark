@@ -41,6 +41,8 @@ namespace CSMarkRedux{
             info.showLicenseInfo();
             info.checkForUpdate(locale);
 
+            string amount = "";
+
             string exitCommand = "";
             string aboutCommand = "";
             string benchCommand = "";
@@ -229,9 +231,10 @@ namespace CSMarkRedux{
                 else if (newCommand.Contains(calcCommand)) {
                     if (locales.returnLocale() == "EN") {
                         Console.WriteLine(locale_EN.calculations);
+                       amount = Console.ReadLine();
                     }
                     try {
-                        bench.setMaxIterations(double.Parse(Console.ReadLine()) * 1000 * 1000);
+                        bench.setMaxIterations(double.Parse(amount) * 1000 * 1000);
                     }
                     catch {
                         if (locales.returnLocale() == "EN") {
