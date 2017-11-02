@@ -3,6 +3,10 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 namespace CSMarkRedux{
     class CSMarkPlatform{
+
+        public CSMarkPlatform(){
+            GetOSPlatform();
+        }
         string osID;
         string archID;
 
