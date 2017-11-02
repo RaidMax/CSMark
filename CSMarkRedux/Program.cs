@@ -140,9 +140,7 @@ namespace CSMarkRedux{
                 //Warn the user if the process count is quite high.
                 info.warnProcessCount();
 
-                if (info.checkForUpdate()){
-
-                }
+              info.checkForUpdate(locales.returnLocale());
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
