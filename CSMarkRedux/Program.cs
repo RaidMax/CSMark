@@ -39,7 +39,6 @@ namespace CSMarkRedux{
             BenchmarkController bench = new BenchmarkController();
 
             info.showLicenseInfo();
-            info.checkForUpdate(locale);
 
             string amount = "";
 
@@ -141,6 +140,10 @@ namespace CSMarkRedux{
                 //Warn the user if the process count is quite high.
                 info.warnProcessCount();
 
+                if (info.checkForUpdate()){
+
+                }
+
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");
                 if (locales.returnLocale() == "EN") {
@@ -165,7 +168,6 @@ namespace CSMarkRedux{
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 newCommand = Console.ReadLine().ToLower();
-
 
                 if (newCommand == stressCommand) {
                     if (locales.returnLocale() == "EN") {
