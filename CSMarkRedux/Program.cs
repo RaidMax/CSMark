@@ -136,11 +136,11 @@ namespace CSMarkRedux{
 
             Console.Title += " " + info.check64Bits();
 
+            info.checkForUpdate(locales.returnLocale());
+
             while (true) {
                 //Warn the user if the process count is quite high.
                 info.warnProcessCount();
-
-              info.checkForUpdate(locales.returnLocale());
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("                                                                        ");

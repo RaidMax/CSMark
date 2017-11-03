@@ -58,7 +58,7 @@ namespace CSMarkRedux{
                     Console.WriteLine(locale_EN.checkForUpdate_Latest + " " + autoUpdater.currentVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_Installed + " " + autoUpdater.installedVersion());
                     Console.WriteLine(locale_EN.checkForUpdate_ChangeLog + " " + autoUpdater.changeLogURL());
-                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL());
+                    Console.WriteLine(locale_EN.checkForUpdate_DownloadInstruction + " " + autoUpdater.downloadURL() + csM.returnOSPlatform() + "-" + csM.returnArch() + ".zip");
                 
                 Console.WriteLine("                                     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -98,13 +98,6 @@ namespace CSMarkRedux{
             while (licenseWatch.ElapsedMilliseconds <= 2.0 * 1000){
                 //Do nothing to make sure everybody sees the license.
             }
-        }
-
-        /// <summary>
-        /// Check to see if there any any processes running in the background.
-        /// </summary>
-        public void processChecking(){
-
         }
 
         /// <summary>
