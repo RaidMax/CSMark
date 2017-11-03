@@ -66,7 +66,7 @@ __Answer:__ Of course! We're happy to allow Standard Users to create educational
 __Question:__ What support am I eligible for?
 __Answer:__ All users are eligible for Community Support. Community Support usually consists of receiving support from the Community and possibly maintainers or contributors. This can be on [GitHub Issues](https://github.com/CSMarkBenchmark/CSMark/issues/) or elsewhere. This is the standard support provided for CSMark.
 
-Some users may be eligible for Extended Support or Priority Support. These cases are handed on a case by case basis. Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users. Extended support consists of bug fixes and security updates to a version of CSMark after the verison no longer receieve mainstream support. This is also usually only available to select users.
+Some users may be eligible for Extended Support or Priority Support. These cases are handled on a case by case basis. Priority Support consists of support from Developers and Maintainers directly on Discord or Email and is only granted to certain users. Extended support consists of bug fixes and security updates to a version of CSMark after the verison no longer receieve mainstream support. This is also usually only available to select users.
 
 __Question:__ Is the version of CSMark I'm using supported?
 __Answer:__ You can check the status of CSMark support at the [CSMark Support Documentation](https://github.com/CSMarkBenchmark/CSMark/blob/master/Support.md).
