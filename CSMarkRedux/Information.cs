@@ -18,38 +18,6 @@ namespace CSMarkRedux{
         public Version returnCSMarkVersion(){
             return Assembly.GetEntryAssembly().GetName().Version;
         }
-
-        public bool checkForUpdate(){
-            //This checks for updates on startup
-            checkUpdateTimer.Reset();
-            checkUpdateTimer.Start();
-            AutoUpdaterNetStandard.AutoUpdater.Start(cSMarkPlatform.returnDownloadURL());
-
-            Console.WriteLine(locale_EN.checkForUpdate_Notice);
-
-            //If it takes longer than 3 seconds to check for updates then stop and tell the user it couldn't check for updates.
-            while (autoUpdater.checkForUpdateCompleted() == false && checkUpdateTimer.ElapsedMilliseconds <= (3.0 * 1000))
-            {
-
-            }
-            if (autoUpdater.checkForUpdateCompleted() == false){
-                Console.WriteLine(locale_EN.checkForUpdate_Failed);               
-            }
-            if (autoUpdater.currentVersion() == "0.0.0.0")
-            {
-                Console.WriteLine("                                     ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(locale_EN.checkForUpdate_NetworkIssues);
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("                                     ");
-                return false;
-            }
-
-            else
-            {
-                return true;
-            }
-        }
         public void checkForUpdate(string locale){
 
             //This checks for updates on startup
@@ -107,7 +75,7 @@ namespace CSMarkRedux{
             if(csM.returnOSPlatform().ToLower().Contains("win")){
                 Console.ForegroundColor = ConsoleColor.Magenta;
             }
-            else if(csM.returnOSPlatform().ToLower().Contains("mac") || csM.returnOSPlatform().ToLower().Contains("linux")){
+            else if(csM.returnOSPlatform().ToLower().Contains("osx") || csM.returnOSPlatform().ToLower().Contains("linux")){
                 //Keep the native console forground color to ensure it remains readable.
             }
                 Console.WriteLine("Copyright (C) 2017 AluminiumTech");
