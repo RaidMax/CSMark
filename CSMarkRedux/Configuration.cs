@@ -23,11 +23,11 @@ namespace CSMarkRedux{
 
 if(csM.returnOSPlatform() == "Win10"){
     try{
-                if(csM.returnOSPlatform() == "Win10" && Directory.Exists(configDirWin + "\\CSMark_Config.txt")){
+                if(Directory.Exists(configDirWin + "\\CSMark_Config.txt")){
                     //Do nothing. Checking Locale will happen elsewhere.
                     fileExists = true;
                 }
-                else if(csM.returnOSPlatform() == "Win10" && !Directory.Exists(configDirWin + "\\CSMark_Config.txt")){   
+                else if(!Directory.Exists(configDirWin + "\\CSMark_Config.txt")){   
                     try{
                         using (StreamWriter sw = File.CreateText(configDirWin + "\\CSMark_Config.txt")){
                             sw.WriteLine("CSMarkVersion_" + new Information().returnCSMarkVersionString());
@@ -53,13 +53,14 @@ if(csM.returnOSPlatform() == "Win10"){
                 Console.WriteLine("The Configuration file was not able to be saved");
                 }
             }
-        else if(csM.returnOSPlatform() == "linux"){
+        else if(csM.returnOSPlatform().ToLower() == "linux" || csM.returnOSPlatform().ToLower() == "osx")
+            {
     try{
-                if(csM.returnOSPlatform() == "linux" && Directory.Exists(configDirLinux + "/CSMark_Config.txt")){
+                if(Directory.Exists(configDirLinux + "/CSMark_Config.txt")){
                     //Do nothing. Checking Locale will happen elsewhere.
                     fileExists = true;
                 }
-                else if(csM.returnOSPlatform() == "linux" && !Directory.Exists(configDirLinux + "/CSMark_Config.txt")){   
+                else if(!Directory.Exists(configDirLinux + "/CSMark_Config.txt")){   
                     try{
                         using (StreamWriter sw = File.CreateText(configDirWin + "/CSMark_Config.txt")){
                             sw.WriteLine("CSMarkVersion_" + new Information().returnCSMarkVersionString());
