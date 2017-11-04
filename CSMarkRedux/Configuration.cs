@@ -62,7 +62,7 @@ if(csM.returnOSPlatform() == "Win10"){
                 }
                 else if(!Directory.Exists(configDirLinux + "/CSMark_Config.txt")){   
                     try{
-                        using (StreamWriter sw = File.CreateText(configDirWin + "/CSMark_Config.txt")){
+                        using (StreamWriter sw = File.CreateText(configDirLinux + "/CSMark_Config.txt")){
                             sw.WriteLine("CSMarkVersion_" + new Information().returnCSMarkVersionString());
                             sw.WriteLine("Date_" + DateTime.Now.ToString());
                             sw.WriteLine("ThreadCount_" + Environment.ProcessorCount.ToString());
