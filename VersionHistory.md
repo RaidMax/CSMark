@@ -96,7 +96,7 @@ Table of Contents:
 
 | Version | Windows Availability | Linux Availability | Mac Availability | Changelog | Support Status |
 |---------|----------------------|--------------------|------------------|-----------|----------------|
-| 0.15.0 | September 1st 2017 | September 1st 2017 | September 1st 2017 |ttps://github.com/CSMarkBenchmark/CSMark/releases/tag/0.15.0 | CSMark 0 Support Policy|
+| 0.15.0 | September 1st 2017 | September 1st 2017 | September 1st 2017 | https://github.com/CSMarkBenchmark/CSMark/releases/tag/0.15.0 | CSMark 0 Support Policy|
 
 ### 0.14.x
 
