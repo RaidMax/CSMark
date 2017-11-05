@@ -1,6 +1,50 @@
 ## Version History
 This document contains the entire version history of CSMark Desktop.
 
+Table of Contents:
+
+[0.22.x](#022x)
+
+[0.21.x](#021x)
+
+[0.20.x](#020x)
+
+[0.19.x](#019x)
+
+[0.18.x](#018x)
+
+[0.17.x](#017x)
+
+[0.16.x](#016x)
+
+[0.15.x](#015x)
+
+[0.14.x](#014x)
+
+[0.13.x](#013x)
+
+[0.12.x](#012x)
+
+[0.11.x](#011x)
+
+[0.10.x](#010x)
+
+[0.9.x](#09x)
+
+[0.8.x](#08x)
+
+[0.7.x](#07x)
+
+[0.6.x](#06x)
+
+[0.5.x](#05x)
+
+[0.4.x](#04x)
+
+[0.3.x](#03x)
+
+[0.2.x](#02x)
+
 ### 0.22.x
 
 | Version | Windows Availability | Linux Availability | Mac Availability | Changelog | Support Status |
