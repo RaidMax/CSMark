@@ -90,7 +90,7 @@ Table of Contents:
 |---------|----------------------|--------------------|------------------|-----------|----------------|
 | 0.16.2 | September 10th 2017 | September 10th 2017 | September 10th 2017 | https://github.com/CSMarkBenchmark/CSMark/releases/tag/0.16.2 | CSMark 0 Support Policy |
 | 0.16.1 | September 7th 2017 | September 7th 2017 |September 7th 2017 |https://github.com/CSMarkBenchmark/CSMark/releases/tag/0.16.1 | CSMark 0 Support Policy |
-| 0.16.1 | September 6th 2017 | September 6th 2017 | September 6th 2017 | https://github.com/CSMarkBenchmark/CSMark/releases/tag/0.16.0 | CSMark 0 Support Policy|
+| 0.16.0 | September 6th 2017 | September 6th 2017 | September 6th 2017 | https://github.com/CSMarkBenchmark/CSMark/releases/tag/0.16.0 | CSMark 0 Support Policy|
 
 ### 0.15.x
 
