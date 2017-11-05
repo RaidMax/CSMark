@@ -5,11 +5,11 @@ Currently supported languages.
 
 | Language | Locale in CSMark | Version added | Support |
 |---|---|---|---|
-| English | EN-US | - | Fully Supported |
+| English | EN | - | Fully Supported |
 
 
 Languages being worked on.
 
 | Language | Locale in CSMark | Status |
 |---|---|---|
-| French | FR-FR | Work In Progress |
+| French | FR | Work In Progress |
