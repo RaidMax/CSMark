@@ -2,8 +2,8 @@
 
 **Preview Channels**
 * Release Preview
-* Insider Slow Ring - Gets new builds 1 week after fast ring builds
-* Insider Fast Ring - 
+* Beta Channel - 
+* Alpha Channel -  
 
  Table of Contents
 

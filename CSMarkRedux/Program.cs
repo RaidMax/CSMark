@@ -263,10 +263,6 @@ namespace CSMarkRedux{
                     Console.WriteLine("                                                ");
                     if (locales.returnLocale() == "EN") {
 
-                        ///We don't need to show this message to mac or linux users
-                        if (new CSMarkPlatform().returnOSPlatform().Contains("win")) {
-                            Console.WriteLine(locale_EN.save_ReminderInstall);
-                        }
                         Console.WriteLine(locale_EN.confirmSave);
                         Console.WriteLine(responseYorN);
                     }
