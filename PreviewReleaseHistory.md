@@ -5,12 +5,16 @@
 * Beta Channel - 
 * Alpha Channel -  
 
- Table of Contents
+ **Table of Contents**
+
+**Naming Conventions for Preview Releases**
+
+Year + W + Weeknumber + letter between A to Z including A and Z
 
 
 ### Builds leading up to Official Release
 
 
-| Preview Version | Release Preview Availability | Insider Slow Ring Availability | Insider Fast Ring Availability | Changelog |
+| Preview Version | Release Preview Availability | Beta Availability | Alpha Availability | Changelog |
 |---------|----------------------|--------------------|------------------|-----------|
 |         |                           |                    |                  |                    |
