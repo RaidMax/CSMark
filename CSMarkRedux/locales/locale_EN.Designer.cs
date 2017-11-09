@@ -465,7 +465,7 @@ namespace CSMarkRedux.locales {
         ///the Free Software Foundation.
         ///
         ///This program is distributed in the hope that it will be useful but WITHOUT ANY WARRANTY;
-        ///without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PART [rest of string was truncated]&quot;;.
+        ///without even the implied warranty of MERCHANTABILITY or FITNESS FO [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string license {
             get {
@@ -569,15 +569,6 @@ namespace CSMarkRedux.locales {
         internal static string save_Fail {
             get {
                 return ResourceManager.GetString("save_Fail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you installed CSMark using the .exe installer, please run CSMark as an administrator to be able to save the results file..
-        /// </summary>
-        internal static string save_ReminderInstall {
-            get {
-                return ResourceManager.GetString("save_ReminderInstall", resourceCulture);
             }
         }
         
