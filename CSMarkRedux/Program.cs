@@ -134,7 +134,9 @@ namespace CSMarkRedux{
 
             }
 
-            Console.Title += " " + info.check64Bits();
+            //Console.Title += " " + info.check64Bits();
+            // += operator not supported for the title in .NET Core 2.0
+            Console.Title = $"{Console.Title}{info.check64Bits()}";
 
             info.checkForUpdate(locales.returnLocale());
 

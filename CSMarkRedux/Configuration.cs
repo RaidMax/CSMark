@@ -4,8 +4,7 @@ using System.IO;
 namespace CSMarkRedux{
     class Configuration{
                     CSMarkPlatform csM = new CSMarkPlatform();
-        string configDirWin = Environment.CurrentDirectory + "\\Config\\";
-        string configDirLinux = Environment.CurrentDirectory + "/Config/";
+        string configDir = $"{Environment.CurrentDirectory}{Path.DirectorySeparatorChar}Config{Path.DirectorySeparatorChar}";
         bool folderExists = false;
         bool fileExists = false;
         string result;
@@ -23,13 +22,13 @@ namespace CSMarkRedux{
 
 if(csM.returnOSPlatform() == "Win10"){
     try{
-                if(Directory.Exists(configDirWin + "\\CSMark_Config.txt")){
+                if(Directory.Exists(configDir + "\\CSMark_Config.txt")){
                     //Do nothing. Checking Locale will happen elsewhere.
                     fileExists = true;
                 }
-                else if(!Directory.Exists(configDirWin + "\\CSMark_Config.txt")){   
+                else if(!Directory.Exists(configDir + "\\CSMark_Config.txt")){   
                     try{
-                        using (StreamWriter sw = File.CreateText(configDirWin + "\\CSMark_Config.txt")){
+                        using (StreamWriter sw = File.CreateText(configDir + "\\CSMark_Config.txt")){
                             sw.WriteLine("CSMarkVersion_" + new Information().returnCSMarkVersionString());
                             sw.WriteLine("Date_" + DateTime.Now.ToString());
                             sw.WriteLine("ThreadCount_" + Environment.ProcessorCount.ToString());
@@ -39,7 +38,7 @@ if(csM.returnOSPlatform() == "Win10"){
                             sw.WriteLine("Locale_" + locale);
                             sw.WriteLine("-------------------------------------------------");
                         }
-                        Console.WriteLine("The configuration file was saved at ... " + configDirWin);
+                        Console.WriteLine("The configuration file was saved at ... " + configDir);
                         fileExists = true;
                     }
                     catch(Exception ex){
@@ -56,13 +55,13 @@ if(csM.returnOSPlatform() == "Win10"){
         else if(csM.returnOSPlatform().ToLower() == "linux" || csM.returnOSPlatform().ToLower() == "osx")
             {
     try{
-                if(Directory.Exists(configDirLinux + "/CSMark_Config.txt")){
+                if(Directory.Exists(configDir + "/CSMark_Config.txt")){
                     //Do nothing. Checking Locale will happen elsewhere.
                     fileExists = true;
                 }
-                else if(!Directory.Exists(configDirLinux + "/CSMark_Config.txt")){   
+                else if(!Directory.Exists(configDir + "/CSMark_Config.txt")){   
                     try{
-                        using (StreamWriter sw = File.CreateText(configDirLinux + "/CSMark_Config.txt")){
+                        using (StreamWriter sw = File.CreateText(configDir + "/CSMark_Config.txt")){
                             sw.WriteLine("CSMarkVersion_" + new Information().returnCSMarkVersionString());
                             sw.WriteLine("Date_" + DateTime.Now.ToString());
                             sw.WriteLine("ThreadCount_" + Environment.ProcessorCount.ToString());
@@ -72,7 +71,7 @@ if(csM.returnOSPlatform() == "Win10"){
                             sw.WriteLine("Locale_" + locale);
                             sw.WriteLine("-------------------------------------------------");
                         }
-                        Console.WriteLine("The configuration file was saved at ... " + configDirLinux);
+                        Console.WriteLine("The configuration file was saved at ... " + configDir);
                         fileExists = true;
                     }
                     catch(Exception ex){
@@ -93,7 +92,7 @@ if(csM.returnOSPlatform() == "Win10"){
 
             if(csM.returnOSPlatform() == "Win10"){
                     try{
-                using (StreamReader sr = new StreamReader(configDirWin + "\\CSMark_Config.txt")){
+                using (StreamReader sr = new StreamReader(configDir + "\\CSMark_Config.txt")){
                     String line = await sr.ReadToEndAsync();
 
                     if (line.Contains("Locale_EN")){
@@ -108,7 +107,7 @@ if(csM.returnOSPlatform() == "Win10"){
             }
             else if(csM.returnOSPlatform() == "linux"){
                     try{
-                using (StreamReader sr = new StreamReader(configDirLinux + "/CSMark_Config.txt")){
+                using (StreamReader sr = new StreamReader(configDir + "/CSMark_Config.txt")){
                     String line = await sr.ReadToEndAsync();
 
                     if (line.Contains("Locale_EN")){
@@ -125,13 +124,13 @@ if(csM.returnOSPlatform() == "Win10"){
         }
         public void createSettingsFolder(){
             try {
-                if (csM.returnOSPlatform() == "Win10" && Directory.Exists(configDirWin)){
+                if (csM.returnOSPlatform() == "Win10" && Directory.Exists(configDir)){
                     //Settings folder already exists, so we don't need to do anything.
                     folderExists = true;
                 }
-                else if(csM.returnOSPlatform() == "Win10" && !Directory.Exists(configDirWin))
+                else if(csM.returnOSPlatform() == "Win10" && !Directory.Exists(configDir))
                 {
-                    Directory.CreateDirectory(configDirWin);
+                    Directory.CreateDirectory(configDir);
                     folderExists = false;
                 }
             }
